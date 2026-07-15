@@ -42,10 +42,40 @@ function Mainframe:Create()
         _G.FluxUiTopbar:Create(panel)
     end
 
+    local content = Instance.new("Frame")
+    content.Name = "content"
+    content.BorderSizePixel = 0
+    content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    content.AnchorPoint = Vector2.new(0.5, 1)
+    content.Size = UDim2.new(1, 0, 1, -35)
+    content.Position = UDim2.new(0.5, 0, 1, 0)
+    content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    content.BackgroundTransparency = 1
+    content.Parent = panel
+
+    local tabs = Instance.new("Frame")
+    tabs.Name = "tabs"
+    tabs.BorderSizePixel = 0
+    tabs.BackgroundColor3 = Color3.fromRGB(21, 21, 21)
+    tabs.ClipsDescendants = true
+    tabs.Size = UDim2.new(-0.03095, 200, 1.0814, -65)
+    tabs.Position = UDim2.new(0, 15, 0, 0)
+    tabs.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    tabs.LayoutOrder = 10
+    tabs.BackgroundTransparency = 1
+    tabs.Parent = content
+
+    local corner = Instance.new("UICorner")
+    corner.Name = "corner"
+    corner.CornerRadius = UDim.new(0, 12)
+    corner.Parent = tabs
+
     local WindowTable = {
         Instance = ScreenGui,
         Main = main,
-        Panel = panel
+        Panel = panel,
+        Content = content,
+        Tabs = tabs
     }
 
     return WindowTable

@@ -141,28 +141,24 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
         for _, button in pairs(mainActions:GetChildren()) do
             if button:IsA("ImageButton") or button:IsA("TextButton") then
                 button.MouseEnter:Connect(function()
-                    TweenService:Create(button, Animations.Fast, { BackgroundTransparency = 0.8}):Play()
                     if button:FindFirstChild("scale") then
                         TweenService:Create(button.scale, Animations.Fast, { Scale = 1.1 }):Play()
                     end
                 end)
 
                 button.MouseLeave:Connect(function()
-                    TweenService:Create(button, Animations.Fast, { BackgroundTransparency = 1 }):Play()
                     if button:FindFirstChild("scale") then
                         TweenService:Create(button.scale, Animations.Fast, { Scale = 1 }):Play()
                     end
                 end)
 
                 button.MouseButton1Down:Connect(function()
-                    TweenService:Create(button, Animations.Smooth, { BackgroundTransparency = 0.85 }):Play()
                     if button:FindFirstChild("scale") then
                         TweenService:Create(button.scale, Animations.Fast, { Scale = 0.9 }):Play()
                     end
                 end)
 
                 button.MouseButton1Up:Connect(function()
-                    TweenService:Create(button, Animations.Fast, { BackgroundTransparency = 1 }):Play()
                     if button:FindFirstChild("scale") then
                         TweenService:Create(button.scale, Animations.Fast, { Scale = 1 }):Play()
                     end
