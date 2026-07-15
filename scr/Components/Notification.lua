@@ -74,7 +74,7 @@ function Notification:Create(WindowTable, Data)
     bannerList.Parent = banner
 
     banner.AnchorPoint = Vector2.new(0, 0)
-    banner.Position = UDim2.fromOffset(0, -15)
+    banner.Position = UDim2.fromOffset(0, -25)
     banner.GroupTransparency = 1
     
     notifPadding.PaddingTop = UDim.new(0, 0)
