@@ -282,7 +282,7 @@ function Debugbar:Create(parentPanel)
     pingLabel.TextSize = 14
     pingLabel.TextXAlignment = Enum.TextXAlignment.Left
     pingLabel.TextScaled = true
-    pingLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 81)
+    pingLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     pingLabel.FontFace = Font.new("rbxassetid://12187365364", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
     pingLabel.TextColor3 = Color3.fromRGB(255, 255, 81)
     pingLabel.BackgroundTransparency = 1
