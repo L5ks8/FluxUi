@@ -22,35 +22,35 @@ Library.Version = "1.0.0"
 function Library:CreateWindow(Settings)
     Settings = Settings or {}
 
-    local Window = Mainframe:Create(Settings)
+    local WindowTable = Mainframe:Create(Settings)
 
-    Window.Debugbar = Debugbar
-    Window.Notification = Notification
-    Window.Elements = Elements
+    WindowTable.Debugbar = Debugbar
+    WindowTable.Notification = Notification
+    WindowTable.Elements = Elements
 
-    Topbar:Init(Window)
+    Topbar:Init(WindowTable)
 
-    function Window:CreateButton(Data)
+    function WindowTable:CreateButton(Data)
         return self.Elements.Button:Create(self, Data)
     end
 
-    function Window:CreateToggle(Data)
+    function WindowTable:CreateToggle(Data)
         return self.Elements.Toggle:Create(self, Data)
     end
 
-    function Window:CreateSlider(Data)
+    function WindowTable:CreateSlider(Data)
         return self.Elements.Slider:Create(self, Data)
     end
 
-    function Window:CreateDropdown(Data)
+    function WindowTable:CreateDropdown(Data)
         return self.Elements.Dropdown:Create(self, Data)
     end
 
-    function Window:Notify(Data)
+    function WindowTable:Notify(Data)
         return self.Notification:Create(self, Data)
     end
 
-    return Window
+    return WindowTable
 end
 
 return Library
