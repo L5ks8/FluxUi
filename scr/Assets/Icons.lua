@@ -1,0 +1,23 @@
+local Icons = {
+    Flux = "rbxassetid://131282558574165",
+    Logo = "rbxassetid://104003533166715",
+    ThreePersons = "rbxassetid://124137191392307",
+    Settings = "rbxassetid://95049544028171",
+    Security = "rbxassetid://115826927882045",
+    Network = "rbxassetid://136422060419845",
+    Refresh = "rbxassetid://127302410407984",
+    Info = "rbxassetid://80836821299419",
+    Bans = "rbxassetid://124569484183614",
+    Crosshair = "rbxassetid://103490131111942",
+    Bars = "rbxassetid://90174745859092",
+    Return = "rbxassetid://102662611899395",
+    Warning = "rbxassetid://97388232453690",
+    Close = "rbxassetid://133630697228499",
+    Minimize = "rbxassetid://95770883131084",
+    Activity = "rbxassetid://112237137496031",
+    Pin = "rbxassetid://77199131766339",
+    Home = "rbxassetid://77633759487685",
+    Windows = "rbxassetid://117392318841314",
+    WorldMap = "rbxassetid://103966893222412",
+}
+
