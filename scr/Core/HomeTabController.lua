@@ -79,9 +79,9 @@ function HomeTabController.Init(HomeTab)
     --// Developer Console
     local console = HomeTab:FindFirstChild("console", true)
     if console then
-        local logsContainer = console:FindFirstChild("logs")
+        local logsContainer = console:FindFirstChild("logs", true)
         if logsContainer then
-            local logTemplate = logsContainer:FindFirstChild("log")
+            local logTemplate = logsContainer:FindFirstChild("log", true)
             if logTemplate then
                 logTemplate.Visible = false
                 
