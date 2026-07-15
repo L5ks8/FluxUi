@@ -777,6 +777,7 @@ function Mainframe:Create()
     padding11.Name = "padding"
     padding11.Parent = screen
 
+
     local page = Instance.new("UIPageLayout")
     page.HorizontalAlignment = Enum.HorizontalAlignment.Center
     page.GamepadInputEnabled = false

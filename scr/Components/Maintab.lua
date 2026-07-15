@@ -1,2136 +1,2138 @@
 local Maintab = {}
 
 function Maintab:Create(WindowTable)
+    local UI = {}
     local screen = WindowTable.Content:FindFirstChild('screen')
-    local home2 = Instance.new("ImageButton")
-    home2.BorderSizePixel = 0
-    home2.AutoButtonColor = false
-    home2.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    home2.Selectable = false
-    home2.Size = UDim2.new(1, 0, 1, 0)
-    home2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    home2.Name = "home"
-    home2.Position = UDim2.new(-0.01539, 0, 0, 0)
-    home2.Parent = screen
-
-    local scroll = Instance.new("ScrollingFrame")
-    scroll.Active = true
-    scroll.ScrollingDirection = Enum.ScrollingDirection.Y
-    scroll.BorderSizePixel = 0
-    scroll.CanvasSize = UDim2.new(0, 0, 0, 0)
-    scroll.Name = "scroll"
-    scroll.ScrollBarImageTransparency = 1
-    scroll.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    scroll.AnchorPoint = Vector2.new(0.5, 0.5)
-    scroll.AutomaticCanvasSize = Enum.AutomaticSize.Y
-    scroll.Size = UDim2.new(1, 0, 1, 0)
-    scroll.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
-    scroll.Position = UDim2.new(0.5, 0, 0.5, 0)
-    scroll.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    scroll.ScrollBarThickness = 0
-    scroll.BackgroundTransparency = 1
-    scroll.Parent = home2
-
-    local padding12 = Instance.new("UIPadding")
-    padding12.PaddingRight = UDim.new(0, 20)
-    padding12.Name = "padding"
-    padding12.PaddingLeft = UDim.new(0, 20)
-    padding12.PaddingBottom = UDim.new(0, 5)
-    padding12.Parent = scroll
-
-    local list18 = Instance.new("UIListLayout")
-    list18.HorizontalAlignment = Enum.HorizontalAlignment.Center
-    list18.Padding = UDim.new(0, 15)
-    list18.SortOrder = Enum.SortOrder.LayoutOrder
-    list18.Name = "list"
-    list18.Parent = scroll
-
-    local people = Instance.new("Frame")
-    people.BorderSizePixel = 0
-    people.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    people.AutomaticSize = Enum.AutomaticSize.Y
-    people.Size = UDim2.new(1, 0, 0, 0)
-    people.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    people.Name = "people"
-    people.LayoutOrder = 5
-    people.BackgroundTransparency = 1
-    people.Parent = scroll
-
-    local padding13 = Instance.new("UIPadding")
-    padding13.Name = "padding"
-    padding13.PaddingBottom = UDim.new(0, 5)
-    padding13.Parent = people
-
-    local list19 = Instance.new("UIListLayout")
-    list19.Wraps = true
-    list19.Padding = UDim.new(0, 10)
-    list19.SortOrder = Enum.SortOrder.LayoutOrder
-    list19.Name = "list"
-    list19.FillDirection = Enum.FillDirection.Horizontal
-    list19.Parent = people
-
-    local count = Instance.new("ImageButton")
-    count.SliceScale = 0.05
-    count.BorderSizePixel = 0
-    count.SliceCenter = Rect.new(512, 512, 512, 512)
-    count.ScaleType = Enum.ScaleType.Slice
-    count.AutoButtonColor = false
-    count.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-    count.ImageColor3 = Color3.fromRGB(28, 28, 28)
-    count.Size = UDim2.new(0, 160, 0, 200)
-    count.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    count.Name = "count"
-    count.Parent = people
-
-    local meter = Instance.new("Frame")
-    meter.BorderSizePixel = 0
-    meter.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    meter.Size = UDim2.new(1, 0, 0, 100)
-    meter.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    meter.Name = "meter"
-    meter.BackgroundTransparency = 1
-    meter.Parent = count
-
-    local bg = Instance.new("ImageLabel")
-    bg.BorderSizePixel = 0
-    bg.ScaleType = Enum.ScaleType.Fit
-    bg.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    bg.ImageColor3 = Color3.fromRGB(36, 36, 36)
-    bg.AnchorPoint = Vector2.new(0.5, 0)
-    bg.Image = "rbxassetid://91532298213965"
-    bg.Size = UDim2.new(0, 100, 0, 100)
-    bg.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    bg.BackgroundTransparency = 1
-    bg.Name = "bg"
-    bg.Position = UDim2.new(0.5, 0, 0.5, 0)
-    bg.Parent = meter
-
-    local line = Instance.new("ImageLabel")
-    line.BorderSizePixel = 0
-    line.ScaleType = Enum.ScaleType.Fit
-    line.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    line.ImageColor3 = Color3.fromRGB(0, 141, 255)
-    line.AnchorPoint = Vector2.new(0.5, 0)
-    line.Image = "rbxassetid://91532298213965"
-    line.Size = UDim2.new(0, 100, 0, 100)
-    line.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    line.BackgroundTransparency = 1
-    line.Rotation = -180
-    line.Name = "line"
-    line.Position = UDim2.new(0.5, 0, 0.5, 0)
-    line.Parent = meter
-
-    local cover = Instance.new("Frame")
-    cover.BorderSizePixel = 0
-    cover.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-    cover.AnchorPoint = Vector2.new(0.5, 0)
-    cover.Size = UDim2.new(1, 0, 0.5, 6)
-    cover.Position = UDim2.new(0.5, 0, 1, -1)
-    cover.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    cover.Name = "cover"
-    cover.Parent = meter
-
-    local icon9 = Instance.new("ImageLabel")
-    icon9.BorderSizePixel = 0
-    icon9.ScaleType = Enum.ScaleType.Fit
-    icon9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    icon9.ImageTransparency = 0.2
-    icon9.AnchorPoint = Vector2.new(0.5, 0.5)
-    icon9.Image = "rbxassetid://123713243633092"
-    icon9.Size = UDim2.new(0, 24, 0, 24)
-    icon9.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    icon9.BackgroundTransparency = 1
-    icon9.Name = "icon"
-    icon9.Position = UDim2.new(0.5, 0, 0.5, 38)
-    icon9.Parent = meter
-
-    local scale5 = Instance.new("UIScale")
-    scale5.Name = "scale"
-    scale5.Parent = icon9
-
-    local padding14 = Instance.new("UIPadding")
-    padding14.PaddingTop = UDim.new(0, 12)
-    padding14.PaddingRight = UDim.new(0, 14)
-    padding14.Name = "padding"
-    padding14.PaddingLeft = UDim.new(0, 14)
-    padding14.PaddingBottom = UDim.new(0, 10)
-    padding14.Parent = count
-
-    local count2 = Instance.new("TextLabel")
-    count2.BorderSizePixel = 0
-    count2.AutoLocalize = false
-    count2.TextSize = 18
-    count2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    count2.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-    count2.TextColor3 = Color3.fromRGB(0, 141, 255)
-    count2.BackgroundTransparency = 1
-    count2.AnchorPoint = Vector2.new(0.5, 1)
-    count2.Size = UDim2.new(1, 0, 0, 16)
-    count2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    count2.Text = "0/20"
-    count2.LayoutOrder = 1
-    count2.Name = "count"
-    count2.Position = UDim2.new(0.5, 0, 1, -30)
-    count2.Parent = count
-
-    local label6 = Instance.new("TextLabel")
-    label6.BorderSizePixel = 0
-    label6.AutoLocalize = false
-    label6.TextSize = 12
-    label6.TextTransparency = 0.8
-    label6.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    label6.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-    label6.TextColor3 = Color3.fromRGB(255, 255, 255)
-    label6.BackgroundTransparency = 1
-    label6.AnchorPoint = Vector2.new(0.5, 1)
-    label6.Size = UDim2.new(1, 0, 0, 16)
-    label6.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    label6.Text = "Players"
-    label6.LayoutOrder = 1
-    label6.Name = "label"
-    label6.Position = UDim2.new(0.5, 0, 1, -10)
-    label6.Parent = count
-
-    local flex7 = Instance.new("UIFlexItem")
-    flex7.ShrinkRatio = 1
-    flex7.GrowRatio = 0.01
-    flex7.Name = "flex"
-    flex7.FlexMode = Enum.UIFlexMode.Custom
-    flex7.Parent = count
-
-    local scale6 = Instance.new("UIScale")
-    scale6.Name = "scale"
-    scale6.Parent = count
-
-    local header = Instance.new("TextLabel")
-    header.BorderSizePixel = 0
-    header.AutoLocalize = false
-    header.TextSize = 14
-    header.TextXAlignment = Enum.TextXAlignment.Left
-    header.TextTransparency = 0.8
-    header.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    header.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    header.TextColor3 = Color3.fromRGB(255, 255, 255)
-    header.BackgroundTransparency = 1
-    header.AnchorPoint = Vector2.new(0.5, 0)
-    header.Size = UDim2.new(1, 0, 0, 16)
-    header.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    header.Text = "Count"
-    header.LayoutOrder = 1
-    header.Name = "header"
-    header.Position = UDim2.new(0.5, 0, 0, 0)
-    header.Parent = count
-
-    local stroke = Instance.new("UIStroke")
-    stroke.Color = Color3.fromRGB(255, 255, 255)
-    stroke.Name = "stroke"
-    stroke.Parent = count
-
-    local gradient = Instance.new("UIGradient")
-    gradient.Rotation = -90
-    gradient.Name = "gradient"
-    gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(39, 39, 39)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(21, 21, 21))}
-    gradient.Parent = stroke
-
-    local corner14 = Instance.new("UICorner")
-    corner14.Name = "corner"
-    corner14.CornerRadius = UDim.new(0, 15)
-    corner14.Parent = count
-
-    local People = Instance.new("ImageButton")
-    People.SliceScale = 0.05
-    People.BorderSizePixel = 0
-    People.SliceCenter = Rect.new(512, 512, 512, 512)
-    People.ScaleType = Enum.ScaleType.Slice
-    People.AutoButtonColor = false
-    People.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-    People.ImageColor3 = Color3.fromRGB(28, 28, 28)
-    People.Size = UDim2.new(0, 160, 0, 200)
-    People.ClipsDescendants = true
-    People.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    People.Name = "People"
-    People.Position = UDim2.new(0.35433, 0, 0.1, 0)
-    People.Parent = people
-
-    local flex8 = Instance.new("UIFlexItem")
-    flex8.Name = "flex"
-    flex8.FlexMode = Enum.UIFlexMode.Fill
-    flex8.Parent = People
-
-    local scroll2 = Instance.new("ScrollingFrame")
-    scroll2.ScrollingDirection = Enum.ScrollingDirection.Y
-    scroll2.BorderSizePixel = 0
-    scroll2.CanvasSize = UDim2.new(0, 0, 0, 0)
-    scroll2.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
-    scroll2.Name = "scroll"
-    scroll2.ScrollBarImageTransparency = 1
-    scroll2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    scroll2.AutomaticCanvasSize = Enum.AutomaticSize.Y
-    scroll2.ClipsDescendants = false
-    scroll2.Size = UDim2.new(1, 0, 1, -24)
-    scroll2.ScrollBarImageColor3 = Color3.fromRGB(21, 21, 21)
-    scroll2.Position = UDim2.new(0, 0, 0, 24)
-    scroll2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    scroll2.ScrollBarThickness = 4
-    scroll2.BackgroundTransparency = 1
-    scroll2.Parent = People
-
-    local list20 = Instance.new("UIListLayout")
-    list20.Padding = UDim.new(0, 8)
-    list20.SortOrder = Enum.SortOrder.LayoutOrder
-    list20.Name = "list"
-    list20.Parent = scroll2
-
-    local padding15 = Instance.new("UIPadding")
-    padding15.PaddingTop = UDim.new(0, 5)
-    padding15.Name = "padding"
-    padding15.Parent = scroll2
-
-    local Player = Instance.new("Frame")
-    Player.BorderSizePixel = 0
-    Player.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
-    Player.AnchorPoint = Vector2.new(0.5, 0.5)
-    Player.Size = UDim2.new(1, 0, 0.19984, 0)
-    Player.Position = UDim2.new(0.5, 0, 0.09992, 0)
-    Player.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Player.Name = "Player"
-    Player.Parent = scroll2
-
-    local UICorner = Instance.new("UICorner")
-    UICorner.CornerRadius = UDim.new(0, 15)
-    UICorner.Parent = Player
-
-    local UIListLayout3 = Instance.new("UIListLayout")
-    UIListLayout3.Padding = UDim.new(0, 32)
-    UIListLayout3.VerticalAlignment = Enum.VerticalAlignment.Center
-    UIListLayout3.SortOrder = Enum.SortOrder.LayoutOrder
-    UIListLayout3.FillDirection = Enum.FillDirection.Horizontal
-    UIListLayout3.Parent = Player
-
-    local UIPadding2 = Instance.new("UIPadding")
-    UIPadding2.PaddingLeft = UDim.new(0, 5)
-    UIPadding2.Parent = Player
-
-    local Informatiom = Instance.new("ImageButton")
-    Informatiom.BorderSizePixel = 0
-    Informatiom.BackgroundTransparency = 1
-    Informatiom.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Informatiom.AnchorPoint = Vector2.new(0.5, 0.5)
-    Informatiom.Size = UDim2.new(0, 133, 0, 30)
-    Informatiom.ClipsDescendants = true
-    Informatiom.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Informatiom.Name = "Informatiom"
-    Informatiom.Position = UDim2.new(0.5, 0, 0.5, 0)
-    Informatiom.Parent = Player
-
-    local UIPadding3 = Instance.new("UIPadding")
-    UIPadding3.PaddingLeft = UDim.new(0, 5)
-    UIPadding3.Parent = Informatiom
-
-    local UIListLayout4 = Instance.new("UIListLayout")
-    UIListLayout4.Padding = UDim.new(0, 8)
-    UIListLayout4.SortOrder = Enum.SortOrder.LayoutOrder
-    UIListLayout4.FillDirection = Enum.FillDirection.Horizontal
-    UIListLayout4.Parent = Informatiom
-
-    local Name = Instance.new("TextLabel")
-    Name.BorderSizePixel = 0
-    Name.TextSize = 13
-    Name.TextXAlignment = Enum.TextXAlignment.Left
-    Name.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Name.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-    Name.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Name.BackgroundTransparency = 1
-    Name.Size = UDim2.new(0, 115, 0, 30)
-    Name.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Name.Text = "Display"
-    Name.LayoutOrder = 1
-    Name.Name = "Name"
-    Name.Position = UDim2.new(0.09531, 0, 0, 0)
-    Name.Parent = Informatiom
-
-    local Profile = Instance.new("ImageLabel")
-    Profile.Active = true
-    Profile.BorderSizePixel = 0
-    Profile.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Profile.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=3765399271&width=420&height=420&format=png"
-    Profile.Size = UDim2.new(0, 30, 0, 30)
-    Profile.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Profile.BackgroundTransparency = 1
-    Profile.Selectable = true
-    Profile.Name = "Profile"
-    Profile.Parent = Informatiom
-
-    local UICorner2 = Instance.new("UICorner")
-    UICorner2.CornerRadius = UDim.new(1, 0)
-    UICorner2.Parent = Profile
-
-    local Teleport = Instance.new("TextButton")
-    Teleport.BorderSizePixel = 0
-    Teleport.AutoButtonColor = false
-    Teleport.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-    Teleport.AnchorPoint = Vector2.new(0.5, 0.5)
-    Teleport.Size = UDim2.new(0, 83, 0, 20)
-    Teleport.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Teleport.Name = "Teleport"
-    Teleport.Position = UDim2.new(0.5, 0, 0.5, 0)
-    Teleport.Parent = Player
-
-    local UICorner3 = Instance.new("UICorner")
-    UICorner3.CornerRadius = UDim.new(1, 0)
-    UICorner3.Parent = Teleport
-
-    local UIListLayout5 = Instance.new("UIListLayout")
-    UIListLayout5.HorizontalAlignment = Enum.HorizontalAlignment.Center
-    UIListLayout5.VerticalAlignment = Enum.VerticalAlignment.Center
-    UIListLayout5.SortOrder = Enum.SortOrder.LayoutOrder
-    UIListLayout5.Parent = Teleport
-
-    local Teleport2 = Instance.new("TextLabel")
-    Teleport2.Active = true
-    Teleport2.BorderSizePixel = 0
-    Teleport2.TextSize = 14
-    Teleport2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Teleport2.FontFace = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-    Teleport2.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Teleport2.BackgroundTransparency = 1
-    Teleport2.AnchorPoint = Vector2.new(0.5, 0.5)
-    Teleport2.Size = UDim2.new(0, 60, 0, 15)
-    Teleport2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Teleport2.Text = "Teleport To"
-    Teleport2.Selectable = true
-    Teleport2.Name = "Teleport"
-    Teleport2.Position = UDim2.new(0.5, 0, 0.5, 0)
-    Teleport2.Parent = Teleport
-
-    local list21 = Instance.new("ImageLabel")
-    list21.BorderSizePixel = 0
-    list21.SliceCenter = Rect.new(512, 512, 512, 512)
-    list21.SliceScale = 0.05
-    list21.ScaleType = Enum.ScaleType.Slice
-    list21.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    list21.ImageColor3 = Color3.fromRGB(28, 28, 28)
-    list21.AnchorPoint = Vector2.new(0.5, 0)
-    list21.Image = "rbxassetid://125088425775676"
-    list21.Size = UDim2.new(1, 28, 0, 50)
-    list21.ClipsDescendants = true
-    list21.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    list21.BackgroundTransparency = 1
-    list21.Selectable = true
-    list21.Name = "list"
-    list21.Position = UDim2.new(0.5, 0, -0.01124, -10)
-    list21.Parent = People
-
-    local gradient2 = Instance.new("UIGradient")
-    gradient2.Rotation = 90
-    gradient2.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(1.000, 1)}
-    gradient2.Name = "gradient"
-    gradient2.Parent = list21
-
-    local header2 = Instance.new("TextLabel")
-    header2.ZIndex = 2
-    header2.BorderSizePixel = 0
-    header2.AutoLocalize = false
-    header2.TextSize = 14
-    header2.TextXAlignment = Enum.TextXAlignment.Left
-    header2.TextTransparency = 0.8
-    header2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    header2.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    header2.TextColor3 = Color3.fromRGB(255, 255, 255)
-    header2.BackgroundTransparency = 1
-    header2.AnchorPoint = Vector2.new(0.5, 0)
-    header2.Size = UDim2.new(1, 0, 0, 16)
-    header2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    header2.Text = "People"
-    header2.LayoutOrder = 1
-    header2.Name = "header"
-    header2.Position = UDim2.new(0.5, 0, 0, 0)
-    header2.Parent = People
-
-    local icon10 = Instance.new("ImageLabel")
-    icon10.BorderSizePixel = 0
-    icon10.ScaleType = Enum.ScaleType.Fit
-    icon10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    icon10.ImageTransparency = 0.8
-    icon10.AnchorPoint = Vector2.new(1, 0)
-    icon10.Image = "rbxassetid://11419703997"
-    icon10.Size = UDim2.new(0, 16, 0, 16)
-    icon10.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    icon10.BackgroundTransparency = 1
-    icon10.Name = "icon"
-    icon10.Position = UDim2.new(1, 0, 0, 0)
-    icon10.Parent = People
-
-    local scale7 = Instance.new("UIScale")
-    scale7.Name = "scale"
-    scale7.Parent = icon10
-
-    local scale8 = Instance.new("UIScale")
-    scale8.Name = "scale"
-    scale8.Parent = People
-
-    local stroke2 = Instance.new("UIStroke")
-    stroke2.Color = Color3.fromRGB(255, 255, 255)
-    stroke2.Name = "stroke"
-    stroke2.Parent = People
-
-    local gradient3 = Instance.new("UIGradient")
-    gradient3.Rotation = -90
-    gradient3.Name = "gradient"
-    gradient3.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(39, 39, 39)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(21, 21, 21))}
-    gradient3.Parent = stroke2
-
-    local corner15 = Instance.new("UICorner")
-    corner15.Name = "corner"
-    corner15.CornerRadius = UDim.new(0, 15)
-    corner15.Parent = People
-
-    local padding16 = Instance.new("UIPadding")
-    padding16.PaddingTop = UDim.new(0, 12)
-    padding16.PaddingRight = UDim.new(0, 14)
-    padding16.Name = "padding"
-    padding16.PaddingLeft = UDim.new(0, 14)
-    padding16.PaddingBottom = UDim.new(0, 10)
-    padding16.Parent = People
-
-    local header3 = Instance.new("Frame")
-    header3.BorderSizePixel = 0
-    header3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    header3.Size = UDim2.new(1, 0, 0, 30)
-    header3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    header3.Name = "header"
-    header3.LayoutOrder = -1
-    header3.BackgroundTransparency = 1
-    header3.Parent = people
-
-    local list22 = Instance.new("UIListLayout")
-    list22.Padding = UDim.new(0, 10)
-    list22.VerticalAlignment = Enum.VerticalAlignment.Center
-    list22.SortOrder = Enum.SortOrder.LayoutOrder
-    list22.Name = "list"
-    list22.FillDirection = Enum.FillDirection.Horizontal
-    list22.Parent = header3
-
-    local header4 = Instance.new("Frame")
-    header4.BorderSizePixel = 0
-    header4.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
-    header4.AutomaticSize = Enum.AutomaticSize.X
-    header4.Size = UDim2.new(0, 0, 0, 30)
-    header4.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    header4.Name = "header"
-    header4.LayoutOrder = -1
-    header4.Parent = header3
-
-    local list23 = Instance.new("UIListLayout")
-    list23.Padding = UDim.new(0, 10)
-    list23.VerticalAlignment = Enum.VerticalAlignment.Center
-    list23.SortOrder = Enum.SortOrder.LayoutOrder
-    list23.Name = "list"
-    list23.FillDirection = Enum.FillDirection.Horizontal
-    list23.Parent = header4
-
-    local icon11 = Instance.new("ImageLabel")
-    icon11.BorderSizePixel = 0
-    icon11.ScaleType = Enum.ScaleType.Fit
-    icon11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    icon11.Image = "rbxassetid://100753787236053"
-    icon11.Size = UDim2.new(0, 16, 0, 16)
-    icon11.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    icon11.BackgroundTransparency = 1
-    icon11.Name = "icon"
-    icon11.Parent = header4
-
-    local scale9 = Instance.new("UIScale")
-    scale9.Name = "scale"
-    scale9.Parent = icon11
-
-    local padding17 = Instance.new("UIPadding")
-    padding17.PaddingRight = UDim.new(0, 14)
-    padding17.Name = "padding"
-    padding17.PaddingLeft = UDim.new(0, 14)
-    padding17.Parent = header4
-
-    local corner16 = Instance.new("UICorner")
-    corner16.Name = "corner"
-    corner16.CornerRadius = UDim.new(1, 0)
-    corner16.Parent = header4
-
-    local stroke3 = Instance.new("UIStroke")
-    stroke3.Color = Color3.fromRGB(255, 255, 255)
-    stroke3.Name = "stroke"
-    stroke3.Parent = header4
-
-    local gradient4 = Instance.new("UIGradient")
-    gradient4.Rotation = -101
-    gradient4.Name = "gradient"
-    gradient4.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(53, 53, 53)),ColorSequenceKeypoint.new(0.497, Color3.fromRGB(25, 25, 25)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(53, 53, 53))}
-    gradient4.Parent = stroke3
-
-    local label7 = Instance.new("TextLabel")
-    label7.BorderSizePixel = 0
-    label7.AutoLocalize = false
-    label7.TextSize = 14
-    label7.TextXAlignment = Enum.TextXAlignment.Left
-    label7.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    label7.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    label7.TextColor3 = Color3.fromRGB(255, 255, 255)
-    label7.BackgroundTransparency = 1
-    label7.AnchorPoint = Vector2.new(0.5, 0)
-    label7.Size = UDim2.new(0, 0, 1, 0)
-    label7.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    label7.Text = "People"
-    label7.LayoutOrder = 1
-    label7.AutomaticSize = Enum.AutomaticSize.X
-    label7.Name = "label"
-    label7.Position = UDim2.new(0.5, 0, 0, 0)
-    label7.Parent = header4
-
-    local scale10 = Instance.new("UIScale")
-    scale10.Name = "scale"
-    scale10.Parent = label7
-
-    local overview = Instance.new("Frame")
-    overview.BorderSizePixel = 0
-    overview.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    overview.AutomaticSize = Enum.AutomaticSize.Y
-    overview.Size = UDim2.new(1, 0, 0, 0)
-    overview.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    overview.Name = "overview"
-    overview.LayoutOrder = 6
-    overview.BackgroundTransparency = 1
-    overview.Parent = scroll
-
-    local padding18 = Instance.new("UIPadding")
-    padding18.Name = "padding"
-    padding18.PaddingBottom = UDim.new(0, 5)
-    padding18.Parent = overview
-
-    local list24 = Instance.new("UIListLayout")
-    list24.Wraps = true
-    list24.Padding = UDim.new(0, 10)
-    list24.SortOrder = Enum.SortOrder.LayoutOrder
-    list24.Name = "list"
-    list24.FillDirection = Enum.FillDirection.Horizontal
-    list24.Parent = overview
-
-    local uptime = Instance.new("ImageButton")
-    uptime.SliceScale = 0.05
-    uptime.BorderSizePixel = 0
-    uptime.SliceCenter = Rect.new(512, 512, 512, 512)
-    uptime.ScaleType = Enum.ScaleType.Tile
-    uptime.AutoButtonColor = false
-    uptime.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-    uptime.ImageColor3 = Color3.fromRGB(28, 28, 28)
-    uptime.Image = "rbxassetid://126487203254586"
-    uptime.Size = UDim2.new(0, 250, 0, 130)
-    uptime.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    uptime.Name = "uptime"
-    uptime.Position = UDim2.new(-0.0023, 0, 0.26, 0)
-    uptime.Parent = overview
-
-    local padding19 = Instance.new("UIPadding")
-    padding19.PaddingTop = UDim.new(0, 12)
-    padding19.PaddingRight = UDim.new(0, 14)
-    padding19.Name = "padding"
-    padding19.PaddingLeft = UDim.new(0, 14)
-    padding19.PaddingBottom = UDim.new(0, 12)
-    padding19.Parent = uptime
-
-    local header5 = Instance.new("TextLabel")
-    header5.BorderSizePixel = 0
-    header5.AutoLocalize = false
-    header5.TextSize = 14
-    header5.TextXAlignment = Enum.TextXAlignment.Left
-    header5.TextTransparency = 0.8
-    header5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    header5.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    header5.TextColor3 = Color3.fromRGB(255, 255, 255)
-    header5.BackgroundTransparency = 1
-    header5.AnchorPoint = Vector2.new(0.5, 0)
-    header5.Size = UDim2.new(1, 0, 0, 16)
-    header5.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    header5.Text = "Uptime"
-    header5.LayoutOrder = 1
-    header5.Name = "header"
-    header5.Position = UDim2.new(0.5, 0, 0, 0)
-    header5.Parent = uptime
-
-    local stopwatch = Instance.new("Frame")
-    stopwatch.BorderSizePixel = 0
-    stopwatch.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    stopwatch.AnchorPoint = Vector2.new(0.5, 0.5)
-    stopwatch.Size = UDim2.new(1, 0, 0, 50)
-    stopwatch.Position = UDim2.new(0.5, 0, 0.5, 0)
-    stopwatch.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    stopwatch.Name = "stopwatch"
-    stopwatch.LayoutOrder = 2
-    stopwatch.BackgroundTransparency = 1
-    stopwatch.Parent = uptime
-
-    local list25 = Instance.new("UIListLayout")
-    list25.HorizontalAlignment = Enum.HorizontalAlignment.Center
-    list25.Padding = UDim.new(0, 4)
-    list25.VerticalAlignment = Enum.VerticalAlignment.Center
-    list25.SortOrder = Enum.SortOrder.LayoutOrder
-    list25.Name = "list"
-    list25.FillDirection = Enum.FillDirection.Horizontal
-    list25.Parent = stopwatch
-
-    local Days = Instance.new("TextLabel")
-    Days.BorderSizePixel = 0
-    Days.AutoLocalize = false
-    Days.TextSize = 30
-    Days.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
-    Days.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-    Days.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Days.BackgroundTransparency = 1
-    Days.AnchorPoint = Vector2.new(0.5, 1)
-    Days.Size = UDim2.new(1, 0, 0, 40)
-    Days.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Days.Text = "00"
-    Days.LayoutOrder = 1
-    Days.Name = "Days"
-    Days.Position = UDim2.new(0.5, 0, 1, -30)
-    Days.Parent = stopwatch
-
-    local flex9 = Instance.new("UIFlexItem")
-    flex9.Name = "flex"
-    flex9.FlexMode = Enum.UIFlexMode.Fill
-    flex9.Parent = Days
-
-    local padding20 = Instance.new("UIPadding")
-    padding20.Name = "padding"
-    padding20.Parent = Days
-
-    local corner17 = Instance.new("UICorner")
-    corner17.Name = "corner"
-    corner17.CornerRadius = UDim.new(1, 0)
-    corner17.Parent = Days
-
-    local divider2 = Instance.new("TextLabel")
-    divider2.BorderSizePixel = 0
-    divider2.AutoLocalize = false
-    divider2.TextSize = 30
-    divider2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    divider2.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-    divider2.TextColor3 = Color3.fromRGB(77, 77, 77)
-    divider2.BackgroundTransparency = 1
-    divider2.AnchorPoint = Vector2.new(0.5, 1)
-    divider2.Size = UDim2.new(0, 10, 0, 40)
-    divider2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    divider2.Text = ":"
-    divider2.LayoutOrder = 2
-    divider2.Name = "divider"
-    divider2.Position = UDim2.new(0.5, 0, 1, -30)
-    divider2.Parent = stopwatch
-
-    local Hours = Instance.new("TextLabel")
-    Hours.BorderSizePixel = 0
-    Hours.AutoLocalize = false
-    Hours.TextSize = 30
-    Hours.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
-    Hours.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-    Hours.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Hours.BackgroundTransparency = 1
-    Hours.AnchorPoint = Vector2.new(0.5, 1)
-    Hours.Size = UDim2.new(1, 0, 0, 40)
-    Hours.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Hours.Text = "00"
-    Hours.LayoutOrder = 3
-    Hours.Name = "Hours"
-    Hours.Position = UDim2.new(0.5, 0, 1, -30)
-    Hours.Parent = stopwatch
-
-    local flex10 = Instance.new("UIFlexItem")
-    flex10.Name = "flex"
-    flex10.FlexMode = Enum.UIFlexMode.Fill
-    flex10.Parent = Hours
-
-    local padding21 = Instance.new("UIPadding")
-    padding21.Name = "padding"
-    padding21.Parent = Hours
-
-    local corner18 = Instance.new("UICorner")
-    corner18.Name = "corner"
-    corner18.CornerRadius = UDim.new(1, 0)
-    corner18.Parent = Hours
-
-    local divider3 = Instance.new("TextLabel")
-    divider3.BorderSizePixel = 0
-    divider3.AutoLocalize = false
-    divider3.TextSize = 30
-    divider3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    divider3.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-    divider3.TextColor3 = Color3.fromRGB(77, 77, 77)
-    divider3.BackgroundTransparency = 1
-    divider3.AnchorPoint = Vector2.new(0.5, 1)
-    divider3.Size = UDim2.new(0, 10, 0, 40)
-    divider3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    divider3.Text = ":"
-    divider3.LayoutOrder = 4
-    divider3.Name = "divider"
-    divider3.Position = UDim2.new(0.5, 0, 1, -30)
-    divider3.Parent = stopwatch
-
-    local Minutes = Instance.new("TextLabel")
-    Minutes.BorderSizePixel = 0
-    Minutes.AutoLocalize = false
-    Minutes.TextSize = 30
-    Minutes.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
-    Minutes.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-    Minutes.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Minutes.BackgroundTransparency = 1
-    Minutes.AnchorPoint = Vector2.new(0.5, 1)
-    Minutes.Size = UDim2.new(1, 0, 0, 40)
-    Minutes.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Minutes.Text = "00"
-    Minutes.LayoutOrder = 5
-    Minutes.Name = "Minutes"
-    Minutes.Position = UDim2.new(0.5, 0, 1, -30)
-    Minutes.Parent = stopwatch
-
-    local flex11 = Instance.new("UIFlexItem")
-    flex11.Name = "flex"
-    flex11.FlexMode = Enum.UIFlexMode.Fill
-    flex11.Parent = Minutes
-
-    local padding22 = Instance.new("UIPadding")
-    padding22.Name = "padding"
-    padding22.Parent = Minutes
-
-    local corner19 = Instance.new("UICorner")
-    corner19.Name = "corner"
-    corner19.CornerRadius = UDim.new(1, 0)
-    corner19.Parent = Minutes
-
-    local divider4 = Instance.new("TextLabel")
-    divider4.BorderSizePixel = 0
-    divider4.AutoLocalize = false
-    divider4.TextSize = 30
-    divider4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    divider4.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-    divider4.TextColor3 = Color3.fromRGB(77, 77, 77)
-    divider4.BackgroundTransparency = 1
-    divider4.AnchorPoint = Vector2.new(0.5, 1)
-    divider4.Size = UDim2.new(0, 10, 0, 40)
-    divider4.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    divider4.Text = ":"
-    divider4.LayoutOrder = 6
-    divider4.Name = "divider"
-    divider4.Position = UDim2.new(0.5, 0, 1, -30)
-    divider4.Parent = stopwatch
-
-    local Seconds = Instance.new("TextLabel")
-    Seconds.BorderSizePixel = 0
-    Seconds.AutoLocalize = false
-    Seconds.TextSize = 30
-    Seconds.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
-    Seconds.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-    Seconds.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Seconds.BackgroundTransparency = 1
-    Seconds.AnchorPoint = Vector2.new(0.5, 1)
-    Seconds.Size = UDim2.new(1, 0, 0, 40)
-    Seconds.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Seconds.Text = "00"
-    Seconds.LayoutOrder = 7
-    Seconds.Name = "Seconds"
-    Seconds.Position = UDim2.new(0.5, 0, 1, -30)
-    Seconds.Parent = stopwatch
-
-    local flex12 = Instance.new("UIFlexItem")
-    flex12.Name = "flex"
-    flex12.FlexMode = Enum.UIFlexMode.Fill
-    flex12.Parent = Seconds
-
-    local padding23 = Instance.new("UIPadding")
-    padding23.Name = "padding"
-    padding23.Parent = Seconds
-
-    local corner20 = Instance.new("UICorner")
-    corner20.Name = "corner"
-    corner20.CornerRadius = UDim.new(1, 0)
-    corner20.Parent = Seconds
-
-    local label8 = Instance.new("Frame")
-    label8.BorderSizePixel = 0
-    label8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    label8.AnchorPoint = Vector2.new(0.5, 0.5)
-    label8.Size = UDim2.new(1, 0, 0, 16)
-    label8.Position = UDim2.new(0.5, 0, 1, -20)
-    label8.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    label8.Name = "label"
-    label8.LayoutOrder = 3
-    label8.BackgroundTransparency = 1
-    label8.Parent = uptime
-
-    local list26 = Instance.new("UIListLayout")
-    list26.HorizontalAlignment = Enum.HorizontalAlignment.Center
-    list26.HorizontalFlex = Enum.UIFlexAlignment.Fill
-    list26.Padding = UDim.new(0, 20)
-    list26.VerticalAlignment = Enum.VerticalAlignment.Center
-    list26.SortOrder = Enum.SortOrder.LayoutOrder
-    list26.Name = "list"
-    list26.FillDirection = Enum.FillDirection.Horizontal
-    list26.Parent = label8
-
-    local days = Instance.new("TextLabel")
-    days.BorderSizePixel = 0
-    days.AutoLocalize = false
-    days.TextSize = 12
-    days.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    days.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    days.TextColor3 = Color3.fromRGB(162, 162, 162)
-    days.BackgroundTransparency = 1
-    days.AnchorPoint = Vector2.new(0.5, 1)
-    days.Size = UDim2.new(0, 20, 0, 20)
-    days.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    days.Text = "D"
-    days.LayoutOrder = 1
-    days.Name = "days"
-    days.Position = UDim2.new(0.5, 0, 1, -30)
-    days.Parent = label8
-
-    local stroke4 = Instance.new("UIStroke")
-    stroke4.Color = Color3.fromRGB(255, 255, 255)
-    stroke4.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    stroke4.Name = "stroke"
-    stroke4.Parent = days
-
-    local gradient5 = Instance.new("UIGradient")
-    gradient5.Rotation = -90
-    gradient5.Name = "gradient"
-    gradient5.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(44, 44, 44)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(17, 17, 17))}
-    gradient5.Parent = stroke4
-
-    local corner21 = Instance.new("UICorner")
-    corner21.Name = "corner"
-    corner21.CornerRadius = UDim.new(1, 0)
-    corner21.Parent = days
-
-    local hours = Instance.new("TextLabel")
-    hours.BorderSizePixel = 0
-    hours.AutoLocalize = false
-    hours.TextSize = 12
-    hours.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    hours.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    hours.TextColor3 = Color3.fromRGB(162, 162, 162)
-    hours.BackgroundTransparency = 1
-    hours.AnchorPoint = Vector2.new(0.5, 1)
-    hours.Size = UDim2.new(0, 20, 0, 20)
-    hours.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    hours.Text = "H"
-    hours.LayoutOrder = 3
-    hours.Name = "hours"
-    hours.Position = UDim2.new(0.5, 0, 1, -30)
-    hours.Parent = label8
-
-    local corner22 = Instance.new("UICorner")
-    corner22.Name = "corner"
-    corner22.CornerRadius = UDim.new(1, 0)
-    corner22.Parent = hours
-
-    local stroke5 = Instance.new("UIStroke")
-    stroke5.Color = Color3.fromRGB(255, 255, 255)
-    stroke5.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    stroke5.Name = "stroke"
-    stroke5.Parent = hours
-
-    local gradient6 = Instance.new("UIGradient")
-    gradient6.Rotation = -90
-    gradient6.Name = "gradient"
-    gradient6.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(44, 44, 44)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(17, 17, 17))}
-    gradient6.Parent = stroke5
-
-    local minutes = Instance.new("TextLabel")
-    minutes.BorderSizePixel = 0
-    minutes.AutoLocalize = false
-    minutes.TextSize = 12
-    minutes.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    minutes.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    minutes.TextColor3 = Color3.fromRGB(162, 162, 162)
-    minutes.BackgroundTransparency = 1
-    minutes.AnchorPoint = Vector2.new(0.5, 1)
-    minutes.Size = UDim2.new(0, 20, 0, 20)
-    minutes.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    minutes.Text = "M"
-    minutes.LayoutOrder = 5
-    minutes.Name = "minutes"
-    minutes.Position = UDim2.new(0.5, 0, 1, -30)
-    minutes.Parent = label8
-
-    local stroke6 = Instance.new("UIStroke")
-    stroke6.Color = Color3.fromRGB(255, 255, 255)
-    stroke6.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    stroke6.Name = "stroke"
-    stroke6.Parent = minutes
-
-    local gradient7 = Instance.new("UIGradient")
-    gradient7.Rotation = -90
-    gradient7.Name = "gradient"
-    gradient7.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(44, 44, 44)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(17, 17, 17))}
-    gradient7.Parent = stroke6
-
-    local corner23 = Instance.new("UICorner")
-    corner23.Name = "corner"
-    corner23.CornerRadius = UDim.new(1, 0)
-    corner23.Parent = minutes
-
-    local seconds = Instance.new("TextLabel")
-    seconds.BorderSizePixel = 0
-    seconds.AutoLocalize = false
-    seconds.TextSize = 12
-    seconds.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    seconds.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    seconds.TextColor3 = Color3.fromRGB(162, 162, 162)
-    seconds.BackgroundTransparency = 1
-    seconds.AnchorPoint = Vector2.new(0.5, 1)
-    seconds.Size = UDim2.new(0, 20, 0, 20)
-    seconds.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    seconds.Text = "S"
-    seconds.LayoutOrder = 7
-    seconds.Name = "seconds"
-    seconds.Position = UDim2.new(0.5, 0, 1, -30)
-    seconds.Parent = label8
-
-    local stroke7 = Instance.new("UIStroke")
-    stroke7.Color = Color3.fromRGB(255, 255, 255)
-    stroke7.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    stroke7.Name = "stroke"
-    stroke7.Parent = seconds
-
-    local gradient8 = Instance.new("UIGradient")
-    gradient8.Rotation = -90
-    gradient8.Name = "gradient"
-    gradient8.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(44, 44, 44)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(17, 17, 17))}
-    gradient8.Parent = stroke7
-
-    local corner24 = Instance.new("UICorner")
-    corner24.Name = "corner"
-    corner24.CornerRadius = UDim.new(1, 0)
-    corner24.Parent = seconds
-
-    local list27 = Instance.new("UIListLayout")
-    list27.HorizontalAlignment = Enum.HorizontalAlignment.Center
-    list27.Padding = UDim.new(0, 10)
-    list27.SortOrder = Enum.SortOrder.LayoutOrder
-    list27.Name = "list"
-    list27.Parent = uptime
-
-    local flex13 = Instance.new("UIFlexItem")
-    flex13.ShrinkRatio = 1
-    flex13.GrowRatio = 1
-    flex13.Name = "flex"
-    flex13.FlexMode = Enum.UIFlexMode.Custom
-    flex13.Parent = uptime
-
-    local scale11 = Instance.new("UIScale")
-    scale11.Name = "scale"
-    scale11.Parent = uptime
-
-    local corner25 = Instance.new("UICorner")
-    corner25.Name = "corner"
-    corner25.CornerRadius = UDim.new(0, 15)
-    corner25.Parent = uptime
-
-    local stroke8 = Instance.new("UIStroke")
-    stroke8.Color = Color3.fromRGB(255, 255, 255)
-    stroke8.Name = "stroke"
-    stroke8.Parent = uptime
-
-    local gradient9 = Instance.new("UIGradient")
-    gradient9.Rotation = -90
-    gradient9.Name = "gradient"
-    gradient9.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(39, 39, 39)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(21, 21, 21))}
-    gradient9.Parent = stroke8
-
-    local console = Instance.new("ImageButton")
-    console.SliceScale = 0.05
-    console.BorderSizePixel = 0
-    console.SliceCenter = Rect.new(512, 512, 512, 512)
-    console.ScaleType = Enum.ScaleType.Slice
-    console.AutoButtonColor = false
-    console.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-    console.ImageColor3 = Color3.fromRGB(28, 28, 28)
-    console.Size = UDim2.new(0, 250, 0, 130)
-    console.ClipsDescendants = true
-    console.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    console.Name = "console"
-    console.Parent = overview
-
-    local padding24 = Instance.new("UIPadding")
-    padding24.PaddingTop = UDim.new(0, 12)
-    padding24.PaddingRight = UDim.new(0, 14)
-    padding24.Name = "padding"
-    padding24.PaddingLeft = UDim.new(0, 14)
-    padding24.PaddingBottom = UDim.new(0, 10)
-    padding24.Parent = console
-
-    local logs = Instance.new("Frame")
-    logs.BorderSizePixel = 0
-    logs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    logs.Selectable = true
-    logs.Size = UDim2.new(1, 0, 1, -24)
-    logs.Position = UDim2.new(0, 0, 0, 24)
-    logs.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    logs.Name = "logs"
-    logs.BackgroundTransparency = 1
-    logs.SelectionGroup = true
-    logs.Parent = console
-
-    local list28 = Instance.new("UIListLayout")
-    list28.Padding = UDim.new(0, 8)
-    list28.SortOrder = Enum.SortOrder.LayoutOrder
-    list28.Name = "list"
-    list28.Parent = logs
-
-    local log = Instance.new("TextLabel")
-    log.TextWrapped = true
-    log.BorderSizePixel = 0
-    log.AutoLocalize = false
-    log.TextSize = 14
-    log.TextXAlignment = Enum.TextXAlignment.Left
-    log.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    log.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-    log.TextColor3 = Color3.fromRGB(215, 215, 215)
-    log.AnchorPoint = Vector2.new(0.5, 1)
-    log.Size = UDim2.new(1, 0, 0, 0)
-    log.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    log.Text = "error log"
-    log.Selectable = true
-    log.AutomaticSize = Enum.AutomaticSize.Y
-    log.Name = "log"
-    log.Position = UDim2.new(0.5, 0, 1, 0)
-    log.Parent = list28
-
-    local padding25 = Instance.new("UIPadding")
-    padding25.PaddingTop = UDim.new(0, 10)
-    padding25.PaddingRight = UDim.new(0, 12)
-    padding25.Name = "padding"
-    padding25.PaddingLeft = UDim.new(0, 12)
-    padding25.PaddingBottom = UDim.new(0, 10)
-    padding25.Parent = log
-
-    local list29 = Instance.new("UIListLayout")
-    list29.Padding = UDim.new(0, 8)
-    list29.VerticalAlignment = Enum.VerticalAlignment.Center
-    list29.SortOrder = Enum.SortOrder.LayoutOrder
-    list29.Name = "list"
-    list29.FillDirection = Enum.FillDirection.Horizontal
-    list29.Parent = log
-
-    local corner26 = Instance.new("UICorner")
-    corner26.Name = "corner"
-    corner26.CornerRadius = UDim.new(0, 15)
-    corner26.Parent = log
-
-    local stroke9 = Instance.new("UIStroke")
-    stroke9.Color = Color3.fromRGB(255, 255, 255)
-    stroke9.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    stroke9.Name = "stroke"
-    stroke9.Parent = log
-
-    local gradient10 = Instance.new("UIGradient")
-    gradient10.Rotation = 90
-    gradient10.Name = "gradient"
-    gradient10.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(53, 53, 53)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(21, 21, 21))}
-    gradient10.Parent = stroke9
-
-    local padding26 = Instance.new("UIPadding")
-    padding26.PaddingTop = UDim.new(0, 5)
-    padding26.Name = "padding"
-    padding26.Parent = logs
-
-    local fade = Instance.new("ImageLabel")
-    fade.BorderSizePixel = 0
-    fade.SliceCenter = Rect.new(512, 512, 512, 512)
-    fade.SliceScale = 0.05
-    fade.ScaleType = Enum.ScaleType.Slice
-    fade.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    fade.ImageColor3 = Color3.fromRGB(28, 28, 28)
-    fade.AnchorPoint = Vector2.new(0.5, 1)
-    fade.Image = "rbxassetid://125088425775676"
-    fade.Size = UDim2.new(1, 28, 0, 50)
-    fade.ClipsDescendants = true
-    fade.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    fade.BackgroundTransparency = 1
-    fade.Selectable = true
-    fade.Name = "fade"
-    fade.Position = UDim2.new(0.5, 0, 1, 10)
-    fade.Parent = console
-
-    local gradient11 = Instance.new("UIGradient")
-    gradient11.Rotation = -90
-    gradient11.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(1.000, 1)}
-    gradient11.Name = "gradient"
-    gradient11.Parent = fade
-
-    local scale12 = Instance.new("UIScale")
-    scale12.Name = "scale"
-    scale12.Parent = console
-
-    local stroke10 = Instance.new("UIStroke")
-    stroke10.Color = Color3.fromRGB(255, 255, 255)
-    stroke10.Name = "stroke"
-    stroke10.Parent = console
-
-    local gradient12 = Instance.new("UIGradient")
-    gradient12.Rotation = -90
-    gradient12.Name = "gradient"
-    gradient12.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(39, 39, 39)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(21, 21, 21))}
-    gradient12.Parent = stroke10
-
-    local corner27 = Instance.new("UICorner")
-    corner27.Name = "corner"
-    corner27.CornerRadius = UDim.new(0, 15)
-    corner27.Parent = console
-
-    local flex14 = Instance.new("UIFlexItem")
-    flex14.ShrinkRatio = 1
-    flex14.GrowRatio = 1
-    flex14.Name = "flex"
-    flex14.FlexMode = Enum.UIFlexMode.Custom
-    flex14.Parent = console
-
-    local header6 = Instance.new("TextLabel")
-    header6.ZIndex = 2
-    header6.BorderSizePixel = 0
-    header6.AutoLocalize = false
-    header6.TextSize = 14
-    header6.TextXAlignment = Enum.TextXAlignment.Left
-    header6.TextTransparency = 0.8
-    header6.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    header6.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    header6.TextColor3 = Color3.fromRGB(255, 255, 255)
-    header6.BackgroundTransparency = 1
-    header6.AnchorPoint = Vector2.new(0.5, 0)
-    header6.Size = UDim2.new(1, 0, 0, 16)
-    header6.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    header6.Text = "Developer Console"
-    header6.LayoutOrder = 1
-    header6.Name = "header"
-    header6.Position = UDim2.new(0.5, 0, 0, 0)
-    header6.Parent = console
-
-    local serverteleportation = Instance.new("ImageButton")
-    serverteleportation.SliceScale = 0.05
-    serverteleportation.BorderSizePixel = 0
-    serverteleportation.SliceCenter = Rect.new(512, 512, 512, 512)
-    serverteleportation.ScaleType = Enum.ScaleType.Slice
-    serverteleportation.AutoButtonColor = false
-    serverteleportation.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-    serverteleportation.ImageColor3 = Color3.fromRGB(28, 28, 28)
-    serverteleportation.Size = UDim2.new(0, 250, 0, 130)
-    serverteleportation.ClipsDescendants = true
-    serverteleportation.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    serverteleportation.Name = "server_teleportation"
-    serverteleportation.Parent = overview
-
-    local padding27 = Instance.new("UIPadding")
-    padding27.PaddingTop = UDim.new(0, 12)
-    padding27.PaddingRight = UDim.new(0, 14)
-    padding27.Name = "padding"
-    padding27.PaddingLeft = UDim.new(0, 14)
-    padding27.PaddingBottom = UDim.new(0, 10)
-    padding27.Parent = serverteleportation
-
-    local flex15 = Instance.new("UIFlexItem")
-    flex15.ShrinkRatio = 1
-    flex15.GrowRatio = 1
-    flex15.Name = "flex"
-    flex15.FlexMode = Enum.UIFlexMode.Custom
-    flex15.Parent = serverteleportation
-
-    local header7 = Instance.new("TextLabel")
-    header7.ZIndex = 2
-    header7.BorderSizePixel = 0
-    header7.AutoLocalize = false
-    header7.TextSize = 14
-    header7.TextXAlignment = Enum.TextXAlignment.Left
-    header7.TextTransparency = 0.8
-    header7.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    header7.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-    header7.TextColor3 = Color3.fromRGB(255, 255, 255)
-    header7.BackgroundTransparency = 1
-    header7.AnchorPoint = Vector2.new(0.5, 0)
-    header7.Size = UDim2.new(1, 0, 0, 16)
-    header7.Visible = false
-    header7.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    header7.Text = "Teleport"
-    header7.LayoutOrder = 1
-    header7.Name = "header"
-    header7.Position = UDim2.new(0.5, 0, 0, 0)
-    header7.Parent = serverteleportation
-
-    local scale13 = Instance.new("UIScale")
-    scale13.Name = "scale"
-    scale13.Parent = serverteleportation
-
-    local content2 = Instance.new("Frame")
-    content2.BorderSizePixel = 0
-    content2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    content2.AnchorPoint = Vector2.new(0.5, 0.5)
-    content2.Size = UDim2.new(1, 0, 1, 0)
-    content2.Position = UDim2.new(0.5, 0, 0.5, 0)
-    content2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    content2.Name = "content"
-    content2.BackgroundTransparency = 1
-    content2.Parent = serverteleportation
-
-    local icon12 = Instance.new("ImageLabel")
-    icon12.BorderSizePixel = 0
-    icon12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    icon12.Image = "rbxassetid://81439029637522"
-    icon12.Size = UDim2.new(0, 24, 0, 24)
-    icon12.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    icon12.BackgroundTransparency = 1
-    icon12.Name = "icon"
-    icon12.Parent = content2
-
-    local list30 = Instance.new("UIListLayout")
-    list30.HorizontalAlignment = Enum.HorizontalAlignment.Center
-    list30.Padding = UDim.new(0, 10)
-    list30.VerticalAlignment = Enum.VerticalAlignment.Center
-    list30.SortOrder = Enum.SortOrder.LayoutOrder
-    list30.Name = "list"
-    list30.Parent = content2
-
-    local label9 = Instance.new("TextLabel")
-    label9.BorderSizePixel = 0
-    label9.AutoLocalize = false
-    label9.TextSize = 14
-    label9.TextTransparency = 0.2
-    label9.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    label9.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    label9.TextColor3 = Color3.fromRGB(255, 255, 255)
-    label9.BackgroundTransparency = 1
-    label9.AnchorPoint = Vector2.new(0.5, 1)
-    label9.Size = UDim2.new(1, 0, 0, 16)
-    label9.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    label9.Text = "Server Teleportation"
-    label9.LayoutOrder = 1
-    label9.Name = "label"
-    label9.Position = UDim2.new(0.5, 0, 1, -10)
-    label9.Parent = content2
-
-    local backgroundimage = Instance.new("ImageLabel")
-    backgroundimage.ZIndex = -10
-    backgroundimage.BorderSizePixel = 0
-    backgroundimage.ScaleType = Enum.ScaleType.Crop
-    backgroundimage.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    backgroundimage.ImageTransparency = 0.1
-    backgroundimage.AnchorPoint = Vector2.new(0.5, 0)
-    backgroundimage.Image = "rbxassetid://128174308673072"
-    backgroundimage.Size = UDim2.new(1, 28, 1, 22)
-    backgroundimage.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    backgroundimage.BackgroundTransparency = 1
-    backgroundimage.Name = "background_image"
-    backgroundimage.Position = UDim2.new(0.5, 0, 0, -12)
-    backgroundimage.Parent = serverteleportation
-
-    local UICorner4 = Instance.new("UICorner")
-    UICorner4.CornerRadius = UDim.new(0, 15)
-    UICorner4.Parent = backgroundimage
-
-    local stroke11 = Instance.new("UIStroke")
-    stroke11.Color = Color3.fromRGB(255, 255, 255)
-    stroke11.Name = "stroke"
-    stroke11.Parent = serverteleportation
-
-    local gradient13 = Instance.new("UIGradient")
-    gradient13.Rotation = -90
-    gradient13.Name = "gradient"
-    gradient13.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(39, 39, 39)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(21, 21, 21))}
-    gradient13.Parent = stroke11
-
-    local corner28 = Instance.new("UICorner")
-    corner28.Name = "corner"
-    corner28.CornerRadius = UDim.new(0, 15)
-    corner28.Parent = serverteleportation
-
-    local privacy = Instance.new("ImageButton")
-    privacy.SliceScale = 0.05
-    privacy.BorderSizePixel = 0
-    privacy.SliceCenter = Rect.new(512, 512, 512, 512)
-    privacy.ScaleType = Enum.ScaleType.Slice
-    privacy.AutoButtonColor = false
-    privacy.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-    privacy.ImageColor3 = Color3.fromRGB(28, 28, 28)
-    privacy.Size = UDim2.new(0, 150, 0, 130)
-    privacy.ClipsDescendants = true
-    privacy.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    privacy.Name = "privacy"
-    privacy.Parent = overview
-
-    local padding28 = Instance.new("UIPadding")
-    padding28.PaddingTop = UDim.new(0, 12)
-    padding28.PaddingRight = UDim.new(0, 14)
-    padding28.Name = "padding"
-    padding28.PaddingLeft = UDim.new(0, 14)
-    padding28.PaddingBottom = UDim.new(0, 10)
-    padding28.Parent = privacy
-
-    local flex16 = Instance.new("UIFlexItem")
-    flex16.ShrinkRatio = 1
-    flex16.GrowRatio = 0.5
-    flex16.Name = "flex"
-    flex16.FlexMode = Enum.UIFlexMode.Custom
-    flex16.Parent = privacy
-
-    local scale14 = Instance.new("UIScale")
-    scale14.Name = "scale"
-    scale14.Parent = privacy
-
-    local content3 = Instance.new("Frame")
-    content3.BorderSizePixel = 0
-    content3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    content3.AnchorPoint = Vector2.new(0.5, 0.5)
-    content3.Size = UDim2.new(1, 0, 1, 0)
-    content3.Position = UDim2.new(0.5, 0, 0.5, 0)
-    content3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    content3.Name = "content"
-    content3.BackgroundTransparency = 1
-    content3.Parent = privacy
-
-    local icon13 = Instance.new("ImageLabel")
-    icon13.BorderSizePixel = 0
-    icon13.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    icon13.Image = "rbxassetid://104512588477874"
-    icon13.Size = UDim2.new(0, 24, 0, 24)
-    icon13.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    icon13.BackgroundTransparency = 1
-    icon13.Name = "icon"
-    icon13.Parent = content3
-
-    local list31 = Instance.new("UIListLayout")
-    list31.HorizontalAlignment = Enum.HorizontalAlignment.Center
-    list31.Padding = UDim.new(0, 10)
-    list31.VerticalAlignment = Enum.VerticalAlignment.Center
-    list31.SortOrder = Enum.SortOrder.LayoutOrder
-    list31.Name = "list"
-    list31.Parent = content3
-
-    local label10 = Instance.new("TextLabel")
-    label10.BorderSizePixel = 0
-    label10.AutoLocalize = false
-    label10.TextSize = 14
-    label10.TextTransparency = 0.2
-    label10.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    label10.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    label10.TextColor3 = Color3.fromRGB(255, 255, 255)
-    label10.BackgroundTransparency = 1
-    label10.AnchorPoint = Vector2.new(0.5, 1)
-    label10.Size = UDim2.new(1, 0, 0, 16)
-    label10.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    label10.Text = "Privacy"
-    label10.LayoutOrder = 1
-    label10.Name = "label"
-    label10.Position = UDim2.new(0.5, 0, 1, -10)
-    label10.Parent = content3
-
-    local stroke12 = Instance.new("UIStroke")
-    stroke12.Color = Color3.fromRGB(255, 255, 255)
-    stroke12.Name = "stroke"
-    stroke12.Parent = privacy
-
-    local gradient14 = Instance.new("UIGradient")
-    gradient14.Rotation = -90
-    gradient14.Name = "gradient"
-    gradient14.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(39, 39, 39)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(21, 21, 21))}
-    gradient14.Parent = stroke12
-
-    local corner29 = Instance.new("UICorner")
-    corner29.Name = "corner"
-    corner29.CornerRadius = UDim.new(0, 15)
-    corner29.Parent = privacy
-
-    local header8 = Instance.new("Frame")
-    header8.BorderSizePixel = 0
-    header8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    header8.Size = UDim2.new(1, 0, 0, 30)
-    header8.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    header8.Name = "header"
-    header8.LayoutOrder = -1
-    header8.BackgroundTransparency = 1
-    header8.Parent = overview
-
-    local list32 = Instance.new("UIListLayout")
-    list32.Padding = UDim.new(0, 10)
-    list32.VerticalAlignment = Enum.VerticalAlignment.Center
-    list32.SortOrder = Enum.SortOrder.LayoutOrder
-    list32.Name = "list"
-    list32.FillDirection = Enum.FillDirection.Horizontal
-    list32.Parent = header8
-
-    local header9 = Instance.new("Frame")
-    header9.BorderSizePixel = 0
-    header9.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
-    header9.AutomaticSize = Enum.AutomaticSize.X
-    header9.Size = UDim2.new(0, 0, 0, 30)
-    header9.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    header9.Name = "header"
-    header9.LayoutOrder = -1
-    header9.Parent = header8
-
-    local list33 = Instance.new("UIListLayout")
-    list33.Padding = UDim.new(0, 10)
-    list33.VerticalAlignment = Enum.VerticalAlignment.Center
-    list33.SortOrder = Enum.SortOrder.LayoutOrder
-    list33.Name = "list"
-    list33.FillDirection = Enum.FillDirection.Horizontal
-    list33.Parent = header9
-
-    local icon14 = Instance.new("ImageLabel")
-    icon14.BorderSizePixel = 0
-    icon14.ScaleType = Enum.ScaleType.Fit
-    icon14.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    icon14.Image = "rbxassetid://100901569640683"
-    icon14.Size = UDim2.new(0, 16, 0, 16)
-    icon14.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    icon14.BackgroundTransparency = 1
-    icon14.Name = "icon"
-    icon14.Parent = header9
-
-    local scale15 = Instance.new("UIScale")
-    scale15.Name = "scale"
-    scale15.Parent = icon14
-
-    local padding29 = Instance.new("UIPadding")
-    padding29.PaddingRight = UDim.new(0, 14)
-    padding29.Name = "padding"
-    padding29.PaddingLeft = UDim.new(0, 14)
-    padding29.Parent = header9
-
-    local corner30 = Instance.new("UICorner")
-    corner30.Name = "corner"
-    corner30.CornerRadius = UDim.new(1, 0)
-    corner30.Parent = header9
-
-    local stroke13 = Instance.new("UIStroke")
-    stroke13.Color = Color3.fromRGB(255, 255, 255)
-    stroke13.Name = "stroke"
-    stroke13.Parent = header9
-
-    local gradient15 = Instance.new("UIGradient")
-    gradient15.Rotation = -101
-    gradient15.Name = "gradient"
-    gradient15.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(53, 53, 53)),ColorSequenceKeypoint.new(0.497, Color3.fromRGB(25, 25, 25)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(53, 53, 53))}
-    gradient15.Parent = stroke13
-
-    local label11 = Instance.new("TextLabel")
-    label11.BorderSizePixel = 0
-    label11.AutoLocalize = false
-    label11.TextSize = 14
-    label11.TextXAlignment = Enum.TextXAlignment.Left
-    label11.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    label11.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    label11.TextColor3 = Color3.fromRGB(255, 255, 255)
-    label11.BackgroundTransparency = 1
-    label11.AnchorPoint = Vector2.new(0.5, 0)
-    label11.Size = UDim2.new(0, 0, 1, 0)
-    label11.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    label11.Text = "Overview"
-    label11.LayoutOrder = 1
-    label11.AutomaticSize = Enum.AutomaticSize.X
-    label11.Name = "label"
-    label11.Position = UDim2.new(0.5, 0, 0, 0)
-    label11.Parent = header9
-
-    local scale16 = Instance.new("UIScale")
-    scale16.Name = "scale"
-    scale16.Parent = label11
-
-    local information = Instance.new("Frame")
-    information.BorderSizePixel = 0
-    information.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    information.AutomaticSize = Enum.AutomaticSize.Y
-    information.Size = UDim2.new(1, 0, 0, 0)
-    information.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    information.Name = "information"
-    information.LayoutOrder = 3
-    information.BackgroundTransparency = 1
-    information.Parent = scroll
-
-    local padding30 = Instance.new("UIPadding")
-    padding30.Name = "padding"
-    padding30.PaddingBottom = UDim.new(0, 5)
-    padding30.Parent = information
-
-    local list34 = Instance.new("UIListLayout")
-    list34.HorizontalAlignment = Enum.HorizontalAlignment.Center
-    list34.Wraps = true
-    list34.Padding = UDim.new(0, 10)
-    list34.SortOrder = Enum.SortOrder.LayoutOrder
-    list34.Name = "list"
-    list34.FillDirection = Enum.FillDirection.Horizontal
-    list34.Parent = information
-
-    local gamedisplay = Instance.new("Frame")
-    gamedisplay.BorderSizePixel = 0
-    gamedisplay.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-    gamedisplay.Selectable = true
-    gamedisplay.AutomaticSize = Enum.AutomaticSize.Y
-    gamedisplay.Size = UDim2.new(0, 160, 0, 200)
-    gamedisplay.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    gamedisplay.Name = "game_display"
-    gamedisplay.BackgroundTransparency = 1
-    gamedisplay.Parent = information
-
-    local flex17 = Instance.new("UIFlexItem")
-    flex17.Name = "flex"
-    flex17.FlexMode = Enum.UIFlexMode.Fill
-    flex17.Parent = gamedisplay
-
-    local scale17 = Instance.new("UIScale")
-    scale17.Name = "scale"
-    scale17.Parent = gamedisplay
-
-    local corner31 = Instance.new("UICorner")
-    corner31.Name = "corner"
-    corner31.CornerRadius = UDim.new(0, 12)
-    corner31.Parent = gamedisplay
-
-    local content4 = Instance.new("Frame")
-    content4.BorderSizePixel = 0
-    content4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    content4.AnchorPoint = Vector2.new(0.5, 0)
-    content4.AutomaticSize = Enum.AutomaticSize.Y
-    content4.Size = UDim2.new(1, 0, 1, -100)
-    content4.Position = UDim2.new(0.5, 0, 0, 0)
-    content4.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    content4.Name = "content"
-    content4.BackgroundTransparency = 1
-    content4.SelectionGroup = true
-    content4.Parent = gamedisplay
-
-    local list35 = Instance.new("UIListLayout")
-    list35.HorizontalAlignment = Enum.HorizontalAlignment.Center
-    list35.Wraps = true
-    list35.Padding = UDim.new(0, 10)
-    list35.SortOrder = Enum.SortOrder.LayoutOrder
-    list35.Name = "list"
-    list35.FillDirection = Enum.FillDirection.Horizontal
-    list35.Parent = content4
-
-    local padding31 = Instance.new("UIPadding")
-    padding31.PaddingTop = UDim.new(0, 10)
-    padding31.PaddingRight = UDim.new(0, 10)
-    padding31.Name = "padding"
-    padding31.PaddingLeft = UDim.new(0, 10)
-    padding31.PaddingBottom = UDim.new(0, 10)
-    padding31.Parent = content4
-
-    local info2 = Instance.new("Frame")
-    info2.BorderSizePixel = 0
-    info2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    info2.Size = UDim2.new(0, 100, 0, 120)
-    info2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    info2.Name = "info"
-    info2.LayoutOrder = 2
-    info2.BackgroundTransparency = 1
-    info2.Parent = content4
-
-    local flex18 = Instance.new("UIFlexItem")
-    flex18.Name = "flex"
-    flex18.FlexMode = Enum.UIFlexMode.Fill
-    flex18.Parent = info2
-
-    local gamename = Instance.new("TextLabel")
-    gamename.BorderSizePixel = 0
-    gamename.AutoLocalize = false
-    gamename.TextSize = 30
-    gamename.TextXAlignment = Enum.TextXAlignment.Left
-    gamename.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    gamename.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-    gamename.TextColor3 = Color3.fromRGB(255, 255, 255)
-    gamename.BackgroundTransparency = 1
-    gamename.Size = UDim2.new(1, 0, 0, 20)
-    gamename.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    gamename.Text = "Name"
-    gamename.AutomaticSize = Enum.AutomaticSize.Y
-    gamename.Name = "game_name"
-    gamename.Parent = info2
-
-    local list36 = Instance.new("UIListLayout")
-    list36.VerticalAlignment = Enum.VerticalAlignment.Center
-    list36.SortOrder = Enum.SortOrder.LayoutOrder
-    list36.Name = "list"
-    list36.Parent = info2
-
-    local creator = Instance.new("TextLabel")
-    creator.TextWrapped = true
-    creator.BorderSizePixel = 0
-    creator.AutoLocalize = false
-    creator.TextSize = 16
-    creator.TextXAlignment = Enum.TextXAlignment.Left
-    creator.TextTransparency = 0.5
-    creator.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    creator.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    creator.TextColor3 = Color3.fromRGB(255, 255, 255)
-    creator.BackgroundTransparency = 1
-    creator.Size = UDim2.new(1, 0, 0, 20)
-    creator.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    creator.Text = "Developer"
-    creator.AutomaticSize = Enum.AutomaticSize.Y
-    creator.Name = "creator"
-    creator.Parent = info2
-
-    local description = Instance.new("TextLabel")
-    description.TextWrapped = true
-    description.BorderSizePixel = 0
-    description.AutoLocalize = false
-    description.TextSize = 16
-    description.TextXAlignment = Enum.TextXAlignment.Left
-    description.TextTransparency = 0.5
-    description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    description.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    description.TextColor3 = Color3.fromRGB(255, 255, 255)
-    description.BackgroundTransparency = 1
-    description.Size = UDim2.new(1, 0, 0, 20)
-    description.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    description.Text = "Description"
-    description.LayoutOrder = 3
-    description.AutomaticSize = Enum.AutomaticSize.Y
-    description.Name = "description"
-    description.Parent = content4
-
-    local padding32 = Instance.new("UIPadding")
-    padding32.Name = "padding"
-    padding32.PaddingBottom = UDim.new(0, 20)
-    padding32.Parent = description
-
-    local icon15 = Instance.new("Frame")
-    icon15.BorderSizePixel = 0
-    icon15.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    icon15.Size = UDim2.new(0, 120, 0, 120)
-    icon15.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    icon15.Name = "icon"
-    icon15.LayoutOrder = 1
-    icon15.BackgroundTransparency = 1
-    icon15.Parent = content4
-
-    local shadow = Instance.new("ImageLabel")
-    shadow.ZIndex = 0
-    shadow.BorderSizePixel = 0
-    shadow.SliceCenter = Rect.new(300, 300, 300, 300)
-    shadow.SliceScale = 0.1
-    shadow.ScaleType = Enum.ScaleType.Slice
-    shadow.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    shadow.ImageTransparency = 0.5
-    shadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-    shadow.AnchorPoint = Vector2.new(0.5, 0.5)
-    shadow.Image = "rbxassetid://72548733587158"
-    shadow.Size = UDim2.new(1, 0, 1, 0)
-    shadow.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    shadow.BackgroundTransparency = 1
-    shadow.Name = "shadow"
-    shadow.Position = UDim2.new(0.5, 0, 0.5, 0)
-    shadow.Parent = icon15
-
-    local scale18 = Instance.new("UIScale")
-    scale18.Name = "scale"
-    scale18.Parent = shadow
-
-    local photo = Instance.new("ImageLabel")
-    photo.BorderSizePixel = 0
-    photo.ScaleType = Enum.ScaleType.Crop
-    photo.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    photo.AnchorPoint = Vector2.new(0.5, 0.5)
-    photo.Size = UDim2.new(0, 90, 0, 90)
-    photo.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    photo.Name = "photo"
-    photo.Position = UDim2.new(0.5, 0, 0.5, 0)
-    photo.Parent = icon15
-
-    local StrokeFrame = Instance.new("Frame")
-    StrokeFrame.BorderSizePixel = 0
-    StrokeFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    StrokeFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-    StrokeFrame.Size = UDim2.new(1, 0, 1, 0)
-    StrokeFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-    StrokeFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    StrokeFrame.Name = "StrokeFrame"
-    StrokeFrame.BackgroundTransparency = 1
-    StrokeFrame.Parent = photo
-
-    local stroke14 = Instance.new("UIStroke")
-    stroke14.Transparency = 0.8
-    stroke14.Color = Color3.fromRGB(255, 255, 255)
-    stroke14.Name = "stroke"
-    stroke14.Parent = StrokeFrame
-
-    local gradient16 = Instance.new("UIGradient")
-    gradient16.Rotation = 50
-    gradient16.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(0.500, 1),NumberSequenceKeypoint.new(1.000, 0)}
-    gradient16.Name = "gradient"
-    gradient16.Parent = stroke14
-
-    local corner32 = Instance.new("UICorner")
-    corner32.Name = "corner"
-    corner32.CornerRadius = UDim.new(0, 5)
-    corner32.Parent = StrokeFrame
-
-    local scale19 = Instance.new("UIScale")
-    scale19.Name = "scale"
-    scale19.Parent = photo
-
-    local stroke15 = Instance.new("UIStroke")
-    stroke15.Transparency = 0.95
-    stroke15.Color = Color3.fromRGB(255, 255, 255)
-    stroke15.Name = "stroke"
-    stroke15.Parent = photo
-
-    local corner33 = Instance.new("UICorner")
-    corner33.Name = "corner"
-    corner33.CornerRadius = UDim.new(0, 6)
-    corner33.Parent = photo
-
-    local tech = Instance.new("Frame")
-    tech.Active = true
-    tech.BorderSizePixel = 0
-    tech.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-    tech.Selectable = true
-    tech.ClipsDescendants = true
-    tech.AutomaticSize = Enum.AutomaticSize.Y
-    tech.Size = UDim2.new(1, 60, 0, 0)
-    tech.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    tech.Name = "tech"
-    tech.LayoutOrder = 4
-    tech.BackgroundTransparency = 1
-    tech.Parent = content4
-
-    local list37 = Instance.new("UIListLayout")
-    list37.Padding = UDim.new(0, 10)
-    list37.SortOrder = Enum.SortOrder.LayoutOrder
-    list37.Name = "list"
-    list37.Parent = tech
-
-    local corner34 = Instance.new("UICorner")
-    corner34.Name = "corner"
-    corner34.CornerRadius = UDim.new(0, 20)
-    corner34.Parent = tech
-
-    local padding33 = Instance.new("UIPadding")
-    padding33.PaddingTop = UDim.new(0, 10)
-    padding33.PaddingRight = UDim.new(0, 10)
-    padding33.Name = "padding"
-    padding33.PaddingLeft = UDim.new(0, 10)
-    padding33.PaddingBottom = UDim.new(0, 10)
-    padding33.Parent = tech
-
-    local jobid = Instance.new("ImageButton")
-    jobid.BorderSizePixel = 0
-    jobid.BackgroundColor3 = Color3.fromRGB(58, 58, 58)
-    jobid.Selectable = false
-    jobid.Size = UDim2.new(1, 0, 0, 40)
-    jobid.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    jobid.Name = "jobid"
-    jobid.Parent = tech
-
-    local label12 = Instance.new("TextLabel")
-    label12.BorderSizePixel = 0
-    label12.AutoLocalize = false
-    label12.TextSize = 15
-    label12.TextXAlignment = Enum.TextXAlignment.Left
-    label12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    label12.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    label12.TextColor3 = Color3.fromRGB(255, 255, 255)
-    label12.BackgroundTransparency = 1
-    label12.Size = UDim2.new(0, 0, 1, 0)
-    label12.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    label12.Text = "Job ID"
-    label12.AutomaticSize = Enum.AutomaticSize.X
-    label12.Name = "label"
-    label12.Parent = jobid
-
-    local flex19 = Instance.new("UIFlexItem")
-    flex19.GrowRatio = 1
-    flex19.Name = "flex"
-    flex19.FlexMode = Enum.UIFlexMode.Custom
-    flex19.Parent = label12
-
-    local value5 = Instance.new("TextBox")
-    value5.Interactable = false
-    value5.Name = "value"
-    value5.TextXAlignment = Enum.TextXAlignment.Right
-    value5.PlaceholderColor3 = Color3.fromRGB(179, 179, 179)
-    value5.BorderSizePixel = 0
-    value5.TextEditable = false
-    value5.AutoLocalize = false
-    value5.TextTruncate = Enum.TextTruncate.AtEnd
-    value5.TextSize = 15
-    value5.TextColor3 = Color3.fromRGB(255, 255, 255)
-    value5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    value5.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-    value5.AutomaticSize = Enum.AutomaticSize.XY
-    value5.Selectable = false
-    value5.ClearTextOnFocus = false
-    value5.Size = UDim2.new(0, 0, 1, 0)
-    value5.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    value5.Text = "0000-0000-0000-0000"
-    value5.BackgroundTransparency = 1
-    value5.Parent = jobid
-
-    local padding34 = Instance.new("UIPadding")
-    padding34.PaddingRight = UDim.new(0, 20)
-    padding34.Name = "padding"
-    padding34.PaddingLeft = UDim.new(0, 20)
-    padding34.Parent = jobid
-
-    local corner35 = Instance.new("UICorner")
-    corner35.Name = "corner"
-    corner35.CornerRadius = UDim.new(1, 0)
-    corner35.Parent = jobid
-
-    local stroke16 = Instance.new("UIStroke")
-    stroke16.Color = Color3.fromRGB(255, 255, 255)
-    stroke16.Name = "stroke"
-    stroke16.Parent = jobid
-
-    local gradient17 = Instance.new("UIGradient")
-    gradient17.Rotation = -92
-    gradient17.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(0.500, 1),NumberSequenceKeypoint.new(1.000, 0)}
-    gradient17.Name = "gradient"
-    gradient17.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(67, 67, 67)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(67, 67, 67))}
-    gradient17.Parent = stroke16
-
-    local gradient18 = Instance.new("UIGradient")
-    gradient18.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0.8),NumberSequenceKeypoint.new(1.000, 0.8)}
-    gradient18.Name = "gradient"
-    gradient18.Parent = jobid
-
-    local list38 = Instance.new("UIListLayout")
-    list38.Padding = UDim.new(0, 20)
-    list38.VerticalAlignment = Enum.VerticalAlignment.Center
-    list38.SortOrder = Enum.SortOrder.LayoutOrder
-    list38.Name = "list"
-    list38.FillDirection = Enum.FillDirection.Horizontal
-    list38.Parent = jobid
-
-    local placeid = Instance.new("ImageButton")
-    placeid.BorderSizePixel = 0
-    placeid.BackgroundColor3 = Color3.fromRGB(58, 58, 58)
-    placeid.Selectable = false
-    placeid.Size = UDim2.new(1, 0, 0, 40)
-    placeid.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    placeid.Name = "placeid"
-    placeid.Parent = tech
-
-    local label13 = Instance.new("TextLabel")
-    label13.BorderSizePixel = 0
-    label13.AutoLocalize = false
-    label13.TextSize = 15
-    label13.TextXAlignment = Enum.TextXAlignment.Left
-    label13.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    label13.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    label13.TextColor3 = Color3.fromRGB(255, 255, 255)
-    label13.BackgroundTransparency = 1
-    label13.Size = UDim2.new(0, 0, 1, 0)
-    label13.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    label13.Text = "Place ID"
-    label13.Name = "label"
-    label13.Parent = placeid
-
-    local flex20 = Instance.new("UIFlexItem")
-    flex20.Name = "flex"
-    flex20.FlexMode = Enum.UIFlexMode.Fill
-    flex20.Parent = label13
-
-    local list39 = Instance.new("UIListLayout")
-    list39.Padding = UDim.new(0, 20)
-    list39.VerticalAlignment = Enum.VerticalAlignment.Center
-    list39.SortOrder = Enum.SortOrder.LayoutOrder
-    list39.Name = "list"
-    list39.FillDirection = Enum.FillDirection.Horizontal
-    list39.Parent = placeid
-
-    local padding35 = Instance.new("UIPadding")
-    padding35.PaddingRight = UDim.new(0, 20)
-    padding35.Name = "padding"
-    padding35.PaddingLeft = UDim.new(0, 20)
-    padding35.Parent = placeid
-
-    local corner36 = Instance.new("UICorner")
-    corner36.Name = "corner"
-    corner36.CornerRadius = UDim.new(1, 0)
-    corner36.Parent = placeid
-
-    local value6 = Instance.new("TextBox")
-    value6.Interactable = false
-    value6.Name = "value"
-    value6.TextXAlignment = Enum.TextXAlignment.Right
-    value6.PlaceholderColor3 = Color3.fromRGB(179, 179, 179)
-    value6.BorderSizePixel = 0
-    value6.TextEditable = false
-    value6.AutoLocalize = false
-    value6.TextTruncate = Enum.TextTruncate.AtEnd
-    value6.TextSize = 15
-    value6.TextColor3 = Color3.fromRGB(255, 255, 255)
-    value6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    value6.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-    value6.AutomaticSize = Enum.AutomaticSize.X
-    value6.Selectable = false
-    value6.ClearTextOnFocus = false
-    value6.Size = UDim2.new(0, 0, 1, 0)
-    value6.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    value6.Text = "00000"
-    value6.BackgroundTransparency = 1
-    value6.Parent = placeid
-
-    local gradient19 = Instance.new("UIGradient")
-    gradient19.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0.8),NumberSequenceKeypoint.new(1.000, 0.8)}
-    gradient19.Name = "gradient"
-    gradient19.Parent = placeid
-
-    local stroke17 = Instance.new("UIStroke")
-    stroke17.Color = Color3.fromRGB(255, 255, 255)
-    stroke17.Name = "stroke"
-    stroke17.Parent = placeid
-
-    local gradient20 = Instance.new("UIGradient")
-    gradient20.Rotation = -92
-    gradient20.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(0.500, 1),NumberSequenceKeypoint.new(1.000, 0)}
-    gradient20.Name = "gradient"
-    gradient20.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(67, 67, 67)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(67, 67, 67))}
-    gradient20.Parent = stroke17
-
-    local padding36 = Instance.new("UIPadding")
-    padding36.PaddingTop = UDim.new(0, 10)
-    padding36.PaddingRight = UDim.new(0, 10)
-    padding36.Name = "padding"
-    padding36.PaddingLeft = UDim.new(0, 10)
-    padding36.PaddingBottom = UDim.new(0, 10)
-    padding36.Parent = gamedisplay
-
-    local thumbnail2 = Instance.new("ImageLabel")
-    thumbnail2.ZIndex = 0
-    thumbnail2.BorderSizePixel = 0
-    thumbnail2.ScaleType = Enum.ScaleType.Crop
-    thumbnail2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    thumbnail2.ImageColor3 = Color3.fromRGB(98, 98, 98)
-    thumbnail2.AnchorPoint = Vector2.new(0.5, 1)
-    thumbnail2.Image = "rbxassetid://109387847907592"
-    thumbnail2.Size = UDim2.new(1, 20, 1, 20)
-    thumbnail2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    thumbnail2.BackgroundTransparency = 1
-    thumbnail2.Name = "thumbnail"
-    thumbnail2.Position = UDim2.new(0.5, 0, 1, 10)
-    thumbnail2.Parent = gamedisplay
-
-    local gradient21 = Instance.new("UIGradient")
-    gradient21.Rotation = 90
-    gradient21.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(1.000, 1)}
-    gradient21.Name = "gradient"
-    gradient21.Parent = thumbnail2
-
-    local corner37 = Instance.new("UICorner")
-    corner37.Name = "corner"
-    corner37.CornerRadius = UDim.new(0, 12)
-    corner37.Parent = thumbnail2
-
-    local scale20 = Instance.new("UIScale")
-    scale20.Name = "scale"
-    scale20.Scale = 1.87
-    scale20.Parent = thumbnail2
-
-    local noise = Instance.new("ImageLabel")
-    noise.ZIndex = 0
-    noise.BorderSizePixel = 0
-    noise.ScaleType = Enum.ScaleType.Tile
-    noise.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    noise.AnchorPoint = Vector2.new(0.5, 0.5)
-    noise.Image = "rbxassetid://126487203254586"
-    noise.TileSize = UDim2.new(0, 500, 0, 500)
-    noise.Size = UDim2.new(1, 0, 0.78839, 0)
-    noise.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    noise.BackgroundTransparency = 1
-    noise.Name = "noise"
-    noise.Position = UDim2.new(0.38635, 0, 0.6058, 0)
-    noise.Parent = thumbnail2
-
-    local corner38 = Instance.new("UICorner")
-    corner38.Name = "corner"
-    corner38.CornerRadius = UDim.new(0, 12)
-    corner38.Parent = noise
-
-    local gradient22 = Instance.new("UIGradient")
-    gradient22.Rotation = 90
-    gradient22.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0.85625),NumberSequenceKeypoint.new(1.000, 1)}
-    gradient22.Name = "gradient"
-    gradient22.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(0, 0, 0)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(0, 0, 0))}
-    gradient22.Parent = noise
-
-    local header10 = Instance.new("Frame")
-    header10.BorderSizePixel = 0
-    header10.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    header10.AutomaticSize = Enum.AutomaticSize.Y
-    header10.Size = UDim2.new(1, 40, 0, 0)
-    header10.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    header10.Name = "header"
-    header10.BackgroundTransparency = 1
-    header10.Parent = scroll
-
-    local greetings = Instance.new("TextLabel")
-    greetings.BorderSizePixel = 0
-    greetings.AutoLocalize = false
-    greetings.TextSize = 20
-    greetings.TextXAlignment = Enum.TextXAlignment.Left
-    greetings.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    greetings.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-    greetings.TextColor3 = Color3.fromRGB(255, 255, 255)
-    greetings.BackgroundTransparency = 1
-    greetings.AnchorPoint = Vector2.new(0.5, 0)
-    greetings.Size = UDim2.new(1, 0, 0, 30)
-    greetings.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    greetings.Text = "Home"
-    greetings.LayoutOrder = 1
-    greetings.Name = "greetings"
-    greetings.Position = UDim2.new(0.5, 0, 0, 0)
-    greetings.Parent = header10
-
-    local flex21 = Instance.new("UIFlexItem")
-    flex21.Name = "flex"
-    flex21.FlexMode = Enum.UIFlexMode.Fill
-    flex21.Parent = greetings
-
-    local list40 = Instance.new("UIListLayout")
-    list40.SortOrder = Enum.SortOrder.LayoutOrder
-    list40.Name = "list"
-    list40.Parent = header10
-
-    local padding37 = Instance.new("UIPadding")
-    padding37.PaddingTop = UDim.new(0, 18)
-    padding37.PaddingRight = UDim.new(0, 26)
-    padding37.Name = "padding"
-    padding37.PaddingLeft = UDim.new(0, 26)
-    padding37.PaddingBottom = UDim.new(0, 18)
-    padding37.Parent = header10
-
-    local date = Instance.new("TextLabel")
-    date.BorderSizePixel = 0
-    date.AutoLocalize = false
-    date.TextSize = 14
-    date.TextXAlignment = Enum.TextXAlignment.Left
-    date.TextTransparency = 0.5
-    date.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    date.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    date.TextColor3 = Color3.fromRGB(255, 255, 255)
-    date.BackgroundTransparency = 1
-    date.AnchorPoint = Vector2.new(0.5, 0)
-    date.Size = UDim2.new(1, 0, 0, 14)
-    date.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    date.Text = "Month Day, Year"
-    date.LayoutOrder = 1
-    date.Name = "date"
-    date.Position = UDim2.new(0.5, 0, 0, 0)
-    date.Parent = header10
-
-    local gradient23 = Instance.new("UIGradient")
-    gradient23.Rotation = 90
-    gradient23.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(1.000, 1)}
-    gradient23.Name = "gradient"
-    gradient23.Parent = header10
-
-    return home2
+    if not screen then return end
+    UI.home2 = Instance.new("ImageButton")
+    UI.home2.BorderSizePixel = 0
+    UI.home2.AutoButtonColor = false
+    UI.home2.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    UI.home2.Selectable = false
+    UI.home2.Size = UDim2.new(1, 0, 1, 0)
+    UI.home2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.home2.Name = "home"
+    UI.home2.Position = UDim2.new(-0.01539, 0, 0, 0)
+    UI.home2.Parent = screen
+
+    UI.scroll = Instance.new("ScrollingFrame")
+    UI.scroll.Active = true
+    UI.scroll.ScrollingDirection = Enum.ScrollingDirection.Y
+    UI.scroll.BorderSizePixel = 0
+    UI.scroll.CanvasSize = UDim2.new(0, 0, 0, 0)
+    UI.scroll.Name = "scroll"
+    UI.scroll.ScrollBarImageTransparency = 1
+    UI.scroll.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.scroll.AnchorPoint = Vector2.new(0.5, 0.5)
+    UI.scroll.AutomaticCanvasSize = Enum.AutomaticSize.Y
+    UI.scroll.Size = UDim2.new(1, 0, 1, 0)
+    UI.scroll.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
+    UI.scroll.Position = UDim2.new(0.5, 0, 0.5, 0)
+    UI.scroll.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.scroll.ScrollBarThickness = 0
+    UI.scroll.BackgroundTransparency = 1
+    UI.scroll.Parent = UI.home2
+
+    UI.padding12 = Instance.new("UIPadding")
+    UI.padding12.PaddingRight = UDim.new(0, 20)
+    UI.padding12.Name = "padding"
+    UI.padding12.PaddingLeft = UDim.new(0, 20)
+    UI.padding12.PaddingBottom = UDim.new(0, 5)
+    UI.padding12.Parent = UI.scroll
+
+    UI.list18 = Instance.new("UIListLayout")
+    UI.list18.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    UI.list18.Padding = UDim.new(0, 15)
+    UI.list18.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list18.Name = "list"
+    UI.list18.Parent = UI.scroll
+
+    UI.people = Instance.new("Frame")
+    UI.people.BorderSizePixel = 0
+    UI.people.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.people.AutomaticSize = Enum.AutomaticSize.Y
+    UI.people.Size = UDim2.new(1, 0, 0, 0)
+    UI.people.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.people.Name = "people"
+    UI.people.LayoutOrder = 5
+    UI.people.BackgroundTransparency = 1
+    UI.people.Parent = UI.scroll
+
+    UI.padding13 = Instance.new("UIPadding")
+    UI.padding13.Name = "padding"
+    UI.padding13.PaddingBottom = UDim.new(0, 5)
+    UI.padding13.Parent = UI.people
+
+    UI.list19 = Instance.new("UIListLayout")
+    UI.list19.Wraps = true
+    UI.list19.Padding = UDim.new(0, 10)
+    UI.list19.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list19.Name = "list"
+    UI.list19.FillDirection = Enum.FillDirection.Horizontal
+    UI.list19.Parent = UI.people
+
+    UI.count = Instance.new("ImageButton")
+    UI.count.SliceScale = 0.05
+    UI.count.BorderSizePixel = 0
+    UI.count.SliceCenter = Rect.new(512, 512, 512, 512)
+    UI.count.ScaleType = Enum.ScaleType.Slice
+    UI.count.AutoButtonColor = false
+    UI.count.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+    UI.count.ImageColor3 = Color3.fromRGB(28, 28, 28)
+    UI.count.Size = UDim2.new(0, 160, 0, 200)
+    UI.count.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.count.Name = "count"
+    UI.count.Parent = UI.people
+
+    UI.meter = Instance.new("Frame")
+    UI.meter.BorderSizePixel = 0
+    UI.meter.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.meter.Size = UDim2.new(1, 0, 0, 100)
+    UI.meter.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.meter.Name = "meter"
+    UI.meter.BackgroundTransparency = 1
+    UI.meter.Parent = UI.count
+
+    UI.bg = Instance.new("ImageLabel")
+    UI.bg.BorderSizePixel = 0
+    UI.bg.ScaleType = Enum.ScaleType.Fit
+    UI.bg.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.bg.ImageColor3 = Color3.fromRGB(36, 36, 36)
+    UI.bg.AnchorPoint = Vector2.new(0.5, 0)
+    UI.bg.Image = "rbxassetid://91532298213965"
+    UI.bg.Size = UDim2.new(0, 100, 0, 100)
+    UI.bg.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.bg.BackgroundTransparency = 1
+    UI.bg.Name = "bg"
+    UI.bg.Position = UDim2.new(0.5, 0, 0.5, 0)
+    UI.bg.Parent = UI.meter
+
+    UI.line = Instance.new("ImageLabel")
+    UI.line.BorderSizePixel = 0
+    UI.line.ScaleType = Enum.ScaleType.Fit
+    UI.line.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.line.ImageColor3 = Color3.fromRGB(0, 141, 255)
+    UI.line.AnchorPoint = Vector2.new(0.5, 0)
+    UI.line.Image = "rbxassetid://91532298213965"
+    UI.line.Size = UDim2.new(0, 100, 0, 100)
+    UI.line.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.line.BackgroundTransparency = 1
+    UI.line.Rotation = -180
+    UI.line.Name = "line"
+    UI.line.Position = UDim2.new(0.5, 0, 0.5, 0)
+    UI.line.Parent = UI.meter
+
+    UI.cover = Instance.new("Frame")
+    UI.cover.BorderSizePixel = 0
+    UI.cover.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+    UI.cover.AnchorPoint = Vector2.new(0.5, 0)
+    UI.cover.Size = UDim2.new(1, 0, 0.5, 6)
+    UI.cover.Position = UDim2.new(0.5, 0, 1, -1)
+    UI.cover.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.cover.Name = "cover"
+    UI.cover.Parent = UI.meter
+
+    UI.icon9 = Instance.new("ImageLabel")
+    UI.icon9.BorderSizePixel = 0
+    UI.icon9.ScaleType = Enum.ScaleType.Fit
+    UI.icon9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.icon9.ImageTransparency = 0.2
+    UI.icon9.AnchorPoint = Vector2.new(0.5, 0.5)
+    UI.icon9.Image = "rbxassetid://123713243633092"
+    UI.icon9.Size = UDim2.new(0, 24, 0, 24)
+    UI.icon9.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.icon9.BackgroundTransparency = 1
+    UI.icon9.Name = "icon"
+    UI.icon9.Position = UDim2.new(0.5, 0, 0.5, 38)
+    UI.icon9.Parent = UI.meter
+
+    UI.scale5 = Instance.new("UIScale")
+    UI.scale5.Name = "scale"
+    UI.scale5.Parent = UI.icon9
+
+    UI.padding14 = Instance.new("UIPadding")
+    UI.padding14.PaddingTop = UDim.new(0, 12)
+    UI.padding14.PaddingRight = UDim.new(0, 14)
+    UI.padding14.Name = "padding"
+    UI.padding14.PaddingLeft = UDim.new(0, 14)
+    UI.padding14.PaddingBottom = UDim.new(0, 10)
+    UI.padding14.Parent = UI.count
+
+    UI.count2 = Instance.new("TextLabel")
+    UI.count2.BorderSizePixel = 0
+    UI.count2.AutoLocalize = false
+    UI.count2.TextSize = 18
+    UI.count2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.count2.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    UI.count2.TextColor3 = Color3.fromRGB(0, 141, 255)
+    UI.count2.BackgroundTransparency = 1
+    UI.count2.AnchorPoint = Vector2.new(0.5, 1)
+    UI.count2.Size = UDim2.new(1, 0, 0, 16)
+    UI.count2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.count2.Text = "0/20"
+    UI.count2.LayoutOrder = 1
+    UI.count2.Name = "count"
+    UI.count2.Position = UDim2.new(0.5, 0, 1, -30)
+    UI.count2.Parent = UI.count
+
+    UI.label6 = Instance.new("TextLabel")
+    UI.label6.BorderSizePixel = 0
+    UI.label6.AutoLocalize = false
+    UI.label6.TextSize = 12
+    UI.label6.TextTransparency = 0.8
+    UI.label6.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.label6.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    UI.label6.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.label6.BackgroundTransparency = 1
+    UI.label6.AnchorPoint = Vector2.new(0.5, 1)
+    UI.label6.Size = UDim2.new(1, 0, 0, 16)
+    UI.label6.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.label6.Text = "Players"
+    UI.label6.LayoutOrder = 1
+    UI.label6.Name = "label"
+    UI.label6.Position = UDim2.new(0.5, 0, 1, -10)
+    UI.label6.Parent = UI.count
+
+    UI.flex7 = Instance.new("UIFlexItem")
+    UI.flex7.ShrinkRatio = 1
+    UI.flex7.GrowRatio = 0.01
+    UI.flex7.Name = "flex"
+    UI.flex7.FlexMode = Enum.UIFlexMode.Custom
+    UI.flex7.Parent = UI.count
+
+    UI.scale6 = Instance.new("UIScale")
+    UI.scale6.Name = "scale"
+    UI.scale6.Parent = UI.count
+
+    UI.header = Instance.new("TextLabel")
+    UI.header.BorderSizePixel = 0
+    UI.header.AutoLocalize = false
+    UI.header.TextSize = 14
+    UI.header.TextXAlignment = Enum.TextXAlignment.Left
+    UI.header.TextTransparency = 0.8
+    UI.header.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.header.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.header.BackgroundTransparency = 1
+    UI.header.AnchorPoint = Vector2.new(0.5, 0)
+    UI.header.Size = UDim2.new(1, 0, 0, 16)
+    UI.header.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header.Text = "Count"
+    UI.header.LayoutOrder = 1
+    UI.header.Name = "header"
+    UI.header.Position = UDim2.new(0.5, 0, 0, 0)
+    UI.header.Parent = UI.count
+
+    UI.stroke = Instance.new("UIStroke")
+    UI.stroke.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke.Name = "stroke"
+    UI.stroke.Parent = UI.count
+
+    UI.gradient = Instance.new("UIGradient")
+    UI.gradient.Rotation = -90
+    UI.gradient.Name = "gradient"
+    UI.gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(39, 39, 39)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(21, 21, 21))}
+    UI.gradient.Parent = UI.stroke
+
+    UI.corner14 = Instance.new("UICorner")
+    UI.corner14.Name = "corner"
+    UI.corner14.CornerRadius = UDim.new(0, 15)
+    UI.corner14.Parent = UI.count
+
+    UI.People = Instance.new("ImageButton")
+    UI.People.SliceScale = 0.05
+    UI.People.BorderSizePixel = 0
+    UI.People.SliceCenter = Rect.new(512, 512, 512, 512)
+    UI.People.ScaleType = Enum.ScaleType.Slice
+    UI.People.AutoButtonColor = false
+    UI.People.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+    UI.People.ImageColor3 = Color3.fromRGB(28, 28, 28)
+    UI.People.Size = UDim2.new(0, 160, 0, 200)
+    UI.People.ClipsDescendants = true
+    UI.People.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.People.Name = "People"
+    UI.People.Position = UDim2.new(0.35433, 0, 0.1, 0)
+    UI.People.Parent = UI.people
+
+    UI.flex8 = Instance.new("UIFlexItem")
+    UI.flex8.Name = "flex"
+    UI.flex8.FlexMode = Enum.UIFlexMode.Fill
+    UI.flex8.Parent = UI.People
+
+    UI.scroll2 = Instance.new("ScrollingFrame")
+    UI.scroll2.ScrollingDirection = Enum.ScrollingDirection.Y
+    UI.scroll2.BorderSizePixel = 0
+    UI.scroll2.CanvasSize = UDim2.new(0, 0, 0, 0)
+    UI.scroll2.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
+    UI.scroll2.Name = "scroll"
+    UI.scroll2.ScrollBarImageTransparency = 1
+    UI.scroll2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.scroll2.AutomaticCanvasSize = Enum.AutomaticSize.Y
+    UI.scroll2.ClipsDescendants = false
+    UI.scroll2.Size = UDim2.new(1, 0, 1, -24)
+    UI.scroll2.ScrollBarImageColor3 = Color3.fromRGB(21, 21, 21)
+    UI.scroll2.Position = UDim2.new(0, 0, 0, 24)
+    UI.scroll2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.scroll2.ScrollBarThickness = 4
+    UI.scroll2.BackgroundTransparency = 1
+    UI.scroll2.Parent = UI.People
+
+    UI.list20 = Instance.new("UIListLayout")
+    UI.list20.Padding = UDim.new(0, 8)
+    UI.list20.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list20.Name = "list"
+    UI.list20.Parent = UI.scroll2
+
+    UI.padding15 = Instance.new("UIPadding")
+    UI.padding15.PaddingTop = UDim.new(0, 5)
+    UI.padding15.Name = "padding"
+    UI.padding15.Parent = UI.scroll2
+
+    UI.Player = Instance.new("Frame")
+    UI.Player.BorderSizePixel = 0
+    UI.Player.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
+    UI.Player.AnchorPoint = Vector2.new(0.5, 0.5)
+    UI.Player.Size = UDim2.new(1, 0, 0.19984, 0)
+    UI.Player.Position = UDim2.new(0.5, 0, 0.09992, 0)
+    UI.Player.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.Player.Name = "Player"
+    UI.Player.Parent = UI.scroll2
+
+    UI.UICorner = Instance.new("UICorner")
+    UI.UICorner.CornerRadius = UDim.new(0, 15)
+    UI.UICorner.Parent = UI.Player
+
+    UI.UIListLayout3 = Instance.new("UIListLayout")
+    UI.UIListLayout3.Padding = UDim.new(0, 32)
+    UI.UIListLayout3.VerticalAlignment = Enum.VerticalAlignment.Center
+    UI.UIListLayout3.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.UIListLayout3.FillDirection = Enum.FillDirection.Horizontal
+    UI.UIListLayout3.Parent = UI.Player
+
+    UI.UIPadding2 = Instance.new("UIPadding")
+    UI.UIPadding2.PaddingLeft = UDim.new(0, 5)
+    UI.UIPadding2.Parent = UI.Player
+
+    UI.Informatiom = Instance.new("ImageButton")
+    UI.Informatiom.BorderSizePixel = 0
+    UI.Informatiom.BackgroundTransparency = 1
+    UI.Informatiom.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.Informatiom.AnchorPoint = Vector2.new(0.5, 0.5)
+    UI.Informatiom.Size = UDim2.new(0, 133, 0, 30)
+    UI.Informatiom.ClipsDescendants = true
+    UI.Informatiom.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.Informatiom.Name = "Informatiom"
+    UI.Informatiom.Position = UDim2.new(0.5, 0, 0.5, 0)
+    UI.Informatiom.Parent = UI.Player
+
+    UI.UIPadding3 = Instance.new("UIPadding")
+    UI.UIPadding3.PaddingLeft = UDim.new(0, 5)
+    UI.UIPadding3.Parent = UI.Informatiom
+
+    UI.UIListLayout4 = Instance.new("UIListLayout")
+    UI.UIListLayout4.Padding = UDim.new(0, 8)
+    UI.UIListLayout4.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.UIListLayout4.FillDirection = Enum.FillDirection.Horizontal
+    UI.UIListLayout4.Parent = UI.Informatiom
+
+    UI.Name = Instance.new("TextLabel")
+    UI.Name.BorderSizePixel = 0
+    UI.Name.TextSize = 13
+    UI.Name.TextXAlignment = Enum.TextXAlignment.Left
+    UI.Name.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.Name.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    UI.Name.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.Name.BackgroundTransparency = 1
+    UI.Name.Size = UDim2.new(0, 115, 0, 30)
+    UI.Name.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.Name.Text = "Display"
+    UI.Name.LayoutOrder = 1
+    UI.Name.Name = "Name"
+    UI.Name.Position = UDim2.new(0.09531, 0, 0, 0)
+    UI.Name.Parent = UI.Informatiom
+
+    UI.Profile = Instance.new("ImageLabel")
+    UI.Profile.Active = true
+    UI.Profile.BorderSizePixel = 0
+    UI.Profile.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.Profile.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=3765399271&width=420&height=420&format=png"
+    UI.Profile.Size = UDim2.new(0, 30, 0, 30)
+    UI.Profile.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.Profile.BackgroundTransparency = 1
+    UI.Profile.Selectable = true
+    UI.Profile.Name = "Profile"
+    UI.Profile.Parent = UI.Informatiom
+
+    UI.UICorner2 = Instance.new("UICorner")
+    UI.UICorner2.CornerRadius = UDim.new(1, 0)
+    UI.UICorner2.Parent = UI.Profile
+
+    UI.Teleport = Instance.new("TextButton")
+    UI.Teleport.BorderSizePixel = 0
+    UI.Teleport.AutoButtonColor = false
+    UI.Teleport.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    UI.Teleport.AnchorPoint = Vector2.new(0.5, 0.5)
+    UI.Teleport.Size = UDim2.new(0, 83, 0, 20)
+    UI.Teleport.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.Teleport.Name = "Teleport"
+    UI.Teleport.Position = UDim2.new(0.5, 0, 0.5, 0)
+    UI.Teleport.Parent = UI.Player
+
+    UI.UICorner3 = Instance.new("UICorner")
+    UI.UICorner3.CornerRadius = UDim.new(1, 0)
+    UI.UICorner3.Parent = UI.Teleport
+
+    UI.UIListLayout5 = Instance.new("UIListLayout")
+    UI.UIListLayout5.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    UI.UIListLayout5.VerticalAlignment = Enum.VerticalAlignment.Center
+    UI.UIListLayout5.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.UIListLayout5.Parent = UI.Teleport
+
+    UI.Teleport2 = Instance.new("TextLabel")
+    UI.Teleport2.Active = true
+    UI.Teleport2.BorderSizePixel = 0
+    UI.Teleport2.TextSize = 14
+    UI.Teleport2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.Teleport2.FontFace = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    UI.Teleport2.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.Teleport2.BackgroundTransparency = 1
+    UI.Teleport2.AnchorPoint = Vector2.new(0.5, 0.5)
+    UI.Teleport2.Size = UDim2.new(0, 60, 0, 15)
+    UI.Teleport2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.Teleport2.Text = "Teleport To"
+    UI.Teleport2.Selectable = true
+    UI.Teleport2.Name = "Teleport"
+    UI.Teleport2.Position = UDim2.new(0.5, 0, 0.5, 0)
+    UI.Teleport2.Parent = UI.Teleport
+
+    UI.list21 = Instance.new("ImageLabel")
+    UI.list21.BorderSizePixel = 0
+    UI.list21.SliceCenter = Rect.new(512, 512, 512, 512)
+    UI.list21.SliceScale = 0.05
+    UI.list21.ScaleType = Enum.ScaleType.Slice
+    UI.list21.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    UI.list21.ImageColor3 = Color3.fromRGB(28, 28, 28)
+    UI.list21.AnchorPoint = Vector2.new(0.5, 0)
+    UI.list21.Image = "rbxassetid://125088425775676"
+    UI.list21.Size = UDim2.new(1, 28, 0, 50)
+    UI.list21.ClipsDescendants = true
+    UI.list21.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.list21.BackgroundTransparency = 1
+    UI.list21.Selectable = true
+    UI.list21.Name = "list"
+    UI.list21.Position = UDim2.new(0.5, 0, -0.01124, -10)
+    UI.list21.Parent = UI.People
+
+    UI.gradient2 = Instance.new("UIGradient")
+    UI.gradient2.Rotation = 90
+    UI.gradient2.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(1.000, 1)}
+    UI.gradient2.Name = "gradient"
+    UI.gradient2.Parent = UI.list21
+
+    UI.header2 = Instance.new("TextLabel")
+    UI.header2.ZIndex = 2
+    UI.header2.BorderSizePixel = 0
+    UI.header2.AutoLocalize = false
+    UI.header2.TextSize = 14
+    UI.header2.TextXAlignment = Enum.TextXAlignment.Left
+    UI.header2.TextTransparency = 0.8
+    UI.header2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header2.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.header2.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.header2.BackgroundTransparency = 1
+    UI.header2.AnchorPoint = Vector2.new(0.5, 0)
+    UI.header2.Size = UDim2.new(1, 0, 0, 16)
+    UI.header2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header2.Text = "People"
+    UI.header2.LayoutOrder = 1
+    UI.header2.Name = "header"
+    UI.header2.Position = UDim2.new(0.5, 0, 0, 0)
+    UI.header2.Parent = UI.People
+
+    UI.icon10 = Instance.new("ImageLabel")
+    UI.icon10.BorderSizePixel = 0
+    UI.icon10.ScaleType = Enum.ScaleType.Fit
+    UI.icon10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.icon10.ImageTransparency = 0.8
+    UI.icon10.AnchorPoint = Vector2.new(1, 0)
+    UI.icon10.Image = "rbxassetid://11419703997"
+    UI.icon10.Size = UDim2.new(0, 16, 0, 16)
+    UI.icon10.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.icon10.BackgroundTransparency = 1
+    UI.icon10.Name = "icon"
+    UI.icon10.Position = UDim2.new(1, 0, 0, 0)
+    UI.icon10.Parent = UI.People
+
+    UI.scale7 = Instance.new("UIScale")
+    UI.scale7.Name = "scale"
+    UI.scale7.Parent = UI.icon10
+
+    UI.scale8 = Instance.new("UIScale")
+    UI.scale8.Name = "scale"
+    UI.scale8.Parent = UI.People
+
+    UI.stroke2 = Instance.new("UIStroke")
+    UI.stroke2.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke2.Name = "stroke"
+    UI.stroke2.Parent = UI.People
+
+    UI.gradient3 = Instance.new("UIGradient")
+    UI.gradient3.Rotation = -90
+    UI.gradient3.Name = "gradient"
+    UI.gradient3.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(39, 39, 39)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(21, 21, 21))}
+    UI.gradient3.Parent = UI.stroke2
+
+    UI.corner15 = Instance.new("UICorner")
+    UI.corner15.Name = "corner"
+    UI.corner15.CornerRadius = UDim.new(0, 15)
+    UI.corner15.Parent = UI.People
+
+    UI.padding16 = Instance.new("UIPadding")
+    UI.padding16.PaddingTop = UDim.new(0, 12)
+    UI.padding16.PaddingRight = UDim.new(0, 14)
+    UI.padding16.Name = "padding"
+    UI.padding16.PaddingLeft = UDim.new(0, 14)
+    UI.padding16.PaddingBottom = UDim.new(0, 10)
+    UI.padding16.Parent = UI.People
+
+    UI.header3 = Instance.new("Frame")
+    UI.header3.BorderSizePixel = 0
+    UI.header3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.header3.Size = UDim2.new(1, 0, 0, 30)
+    UI.header3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header3.Name = "header"
+    UI.header3.LayoutOrder = -1
+    UI.header3.BackgroundTransparency = 1
+    UI.header3.Parent = UI.people
+
+    UI.list22 = Instance.new("UIListLayout")
+    UI.list22.Padding = UDim.new(0, 10)
+    UI.list22.VerticalAlignment = Enum.VerticalAlignment.Center
+    UI.list22.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list22.Name = "list"
+    UI.list22.FillDirection = Enum.FillDirection.Horizontal
+    UI.list22.Parent = UI.header3
+
+    UI.header4 = Instance.new("Frame")
+    UI.header4.BorderSizePixel = 0
+    UI.header4.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
+    UI.header4.AutomaticSize = Enum.AutomaticSize.X
+    UI.header4.Size = UDim2.new(0, 0, 0, 30)
+    UI.header4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header4.Name = "header"
+    UI.header4.LayoutOrder = -1
+    UI.header4.Parent = UI.header3
+
+    UI.list23 = Instance.new("UIListLayout")
+    UI.list23.Padding = UDim.new(0, 10)
+    UI.list23.VerticalAlignment = Enum.VerticalAlignment.Center
+    UI.list23.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list23.Name = "list"
+    UI.list23.FillDirection = Enum.FillDirection.Horizontal
+    UI.list23.Parent = UI.header4
+
+    UI.icon11 = Instance.new("ImageLabel")
+    UI.icon11.BorderSizePixel = 0
+    UI.icon11.ScaleType = Enum.ScaleType.Fit
+    UI.icon11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.icon11.Image = "rbxassetid://100753787236053"
+    UI.icon11.Size = UDim2.new(0, 16, 0, 16)
+    UI.icon11.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.icon11.BackgroundTransparency = 1
+    UI.icon11.Name = "icon"
+    UI.icon11.Parent = UI.header4
+
+    UI.scale9 = Instance.new("UIScale")
+    UI.scale9.Name = "scale"
+    UI.scale9.Parent = UI.icon11
+
+    UI.padding17 = Instance.new("UIPadding")
+    UI.padding17.PaddingRight = UDim.new(0, 14)
+    UI.padding17.Name = "padding"
+    UI.padding17.PaddingLeft = UDim.new(0, 14)
+    UI.padding17.Parent = UI.header4
+
+    UI.corner16 = Instance.new("UICorner")
+    UI.corner16.Name = "corner"
+    UI.corner16.CornerRadius = UDim.new(1, 0)
+    UI.corner16.Parent = UI.header4
+
+    UI.stroke3 = Instance.new("UIStroke")
+    UI.stroke3.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke3.Name = "stroke"
+    UI.stroke3.Parent = UI.header4
+
+    UI.gradient4 = Instance.new("UIGradient")
+    UI.gradient4.Rotation = -101
+    UI.gradient4.Name = "gradient"
+    UI.gradient4.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(53, 53, 53)),ColorSequenceKeypoint.new(0.497, Color3.fromRGB(25, 25, 25)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(53, 53, 53))}
+    UI.gradient4.Parent = UI.stroke3
+
+    UI.label7 = Instance.new("TextLabel")
+    UI.label7.BorderSizePixel = 0
+    UI.label7.AutoLocalize = false
+    UI.label7.TextSize = 14
+    UI.label7.TextXAlignment = Enum.TextXAlignment.Left
+    UI.label7.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.label7.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.label7.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.label7.BackgroundTransparency = 1
+    UI.label7.AnchorPoint = Vector2.new(0.5, 0)
+    UI.label7.Size = UDim2.new(0, 0, 1, 0)
+    UI.label7.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.label7.Text = "People"
+    UI.label7.LayoutOrder = 1
+    UI.label7.AutomaticSize = Enum.AutomaticSize.X
+    UI.label7.Name = "label"
+    UI.label7.Position = UDim2.new(0.5, 0, 0, 0)
+    UI.label7.Parent = UI.header4
+
+    UI.scale10 = Instance.new("UIScale")
+    UI.scale10.Name = "scale"
+    UI.scale10.Parent = UI.label7
+
+    UI.overview = Instance.new("Frame")
+    UI.overview.BorderSizePixel = 0
+    UI.overview.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.overview.AutomaticSize = Enum.AutomaticSize.Y
+    UI.overview.Size = UDim2.new(1, 0, 0, 0)
+    UI.overview.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.overview.Name = "overview"
+    UI.overview.LayoutOrder = 6
+    UI.overview.BackgroundTransparency = 1
+    UI.overview.Parent = UI.scroll
+
+    UI.padding18 = Instance.new("UIPadding")
+    UI.padding18.Name = "padding"
+    UI.padding18.PaddingBottom = UDim.new(0, 5)
+    UI.padding18.Parent = UI.overview
+
+    UI.list24 = Instance.new("UIListLayout")
+    UI.list24.Wraps = true
+    UI.list24.Padding = UDim.new(0, 10)
+    UI.list24.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list24.Name = "list"
+    UI.list24.FillDirection = Enum.FillDirection.Horizontal
+    UI.list24.Parent = UI.overview
+
+    UI.uptime = Instance.new("ImageButton")
+    UI.uptime.SliceScale = 0.05
+    UI.uptime.BorderSizePixel = 0
+    UI.uptime.SliceCenter = Rect.new(512, 512, 512, 512)
+    UI.uptime.ScaleType = Enum.ScaleType.Tile
+    UI.uptime.AutoButtonColor = false
+    UI.uptime.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+    UI.uptime.ImageColor3 = Color3.fromRGB(28, 28, 28)
+    UI.uptime.Image = "rbxassetid://126487203254586"
+    UI.uptime.Size = UDim2.new(0, 250, 0, 130)
+    UI.uptime.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.uptime.Name = "uptime"
+    UI.uptime.Position = UDim2.new(-0.0023, 0, 0.26, 0)
+    UI.uptime.Parent = UI.overview
+
+    UI.padding19 = Instance.new("UIPadding")
+    UI.padding19.PaddingTop = UDim.new(0, 12)
+    UI.padding19.PaddingRight = UDim.new(0, 14)
+    UI.padding19.Name = "padding"
+    UI.padding19.PaddingLeft = UDim.new(0, 14)
+    UI.padding19.PaddingBottom = UDim.new(0, 12)
+    UI.padding19.Parent = UI.uptime
+
+    UI.header5 = Instance.new("TextLabel")
+    UI.header5.BorderSizePixel = 0
+    UI.header5.AutoLocalize = false
+    UI.header5.TextSize = 14
+    UI.header5.TextXAlignment = Enum.TextXAlignment.Left
+    UI.header5.TextTransparency = 0.8
+    UI.header5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header5.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.header5.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.header5.BackgroundTransparency = 1
+    UI.header5.AnchorPoint = Vector2.new(0.5, 0)
+    UI.header5.Size = UDim2.new(1, 0, 0, 16)
+    UI.header5.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header5.Text = "Uptime"
+    UI.header5.LayoutOrder = 1
+    UI.header5.Name = "header"
+    UI.header5.Position = UDim2.new(0.5, 0, 0, 0)
+    UI.header5.Parent = UI.uptime
+
+    UI.stopwatch = Instance.new("Frame")
+    UI.stopwatch.BorderSizePixel = 0
+    UI.stopwatch.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.stopwatch.AnchorPoint = Vector2.new(0.5, 0.5)
+    UI.stopwatch.Size = UDim2.new(1, 0, 0, 50)
+    UI.stopwatch.Position = UDim2.new(0.5, 0, 0.5, 0)
+    UI.stopwatch.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.stopwatch.Name = "stopwatch"
+    UI.stopwatch.LayoutOrder = 2
+    UI.stopwatch.BackgroundTransparency = 1
+    UI.stopwatch.Parent = UI.uptime
+
+    UI.list25 = Instance.new("UIListLayout")
+    UI.list25.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    UI.list25.Padding = UDim.new(0, 4)
+    UI.list25.VerticalAlignment = Enum.VerticalAlignment.Center
+    UI.list25.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list25.Name = "list"
+    UI.list25.FillDirection = Enum.FillDirection.Horizontal
+    UI.list25.Parent = UI.stopwatch
+
+    UI.Days = Instance.new("TextLabel")
+    UI.Days.BorderSizePixel = 0
+    UI.Days.AutoLocalize = false
+    UI.Days.TextSize = 30
+    UI.Days.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
+    UI.Days.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    UI.Days.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.Days.BackgroundTransparency = 1
+    UI.Days.AnchorPoint = Vector2.new(0.5, 1)
+    UI.Days.Size = UDim2.new(1, 0, 0, 40)
+    UI.Days.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.Days.Text = "00"
+    UI.Days.LayoutOrder = 1
+    UI.Days.Name = "Days"
+    UI.Days.Position = UDim2.new(0.5, 0, 1, -30)
+    UI.Days.Parent = UI.stopwatch
+
+    UI.flex9 = Instance.new("UIFlexItem")
+    UI.flex9.Name = "flex"
+    UI.flex9.FlexMode = Enum.UIFlexMode.Fill
+    UI.flex9.Parent = UI.Days
+
+    UI.padding20 = Instance.new("UIPadding")
+    UI.padding20.Name = "padding"
+    UI.padding20.Parent = UI.Days
+
+    UI.corner17 = Instance.new("UICorner")
+    UI.corner17.Name = "corner"
+    UI.corner17.CornerRadius = UDim.new(1, 0)
+    UI.corner17.Parent = UI.Days
+
+    UI.divider2 = Instance.new("TextLabel")
+    UI.divider2.BorderSizePixel = 0
+    UI.divider2.AutoLocalize = false
+    UI.divider2.TextSize = 30
+    UI.divider2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.divider2.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    UI.divider2.TextColor3 = Color3.fromRGB(77, 77, 77)
+    UI.divider2.BackgroundTransparency = 1
+    UI.divider2.AnchorPoint = Vector2.new(0.5, 1)
+    UI.divider2.Size = UDim2.new(0, 10, 0, 40)
+    UI.divider2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.divider2.Text = ":"
+    UI.divider2.LayoutOrder = 2
+    UI.divider2.Name = "divider"
+    UI.divider2.Position = UDim2.new(0.5, 0, 1, -30)
+    UI.divider2.Parent = UI.stopwatch
+
+    UI.Hours = Instance.new("TextLabel")
+    UI.Hours.BorderSizePixel = 0
+    UI.Hours.AutoLocalize = false
+    UI.Hours.TextSize = 30
+    UI.Hours.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
+    UI.Hours.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    UI.Hours.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.Hours.BackgroundTransparency = 1
+    UI.Hours.AnchorPoint = Vector2.new(0.5, 1)
+    UI.Hours.Size = UDim2.new(1, 0, 0, 40)
+    UI.Hours.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.Hours.Text = "00"
+    UI.Hours.LayoutOrder = 3
+    UI.Hours.Name = "Hours"
+    UI.Hours.Position = UDim2.new(0.5, 0, 1, -30)
+    UI.Hours.Parent = UI.stopwatch
+
+    UI.flex10 = Instance.new("UIFlexItem")
+    UI.flex10.Name = "flex"
+    UI.flex10.FlexMode = Enum.UIFlexMode.Fill
+    UI.flex10.Parent = UI.Hours
+
+    UI.padding21 = Instance.new("UIPadding")
+    UI.padding21.Name = "padding"
+    UI.padding21.Parent = UI.Hours
+
+    UI.corner18 = Instance.new("UICorner")
+    UI.corner18.Name = "corner"
+    UI.corner18.CornerRadius = UDim.new(1, 0)
+    UI.corner18.Parent = UI.Hours
+
+    UI.divider3 = Instance.new("TextLabel")
+    UI.divider3.BorderSizePixel = 0
+    UI.divider3.AutoLocalize = false
+    UI.divider3.TextSize = 30
+    UI.divider3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.divider3.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    UI.divider3.TextColor3 = Color3.fromRGB(77, 77, 77)
+    UI.divider3.BackgroundTransparency = 1
+    UI.divider3.AnchorPoint = Vector2.new(0.5, 1)
+    UI.divider3.Size = UDim2.new(0, 10, 0, 40)
+    UI.divider3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.divider3.Text = ":"
+    UI.divider3.LayoutOrder = 4
+    UI.divider3.Name = "divider"
+    UI.divider3.Position = UDim2.new(0.5, 0, 1, -30)
+    UI.divider3.Parent = UI.stopwatch
+
+    UI.Minutes = Instance.new("TextLabel")
+    UI.Minutes.BorderSizePixel = 0
+    UI.Minutes.AutoLocalize = false
+    UI.Minutes.TextSize = 30
+    UI.Minutes.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
+    UI.Minutes.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    UI.Minutes.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.Minutes.BackgroundTransparency = 1
+    UI.Minutes.AnchorPoint = Vector2.new(0.5, 1)
+    UI.Minutes.Size = UDim2.new(1, 0, 0, 40)
+    UI.Minutes.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.Minutes.Text = "00"
+    UI.Minutes.LayoutOrder = 5
+    UI.Minutes.Name = "Minutes"
+    UI.Minutes.Position = UDim2.new(0.5, 0, 1, -30)
+    UI.Minutes.Parent = UI.stopwatch
+
+    UI.flex11 = Instance.new("UIFlexItem")
+    UI.flex11.Name = "flex"
+    UI.flex11.FlexMode = Enum.UIFlexMode.Fill
+    UI.flex11.Parent = UI.Minutes
+
+    UI.padding22 = Instance.new("UIPadding")
+    UI.padding22.Name = "padding"
+    UI.padding22.Parent = UI.Minutes
+
+    UI.corner19 = Instance.new("UICorner")
+    UI.corner19.Name = "corner"
+    UI.corner19.CornerRadius = UDim.new(1, 0)
+    UI.corner19.Parent = UI.Minutes
+
+    UI.divider4 = Instance.new("TextLabel")
+    UI.divider4.BorderSizePixel = 0
+    UI.divider4.AutoLocalize = false
+    UI.divider4.TextSize = 30
+    UI.divider4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.divider4.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    UI.divider4.TextColor3 = Color3.fromRGB(77, 77, 77)
+    UI.divider4.BackgroundTransparency = 1
+    UI.divider4.AnchorPoint = Vector2.new(0.5, 1)
+    UI.divider4.Size = UDim2.new(0, 10, 0, 40)
+    UI.divider4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.divider4.Text = ":"
+    UI.divider4.LayoutOrder = 6
+    UI.divider4.Name = "divider"
+    UI.divider4.Position = UDim2.new(0.5, 0, 1, -30)
+    UI.divider4.Parent = UI.stopwatch
+
+    UI.Seconds = Instance.new("TextLabel")
+    UI.Seconds.BorderSizePixel = 0
+    UI.Seconds.AutoLocalize = false
+    UI.Seconds.TextSize = 30
+    UI.Seconds.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
+    UI.Seconds.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    UI.Seconds.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.Seconds.BackgroundTransparency = 1
+    UI.Seconds.AnchorPoint = Vector2.new(0.5, 1)
+    UI.Seconds.Size = UDim2.new(1, 0, 0, 40)
+    UI.Seconds.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.Seconds.Text = "00"
+    UI.Seconds.LayoutOrder = 7
+    UI.Seconds.Name = "Seconds"
+    UI.Seconds.Position = UDim2.new(0.5, 0, 1, -30)
+    UI.Seconds.Parent = UI.stopwatch
+
+    UI.flex12 = Instance.new("UIFlexItem")
+    UI.flex12.Name = "flex"
+    UI.flex12.FlexMode = Enum.UIFlexMode.Fill
+    UI.flex12.Parent = UI.Seconds
+
+    UI.padding23 = Instance.new("UIPadding")
+    UI.padding23.Name = "padding"
+    UI.padding23.Parent = UI.Seconds
+
+    UI.corner20 = Instance.new("UICorner")
+    UI.corner20.Name = "corner"
+    UI.corner20.CornerRadius = UDim.new(1, 0)
+    UI.corner20.Parent = UI.Seconds
+
+    UI.label8 = Instance.new("Frame")
+    UI.label8.BorderSizePixel = 0
+    UI.label8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.label8.AnchorPoint = Vector2.new(0.5, 0.5)
+    UI.label8.Size = UDim2.new(1, 0, 0, 16)
+    UI.label8.Position = UDim2.new(0.5, 0, 1, -20)
+    UI.label8.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.label8.Name = "label"
+    UI.label8.LayoutOrder = 3
+    UI.label8.BackgroundTransparency = 1
+    UI.label8.Parent = UI.uptime
+
+    UI.list26 = Instance.new("UIListLayout")
+    UI.list26.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    UI.list26.HorizontalFlex = Enum.UIFlexAlignment.Fill
+    UI.list26.Padding = UDim.new(0, 20)
+    UI.list26.VerticalAlignment = Enum.VerticalAlignment.Center
+    UI.list26.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list26.Name = "list"
+    UI.list26.FillDirection = Enum.FillDirection.Horizontal
+    UI.list26.Parent = UI.label8
+
+    UI.days = Instance.new("TextLabel")
+    UI.days.BorderSizePixel = 0
+    UI.days.AutoLocalize = false
+    UI.days.TextSize = 12
+    UI.days.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.days.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.days.TextColor3 = Color3.fromRGB(162, 162, 162)
+    UI.days.BackgroundTransparency = 1
+    UI.days.AnchorPoint = Vector2.new(0.5, 1)
+    UI.days.Size = UDim2.new(0, 20, 0, 20)
+    UI.days.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.days.Text = "D"
+    UI.days.LayoutOrder = 1
+    UI.days.Name = "days"
+    UI.days.Position = UDim2.new(0.5, 0, 1, -30)
+    UI.days.Parent = UI.label8
+
+    UI.stroke4 = Instance.new("UIStroke")
+    UI.stroke4.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke4.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    UI.stroke4.Name = "stroke"
+    UI.stroke4.Parent = UI.days
+
+    UI.gradient5 = Instance.new("UIGradient")
+    UI.gradient5.Rotation = -90
+    UI.gradient5.Name = "gradient"
+    UI.gradient5.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(44, 44, 44)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(17, 17, 17))}
+    UI.gradient5.Parent = UI.stroke4
+
+    UI.corner21 = Instance.new("UICorner")
+    UI.corner21.Name = "corner"
+    UI.corner21.CornerRadius = UDim.new(1, 0)
+    UI.corner21.Parent = UI.days
+
+    UI.hours = Instance.new("TextLabel")
+    UI.hours.BorderSizePixel = 0
+    UI.hours.AutoLocalize = false
+    UI.hours.TextSize = 12
+    UI.hours.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.hours.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.hours.TextColor3 = Color3.fromRGB(162, 162, 162)
+    UI.hours.BackgroundTransparency = 1
+    UI.hours.AnchorPoint = Vector2.new(0.5, 1)
+    UI.hours.Size = UDim2.new(0, 20, 0, 20)
+    UI.hours.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.hours.Text = "H"
+    UI.hours.LayoutOrder = 3
+    UI.hours.Name = "hours"
+    UI.hours.Position = UDim2.new(0.5, 0, 1, -30)
+    UI.hours.Parent = UI.label8
+
+    UI.corner22 = Instance.new("UICorner")
+    UI.corner22.Name = "corner"
+    UI.corner22.CornerRadius = UDim.new(1, 0)
+    UI.corner22.Parent = UI.hours
+
+    UI.stroke5 = Instance.new("UIStroke")
+    UI.stroke5.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke5.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    UI.stroke5.Name = "stroke"
+    UI.stroke5.Parent = UI.hours
+
+    UI.gradient6 = Instance.new("UIGradient")
+    UI.gradient6.Rotation = -90
+    UI.gradient6.Name = "gradient"
+    UI.gradient6.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(44, 44, 44)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(17, 17, 17))}
+    UI.gradient6.Parent = UI.stroke5
+
+    UI.minutes = Instance.new("TextLabel")
+    UI.minutes.BorderSizePixel = 0
+    UI.minutes.AutoLocalize = false
+    UI.minutes.TextSize = 12
+    UI.minutes.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.minutes.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.minutes.TextColor3 = Color3.fromRGB(162, 162, 162)
+    UI.minutes.BackgroundTransparency = 1
+    UI.minutes.AnchorPoint = Vector2.new(0.5, 1)
+    UI.minutes.Size = UDim2.new(0, 20, 0, 20)
+    UI.minutes.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.minutes.Text = "M"
+    UI.minutes.LayoutOrder = 5
+    UI.minutes.Name = "minutes"
+    UI.minutes.Position = UDim2.new(0.5, 0, 1, -30)
+    UI.minutes.Parent = UI.label8
+
+    UI.stroke6 = Instance.new("UIStroke")
+    UI.stroke6.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke6.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    UI.stroke6.Name = "stroke"
+    UI.stroke6.Parent = UI.minutes
+
+    UI.gradient7 = Instance.new("UIGradient")
+    UI.gradient7.Rotation = -90
+    UI.gradient7.Name = "gradient"
+    UI.gradient7.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(44, 44, 44)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(17, 17, 17))}
+    UI.gradient7.Parent = UI.stroke6
+
+    UI.corner23 = Instance.new("UICorner")
+    UI.corner23.Name = "corner"
+    UI.corner23.CornerRadius = UDim.new(1, 0)
+    UI.corner23.Parent = UI.minutes
+
+    UI.seconds = Instance.new("TextLabel")
+    UI.seconds.BorderSizePixel = 0
+    UI.seconds.AutoLocalize = false
+    UI.seconds.TextSize = 12
+    UI.seconds.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.seconds.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.seconds.TextColor3 = Color3.fromRGB(162, 162, 162)
+    UI.seconds.BackgroundTransparency = 1
+    UI.seconds.AnchorPoint = Vector2.new(0.5, 1)
+    UI.seconds.Size = UDim2.new(0, 20, 0, 20)
+    UI.seconds.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.seconds.Text = "S"
+    UI.seconds.LayoutOrder = 7
+    UI.seconds.Name = "seconds"
+    UI.seconds.Position = UDim2.new(0.5, 0, 1, -30)
+    UI.seconds.Parent = UI.label8
+
+    UI.stroke7 = Instance.new("UIStroke")
+    UI.stroke7.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke7.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    UI.stroke7.Name = "stroke"
+    UI.stroke7.Parent = UI.seconds
+
+    UI.gradient8 = Instance.new("UIGradient")
+    UI.gradient8.Rotation = -90
+    UI.gradient8.Name = "gradient"
+    UI.gradient8.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(44, 44, 44)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(17, 17, 17))}
+    UI.gradient8.Parent = UI.stroke7
+
+    UI.corner24 = Instance.new("UICorner")
+    UI.corner24.Name = "corner"
+    UI.corner24.CornerRadius = UDim.new(1, 0)
+    UI.corner24.Parent = UI.seconds
+
+    UI.list27 = Instance.new("UIListLayout")
+    UI.list27.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    UI.list27.Padding = UDim.new(0, 10)
+    UI.list27.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list27.Name = "list"
+    UI.list27.Parent = UI.uptime
+
+    UI.flex13 = Instance.new("UIFlexItem")
+    UI.flex13.ShrinkRatio = 1
+    UI.flex13.GrowRatio = 1
+    UI.flex13.Name = "flex"
+    UI.flex13.FlexMode = Enum.UIFlexMode.Custom
+    UI.flex13.Parent = UI.uptime
+
+    UI.scale11 = Instance.new("UIScale")
+    UI.scale11.Name = "scale"
+    UI.scale11.Parent = UI.uptime
+
+    UI.corner25 = Instance.new("UICorner")
+    UI.corner25.Name = "corner"
+    UI.corner25.CornerRadius = UDim.new(0, 15)
+    UI.corner25.Parent = UI.uptime
+
+    UI.stroke8 = Instance.new("UIStroke")
+    UI.stroke8.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke8.Name = "stroke"
+    UI.stroke8.Parent = UI.uptime
+
+    UI.gradient9 = Instance.new("UIGradient")
+    UI.gradient9.Rotation = -90
+    UI.gradient9.Name = "gradient"
+    UI.gradient9.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(39, 39, 39)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(21, 21, 21))}
+    UI.gradient9.Parent = UI.stroke8
+
+    UI.console = Instance.new("ImageButton")
+    UI.console.SliceScale = 0.05
+    UI.console.BorderSizePixel = 0
+    UI.console.SliceCenter = Rect.new(512, 512, 512, 512)
+    UI.console.ScaleType = Enum.ScaleType.Slice
+    UI.console.AutoButtonColor = false
+    UI.console.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+    UI.console.ImageColor3 = Color3.fromRGB(28, 28, 28)
+    UI.console.Size = UDim2.new(0, 250, 0, 130)
+    UI.console.ClipsDescendants = true
+    UI.console.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.console.Name = "console"
+    UI.console.Parent = UI.overview
+
+    UI.padding24 = Instance.new("UIPadding")
+    UI.padding24.PaddingTop = UDim.new(0, 12)
+    UI.padding24.PaddingRight = UDim.new(0, 14)
+    UI.padding24.Name = "padding"
+    UI.padding24.PaddingLeft = UDim.new(0, 14)
+    UI.padding24.PaddingBottom = UDim.new(0, 10)
+    UI.padding24.Parent = UI.console
+
+    UI.logs = Instance.new("Frame")
+    UI.logs.BorderSizePixel = 0
+    UI.logs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.logs.Selectable = true
+    UI.logs.Size = UDim2.new(1, 0, 1, -24)
+    UI.logs.Position = UDim2.new(0, 0, 0, 24)
+    UI.logs.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.logs.Name = "logs"
+    UI.logs.BackgroundTransparency = 1
+    UI.logs.SelectionGroup = true
+    UI.logs.Parent = UI.console
+
+    UI.list28 = Instance.new("UIListLayout")
+    UI.list28.Padding = UDim.new(0, 8)
+    UI.list28.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list28.Name = "list"
+    UI.list28.Parent = UI.logs
+
+    UI.log = Instance.new("TextLabel")
+    UI.log.TextWrapped = true
+    UI.log.BorderSizePixel = 0
+    UI.log.AutoLocalize = false
+    UI.log.TextSize = 14
+    UI.log.TextXAlignment = Enum.TextXAlignment.Left
+    UI.log.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    UI.log.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    UI.log.TextColor3 = Color3.fromRGB(215, 215, 215)
+    UI.log.AnchorPoint = Vector2.new(0.5, 1)
+    UI.log.Size = UDim2.new(1, 0, 0, 0)
+    UI.log.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.log.Text = "error log"
+    UI.log.Selectable = true
+    UI.log.AutomaticSize = Enum.AutomaticSize.Y
+    UI.log.Name = "log"
+    UI.log.Position = UDim2.new(0.5, 0, 1, 0)
+    UI.log.Parent = UI.list28
+
+    UI.padding25 = Instance.new("UIPadding")
+    UI.padding25.PaddingTop = UDim.new(0, 10)
+    UI.padding25.PaddingRight = UDim.new(0, 12)
+    UI.padding25.Name = "padding"
+    UI.padding25.PaddingLeft = UDim.new(0, 12)
+    UI.padding25.PaddingBottom = UDim.new(0, 10)
+    UI.padding25.Parent = UI.log
+
+    UI.list29 = Instance.new("UIListLayout")
+    UI.list29.Padding = UDim.new(0, 8)
+    UI.list29.VerticalAlignment = Enum.VerticalAlignment.Center
+    UI.list29.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list29.Name = "list"
+    UI.list29.FillDirection = Enum.FillDirection.Horizontal
+    UI.list29.Parent = UI.log
+
+    UI.corner26 = Instance.new("UICorner")
+    UI.corner26.Name = "corner"
+    UI.corner26.CornerRadius = UDim.new(0, 15)
+    UI.corner26.Parent = UI.log
+
+    UI.stroke9 = Instance.new("UIStroke")
+    UI.stroke9.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke9.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    UI.stroke9.Name = "stroke"
+    UI.stroke9.Parent = UI.log
+
+    UI.gradient10 = Instance.new("UIGradient")
+    UI.gradient10.Rotation = 90
+    UI.gradient10.Name = "gradient"
+    UI.gradient10.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(53, 53, 53)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(21, 21, 21))}
+    UI.gradient10.Parent = UI.stroke9
+
+    UI.padding26 = Instance.new("UIPadding")
+    UI.padding26.PaddingTop = UDim.new(0, 5)
+    UI.padding26.Name = "padding"
+    UI.padding26.Parent = UI.logs
+
+    UI.fade = Instance.new("ImageLabel")
+    UI.fade.BorderSizePixel = 0
+    UI.fade.SliceCenter = Rect.new(512, 512, 512, 512)
+    UI.fade.SliceScale = 0.05
+    UI.fade.ScaleType = Enum.ScaleType.Slice
+    UI.fade.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    UI.fade.ImageColor3 = Color3.fromRGB(28, 28, 28)
+    UI.fade.AnchorPoint = Vector2.new(0.5, 1)
+    UI.fade.Image = "rbxassetid://125088425775676"
+    UI.fade.Size = UDim2.new(1, 28, 0, 50)
+    UI.fade.ClipsDescendants = true
+    UI.fade.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.fade.BackgroundTransparency = 1
+    UI.fade.Selectable = true
+    UI.fade.Name = "fade"
+    UI.fade.Position = UDim2.new(0.5, 0, 1, 10)
+    UI.fade.Parent = UI.console
+
+    UI.gradient11 = Instance.new("UIGradient")
+    UI.gradient11.Rotation = -90
+    UI.gradient11.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(1.000, 1)}
+    UI.gradient11.Name = "gradient"
+    UI.gradient11.Parent = UI.fade
+
+    UI.scale12 = Instance.new("UIScale")
+    UI.scale12.Name = "scale"
+    UI.scale12.Parent = UI.console
+
+    UI.stroke10 = Instance.new("UIStroke")
+    UI.stroke10.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke10.Name = "stroke"
+    UI.stroke10.Parent = UI.console
+
+    UI.gradient12 = Instance.new("UIGradient")
+    UI.gradient12.Rotation = -90
+    UI.gradient12.Name = "gradient"
+    UI.gradient12.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(39, 39, 39)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(21, 21, 21))}
+    UI.gradient12.Parent = UI.stroke10
+
+    UI.corner27 = Instance.new("UICorner")
+    UI.corner27.Name = "corner"
+    UI.corner27.CornerRadius = UDim.new(0, 15)
+    UI.corner27.Parent = UI.console
+
+    UI.flex14 = Instance.new("UIFlexItem")
+    UI.flex14.ShrinkRatio = 1
+    UI.flex14.GrowRatio = 1
+    UI.flex14.Name = "flex"
+    UI.flex14.FlexMode = Enum.UIFlexMode.Custom
+    UI.flex14.Parent = UI.console
+
+    UI.header6 = Instance.new("TextLabel")
+    UI.header6.ZIndex = 2
+    UI.header6.BorderSizePixel = 0
+    UI.header6.AutoLocalize = false
+    UI.header6.TextSize = 14
+    UI.header6.TextXAlignment = Enum.TextXAlignment.Left
+    UI.header6.TextTransparency = 0.8
+    UI.header6.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header6.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.header6.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.header6.BackgroundTransparency = 1
+    UI.header6.AnchorPoint = Vector2.new(0.5, 0)
+    UI.header6.Size = UDim2.new(1, 0, 0, 16)
+    UI.header6.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header6.Text = "Developer Console"
+    UI.header6.LayoutOrder = 1
+    UI.header6.Name = "header"
+    UI.header6.Position = UDim2.new(0.5, 0, 0, 0)
+    UI.header6.Parent = UI.console
+
+    UI.serverteleportation = Instance.new("ImageButton")
+    UI.serverteleportation.SliceScale = 0.05
+    UI.serverteleportation.BorderSizePixel = 0
+    UI.serverteleportation.SliceCenter = Rect.new(512, 512, 512, 512)
+    UI.serverteleportation.ScaleType = Enum.ScaleType.Slice
+    UI.serverteleportation.AutoButtonColor = false
+    UI.serverteleportation.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+    UI.serverteleportation.ImageColor3 = Color3.fromRGB(28, 28, 28)
+    UI.serverteleportation.Size = UDim2.new(0, 250, 0, 130)
+    UI.serverteleportation.ClipsDescendants = true
+    UI.serverteleportation.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.serverteleportation.Name = "server_teleportation"
+    UI.serverteleportation.Parent = UI.overview
+
+    UI.padding27 = Instance.new("UIPadding")
+    UI.padding27.PaddingTop = UDim.new(0, 12)
+    UI.padding27.PaddingRight = UDim.new(0, 14)
+    UI.padding27.Name = "padding"
+    UI.padding27.PaddingLeft = UDim.new(0, 14)
+    UI.padding27.PaddingBottom = UDim.new(0, 10)
+    UI.padding27.Parent = UI.serverteleportation
+
+    UI.flex15 = Instance.new("UIFlexItem")
+    UI.flex15.ShrinkRatio = 1
+    UI.flex15.GrowRatio = 1
+    UI.flex15.Name = "flex"
+    UI.flex15.FlexMode = Enum.UIFlexMode.Custom
+    UI.flex15.Parent = UI.serverteleportation
+
+    UI.header7 = Instance.new("TextLabel")
+    UI.header7.ZIndex = 2
+    UI.header7.BorderSizePixel = 0
+    UI.header7.AutoLocalize = false
+    UI.header7.TextSize = 14
+    UI.header7.TextXAlignment = Enum.TextXAlignment.Left
+    UI.header7.TextTransparency = 0.8
+    UI.header7.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header7.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    UI.header7.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.header7.BackgroundTransparency = 1
+    UI.header7.AnchorPoint = Vector2.new(0.5, 0)
+    UI.header7.Size = UDim2.new(1, 0, 0, 16)
+    UI.header7.Visible = false
+    UI.header7.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header7.Text = "Teleport"
+    UI.header7.LayoutOrder = 1
+    UI.header7.Name = "header"
+    UI.header7.Position = UDim2.new(0.5, 0, 0, 0)
+    UI.header7.Parent = UI.serverteleportation
+
+    UI.scale13 = Instance.new("UIScale")
+    UI.scale13.Name = "scale"
+    UI.scale13.Parent = UI.serverteleportation
+
+    UI.content2 = Instance.new("Frame")
+    UI.content2.BorderSizePixel = 0
+    UI.content2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.content2.AnchorPoint = Vector2.new(0.5, 0.5)
+    UI.content2.Size = UDim2.new(1, 0, 1, 0)
+    UI.content2.Position = UDim2.new(0.5, 0, 0.5, 0)
+    UI.content2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.content2.Name = "content"
+    UI.content2.BackgroundTransparency = 1
+    UI.content2.Parent = UI.serverteleportation
+
+    UI.icon12 = Instance.new("ImageLabel")
+    UI.icon12.BorderSizePixel = 0
+    UI.icon12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.icon12.Image = "rbxassetid://81439029637522"
+    UI.icon12.Size = UDim2.new(0, 24, 0, 24)
+    UI.icon12.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.icon12.BackgroundTransparency = 1
+    UI.icon12.Name = "icon"
+    UI.icon12.Parent = UI.content2
+
+    UI.list30 = Instance.new("UIListLayout")
+    UI.list30.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    UI.list30.Padding = UDim.new(0, 10)
+    UI.list30.VerticalAlignment = Enum.VerticalAlignment.Center
+    UI.list30.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list30.Name = "list"
+    UI.list30.Parent = UI.content2
+
+    UI.label9 = Instance.new("TextLabel")
+    UI.label9.BorderSizePixel = 0
+    UI.label9.AutoLocalize = false
+    UI.label9.TextSize = 14
+    UI.label9.TextTransparency = 0.2
+    UI.label9.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.label9.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.label9.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.label9.BackgroundTransparency = 1
+    UI.label9.AnchorPoint = Vector2.new(0.5, 1)
+    UI.label9.Size = UDim2.new(1, 0, 0, 16)
+    UI.label9.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.label9.Text = "Server Teleportation"
+    UI.label9.LayoutOrder = 1
+    UI.label9.Name = "label"
+    UI.label9.Position = UDim2.new(0.5, 0, 1, -10)
+    UI.label9.Parent = UI.content2
+
+    UI.backgroundimage = Instance.new("ImageLabel")
+    UI.backgroundimage.ZIndex = -10
+    UI.backgroundimage.BorderSizePixel = 0
+    UI.backgroundimage.ScaleType = Enum.ScaleType.Crop
+    UI.backgroundimage.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.backgroundimage.ImageTransparency = 0.1
+    UI.backgroundimage.AnchorPoint = Vector2.new(0.5, 0)
+    UI.backgroundimage.Image = "rbxassetid://128174308673072"
+    UI.backgroundimage.Size = UDim2.new(1, 28, 1, 22)
+    UI.backgroundimage.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.backgroundimage.BackgroundTransparency = 1
+    UI.backgroundimage.Name = "background_image"
+    UI.backgroundimage.Position = UDim2.new(0.5, 0, 0, -12)
+    UI.backgroundimage.Parent = UI.serverteleportation
+
+    UI.UICorner4 = Instance.new("UICorner")
+    UI.UICorner4.CornerRadius = UDim.new(0, 15)
+    UI.UICorner4.Parent = UI.backgroundimage
+
+    UI.stroke11 = Instance.new("UIStroke")
+    UI.stroke11.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke11.Name = "stroke"
+    UI.stroke11.Parent = UI.serverteleportation
+
+    UI.gradient13 = Instance.new("UIGradient")
+    UI.gradient13.Rotation = -90
+    UI.gradient13.Name = "gradient"
+    UI.gradient13.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(39, 39, 39)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(21, 21, 21))}
+    UI.gradient13.Parent = UI.stroke11
+
+    UI.corner28 = Instance.new("UICorner")
+    UI.corner28.Name = "corner"
+    UI.corner28.CornerRadius = UDim.new(0, 15)
+    UI.corner28.Parent = UI.serverteleportation
+
+    UI.privacy = Instance.new("ImageButton")
+    UI.privacy.SliceScale = 0.05
+    UI.privacy.BorderSizePixel = 0
+    UI.privacy.SliceCenter = Rect.new(512, 512, 512, 512)
+    UI.privacy.ScaleType = Enum.ScaleType.Slice
+    UI.privacy.AutoButtonColor = false
+    UI.privacy.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+    UI.privacy.ImageColor3 = Color3.fromRGB(28, 28, 28)
+    UI.privacy.Size = UDim2.new(0, 150, 0, 130)
+    UI.privacy.ClipsDescendants = true
+    UI.privacy.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.privacy.Name = "privacy"
+    UI.privacy.Parent = UI.overview
+
+    UI.padding28 = Instance.new("UIPadding")
+    UI.padding28.PaddingTop = UDim.new(0, 12)
+    UI.padding28.PaddingRight = UDim.new(0, 14)
+    UI.padding28.Name = "padding"
+    UI.padding28.PaddingLeft = UDim.new(0, 14)
+    UI.padding28.PaddingBottom = UDim.new(0, 10)
+    UI.padding28.Parent = UI.privacy
+
+    UI.flex16 = Instance.new("UIFlexItem")
+    UI.flex16.ShrinkRatio = 1
+    UI.flex16.GrowRatio = 0.5
+    UI.flex16.Name = "flex"
+    UI.flex16.FlexMode = Enum.UIFlexMode.Custom
+    UI.flex16.Parent = UI.privacy
+
+    UI.scale14 = Instance.new("UIScale")
+    UI.scale14.Name = "scale"
+    UI.scale14.Parent = UI.privacy
+
+    UI.content3 = Instance.new("Frame")
+    UI.content3.BorderSizePixel = 0
+    UI.content3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.content3.AnchorPoint = Vector2.new(0.5, 0.5)
+    UI.content3.Size = UDim2.new(1, 0, 1, 0)
+    UI.content3.Position = UDim2.new(0.5, 0, 0.5, 0)
+    UI.content3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.content3.Name = "content"
+    UI.content3.BackgroundTransparency = 1
+    UI.content3.Parent = UI.privacy
+
+    UI.icon13 = Instance.new("ImageLabel")
+    UI.icon13.BorderSizePixel = 0
+    UI.icon13.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.icon13.Image = "rbxassetid://104512588477874"
+    UI.icon13.Size = UDim2.new(0, 24, 0, 24)
+    UI.icon13.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.icon13.BackgroundTransparency = 1
+    UI.icon13.Name = "icon"
+    UI.icon13.Parent = UI.content3
+
+    UI.list31 = Instance.new("UIListLayout")
+    UI.list31.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    UI.list31.Padding = UDim.new(0, 10)
+    UI.list31.VerticalAlignment = Enum.VerticalAlignment.Center
+    UI.list31.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list31.Name = "list"
+    UI.list31.Parent = UI.content3
+
+    UI.label10 = Instance.new("TextLabel")
+    UI.label10.BorderSizePixel = 0
+    UI.label10.AutoLocalize = false
+    UI.label10.TextSize = 14
+    UI.label10.TextTransparency = 0.2
+    UI.label10.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.label10.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.label10.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.label10.BackgroundTransparency = 1
+    UI.label10.AnchorPoint = Vector2.new(0.5, 1)
+    UI.label10.Size = UDim2.new(1, 0, 0, 16)
+    UI.label10.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.label10.Text = "Privacy"
+    UI.label10.LayoutOrder = 1
+    UI.label10.Name = "label"
+    UI.label10.Position = UDim2.new(0.5, 0, 1, -10)
+    UI.label10.Parent = UI.content3
+
+    UI.stroke12 = Instance.new("UIStroke")
+    UI.stroke12.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke12.Name = "stroke"
+    UI.stroke12.Parent = UI.privacy
+
+    UI.gradient14 = Instance.new("UIGradient")
+    UI.gradient14.Rotation = -90
+    UI.gradient14.Name = "gradient"
+    UI.gradient14.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(39, 39, 39)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(21, 21, 21))}
+    UI.gradient14.Parent = UI.stroke12
+
+    UI.corner29 = Instance.new("UICorner")
+    UI.corner29.Name = "corner"
+    UI.corner29.CornerRadius = UDim.new(0, 15)
+    UI.corner29.Parent = UI.privacy
+
+    UI.header8 = Instance.new("Frame")
+    UI.header8.BorderSizePixel = 0
+    UI.header8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.header8.Size = UDim2.new(1, 0, 0, 30)
+    UI.header8.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header8.Name = "header"
+    UI.header8.LayoutOrder = -1
+    UI.header8.BackgroundTransparency = 1
+    UI.header8.Parent = UI.overview
+
+    UI.list32 = Instance.new("UIListLayout")
+    UI.list32.Padding = UDim.new(0, 10)
+    UI.list32.VerticalAlignment = Enum.VerticalAlignment.Center
+    UI.list32.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list32.Name = "list"
+    UI.list32.FillDirection = Enum.FillDirection.Horizontal
+    UI.list32.Parent = UI.header8
+
+    UI.header9 = Instance.new("Frame")
+    UI.header9.BorderSizePixel = 0
+    UI.header9.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
+    UI.header9.AutomaticSize = Enum.AutomaticSize.X
+    UI.header9.Size = UDim2.new(0, 0, 0, 30)
+    UI.header9.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header9.Name = "header"
+    UI.header9.LayoutOrder = -1
+    UI.header9.Parent = UI.header8
+
+    UI.list33 = Instance.new("UIListLayout")
+    UI.list33.Padding = UDim.new(0, 10)
+    UI.list33.VerticalAlignment = Enum.VerticalAlignment.Center
+    UI.list33.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list33.Name = "list"
+    UI.list33.FillDirection = Enum.FillDirection.Horizontal
+    UI.list33.Parent = UI.header9
+
+    UI.icon14 = Instance.new("ImageLabel")
+    UI.icon14.BorderSizePixel = 0
+    UI.icon14.ScaleType = Enum.ScaleType.Fit
+    UI.icon14.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.icon14.Image = "rbxassetid://100901569640683"
+    UI.icon14.Size = UDim2.new(0, 16, 0, 16)
+    UI.icon14.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.icon14.BackgroundTransparency = 1
+    UI.icon14.Name = "icon"
+    UI.icon14.Parent = UI.header9
+
+    UI.scale15 = Instance.new("UIScale")
+    UI.scale15.Name = "scale"
+    UI.scale15.Parent = UI.icon14
+
+    UI.padding29 = Instance.new("UIPadding")
+    UI.padding29.PaddingRight = UDim.new(0, 14)
+    UI.padding29.Name = "padding"
+    UI.padding29.PaddingLeft = UDim.new(0, 14)
+    UI.padding29.Parent = UI.header9
+
+    UI.corner30 = Instance.new("UICorner")
+    UI.corner30.Name = "corner"
+    UI.corner30.CornerRadius = UDim.new(1, 0)
+    UI.corner30.Parent = UI.header9
+
+    UI.stroke13 = Instance.new("UIStroke")
+    UI.stroke13.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke13.Name = "stroke"
+    UI.stroke13.Parent = UI.header9
+
+    UI.gradient15 = Instance.new("UIGradient")
+    UI.gradient15.Rotation = -101
+    UI.gradient15.Name = "gradient"
+    UI.gradient15.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(53, 53, 53)),ColorSequenceKeypoint.new(0.497, Color3.fromRGB(25, 25, 25)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(53, 53, 53))}
+    UI.gradient15.Parent = UI.stroke13
+
+    UI.label11 = Instance.new("TextLabel")
+    UI.label11.BorderSizePixel = 0
+    UI.label11.AutoLocalize = false
+    UI.label11.TextSize = 14
+    UI.label11.TextXAlignment = Enum.TextXAlignment.Left
+    UI.label11.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.label11.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.label11.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.label11.BackgroundTransparency = 1
+    UI.label11.AnchorPoint = Vector2.new(0.5, 0)
+    UI.label11.Size = UDim2.new(0, 0, 1, 0)
+    UI.label11.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.label11.Text = "Overview"
+    UI.label11.LayoutOrder = 1
+    UI.label11.AutomaticSize = Enum.AutomaticSize.X
+    UI.label11.Name = "label"
+    UI.label11.Position = UDim2.new(0.5, 0, 0, 0)
+    UI.label11.Parent = UI.header9
+
+    UI.scale16 = Instance.new("UIScale")
+    UI.scale16.Name = "scale"
+    UI.scale16.Parent = UI.label11
+
+    UI.information = Instance.new("Frame")
+    UI.information.BorderSizePixel = 0
+    UI.information.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.information.AutomaticSize = Enum.AutomaticSize.Y
+    UI.information.Size = UDim2.new(1, 0, 0, 0)
+    UI.information.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.information.Name = "information"
+    UI.information.LayoutOrder = 3
+    UI.information.BackgroundTransparency = 1
+    UI.information.Parent = UI.scroll
+
+    UI.padding30 = Instance.new("UIPadding")
+    UI.padding30.Name = "padding"
+    UI.padding30.PaddingBottom = UDim.new(0, 5)
+    UI.padding30.Parent = UI.information
+
+    UI.list34 = Instance.new("UIListLayout")
+    UI.list34.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    UI.list34.Wraps = true
+    UI.list34.Padding = UDim.new(0, 10)
+    UI.list34.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list34.Name = "list"
+    UI.list34.FillDirection = Enum.FillDirection.Horizontal
+    UI.list34.Parent = UI.information
+
+    UI.gamedisplay = Instance.new("Frame")
+    UI.gamedisplay.BorderSizePixel = 0
+    UI.gamedisplay.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+    UI.gamedisplay.Selectable = true
+    UI.gamedisplay.AutomaticSize = Enum.AutomaticSize.Y
+    UI.gamedisplay.Size = UDim2.new(0, 160, 0, 200)
+    UI.gamedisplay.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.gamedisplay.Name = "game_display"
+    UI.gamedisplay.BackgroundTransparency = 1
+    UI.gamedisplay.Parent = UI.information
+
+    UI.flex17 = Instance.new("UIFlexItem")
+    UI.flex17.Name = "flex"
+    UI.flex17.FlexMode = Enum.UIFlexMode.Fill
+    UI.flex17.Parent = UI.gamedisplay
+
+    UI.scale17 = Instance.new("UIScale")
+    UI.scale17.Name = "scale"
+    UI.scale17.Parent = UI.gamedisplay
+
+    UI.corner31 = Instance.new("UICorner")
+    UI.corner31.Name = "corner"
+    UI.corner31.CornerRadius = UDim.new(0, 12)
+    UI.corner31.Parent = UI.gamedisplay
+
+    UI.content4 = Instance.new("Frame")
+    UI.content4.BorderSizePixel = 0
+    UI.content4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.content4.AnchorPoint = Vector2.new(0.5, 0)
+    UI.content4.AutomaticSize = Enum.AutomaticSize.Y
+    UI.content4.Size = UDim2.new(1, 0, 1, -100)
+    UI.content4.Position = UDim2.new(0.5, 0, 0, 0)
+    UI.content4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.content4.Name = "content"
+    UI.content4.BackgroundTransparency = 1
+    UI.content4.SelectionGroup = true
+    UI.content4.Parent = UI.gamedisplay
+
+    UI.list35 = Instance.new("UIListLayout")
+    UI.list35.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    UI.list35.Wraps = true
+    UI.list35.Padding = UDim.new(0, 10)
+    UI.list35.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list35.Name = "list"
+    UI.list35.FillDirection = Enum.FillDirection.Horizontal
+    UI.list35.Parent = UI.content4
+
+    UI.padding31 = Instance.new("UIPadding")
+    UI.padding31.PaddingTop = UDim.new(0, 10)
+    UI.padding31.PaddingRight = UDim.new(0, 10)
+    UI.padding31.Name = "padding"
+    UI.padding31.PaddingLeft = UDim.new(0, 10)
+    UI.padding31.PaddingBottom = UDim.new(0, 10)
+    UI.padding31.Parent = UI.content4
+
+    UI.info2 = Instance.new("Frame")
+    UI.info2.BorderSizePixel = 0
+    UI.info2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.info2.Size = UDim2.new(0, 100, 0, 120)
+    UI.info2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.info2.Name = "info"
+    UI.info2.LayoutOrder = 2
+    UI.info2.BackgroundTransparency = 1
+    UI.info2.Parent = UI.content4
+
+    UI.flex18 = Instance.new("UIFlexItem")
+    UI.flex18.Name = "flex"
+    UI.flex18.FlexMode = Enum.UIFlexMode.Fill
+    UI.flex18.Parent = UI.info2
+
+    UI.gamename = Instance.new("TextLabel")
+    UI.gamename.BorderSizePixel = 0
+    UI.gamename.AutoLocalize = false
+    UI.gamename.TextSize = 30
+    UI.gamename.TextXAlignment = Enum.TextXAlignment.Left
+    UI.gamename.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.gamename.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    UI.gamename.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.gamename.BackgroundTransparency = 1
+    UI.gamename.Size = UDim2.new(1, 0, 0, 20)
+    UI.gamename.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.gamename.Text = "Name"
+    UI.gamename.AutomaticSize = Enum.AutomaticSize.Y
+    UI.gamename.Name = "game_name"
+    UI.gamename.Parent = UI.info2
+
+    UI.list36 = Instance.new("UIListLayout")
+    UI.list36.VerticalAlignment = Enum.VerticalAlignment.Center
+    UI.list36.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list36.Name = "list"
+    UI.list36.Parent = UI.info2
+
+    UI.creator = Instance.new("TextLabel")
+    UI.creator.TextWrapped = true
+    UI.creator.BorderSizePixel = 0
+    UI.creator.AutoLocalize = false
+    UI.creator.TextSize = 16
+    UI.creator.TextXAlignment = Enum.TextXAlignment.Left
+    UI.creator.TextTransparency = 0.5
+    UI.creator.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.creator.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.creator.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.creator.BackgroundTransparency = 1
+    UI.creator.Size = UDim2.new(1, 0, 0, 20)
+    UI.creator.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.creator.Text = "Developer"
+    UI.creator.AutomaticSize = Enum.AutomaticSize.Y
+    UI.creator.Name = "creator"
+    UI.creator.Parent = UI.info2
+
+    UI.description = Instance.new("TextLabel")
+    UI.description.TextWrapped = true
+    UI.description.BorderSizePixel = 0
+    UI.description.AutoLocalize = false
+    UI.description.TextSize = 16
+    UI.description.TextXAlignment = Enum.TextXAlignment.Left
+    UI.description.TextTransparency = 0.5
+    UI.description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.description.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.description.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.description.BackgroundTransparency = 1
+    UI.description.Size = UDim2.new(1, 0, 0, 20)
+    UI.description.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.description.Text = "Description"
+    UI.description.LayoutOrder = 3
+    UI.description.AutomaticSize = Enum.AutomaticSize.Y
+    UI.description.Name = "description"
+    UI.description.Parent = UI.content4
+
+    UI.padding32 = Instance.new("UIPadding")
+    UI.padding32.Name = "padding"
+    UI.padding32.PaddingBottom = UDim.new(0, 20)
+    UI.padding32.Parent = UI.description
+
+    UI.icon15 = Instance.new("Frame")
+    UI.icon15.BorderSizePixel = 0
+    UI.icon15.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.icon15.Size = UDim2.new(0, 120, 0, 120)
+    UI.icon15.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.icon15.Name = "icon"
+    UI.icon15.LayoutOrder = 1
+    UI.icon15.BackgroundTransparency = 1
+    UI.icon15.Parent = UI.content4
+
+    UI.shadow = Instance.new("ImageLabel")
+    UI.shadow.ZIndex = 0
+    UI.shadow.BorderSizePixel = 0
+    UI.shadow.SliceCenter = Rect.new(300, 300, 300, 300)
+    UI.shadow.SliceScale = 0.1
+    UI.shadow.ScaleType = Enum.ScaleType.Slice
+    UI.shadow.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    UI.shadow.ImageTransparency = 0.5
+    UI.shadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+    UI.shadow.AnchorPoint = Vector2.new(0.5, 0.5)
+    UI.shadow.Image = "rbxassetid://72548733587158"
+    UI.shadow.Size = UDim2.new(1, 0, 1, 0)
+    UI.shadow.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.shadow.BackgroundTransparency = 1
+    UI.shadow.Name = "shadow"
+    UI.shadow.Position = UDim2.new(0.5, 0, 0.5, 0)
+    UI.shadow.Parent = UI.icon15
+
+    UI.scale18 = Instance.new("UIScale")
+    UI.scale18.Name = "scale"
+    UI.scale18.Parent = UI.shadow
+
+    UI.photo = Instance.new("ImageLabel")
+    UI.photo.BorderSizePixel = 0
+    UI.photo.ScaleType = Enum.ScaleType.Crop
+    UI.photo.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    UI.photo.AnchorPoint = Vector2.new(0.5, 0.5)
+    UI.photo.Size = UDim2.new(0, 90, 0, 90)
+    UI.photo.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.photo.Name = "photo"
+    UI.photo.Position = UDim2.new(0.5, 0, 0.5, 0)
+    UI.photo.Parent = UI.icon15
+
+    UI.StrokeFrame = Instance.new("Frame")
+    UI.StrokeFrame.BorderSizePixel = 0
+    UI.StrokeFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.StrokeFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+    UI.StrokeFrame.Size = UDim2.new(1, 0, 1, 0)
+    UI.StrokeFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+    UI.StrokeFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.StrokeFrame.Name = "StrokeFrame"
+    UI.StrokeFrame.BackgroundTransparency = 1
+    UI.StrokeFrame.Parent = UI.photo
+
+    UI.stroke14 = Instance.new("UIStroke")
+    UI.stroke14.Transparency = 0.8
+    UI.stroke14.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke14.Name = "stroke"
+    UI.stroke14.Parent = UI.StrokeFrame
+
+    UI.gradient16 = Instance.new("UIGradient")
+    UI.gradient16.Rotation = 50
+    UI.gradient16.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(0.500, 1),NumberSequenceKeypoint.new(1.000, 0)}
+    UI.gradient16.Name = "gradient"
+    UI.gradient16.Parent = UI.stroke14
+
+    UI.corner32 = Instance.new("UICorner")
+    UI.corner32.Name = "corner"
+    UI.corner32.CornerRadius = UDim.new(0, 5)
+    UI.corner32.Parent = UI.StrokeFrame
+
+    UI.scale19 = Instance.new("UIScale")
+    UI.scale19.Name = "scale"
+    UI.scale19.Parent = UI.photo
+
+    UI.stroke15 = Instance.new("UIStroke")
+    UI.stroke15.Transparency = 0.95
+    UI.stroke15.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke15.Name = "stroke"
+    UI.stroke15.Parent = UI.photo
+
+    UI.corner33 = Instance.new("UICorner")
+    UI.corner33.Name = "corner"
+    UI.corner33.CornerRadius = UDim.new(0, 6)
+    UI.corner33.Parent = UI.photo
+
+    UI.tech = Instance.new("Frame")
+    UI.tech.Active = true
+    UI.tech.BorderSizePixel = 0
+    UI.tech.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+    UI.tech.Selectable = true
+    UI.tech.ClipsDescendants = true
+    UI.tech.AutomaticSize = Enum.AutomaticSize.Y
+    UI.tech.Size = UDim2.new(1, 60, 0, 0)
+    UI.tech.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.tech.Name = "tech"
+    UI.tech.LayoutOrder = 4
+    UI.tech.BackgroundTransparency = 1
+    UI.tech.Parent = UI.content4
+
+    UI.list37 = Instance.new("UIListLayout")
+    UI.list37.Padding = UDim.new(0, 10)
+    UI.list37.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list37.Name = "list"
+    UI.list37.Parent = UI.tech
+
+    UI.corner34 = Instance.new("UICorner")
+    UI.corner34.Name = "corner"
+    UI.corner34.CornerRadius = UDim.new(0, 20)
+    UI.corner34.Parent = UI.tech
+
+    UI.padding33 = Instance.new("UIPadding")
+    UI.padding33.PaddingTop = UDim.new(0, 10)
+    UI.padding33.PaddingRight = UDim.new(0, 10)
+    UI.padding33.Name = "padding"
+    UI.padding33.PaddingLeft = UDim.new(0, 10)
+    UI.padding33.PaddingBottom = UDim.new(0, 10)
+    UI.padding33.Parent = UI.tech
+
+    UI.jobid = Instance.new("ImageButton")
+    UI.jobid.BorderSizePixel = 0
+    UI.jobid.BackgroundColor3 = Color3.fromRGB(58, 58, 58)
+    UI.jobid.Selectable = false
+    UI.jobid.Size = UDim2.new(1, 0, 0, 40)
+    UI.jobid.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.jobid.Name = "jobid"
+    UI.jobid.Parent = UI.tech
+
+    UI.label12 = Instance.new("TextLabel")
+    UI.label12.BorderSizePixel = 0
+    UI.label12.AutoLocalize = false
+    UI.label12.TextSize = 15
+    UI.label12.TextXAlignment = Enum.TextXAlignment.Left
+    UI.label12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.label12.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.label12.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.label12.BackgroundTransparency = 1
+    UI.label12.Size = UDim2.new(0, 0, 1, 0)
+    UI.label12.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.label12.Text = "Job ID"
+    UI.label12.AutomaticSize = Enum.AutomaticSize.X
+    UI.label12.Name = "label"
+    UI.label12.Parent = UI.jobid
+
+    UI.flex19 = Instance.new("UIFlexItem")
+    UI.flex19.GrowRatio = 1
+    UI.flex19.Name = "flex"
+    UI.flex19.FlexMode = Enum.UIFlexMode.Custom
+    UI.flex19.Parent = UI.label12
+
+    UI.value5 = Instance.new("TextBox")
+    UI.value5.Interactable = false
+    UI.value5.Name = "value"
+    UI.value5.TextXAlignment = Enum.TextXAlignment.Right
+    UI.value5.PlaceholderColor3 = Color3.fromRGB(179, 179, 179)
+    UI.value5.BorderSizePixel = 0
+    UI.value5.TextEditable = false
+    UI.value5.AutoLocalize = false
+    UI.value5.TextTruncate = Enum.TextTruncate.AtEnd
+    UI.value5.TextSize = 15
+    UI.value5.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.value5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.value5.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    UI.value5.AutomaticSize = Enum.AutomaticSize.XY
+    UI.value5.Selectable = false
+    UI.value5.ClearTextOnFocus = false
+    UI.value5.Size = UDim2.new(0, 0, 1, 0)
+    UI.value5.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.value5.Text = "0000-0000-0000-0000"
+    UI.value5.BackgroundTransparency = 1
+    UI.value5.Parent = UI.jobid
+
+    UI.padding34 = Instance.new("UIPadding")
+    UI.padding34.PaddingRight = UDim.new(0, 20)
+    UI.padding34.Name = "padding"
+    UI.padding34.PaddingLeft = UDim.new(0, 20)
+    UI.padding34.Parent = UI.jobid
+
+    UI.corner35 = Instance.new("UICorner")
+    UI.corner35.Name = "corner"
+    UI.corner35.CornerRadius = UDim.new(1, 0)
+    UI.corner35.Parent = UI.jobid
+
+    UI.stroke16 = Instance.new("UIStroke")
+    UI.stroke16.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke16.Name = "stroke"
+    UI.stroke16.Parent = UI.jobid
+
+    UI.gradient17 = Instance.new("UIGradient")
+    UI.gradient17.Rotation = -92
+    UI.gradient17.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(0.500, 1),NumberSequenceKeypoint.new(1.000, 0)}
+    UI.gradient17.Name = "gradient"
+    UI.gradient17.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(67, 67, 67)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(67, 67, 67))}
+    UI.gradient17.Parent = UI.stroke16
+
+    UI.gradient18 = Instance.new("UIGradient")
+    UI.gradient18.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0.8),NumberSequenceKeypoint.new(1.000, 0.8)}
+    UI.gradient18.Name = "gradient"
+    UI.gradient18.Parent = UI.jobid
+
+    UI.list38 = Instance.new("UIListLayout")
+    UI.list38.Padding = UDim.new(0, 20)
+    UI.list38.VerticalAlignment = Enum.VerticalAlignment.Center
+    UI.list38.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list38.Name = "list"
+    UI.list38.FillDirection = Enum.FillDirection.Horizontal
+    UI.list38.Parent = UI.jobid
+
+    UI.placeid = Instance.new("ImageButton")
+    UI.placeid.BorderSizePixel = 0
+    UI.placeid.BackgroundColor3 = Color3.fromRGB(58, 58, 58)
+    UI.placeid.Selectable = false
+    UI.placeid.Size = UDim2.new(1, 0, 0, 40)
+    UI.placeid.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.placeid.Name = "placeid"
+    UI.placeid.Parent = UI.tech
+
+    UI.label13 = Instance.new("TextLabel")
+    UI.label13.BorderSizePixel = 0
+    UI.label13.AutoLocalize = false
+    UI.label13.TextSize = 15
+    UI.label13.TextXAlignment = Enum.TextXAlignment.Left
+    UI.label13.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.label13.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.label13.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.label13.BackgroundTransparency = 1
+    UI.label13.Size = UDim2.new(0, 0, 1, 0)
+    UI.label13.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.label13.Text = "Place ID"
+    UI.label13.Name = "label"
+    UI.label13.Parent = UI.placeid
+
+    UI.flex20 = Instance.new("UIFlexItem")
+    UI.flex20.Name = "flex"
+    UI.flex20.FlexMode = Enum.UIFlexMode.Fill
+    UI.flex20.Parent = UI.label13
+
+    UI.list39 = Instance.new("UIListLayout")
+    UI.list39.Padding = UDim.new(0, 20)
+    UI.list39.VerticalAlignment = Enum.VerticalAlignment.Center
+    UI.list39.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list39.Name = "list"
+    UI.list39.FillDirection = Enum.FillDirection.Horizontal
+    UI.list39.Parent = UI.placeid
+
+    UI.padding35 = Instance.new("UIPadding")
+    UI.padding35.PaddingRight = UDim.new(0, 20)
+    UI.padding35.Name = "padding"
+    UI.padding35.PaddingLeft = UDim.new(0, 20)
+    UI.padding35.Parent = UI.placeid
+
+    UI.corner36 = Instance.new("UICorner")
+    UI.corner36.Name = "corner"
+    UI.corner36.CornerRadius = UDim.new(1, 0)
+    UI.corner36.Parent = UI.placeid
+
+    UI.value6 = Instance.new("TextBox")
+    UI.value6.Interactable = false
+    UI.value6.Name = "value"
+    UI.value6.TextXAlignment = Enum.TextXAlignment.Right
+    UI.value6.PlaceholderColor3 = Color3.fromRGB(179, 179, 179)
+    UI.value6.BorderSizePixel = 0
+    UI.value6.TextEditable = false
+    UI.value6.AutoLocalize = false
+    UI.value6.TextTruncate = Enum.TextTruncate.AtEnd
+    UI.value6.TextSize = 15
+    UI.value6.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.value6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.value6.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    UI.value6.AutomaticSize = Enum.AutomaticSize.X
+    UI.value6.Selectable = false
+    UI.value6.ClearTextOnFocus = false
+    UI.value6.Size = UDim2.new(0, 0, 1, 0)
+    UI.value6.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.value6.Text = "00000"
+    UI.value6.BackgroundTransparency = 1
+    UI.value6.Parent = UI.placeid
+
+    UI.gradient19 = Instance.new("UIGradient")
+    UI.gradient19.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0.8),NumberSequenceKeypoint.new(1.000, 0.8)}
+    UI.gradient19.Name = "gradient"
+    UI.gradient19.Parent = UI.placeid
+
+    UI.stroke17 = Instance.new("UIStroke")
+    UI.stroke17.Color = Color3.fromRGB(255, 255, 255)
+    UI.stroke17.Name = "stroke"
+    UI.stroke17.Parent = UI.placeid
+
+    UI.gradient20 = Instance.new("UIGradient")
+    UI.gradient20.Rotation = -92
+    UI.gradient20.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(0.500, 1),NumberSequenceKeypoint.new(1.000, 0)}
+    UI.gradient20.Name = "gradient"
+    UI.gradient20.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(67, 67, 67)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(67, 67, 67))}
+    UI.gradient20.Parent = UI.stroke17
+
+    UI.padding36 = Instance.new("UIPadding")
+    UI.padding36.PaddingTop = UDim.new(0, 10)
+    UI.padding36.PaddingRight = UDim.new(0, 10)
+    UI.padding36.Name = "padding"
+    UI.padding36.PaddingLeft = UDim.new(0, 10)
+    UI.padding36.PaddingBottom = UDim.new(0, 10)
+    UI.padding36.Parent = UI.gamedisplay
+
+    UI.thumbnail2 = Instance.new("ImageLabel")
+    UI.thumbnail2.ZIndex = 0
+    UI.thumbnail2.BorderSizePixel = 0
+    UI.thumbnail2.ScaleType = Enum.ScaleType.Crop
+    UI.thumbnail2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.thumbnail2.ImageColor3 = Color3.fromRGB(98, 98, 98)
+    UI.thumbnail2.AnchorPoint = Vector2.new(0.5, 1)
+    UI.thumbnail2.Image = "rbxassetid://109387847907592"
+    UI.thumbnail2.Size = UDim2.new(1, 20, 1, 20)
+    UI.thumbnail2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.thumbnail2.BackgroundTransparency = 1
+    UI.thumbnail2.Name = "thumbnail"
+    UI.thumbnail2.Position = UDim2.new(0.5, 0, 1, 10)
+    UI.thumbnail2.Parent = UI.gamedisplay
+
+    UI.gradient21 = Instance.new("UIGradient")
+    UI.gradient21.Rotation = 90
+    UI.gradient21.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(1.000, 1)}
+    UI.gradient21.Name = "gradient"
+    UI.gradient21.Parent = UI.thumbnail2
+
+    UI.corner37 = Instance.new("UICorner")
+    UI.corner37.Name = "corner"
+    UI.corner37.CornerRadius = UDim.new(0, 12)
+    UI.corner37.Parent = UI.thumbnail2
+
+    UI.scale20 = Instance.new("UIScale")
+    UI.scale20.Name = "scale"
+    UI.scale20.Scale = 1.87
+    UI.scale20.Parent = UI.thumbnail2
+
+    UI.noise = Instance.new("ImageLabel")
+    UI.noise.ZIndex = 0
+    UI.noise.BorderSizePixel = 0
+    UI.noise.ScaleType = Enum.ScaleType.Tile
+    UI.noise.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    UI.noise.AnchorPoint = Vector2.new(0.5, 0.5)
+    UI.noise.Image = "rbxassetid://126487203254586"
+    UI.noise.TileSize = UDim2.new(0, 500, 0, 500)
+    UI.noise.Size = UDim2.new(1, 0, 0.78839, 0)
+    UI.noise.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.noise.BackgroundTransparency = 1
+    UI.noise.Name = "noise"
+    UI.noise.Position = UDim2.new(0.38635, 0, 0.6058, 0)
+    UI.noise.Parent = UI.thumbnail2
+
+    UI.corner38 = Instance.new("UICorner")
+    UI.corner38.Name = "corner"
+    UI.corner38.CornerRadius = UDim.new(0, 12)
+    UI.corner38.Parent = UI.noise
+
+    UI.gradient22 = Instance.new("UIGradient")
+    UI.gradient22.Rotation = 90
+    UI.gradient22.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0.85625),NumberSequenceKeypoint.new(1.000, 1)}
+    UI.gradient22.Name = "gradient"
+    UI.gradient22.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(0, 0, 0)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(0, 0, 0))}
+    UI.gradient22.Parent = UI.noise
+
+    UI.header10 = Instance.new("Frame")
+    UI.header10.BorderSizePixel = 0
+    UI.header10.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    UI.header10.AutomaticSize = Enum.AutomaticSize.Y
+    UI.header10.Size = UDim2.new(1, 40, 0, 0)
+    UI.header10.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.header10.Name = "header"
+    UI.header10.BackgroundTransparency = 1
+    UI.header10.Parent = UI.scroll
+
+    UI.greetings = Instance.new("TextLabel")
+    UI.greetings.BorderSizePixel = 0
+    UI.greetings.AutoLocalize = false
+    UI.greetings.TextSize = 20
+    UI.greetings.TextXAlignment = Enum.TextXAlignment.Left
+    UI.greetings.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.greetings.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    UI.greetings.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.greetings.BackgroundTransparency = 1
+    UI.greetings.AnchorPoint = Vector2.new(0.5, 0)
+    UI.greetings.Size = UDim2.new(1, 0, 0, 30)
+    UI.greetings.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.greetings.Text = "Home"
+    UI.greetings.LayoutOrder = 1
+    UI.greetings.Name = "greetings"
+    UI.greetings.Position = UDim2.new(0.5, 0, 0, 0)
+    UI.greetings.Parent = UI.header10
+
+    UI.flex21 = Instance.new("UIFlexItem")
+    UI.flex21.Name = "flex"
+    UI.flex21.FlexMode = Enum.UIFlexMode.Fill
+    UI.flex21.Parent = UI.greetings
+
+    UI.list40 = Instance.new("UIListLayout")
+    UI.list40.SortOrder = Enum.SortOrder.LayoutOrder
+    UI.list40.Name = "list"
+    UI.list40.Parent = UI.header10
+
+    UI.padding37 = Instance.new("UIPadding")
+    UI.padding37.PaddingTop = UDim.new(0, 18)
+    UI.padding37.PaddingRight = UDim.new(0, 26)
+    UI.padding37.Name = "padding"
+    UI.padding37.PaddingLeft = UDim.new(0, 26)
+    UI.padding37.PaddingBottom = UDim.new(0, 18)
+    UI.padding37.Parent = UI.header10
+
+    UI.date = Instance.new("TextLabel")
+    UI.date.BorderSizePixel = 0
+    UI.date.AutoLocalize = false
+    UI.date.TextSize = 14
+    UI.date.TextXAlignment = Enum.TextXAlignment.Left
+    UI.date.TextTransparency = 0.5
+    UI.date.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    UI.date.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    UI.date.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UI.date.BackgroundTransparency = 1
+    UI.date.AnchorPoint = Vector2.new(0.5, 0)
+    UI.date.Size = UDim2.new(1, 0, 0, 14)
+    UI.date.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    UI.date.Text = "Month Day, Year"
+    UI.date.LayoutOrder = 1
+    UI.date.Name = "date"
+    UI.date.Position = UDim2.new(0.5, 0, 0, 0)
+    UI.date.Parent = UI.header10
+
+    UI.gradient23 = Instance.new("UIGradient")
+    UI.gradient23.Rotation = 90
+    UI.gradient23.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(1.000, 1)}
+    UI.gradient23.Name = "gradient"
+    UI.gradient23.Parent = UI.header10
+
+    return UI.home2
 end
 
 return Maintab
