@@ -1,6 +1,3 @@
-local Icons = require("scr.Assets.Icons")
-local Debugbar = require("scr.Components.Debugbar")
-
 local Mainframe = {}
 
 function Mainframe:Create()
@@ -29,7 +26,9 @@ function Mainframe:Create()
     panel.BackgroundTransparency = 1
     panel.Parent = main
 
-    Debugbar:Create(panel)
+    if _G.FluxUiDebugbar then
+        _G.FluxUiDebugbar:Create(panel)
+    end
     
     return ScreenGui
 end
