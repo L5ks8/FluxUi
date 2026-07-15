@@ -15,6 +15,13 @@ function Debugbar:Create(parentPanel)
     debugFrame.LayoutOrder = 4
     debugFrame.Parent = parentPanel
 
+    local debugCorner = Instance.new("UICorner")
+    debugCorner.TopLeftRadius = UDim.new(0, 0)
+    debugCorner.TopRightRadius = UDim.new(0, 0)
+    debugCorner.BottomLeftRadius = UDim.new(0, 18)
+    debugCorner.BottomRightRadius = UDim.new(0, 18)
+    debugCorner.Parent = debugFrame
+
     local list = Instance.new("UIListLayout")
     list.Name = "list"
     list.Padding = UDim.new(0, 6)

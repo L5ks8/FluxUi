@@ -16,6 +16,13 @@ function Mainframe:Create()
     main.BorderColor3 = Color3.fromRGB(0, 0, 0)
     main.Parent = ScreenGui
 
+    local mainCorner = Instance.new("UICorner")
+    mainCorner.TopLeftRadius = UDim.new(0, 18)
+    mainCorner.TopRightRadius = UDim.new(0, 18)
+    mainCorner.BottomLeftRadius = UDim.new(0, 0)
+    mainCorner.BottomRightRadius = UDim.new(0, 0)
+    mainCorner.Parent = main
+
     local panel = Instance.new("Frame")
     panel.Name = "panel"
     panel.BorderSizePixel = 0
