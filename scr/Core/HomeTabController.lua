@@ -17,8 +17,7 @@ function HomeTabController.Init(HomeTab)
     end
 
     --// Game Info
-    local overview = HomeTab:FindFirstChild("overview", true)
-    local information = overview and overview:FindFirstChild("information")
+    local information = HomeTab:FindFirstChild("information", true)
     if information then
         local gameName = information:FindFirstChild("game_name", true)
         local creator = information:FindFirstChild("creator", true)
@@ -50,7 +49,7 @@ function HomeTabController.Init(HomeTab)
     end
 
     --// Overview Uptime
-    local uptime = overview and overview:FindFirstChild("uptime")
+    local uptime = HomeTab:FindFirstChild("uptime", true)
     if uptime then
         local stopwatch = uptime:FindFirstChild("stopwatch")
         if stopwatch then
@@ -78,7 +77,7 @@ function HomeTabController.Init(HomeTab)
     end
 
     --// Developer Console
-    local console = overview and overview:FindFirstChild("console")
+    local console = HomeTab:FindFirstChild("console", true)
     if console then
         local logsContainer = console:FindFirstChild("logs")
         if logsContainer then

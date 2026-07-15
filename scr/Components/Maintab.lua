@@ -285,6 +285,7 @@ function Maintab:Create(WindowTable)
 
     UI.padding15 = Instance.new("UIPadding")
     UI.padding15.PaddingTop = UDim.new(0, 5)
+    UI.padding15.PaddingBottom = UDim.new(0, 5)
     UI.padding15.Name = "padding"
     UI.padding15.Parent = UI.scroll2
 
