@@ -19,8 +19,8 @@ function Mainframe:Create()
     local mainCorner = Instance.new("UICorner")
     mainCorner.TopLeftRadius = UDim.new(0, 18)
     mainCorner.TopRightRadius = UDim.new(0, 18)
-    mainCorner.BottomLeftRadius = UDim.new(0, 0)
-    mainCorner.BottomRightRadius = UDim.new(0, 0)
+    mainCorner.BottomLeftRadius = UDim.new(0, 18)
+    mainCorner.BottomRightRadius = UDim.new(0, 18)
     mainCorner.Parent = main
 
     local panel = Instance.new("Frame")
