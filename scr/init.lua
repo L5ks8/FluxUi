@@ -39,6 +39,7 @@ function Library:CreateWindow(Settings)
     WindowTable.Elements = Elements
 
     Topbar:Init(WindowTable)
+    Controller.InitTabHandler(WindowTable)
     
     local Animations = {
         Fast = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),

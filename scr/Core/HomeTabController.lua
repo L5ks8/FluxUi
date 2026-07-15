@@ -23,6 +23,7 @@ function HomeTabController.Init(HomeTab)
         local creator = information:FindFirstChild("creator", true)
         local jobId = information:FindFirstChild("jobid", true) and information:FindFirstChild("jobid", true):FindFirstChild("value")
         local placeId = information:FindFirstChild("placeid", true) and information:FindFirstChild("placeid", true):FindFirstChild("value")
+        local photo = information:FindFirstChild("photo", true)
 
         if gameName then
             gameName.Text = game.Name
@@ -34,14 +35,19 @@ function HomeTabController.Init(HomeTab)
             jobId.Text = game.JobId ~= "" and game.JobId or "Studio / Local"
         end
 
-        if creator then
+        if creator or photo then
             task.spawn(function()
                 pcall(function()
                     if game.PlaceId > 0 then
                         local productInfo = MarketplaceService:GetProductInfo(game.PlaceId)
-                        creator.Text = "By " .. productInfo.Creator.Name
+                        if creator then
+                            creator.Text = "By " .. productInfo.Creator.Name
+                        end
+                        if photo and productInfo.IconImageAssetId then
+                            photo.Image = "rbxassetid://" .. productInfo.IconImageAssetId
+                        end
                     else
-                        creator.Text = "By Unknown"
+                        if creator then creator.Text = "By Unknown" end
                     end
                 end)
             end)
@@ -139,6 +145,7 @@ function HomeTabController.Init(HomeTab)
                 local playerTemplate = scroll:FindFirstChild("Player")
                 if playerTemplate then
                     playerTemplate.Visible = false
+                    playerTemplate.Size = UDim2.new(1, 0, 0, 40)
                     
                     local function updatePlayerList()
                         for _, child in ipairs(scroll:GetChildren()) do

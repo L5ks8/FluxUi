@@ -170,4 +170,27 @@ end
 
 --//Notification
 
+
+
+--//TabHandler
+function Controller.InitTabHandler(WindowTable)
+    local tabsContainer = WindowTable.Tabs
+    if not tabsContainer then return end
+    
+    local screen = WindowTable.Content and WindowTable.Content:FindFirstChild("screen")
+    local pageLayout = screen and screen:FindFirstChild("page")
+    if not pageLayout then return end
+    
+    for _, descendant in ipairs(tabsContainer:GetDescendants()) do
+        if descendant:IsA("ImageButton") or descendant:IsA("TextButton") then
+            local targetPage = screen:FindFirstChild(descendant.Name)
+            if targetPage and descendant.Name ~= "content" and descendant.Name ~= "scroll" then
+                descendant.MouseButton1Click:Connect(function()
+                    pageLayout:JumpTo(targetPage)
+                end)
+            end
+        end
+    end
+end
+
 return Controller
