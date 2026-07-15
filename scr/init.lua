@@ -1,4 +1,4 @@
-local Source = "https://raw.githubusercontent.com/L5ks8/FluxUI/main/"
+local Source = "https://raw.githubusercontent.com/L5ks8/FluxUI/main/scr/"
 
 local Mainframe = loadstring(game:HttpGet(Source .. "Components/Mainframe.lua"))()
 local Topbar = loadstring(game:HttpGet(Source .. "Components/Topbar.lua"))()
