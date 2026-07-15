@@ -1,4 +1,5 @@
 local Icons = require("scr.Assets.Icons.lua")
+local Debugbar = require("scr.Components.Debugbar.lua")
 
 local Mainframe = {}
 
@@ -26,6 +27,8 @@ function Mainframe:Create()
     panel.BackgroundTransparency = 1
     panel.Parent = main
 
+    Debugbar:Create()
 
+end
 
 return Mainframe
