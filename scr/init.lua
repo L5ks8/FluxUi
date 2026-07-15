@@ -7,6 +7,7 @@ local Topbar = loadstring(game:HttpGet(Source .. "Components/Topbar.lua"))()
 local Debugbar = loadstring(game:HttpGet(Source .. "Components/Debugbar.lua"))()
 local Notification = loadstring(game:HttpGet(Source .. "Components/Notification.lua"))()
 local Controller = loadstring(game:HttpGet(Source .. "Core/Controller.lua"))()
+local HomeTabController = loadstring(game:HttpGet(Source .. "Core/HomeTabController.lua"))()
 
 local Maintab = loadstring(game:HttpGet(Source .. "Components/Maintab.lua"))()
 local SettignsTab = loadstring(game:HttpGet(Source .. "Components/SettignsTab.lua"))()
@@ -51,6 +52,13 @@ function Library:CreateWindow(Settings)
     if WindowTable.Panel and WindowTable.Panel:FindFirstChild("debug") then
         Controller.InitDebugbar(WindowTable.Panel.debug)
     end
+
+    local screen = WindowTable.Content and WindowTable.Content:FindFirstChild("screen")
+    local homeTab = screen and screen:FindFirstChild("home")
+    if homeTab and HomeTabController then
+        HomeTabController.Init(homeTab)
+    end
+
     function WindowTable:CreateButton(Data)
         return self.Elements.Button:Create(self, Data)
     end
