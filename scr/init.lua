@@ -15,6 +15,8 @@ local Elements = {
 }
 
 _G.FluxUiDebugbar = Debugbar 
+_G.FluxUiTopbar = Topbar
+_G.FluxUiNotification = Notification
 
 local Library = {}
 Library.Version = "1.0.0"
@@ -25,6 +27,7 @@ function Library:CreateWindow(Settings)
     local WindowTable = Mainframe:Create(Settings)
 
     WindowTable.Debugbar = Debugbar
+    WindowTable.Topbar = Topbar
     WindowTable.Notification = Notification
     WindowTable.Elements = Elements
 
