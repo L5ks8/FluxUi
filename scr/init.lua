@@ -8,6 +8,9 @@ local Debugbar = loadstring(game:HttpGet(Source .. "Components/Debugbar.lua"))()
 local Notification = loadstring(game:HttpGet(Source .. "Components/Notification.lua"))()
 local Controller = loadstring(game:HttpGet(Source .. "Core/Controller.lua"))()
 
+local Maintab = loadstring(game:HttpGet(Source .. "Components/Maintab.lua"))()
+local SettignsTab = loadstring(game:HttpGet(Source .. "Components/SettignsTab.lua"))()
+
 local Elements = {
     Button = loadstring(game:HttpGet(Source .. "Elements/Button.lua"))(),
     Toggle = loadstring(game:HttpGet(Source .. "Elements/Toggle.lua"))(),
@@ -18,6 +21,8 @@ local Elements = {
 _G.FluxUiDebugbar = Debugbar 
 _G.FluxUiTopbar = Topbar
 _G.FluxUiNotification = Notification
+_G.FluxUiMaintab = Maintab
+_G.FluxUiSettignsTab = SettignsTab
 
 local Library = {}
 Library.Version = "1.0.0"
