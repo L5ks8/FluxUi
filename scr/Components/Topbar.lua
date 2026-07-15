@@ -1,3 +1,5 @@
+local CollectionService = game:GetService("CollectionService")
+
 local Topbar = {}
 
 function Topbar:Create(parentPanel)
@@ -124,7 +126,6 @@ function Topbar:Create(parentPanel)
     closeIcon.Position = UDim2.new(0.5,0,0.5,0)
     closeIcon.Parent = close
 
-
     local returnBtn = Instance.new("ImageButton")
     returnBtn.Name = "return"
     returnBtn.BorderSizePixel = 0
@@ -162,7 +163,6 @@ function Topbar:Create(parentPanel)
     returnIcon.BackgroundTransparency = 1
     returnIcon.Position = UDim2.new(0.5,0,0.5,0)
     returnIcon.Parent = returnBtn
-
 
     local nav = Instance.new("ImageButton")
     nav.Name = "nav"
@@ -249,7 +249,6 @@ function Topbar:Create(parentPanel)
     fullscreenIcon.Position = UDim2.new(0.85795,0,0.6875,0)
     fullscreenIcon.Parent = icons
 
-
     local minimizeIcon = Instance.new("ImageLabel")
     minimizeIcon.Name = "Minimize"
     minimizeIcon.BorderSizePixel = 0
@@ -264,7 +263,6 @@ function Topbar:Create(parentPanel)
     minimizeIcon.Position = UDim2.new(0.858,0,0.688,0)
     minimizeIcon.Parent = icons
 
-
     local mainPadding = Instance.new("UIPadding")
     mainPadding.Name = "padding"
     mainPadding.PaddingTop = UDim.new(0,5)
@@ -273,12 +271,10 @@ function Topbar:Create(parentPanel)
     mainPadding.PaddingBottom = UDim.new(0,5)
     mainPadding.Parent = main
 
-
     local mainCorner = Instance.new("UICorner")
     mainCorner.Name = "corner"
     mainCorner.CornerRadius = UDim.new(1,0)
     mainCorner.Parent = main
-
 
     local time = Instance.new("ImageButton")
     time.Name = "time"
@@ -291,7 +287,6 @@ function Topbar:Create(parentPanel)
     time.BorderColor3 = Color3.fromRGB(0,0,0)
     time.Position = UDim2.new(0.70165,0,0.34375,0)
     time.Parent = main
-
 
     local timeText = Instance.new("TextLabel")
     timeText.Name = "text"
@@ -315,7 +310,6 @@ function Topbar:Create(parentPanel)
     timeText.Position = UDim2.new(0.6327,0,0.5375,0)
     timeText.Parent = time
 
-
     local timePadding = Instance.new("UIPadding")
     timePadding.Name = "padding"
     timePadding.PaddingTop = UDim.new(0,5)
@@ -323,7 +317,6 @@ function Topbar:Create(parentPanel)
     timePadding.PaddingLeft = UDim.new(0,4)
     timePadding.PaddingBottom = UDim.new(0,5)
     timePadding.Parent = time
-
 
     local timeCorner = Instance.new("UICorner")
     timeCorner.Name = "corner"
@@ -343,7 +336,6 @@ function Topbar:Create(parentPanel)
     logo.BackgroundTransparency = 1
     logo.Parent = topbar
 
-
     local logoText = Instance.new("TextLabel")
     logoText.Name = "logo"
     logoText.TextStrokeTransparency = 0
@@ -352,13 +344,11 @@ function Topbar:Create(parentPanel)
     logoText.TextXAlignment = Enum.TextXAlignment.Left
     logoText.TextTransparency = 0.2
     logoText.BackgroundColor3 = Color3.fromRGB(255,255,255)
-
     logoText.FontFace = Font.new(
 	    "rbxassetid://12187365364",
 	    Enum.FontWeight.Bold,
 	    Enum.FontStyle.Normal
     )
-
     logoText.TextColor3 = Color3.fromRGB(255,255,255)
     logoText.BackgroundTransparency = 1
     logoText.AnchorPoint = Vector2.new(0.5,0.5)
@@ -368,11 +358,12 @@ function Topbar:Create(parentPanel)
     logoText.Position = UDim2.new(1.0506,0,0.49643,0)
     logoText.Parent = logo
 
-
     local logoPadding = Instance.new("UIPadding")
     logoPadding.Name = "UIPadding"
     logoPadding.PaddingLeft = UDim.new(0,8)
     logoPadding.Parent = logo
+    
+    return topbar
 end
 
 return Topbar
