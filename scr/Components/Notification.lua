@@ -73,8 +73,8 @@ function Notification:Create(WindowTable, Data)
     bannerList.FillDirection = Enum.FillDirection.Horizontal
     bannerList.Parent = banner
 
-    banner.AnchorPoint = Vector2.new(0, 1)
-    banner.Position = UDim2.fromOffset(0, -5)
+    banner.AnchorPoint = Vector2.new(0, 0)
+    banner.Position = UDim2.fromOffset(0, -15)
     banner.GroupTransparency = 1
     
     notifPadding.PaddingTop = UDim.new(0, 0)
@@ -164,7 +164,7 @@ function Notification:Create(WindowTable, Data)
 
     local smoothTween = TweenInfo.new(0.4, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
 
-    TweenService:Create(banner, smoothTween, { AnchorPoint = Vector2.new(0, 0), Position = UDim2.fromOffset(0, 0), GroupTransparency = 0 }):Play()
+    TweenService:Create(banner, smoothTween, { Position = UDim2.fromOffset(0, 0), GroupTransparency = 0 }):Play()
     TweenService:Create(notifPadding, smoothTween, { PaddingTop = UDim.new(0, 5), PaddingBottom = UDim.new(0, 5) }):Play()
 
     local closed = false
@@ -174,7 +174,7 @@ function Notification:Create(WindowTable, Data)
         
         notificationBtn.Interactable = false
 
-        TweenService:Create(banner, smoothTween, { AnchorPoint = Vector2.new(0, 1), Position = UDim2.fromOffset(0, -5), GroupTransparency = 1 }):Play()
+        TweenService:Create(banner, smoothTween, { Position = UDim2.fromOffset(0, -15), GroupTransparency = 1 }):Play()
         local paddingTween = TweenService:Create(notifPadding, smoothTween, { PaddingTop = UDim.new(0, 0), PaddingBottom = UDim.new(0, 0) })
         paddingTween:Play()
 
