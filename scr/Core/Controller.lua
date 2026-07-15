@@ -8,16 +8,12 @@ local Client = Players.LocalPlayer
 local Controller = {}
 
 --// Debugbar
-function Controller.InitDebugbar(Debug, Remotes)
-    if not Debug or not Remotes then return end
+function Controller.InitDebugbar(Debug)
+    if not Debug then return end
 
     task.spawn(function()
-        local region = "Unknown"
-        pcall(function()
-            region = Remotes.Retrieving.RetrieveServerRegion:InvokeServer()
-        end)
         if Debug:FindFirstChild("region") then
-            Debug.region.Text = region or "Unknown"
+            Debug.region.Text = "Unknown"
         end
     end)
 
@@ -53,14 +49,6 @@ function Controller.InitDebugbar(Debug, Remotes)
                 end
             end
             
-            pcall(function()
-                local server_data = Remotes.Retrieving.RetrieveConsoleData:InvokeServer()
-                local er = server_data ~= nil and server_data.errors or 0
-                local wr = server_data ~= nil and server_data.warnings or 0
-                data.errors += er
-                data.warnings += wr
-            end)
-            
             if Debug:FindFirstChild("errors") and Debug.errors:FindFirstChild("value") then
                 Debug.errors.value.Text = tostring(data.errors)
             end
@@ -94,6 +82,7 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
     local navBtn = mainActions:FindFirstChild("nav")
     local returnBtn = mainActions:FindFirstChild("return")
 
+    -- fullscreen 
     if fullscreenBtn then
         fullscreenBtn.MouseButton1Click:Connect(function()
             Main:SetAttribute("Fullscreen", not Main:GetAttribute("Fullscreen"))
@@ -112,23 +101,31 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
         end
     end)
 
+    -- close
     if closeBtn then
         closeBtn.MouseButton1Click:Connect(function()
+            if TweenService and Animations and Main:IsA("CanvasGroup") then
+                local tween = TweenService:Create(Main, Animations.Smooth, { GroupTransparency = 1 })
+                tween:Play()
+                tween.Completed:Wait()
+            end
             Main.Visible = false 
         end)
     end
 
+    -- navigation
     if navBtn then
         navBtn.MouseButton1Click:Connect(function()
-            
         end)
     end
 
+    -- return 
     if returnBtn then
         returnBtn.MouseButton1Click:Connect(function()
         end)
     end
 
+    -- double click to fullscreen 
     local lastClick = 0
     Topbar.MouseButton1Click:Connect(function()
         if time() - lastClick < 0.5 then
@@ -139,6 +136,7 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
         end
     end)
 
+    -- hover
     if TweenService and Animations then
         for _, button in pairs(mainActions:GetChildren()) do
             if button:IsA("ImageButton") or button:IsA("TextButton") then

@@ -6,6 +6,7 @@ local Mainframe = loadstring(game:HttpGet(Source .. "Components/Mainframe.lua"))
 local Topbar = loadstring(game:HttpGet(Source .. "Components/Topbar.lua"))()
 local Debugbar = loadstring(game:HttpGet(Source .. "Components/Debugbar.lua"))()
 local Notification = loadstring(game:HttpGet(Source .. "Components/Notification.lua"))()
+local Controller = loadstring(game:HttpGet(Source .. "Core/Controller.lua"))()
 
 local Elements = {
     Button = loadstring(game:HttpGet(Source .. "Elements/Button.lua"))(),
@@ -32,7 +33,19 @@ function Library:CreateWindow(Settings)
     WindowTable.Elements = Elements
 
     Topbar:Init(WindowTable)
+    
+    local Animations = {
+        Fast = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+        Smooth = TweenInfo.new(0.4, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+    }
 
+    if WindowTable.Panel and WindowTable.Panel:FindFirstChild("topbar") then
+        Controller.InitTopbar(WindowTable.Panel.topbar, WindowTable.Main, game:GetService("TweenService"), Animations)
+    end
+
+    if WindowTable.Panel and WindowTable.Panel:FindFirstChild("debug") then
+        Controller.InitDebugbar(WindowTable.Panel.debug)
+    end
     function WindowTable:CreateButton(Data)
         return self.Elements.Button:Create(self, Data)
     end
