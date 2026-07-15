@@ -38,6 +38,10 @@ function Mainframe:Create()
         _G.FluxUiDebugbar:Create(panel)
     end
 
+    if _G.FluxUiTopbar then
+        _G.FluxUiTopbar:Create(panel)
+    end
+
     local WindowTable = {
         Instance = ScreenGui,
         Main = main,
