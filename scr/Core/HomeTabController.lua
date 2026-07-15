@@ -84,6 +84,7 @@ function HomeTabController.Init(HomeTab)
             local logTemplate = logsContainer:FindFirstChild("log", true)
             if logTemplate then
                 logTemplate.Visible = false
+                local logOrder = 1000000
                 
                 local function addLog(message, messageType)
                     local newLog = logTemplate:Clone()
@@ -100,6 +101,8 @@ function HomeTabController.Init(HomeTab)
                         newLog.TextColor3 = Color3.fromRGB(215, 215, 215)
                     end
                     
+                    logOrder = logOrder - 1
+                    newLog.LayoutOrder = logOrder
                     newLog.Parent = logsContainer
                     
                     local maxLogs = 100
@@ -111,6 +114,7 @@ function HomeTabController.Init(HomeTab)
                         end
                     end
                     if #logElements > maxLogs then
+                        table.sort(logElements, function(a, b) return a.LayoutOrder > b.LayoutOrder end)
                         logElements[1]:Destroy()
                     end
                 end
@@ -181,6 +185,37 @@ function HomeTabController.Init(HomeTab)
                     Players.PlayerRemoving:Connect(updatePlayerList)
                 end
             end
+        end
+    end
+
+    --// Player Count
+    local countWidget = HomeTab:FindFirstChild("count") or (HomeTab:FindFirstChild("people", true) and HomeTab:FindFirstChild("people", true):FindFirstChild("count"))
+    if countWidget then
+        local meter = countWidget:FindFirstChild("meter")
+        local countText = countWidget:FindFirstChild("count")
+        
+        if meter and countText then
+            local line = meter:FindFirstChild("line")
+            
+            local function updatePlayerCount()
+                local currentPlayers = #Players:GetPlayers()
+                local maxPlayers = Players.MaxPlayers
+                if maxPlayers == 0 then maxPlayers = 20 end
+                
+                countText.Text = currentPlayers .. "/" .. maxPlayers
+                
+                if line then
+                    local percentage = math.clamp(currentPlayers / maxPlayers, 0, 1)
+                    local targetRotation = -180 + (180 * percentage)
+                    
+                    local TweenService = game:GetService("TweenService")
+                    TweenService:Create(line, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = targetRotation}):Play()
+                end
+            end
+            
+            updatePlayerCount()
+            Players.PlayerAdded:Connect(updatePlayerCount)
+            Players.PlayerRemoving:Connect(updatePlayerCount)
         end
     end
 end
