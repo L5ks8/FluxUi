@@ -8,10 +8,10 @@ local Debugbar = loadstring(game:HttpGet(Source .. "Components/Debugbar.lua"))()
 local Notification = loadstring(game:HttpGet(Source .. "Components/Notification.lua"))()
 
 local Elements = {
-    Button = loadstring(game:HttpGet(Source .. "Core/Elements/Button.lua"))(),
-    Toggle = loadstring(game:HttpGet(Source .. "Core/Elements/Toggle.lua"))(),
-    Slider = loadstring(game:HttpGet(Source .. "Core/Elements/Slider.lua"))(),
-    Dropdown = loadstring(game:HttpGet(Source .. "Core/Elements/Dropdown.lua"))(),
+    Button = loadstring(game:HttpGet(Source .. "Elements/Button.lua"))(),
+    Toggle = loadstring(game:HttpGet(Source .. "Elements/Toggle.lua"))(),
+    Slider = loadstring(game:HttpGet(Source .. "Elements/Slider.lua"))(),
+    Dropdown = loadstring(game:HttpGet(Source .. "Elements/Dropdown.lua"))(),
 }
 
 _G.FluxUiDebugbar = Debugbar 
