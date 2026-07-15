@@ -73,10 +73,12 @@ function Notification:Create(WindowTable, Data)
     bannerList.FillDirection = Enum.FillDirection.Horizontal
     bannerList.Parent = banner
 
-    local scale = Instance.new("UIScale")
-    scale.Name = "Scale"
-    scale.Scale = 0
-    scale.Parent = banner
+    banner.AnchorPoint = Vector2.new(0, 1)
+    banner.Position = UDim2.fromOffset(0, -5)
+    banner.GroupTransparency = 1
+    
+    notifPadding.PaddingTop = UDim.new(0, 0)
+    notifPadding.PaddingBottom = UDim.new(0, 0)
 
     local bannerPadding = Instance.new("UIPadding")
     bannerPadding.Name = "Padding"
@@ -160,14 +162,29 @@ function Notification:Create(WindowTable, Data)
     description.AutomaticSize = Enum.AutomaticSize.XY
     description.Parent = information
 
-    TweenService:Create(scale, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Scale = 1}):Play()
+    local smoothTween = TweenInfo.new(0.4, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
 
-    task.delay(duration, function()
-        local tweenOut = TweenService:Create(scale, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.In), {Scale = 0})
-        tweenOut:Play()
-        tweenOut.Completed:Wait()
+    TweenService:Create(banner, smoothTween, { AnchorPoint = Vector2.new(0, 0), Position = UDim2.fromOffset(0, 0), GroupTransparency = 0 }):Play()
+    TweenService:Create(notifPadding, smoothTween, { PaddingTop = UDim.new(0, 5), PaddingBottom = UDim.new(0, 5) }):Play()
+
+    local closed = false
+    local function closeNotification()
+        if closed then return end
+        closed = true
+        
+        notificationBtn.Interactable = false
+
+        TweenService:Create(banner, smoothTween, { AnchorPoint = Vector2.new(0, 1), Position = UDim2.fromOffset(0, -5), GroupTransparency = 1 }):Play()
+        local paddingTween = TweenService:Create(notifPadding, smoothTween, { PaddingTop = UDim.new(0, 0), PaddingBottom = UDim.new(0, 0) })
+        paddingTween:Play()
+
+        paddingTween.Completed:Wait()
         notificationBtn:Destroy()
-    end)
+    end
+
+    notificationBtn.MouseButton1Click:Connect(closeNotification)
+
+    task.delay(duration, closeNotification)
     
     return notificationBtn
 end
