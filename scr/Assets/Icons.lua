@@ -21,3 +21,4 @@ local Icons = {
     WorldMap = "rbxassetid://103966893222412",
 }
 
+return Icons

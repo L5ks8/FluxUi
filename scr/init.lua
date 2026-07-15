@@ -1,19 +1,22 @@
 local Source = "https://raw.githubusercontent.com/L5ks8/FluxUI/main/scr/"
 
+_G.FluxUiIcons = loadstring(game:HttpGet(Source .. "Assets/Icons.lua"))()
+
 local Mainframe = loadstring(game:HttpGet(Source .. "Components/Mainframe.lua"))()
 local Topbar = loadstring(game:HttpGet(Source .. "Components/Topbar.lua"))()
 local Debugbar = loadstring(game:HttpGet(Source .. "Components/Debugbar.lua"))()
 local Notification = loadstring(game:HttpGet(Source .. "Components/Notification.lua"))()
 
 local Elements = {
-    Button = loadstring(game:HttpGet(Source .. "Elements/Button.lua"))(),
-    Toggle = loadstring(game:HttpGet(Source .. "Elements/Toggle.lua"))(),
-    Slider = loadstring(game:HttpGet(Source .. "Elements/Slider.lua"))(),
-    Dropdown = loadstring(game:HttpGet(Source .. "Elements/Dropdown.lua"))(),
+    Button = loadstring(game:HttpGet(Source .. "Core/Elements/Button.lua"))(),
+    Toggle = loadstring(game:HttpGet(Source .. "Core/Elements/Toggle.lua"))(),
+    Slider = loadstring(game:HttpGet(Source .. "Core/Elements/Slider.lua"))(),
+    Dropdown = loadstring(game:HttpGet(Source .. "Core/Elements/Dropdown.lua"))(),
 }
 
-local Library = {}
+_G.FluxUiDebugbar = Debugbar 
 
+local Library = {}
 Library.Version = "1.0.0"
 
 function Library:CreateWindow(Settings)

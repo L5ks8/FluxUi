@@ -1,11 +1,12 @@
-local Icons = require("scr.Assets.Icons.lua")
-local Debugbar = require("scr.Components.Debugbar.lua")
+local Icons = require("scr.Assets.Icons")
+local Debugbar = require("scr.Components.Debugbar")
 
 local Mainframe = {}
 
 function Mainframe:Create()
     local ScreenGui = Instance.new("ScreenGui")
     ScreenGui.Name = "FluxUI"
+    ScreenGui.Parent = game:GetService("CoreGui")
 
     local main = Instance.new("CanvasGroup")
     main.Name = "main"
@@ -15,6 +16,7 @@ function Mainframe:Create()
     main.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
     main.BorderColor3 = Color3.fromRGB(0, 0, 0)
     main.BorderSizePixel = 0
+    main.Parent = ScreenGui
 
     local panel = Instance.new("Frame")
     panel.Name = "panel"
@@ -27,8 +29,9 @@ function Mainframe:Create()
     panel.BackgroundTransparency = 1
     panel.Parent = main
 
-    Debugbar:Create()
-
+    Debugbar:Create(panel)
+    
+    return ScreenGui
 end
 
 return Mainframe
