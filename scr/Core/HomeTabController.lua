@@ -21,13 +21,12 @@ function HomeTabController.Init(HomeTab)
     if information then
         local gameName = information:FindFirstChild("game_name", true)
         local creator = information:FindFirstChild("creator", true)
+        local description = information:FindFirstChild("description", true)
         local jobId = information:FindFirstChild("jobid", true) and information:FindFirstChild("jobid", true):FindFirstChild("value")
         local placeId = information:FindFirstChild("placeid", true) and information:FindFirstChild("placeid", true):FindFirstChild("value")
         local photo = information:FindFirstChild("photo", true)
+        local backgroundimage = HomeTab:FindFirstChild("background_image", true)
 
-        if gameName then
-            gameName.Text = game.Name
-        end
         if placeId then
             placeId.Text = tostring(game.PlaceId)
         end
@@ -35,22 +34,40 @@ function HomeTabController.Init(HomeTab)
             jobId.Text = game.JobId ~= "" and game.JobId or "Studio / Local"
         end
 
-        if creator or photo then
-            task.spawn(function()
-                pcall(function()
-                    if game.PlaceId > 0 then
-                        local productInfo = MarketplaceService:GetProductInfo(game.PlaceId)
-                        if creator then
-                            creator.Text = "By " .. productInfo.Creator.Name
-                        end
-                        if photo and productInfo.IconImageAssetId then
-                            photo.Image = "rbxassetid://" .. productInfo.IconImageAssetId
-                        end
-                    else
-                        if creator then creator.Text = "By Unknown" end
+        task.spawn(function()
+            pcall(function()
+                if game.PlaceId > 0 then
+                    local productInfo = MarketplaceService:GetProductInfo(game.PlaceId)
+                    if gameName then
+                        gameName.Text = productInfo.Name
                     end
-                end)
+                    if creator then
+                        creator.Text = "By " .. productInfo.Creator.Name
+                    end
+                    if description then
+                        local descText = productInfo.Description or "No Description"
+                        -- Limit description length to prevent UI breaking
+                        if #descText > 120 then
+                            descText = string.sub(descText, 1, 117) .. "..."
+                        end
+                        description.Text = descText
+                    end
+                else
+                    if gameName then gameName.Text = game.Name end
+                    if creator then creator.Text = "By Unknown" end
+                    if description then description.Text = "Studio / Local Game" end
+                end
             end)
+        end)
+        
+        -- Load Images directly via rbxthumb API (super fast and reliable)
+        if game.GameId > 0 then
+            if photo then
+                photo.Image = "rbxthumb://type=GameIcon&id=" .. game.GameId .. "&w=150&h=150"
+            end
+            if backgroundimage then
+                backgroundimage.Image = "rbxthumb://type=GameThumbnail&id=" .. game.GameId .. "&w=768&h=432"
+            end
         end
     end
 
