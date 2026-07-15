@@ -15,7 +15,7 @@ function Topbar:Create(parentPanel)
     topbar.Size = UDim2.new(1,0,0,35)
     topbar.BorderColor3 = Color3.fromRGB(0,0,0)
     topbar.Position = UDim2.new(0.5,0,0.03763,0)
-    topbar.Parent = script.Parent
+    topbar.Parent = parentPanel
 
     local list = Instance.new("UIListLayout")
     list.Name = "List"
@@ -364,6 +364,10 @@ function Topbar:Create(parentPanel)
     logoPadding.Parent = logo
     
     return topbar
+end
+
+function Topbar:Init(WindowTable)
+    -- Window Initialization (e.g. dragging, time updates) can go here
 end
 
 return Topbar
