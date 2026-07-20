@@ -13,27 +13,39 @@ function SettignsTab:Create(WindowTable)
     local screen = WindowTable.Content:FindFirstChild('screen')
     if not screen then return end
     
-    local ExampleTab = Instance.new("ScrollingFrame")
+    local ExampleTab = Instance.new("ImageButton")
     ExampleTab.BorderSizePixel = 0
     ExampleTab.BackgroundTransparency = 1
+    ExampleTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ExampleTab.AnchorPoint = Vector2.new(0.5, 0.5)
     ExampleTab.Size = UDim2.new(1, 0, 1, 0)
+    ExampleTab.LayoutOrder = 1
+    ExampleTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
     ExampleTab.Name = "ExampleTab"
-    ExampleTab.ScrollBarThickness = 0
-    ExampleTab.AutomaticCanvasSize = Enum.AutomaticSize.Y
-    ExampleTab.CanvasSize = UDim2.new(0, 0, 0, 0)
+    ExampleTab.Position = UDim2.new(0.5, 0, 0.5, 0)
     ExampleTab.Parent = screen
+
+    local ExampleTabScroll = Instance.new("ScrollingFrame")
+    ExampleTabScroll.BorderSizePixel = 0
+    ExampleTabScroll.BackgroundTransparency = 1
+    ExampleTabScroll.Size = UDim2.new(1, 0, 1, 0)
+    ExampleTabScroll.Name = "Scroll"
+    ExampleTabScroll.ScrollBarThickness = 0
+    ExampleTabScroll.AutomaticCanvasSize = Enum.AutomaticSize.Y
+    ExampleTabScroll.CanvasSize = UDim2.new(0, 0, 0, 0)
+    ExampleTabScroll.Parent = ExampleTab
     
     local TabPadding = Instance.new("UIPadding")
     TabPadding.PaddingTop = UDim.new(0, 15)
     TabPadding.PaddingBottom = UDim.new(0, 15)
     TabPadding.PaddingLeft = UDim.new(0, 15)
     TabPadding.PaddingRight = UDim.new(0, 15)
-    TabPadding.Parent = ExampleTab
+    TabPadding.Parent = ExampleTabScroll
     
     local TabList = Instance.new("UIListLayout")
     TabList.Padding = UDim.new(0, 15)
     TabList.SortOrder = Enum.SortOrder.LayoutOrder
-    TabList.Parent = ExampleTab
+    TabList.Parent = ExampleTabScroll
 
     local Elements = {}
     
@@ -483,11 +495,11 @@ function SettignsTab:Create(WindowTable)
     end
 
     -- Create Demo UI Structure
-    Elements:CreateSearchBar(ExampleTab, "Search settings...", function(text)
+    Elements:CreateSearchBar(ExampleTabScroll, "Search settings...", function(text)
         print("Searching for: ", text)
     end)
     
-    local LeftCol, RightCol = Elements:CreateColumns(ExampleTab)
+    local LeftCol, RightCol = Elements:CreateColumns(ExampleTabScroll)
     
     local MainSection = Elements:CreateSection(LeftCol, "Main Settings")
     Elements:CreateToggle(MainSection, "Auto Farm", function(state) print("Auto farm: ", state) end)
