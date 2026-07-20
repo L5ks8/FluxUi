@@ -777,7 +777,6 @@ function Mainframe:Create()
     padding11.Name = "padding"
     padding11.Parent = screen
 
-
     local page = Instance.new("UIPageLayout")
     page.HorizontalAlignment = Enum.HorizontalAlignment.Center
     page.GamepadInputEnabled = false
@@ -789,12 +788,85 @@ function Mainframe:Create()
     page.ScrollWheelInputEnabled = false
     page.Parent = screen
 
+    local controls = Instance.new("Frame")
+    controls.ZIndex = 999
+    controls.BorderSizePixel = 0
+    controls.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    controls.AnchorPoint = Vector2.new(0.5, 0.5)
+    controls.Size = UDim2.new(1, 0, 1, 0)
+    controls.Position = UDim2.new(0.5, 0, 0.5, 0)
+    controls.Name = "controls"
+    controls.BackgroundTransparency = 1
+    controls.Parent = panel
+
+    local drag = Instance.new("ImageButton")
+    drag.BorderSizePixel = 0
+    drag.BackgroundTransparency = 1
+    drag.ImageTransparency = 1
+    drag.AnchorPoint = Vector2.new(0.5, 0)
+    drag.Size = UDim2.new(0, 70, 0, 35)
+    drag.Name = "drag"
+    drag.Position = UDim2.new(0.5, 0, 0, 0)
+    drag.Parent = controls
+
+    local drag_bar = Instance.new("Frame")
+    drag_bar.BorderSizePixel = 0
+    drag_bar.BackgroundColor3 = Color3.fromRGB(91, 91, 91)
+    drag_bar.AnchorPoint = Vector2.new(0.5, 0.5)
+    drag_bar.Size = UDim2.new(1, 0, 0, 5)
+    drag_bar.Position = UDim2.new(0.5, 0, 0.5, 0)
+    drag_bar.Name = "bar"
+    drag_bar.BackgroundTransparency = 0.5
+    drag_bar.Parent = drag
+
+    local drag_corner = Instance.new("UICorner")
+    drag_corner.CornerRadius = UDim.new(1, 0)
+    drag_corner.Parent = drag_bar
+
+    local drag_stroke = Instance.new("UIStroke")
+    drag_stroke.Enabled = false
+    drag_stroke.Color = Color3.fromRGB(255, 255, 255)
+    drag_stroke.Name = "stroke"
+    drag_stroke.Parent = drag_bar
+
+    local resize = Instance.new("ImageButton")
+    resize.BorderSizePixel = 0
+    resize.AutoButtonColor = false
+    resize.BackgroundTransparency = 1
+    resize.AnchorPoint = Vector2.new(1, 1)
+    resize.Size = UDim2.new(0, 35, 0, 35)
+    resize.Name = "resize"
+    resize.Position = UDim2.new(1, -8, 1, -8)
+    resize.Parent = controls
+
+    local resize_icon = Instance.new("ImageLabel")
+    resize_icon.BorderSizePixel = 0
+    resize_icon.SliceCenter = Rect.new(132, 132, 224, 224)
+    resize_icon.SliceScale = 0.03
+    resize_icon.ScaleType = Enum.ScaleType.Slice
+    resize_icon.ImageColor3 = Color3.fromRGB(91, 91, 91)
+    resize_icon.AnchorPoint = Vector2.new(1, 1)
+    resize_icon.Image = "rbxassetid://88780680171023"
+    resize_icon.Size = UDim2.new(1, 0, 1, 0)
+    resize_icon.BackgroundTransparency = 1
+    resize_icon.Name = "icon"
+    resize_icon.Parent = resize
+
+    local resize_scale2 = Instance.new("UIScale")
+    resize_scale2.Name = "Scale"
+    resize_scale2.Parent = resize
+
+    local main_scale = Instance.new("UIScale")
+    main_scale.Name = "Scale"
+    main_scale.Parent = panel
+
     local WindowTable = {
         Instance = ScreenGui,
         Main = main,
         Panel = panel,
         Content = content,
-        Tabs = tabs
+        Tabs = tabs,
+        Controls = controls
     }
 
     if _G.FluxUiMaintab then _G.FluxUiMaintab:Create(WindowTable) end

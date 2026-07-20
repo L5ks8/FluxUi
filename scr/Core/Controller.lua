@@ -197,6 +197,190 @@ function Controller.InitUserProfile(WindowTable)
         end
     end
 end
+--// Drag and Resize
+function Controller.InitDragAndResize(WindowTable)
+    local UserInputService = game:GetService("UserInputService")
+    local TweenService = game:GetService("TweenService")
+    local Players = game:GetService("Players")
+    local Client = Players.LocalPlayer
+    local Mouse = Client:GetMouse()
+    local Camera = workspace.CurrentCamera
+    
+    local Main = WindowTable.Panel
+    local Controls = WindowTable.Controls
+    if not Main or not Controls then return end
+    
+    local Animations = {
+        Smooth = TweenInfo.new(0.25, Enum.EasingStyle.Quart, Enum.EasingDirection.Out),
+        Fast = TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    }
+
+    --// Drag
+    local Hovering = false
+    local Holding = false
+    local DragConnection = nil
+    local InitialX, InitialY, UIInitialPos = nil, nil, nil
+
+    local function Drag()
+        if Holding == false then 
+            if DragConnection then DragConnection:Disconnect() end
+            return 
+        end
+
+        local distanceMovedX = InitialX - Mouse.X
+        local distanceMovedY = InitialY - Mouse.Y
+
+        TweenService:Create(Main, Animations.Smooth, { Position = UIInitialPos - UDim2.new(0, distanceMovedX, 0, distanceMovedY) }):Play()
+    end
+
+    local dragBtn = Controls:FindFirstChild("drag")
+    if dragBtn then
+        dragBtn.MouseEnter:Connect(function()
+            Hovering = true
+            TweenService:Create(dragBtn, Animations.Fast, { Size = UDim2.fromOffset(75, 35) }):Play()
+            if dragBtn:FindFirstChild("bar") then
+                TweenService:Create(dragBtn.bar, Animations.Fast, { BackgroundTransparency = 0 }):Play()
+            end
+        end)
+
+        dragBtn.MouseLeave:Connect(function()
+            Hovering = false
+            TweenService:Create(dragBtn, Animations.Fast, { Size = UDim2.fromOffset(70, 35) }):Play()
+            if dragBtn:FindFirstChild("bar") then
+                TweenService:Create(dragBtn.bar, Animations.Fast, { BackgroundTransparency = 0.5 }):Play()
+            end
+        end)
+    end
+
+    UserInputService.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            Holding = Hovering
+            if Holding then
+                InitialX, InitialY = Mouse.X, Mouse.Y
+                UIInitialPos = Main.Position
+                DragConnection = Mouse.Move:Connect(Drag)
+            end
+        end
+    end)
+
+    task.spawn(function()
+        while task.wait() do
+            if dragBtn and dragBtn:FindFirstChild("bar") and dragBtn.bar:FindFirstChild("stroke") then
+                if Holding == true then
+                    dragBtn.bar.stroke.Thickness = 1
+                    dragBtn.bar.stroke.Enabled = true
+                else
+                    dragBtn.bar.stroke.Thickness = 0
+                    dragBtn.bar.stroke.Enabled = false
+                end
+            end
+        end
+    end)
+
+    UserInputService.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            Holding = false
+        end
+    end)
+
+    --// Sizing
+    local Resizing = false
+    local MinimumSize = Vector2.new(550, 358)
+    local LastSize = nil
+    local start_mouse_pos = nil
+    local start_frame_size = nil
+    local start_frame_pos = nil
+    local tapped = false
+
+    local resizeBtn = Controls:FindFirstChild("resize")
+
+    local function ResizeStart(input)
+        Resizing = true
+        start_mouse_pos = Vector2.new(input.Position.X, input.Position.Y)
+        start_frame_size = Main.Size
+        start_frame_pos = Main.Position
+        
+        local scale = Main:FindFirstChild("Scale")
+        if scale then
+            TweenService:Create(scale, Animations.Fast, {Scale = 0.98}):Play()
+        end
+    end
+
+    local function ResizeDisconnect()
+        Resizing = false
+        local scale = Main:FindFirstChild("Scale")
+        if scale then
+            TweenService:Create(scale, Animations.Fast, {Scale = 1}):Play()
+        end
+        if resizeBtn and resizeBtn:FindFirstChild("Scale") then
+            TweenService:Create(resizeBtn.Scale, Animations.Fast, {Scale = 1}):Play()
+        end
+    end
+
+    local function ResizeUpdate(input)
+        if Resizing and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+            local Viewport = Camera.ViewportSize
+            local MaximumSize = Vector2.new((Viewport.X-80), (Viewport.Y-80))
+            
+            local currentMousePosition = Vector2.new(input.Position.X, input.Position.Y)
+            local mouseDelta = currentMousePosition - start_mouse_pos
+            local newSizeX = start_frame_size.X.Offset + (mouseDelta.X * 2)
+            local newSizeY = start_frame_size.Y.Offset + (mouseDelta.Y * 2)
+
+            newSizeX = math.clamp(newSizeX, MinimumSize.X, MaximumSize.X)
+            newSizeY = math.clamp(newSizeY, MinimumSize.Y, MaximumSize.Y)
+
+            local newFrameWidth = Main.AbsoluteSize.X
+            local newFrameHeight = Main.AbsoluteSize.Y
+
+            TweenService:Create(Main, Animations.Smooth, {Size = UDim2.new(0, newSizeX, 0, newSizeY)}):Play()
+            TweenService:Create(Main, Animations.Smooth, {Position = UDim2.new(start_frame_pos.X.Scale, start_frame_pos.X.Offset - (newFrameWidth - Main.AbsoluteSize.X) / 2,
+                start_frame_pos.Y.Scale, start_frame_pos.Y.Offset - (newFrameHeight - Main.AbsoluteSize.Y) / 2)}):Play()
+
+            LastSize = UDim2.fromOffset(newSizeX, newSizeY)
+        end
+    end
+
+    if resizeBtn then
+        resizeBtn.MouseEnter:Connect(function()
+            TweenService:Create(resizeBtn, Animations.Fast, { Size = UDim2.fromOffset(40, 40) }):Play()
+            if resizeBtn:FindFirstChild("icon") then
+                TweenService:Create(resizeBtn.icon, Animations.Fast, { ImageColor3 = Color3.fromRGB(80, 80, 80) }):Play()
+            end
+        end)
+
+        resizeBtn.MouseLeave:Connect(function()
+            TweenService:Create(resizeBtn, Animations.Fast, { Size = UDim2.fromOffset(35, 35) }):Play()
+            if resizeBtn:FindFirstChild("icon") then
+                TweenService:Create(resizeBtn.icon, Animations.Fast, { ImageColor3 = Color3.fromRGB(60, 60, 60) }):Play()
+            end
+        end)
+
+        resizeBtn.MouseButton1Down:Connect(function()
+            tapped = true
+        end)
+
+        resizeBtn.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or (input.UserInputType == Enum.UserInputType.Touch and tapped) then
+                ResizeStart(input)
+            end
+        end)
+    end
+
+    UserInputService.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            tapped = false
+            ResizeDisconnect()
+        end
+    end)
+
+    UserInputService.InputChanged:Connect(function(input)
+        if (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) and Resizing then
+            ResizeUpdate(input)
+        end
+    end)
+end
+
 --//TabHandler
 function Controller.InitTabHandler(WindowTable)
     local tabsContainer = WindowTable.Tabs
@@ -206,12 +390,28 @@ function Controller.InitTabHandler(WindowTable)
     local pageLayout = screen and screen:FindFirstChild("page")
     if not pageLayout then return end
     
+    local TweenService = game:GetService("TweenService")
+    local Animations = { Fast = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out) }
+    
+    local allTabButtons = {}
+    
     for _, descendant in ipairs(tabsContainer:GetDescendants()) do
         if descendant:IsA("ImageButton") or descendant:IsA("TextButton") then
+            -- We only want the main tab buttons
             local targetPage = screen:FindFirstChild(descendant.Name)
             if targetPage and descendant.Name ~= "content" and descendant.Name ~= "scroll" then
+                table.insert(allTabButtons, descendant)
+                
                 descendant.MouseButton1Click:Connect(function()
                     pageLayout:JumpTo(targetPage)
+                    
+                    for _, btn in pairs(allTabButtons) do
+                        if btn == descendant then
+                            TweenService:Create(btn, Animations.Fast, {BackgroundTransparency = 0}):Play()
+                        else
+                            TweenService:Create(btn, Animations.Fast, {BackgroundTransparency = 1}):Play()
+                        end
+                    end
                 end)
             end
         end
