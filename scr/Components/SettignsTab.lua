@@ -21,7 +21,6 @@ function SettignsTab:Create(WindowTable)
     ExampleTab.ScrollBarThickness = 0
     ExampleTab.AutomaticCanvasSize = Enum.AutomaticSize.Y
     ExampleTab.CanvasSize = UDim2.new(0, 0, 0, 0)
-    ExampleTab.Visible = false -- Will be toggled by TabHandler
     ExampleTab.Parent = screen
     
     local TabPadding = Instance.new("UIPadding")
