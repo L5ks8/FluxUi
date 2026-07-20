@@ -324,7 +324,7 @@ function Controller.InitDragAndResize(WindowTable)
             local currentMousePosition = Vector2.new(input.Position.X, input.Position.Y)
             local mouseDelta = currentMousePosition - start_mouse_pos
             
-            -- User's logic for independent width and height scaling
+
             local newSizeX = start_frame_size.X.Offset + (mouseDelta.X * 2)
             local newSizeY = start_frame_size.Y.Offset + (mouseDelta.Y * 2)
 
@@ -398,7 +398,7 @@ function Controller.InitTabHandler(WindowTable)
     
     for _, descendant in ipairs(tabsContainer:GetDescendants()) do
         if descendant:IsA("ImageButton") or descendant:IsA("TextButton") then
-            -- We only want the main tab buttons
+
             local targetPage = screen:FindFirstChild(descendant.Name)
             if targetPage and descendant.Name ~= "content" and descendant.Name ~= "scroll" then
                 table.insert(allTabButtons, descendant)
