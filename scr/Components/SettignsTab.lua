@@ -86,7 +86,7 @@ function SettignsTab:Create(WindowTable)
 
     function Elements:CreateSection(parent, titleText)
         local Section = Instance.new("Frame")
-        Section.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        Section.BackgroundTransparency = 1
         Section.Size = UDim2.new(1, 0, 0, 0)
         Section.AutomaticSize = Enum.AutomaticSize.Y
         Section.Parent = parent
@@ -94,11 +94,6 @@ function SettignsTab:Create(WindowTable)
         local UICorner = Instance.new("UICorner")
         UICorner.CornerRadius = UDim.new(0, 6)
         UICorner.Parent = Section
-        
-        local UIStroke = Instance.new("UIStroke")
-        UIStroke.Color = Color3.fromRGB(255, 255, 255)
-        UIStroke.Transparency = 0.95
-        UIStroke.Parent = Section
         
         local TopBtn = Instance.new("TextButton")
         TopBtn.BackgroundTransparency = 1
@@ -166,11 +161,6 @@ function SettignsTab:Create(WindowTable)
         UICorner.CornerRadius = UDim.new(0, 4)
         UICorner.Parent = ToggleFrame
         
-        local UIStroke = Instance.new("UIStroke")
-        UIStroke.Color = Color3.fromRGB(255, 255, 255)
-        UIStroke.Transparency = 0.95
-        UIStroke.Parent = ToggleFrame
-        
         local Title = Instance.new("TextLabel")
         Title.BackgroundTransparency = 1
         Title.Size = UDim2.new(1, -60, 1, 0)
@@ -229,11 +219,6 @@ function SettignsTab:Create(WindowTable)
         local UICorner = Instance.new("UICorner")
         UICorner.CornerRadius = UDim.new(0, 4)
         UICorner.Parent = SliderFrame
-        
-        local UIStroke = Instance.new("UIStroke")
-        UIStroke.Color = Color3.fromRGB(255, 255, 255)
-        UIStroke.Transparency = 0.95
-        UIStroke.Parent = SliderFrame
         
         local Title = Instance.new("TextLabel")
         Title.BackgroundTransparency = 1
@@ -325,11 +310,6 @@ function SettignsTab:Create(WindowTable)
         UICorner.CornerRadius = UDim.new(0, 4)
         UICorner.Parent = DropdownFrame
         
-        local UIStroke = Instance.new("UIStroke")
-        UIStroke.Color = Color3.fromRGB(255, 255, 255)
-        UIStroke.Transparency = 0.95
-        UIStroke.Parent = DropdownFrame
-        
         local TopBtn = Instance.new("TextButton")
         TopBtn.BackgroundTransparency = 1
         TopBtn.Size = UDim2.new(1, 0, 0, 35)
@@ -411,11 +391,6 @@ function SettignsTab:Create(WindowTable)
         UICorner.CornerRadius = UDim.new(0, 4)
         UICorner.Parent = InputFrame
         
-        local UIStroke = Instance.new("UIStroke")
-        UIStroke.Color = Color3.fromRGB(255, 255, 255)
-        UIStroke.Transparency = 0.95
-        UIStroke.Parent = InputFrame
-        
         local Title = Instance.new("TextLabel")
         Title.BackgroundTransparency = 1
         Title.Size = UDim2.new(0.5, -10, 1, 0)
@@ -458,11 +433,6 @@ function SettignsTab:Create(WindowTable)
         local UICorner = Instance.new("UICorner")
         UICorner.CornerRadius = UDim.new(0, 6)
         UICorner.Parent = SearchFrame
-        
-        local UIStroke = Instance.new("UIStroke")
-        UIStroke.Color = Color3.fromRGB(255, 255, 255)
-        UIStroke.Transparency = 0.95
-        UIStroke.Parent = SearchFrame
         
         local Icon = Instance.new("ImageLabel")
         Icon.BackgroundTransparency = 1
