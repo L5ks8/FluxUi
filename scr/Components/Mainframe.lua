@@ -54,6 +54,16 @@ function Mainframe:Create()
     content.BackgroundTransparency = 1
     content.Parent = panel
 
+    local content_list = Instance.new("UIListLayout")
+    content_list.FillDirection = Enum.FillDirection.Horizontal
+    content_list.SortOrder = Enum.SortOrder.LayoutOrder
+    content_list.Padding = UDim.new(0, 5) -- Add slight padding between tabs and screen if desired
+    content_list.Parent = content
+
+    local content_padding = Instance.new("UIPadding")
+    content_padding.PaddingLeft = UDim.new(0, 9)
+    content_padding.Parent = content
+
     local tabs = Instance.new("Frame")
     tabs.BorderSizePixel = 0
     tabs.BackgroundColor3 = Color3.fromRGB(21, 21, 21)
@@ -62,7 +72,7 @@ function Mainframe:Create()
     tabs.Position = UDim2.new(0, 15, 0, 0)
     tabs.BorderColor3 = Color3.fromRGB(0, 0, 0)
     tabs.Name = "tabs"
-    tabs.LayoutOrder = 10
+    tabs.LayoutOrder = 1
     tabs.BackgroundTransparency = 1
     tabs.Parent = content
 
@@ -765,6 +775,7 @@ function Mainframe:Create()
     screen.Position = UDim2.new(0.63809, 0, 0.46512, 0)
     screen.BorderColor3 = Color3.fromRGB(0, 0, 0)
     screen.Name = "screen"
+    screen.LayoutOrder = 2
     screen.Parent = content
 
     local corner13 = Instance.new("UICorner")
