@@ -68,8 +68,8 @@ function Mainframe:Create()
     tabs.BorderSizePixel = 0
     tabs.BackgroundColor3 = Color3.fromRGB(21, 21, 21)
     tabs.ClipsDescendants = true
-    tabs.Size = UDim2.new(-0.03095, 200, 1.0814, -65)
-    tabs.Position = UDim2.new(0, 15, 0, 0)
+    tabs.Size = UDim2.new(0, 178, 1, 0)
+    tabs.Position = UDim2.new(0, 0, 0, 0)
     tabs.BorderColor3 = Color3.fromRGB(0, 0, 0)
     tabs.Name = "tabs"
     tabs.LayoutOrder = 1
@@ -86,8 +86,8 @@ function Mainframe:Create()
     mainFrame3.BackgroundColor3 = Color3.fromRGB(9, 9, 9)
     mainFrame3.AnchorPoint = Vector2.new(0.5, 0.5)
     mainFrame3.AutomaticSize = Enum.AutomaticSize.Y
-    mainFrame3.Size = UDim2.new(1.12337, -22, 0.81953, 0)
-    mainFrame3.Position = UDim2.new(1.84019, -14, 0.51218, -14)
+    mainFrame3.Size = UDim2.new(1, 0, 1, 0)
+    mainFrame3.Position = UDim2.new(0.5, 0, 0.5, 0)
     mainFrame3.BorderColor3 = Color3.fromRGB(0, 0, 0)
     mainFrame3.Name = "main"
     mainFrame3.LayoutOrder = 1
@@ -771,12 +771,16 @@ function Mainframe:Create()
     screen.BorderSizePixel = 0
     screen.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
     screen.AnchorPoint = Vector2.new(0.5, 0.5)
-    screen.Size = UDim2.new(0.72381, 0, 0.93023, 0)
-    screen.Position = UDim2.new(0.63809, 0, 0.46512, 0)
+    screen.Size = UDim2.new(0, 0, 1, 0)
+    screen.Position = UDim2.new(0.5, 0, 0.5, 0)
     screen.BorderColor3 = Color3.fromRGB(0, 0, 0)
     screen.Name = "screen"
     screen.LayoutOrder = 2
     screen.Parent = content
+
+    local flexScreen = Instance.new("UIFlexItem")
+    flexScreen.FlexMode = Enum.UIFlexMode.Fill
+    flexScreen.Parent = screen
 
     local corner13 = Instance.new("UICorner")
     corner13.Name = "corner"
