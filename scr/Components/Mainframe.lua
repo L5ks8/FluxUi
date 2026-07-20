@@ -797,7 +797,7 @@ function Mainframe:Create()
     controls.Position = UDim2.new(0.5, 0, 0.5, 0)
     controls.Name = "controls"
     controls.BackgroundTransparency = 1
-    controls.Parent = panel
+    controls.Parent = main
 
     local drag = Instance.new("ImageButton")
     drag.BorderSizePixel = 0
@@ -829,6 +829,12 @@ function Mainframe:Create()
     drag_stroke.Name = "stroke"
     drag_stroke.Parent = drag_bar
 
+    local drag_padding = Instance.new("UIPadding")
+    drag_padding.PaddingRight = UDim.new(0, 15)
+    drag_padding.PaddingLeft = UDim.new(0, 15)
+    drag_padding.Name = "padding"
+    drag_padding.Parent = drag
+
     local resize = Instance.new("ImageButton")
     resize.BorderSizePixel = 0
     resize.AutoButtonColor = false
@@ -851,6 +857,12 @@ function Mainframe:Create()
     resize_icon.BackgroundTransparency = 1
     resize_icon.Name = "icon"
     resize_icon.Parent = resize
+
+    local resize_padding = Instance.new("UIPadding")
+    resize_padding.PaddingTop = UDim.new(0, 10)
+    resize_padding.PaddingLeft = UDim.new(0, 10)
+    resize_padding.Name = "Padding"
+    resize_padding.Parent = resize
 
     local resize_scale2 = Instance.new("UIScale")
     resize_scale2.Name = "Scale"

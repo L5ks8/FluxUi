@@ -206,7 +206,7 @@ function Controller.InitDragAndResize(WindowTable)
     local Mouse = Client:GetMouse()
     local Camera = workspace.CurrentCamera
     
-    local Main = WindowTable.Panel
+    local Main = WindowTable.Main
     local Controls = WindowTable.Controls
     if not Main or not Controls then return end
     
