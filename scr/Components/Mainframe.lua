@@ -870,7 +870,7 @@ function Mainframe:Create()
 
     local main_scale = Instance.new("UIScale")
     main_scale.Name = "Scale"
-    main_scale.Parent = panel
+    main_scale.Parent = main
 
     local WindowTable = {
         Instance = ScreenGui,

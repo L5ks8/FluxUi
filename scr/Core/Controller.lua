@@ -285,11 +285,8 @@ function Controller.InitDragAndResize(WindowTable)
 
     --// Sizing
     local Resizing = false
-    local MinimumSize = Vector2.new(550, 358)
-    local LastSize = nil
     local start_mouse_pos = nil
-    local start_frame_size = nil
-    local start_frame_pos = nil
+    local start_scale = 1
     local tapped = false
 
     local resizeBtn = Controls:FindFirstChild("resize")
@@ -297,21 +294,15 @@ function Controller.InitDragAndResize(WindowTable)
     local function ResizeStart(input)
         Resizing = true
         start_mouse_pos = Vector2.new(input.Position.X, input.Position.Y)
-        start_frame_size = Main.Size
-        start_frame_pos = Main.Position
         
         local scale = Main:FindFirstChild("Scale")
         if scale then
-            TweenService:Create(scale, Animations.Fast, {Scale = 0.98}):Play()
+            start_scale = scale.Scale
         end
     end
 
     local function ResizeDisconnect()
         Resizing = false
-        local scale = Main:FindFirstChild("Scale")
-        if scale then
-            TweenService:Create(scale, Animations.Fast, {Scale = 1}):Play()
-        end
         if resizeBtn and resizeBtn:FindFirstChild("Scale") then
             TweenService:Create(resizeBtn.Scale, Animations.Fast, {Scale = 1}):Play()
         end
@@ -319,25 +310,18 @@ function Controller.InitDragAndResize(WindowTable)
 
     local function ResizeUpdate(input)
         if Resizing and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-            local Viewport = Camera.ViewportSize
-            local MaximumSize = Vector2.new((Viewport.X-80), (Viewport.Y-80))
+            local scale = Main:FindFirstChild("Scale")
+            if not scale then return end
             
             local currentMousePosition = Vector2.new(input.Position.X, input.Position.Y)
             local mouseDelta = currentMousePosition - start_mouse_pos
-            local newSizeX = start_frame_size.X.Offset + (mouseDelta.X * 2)
-            local newSizeY = start_frame_size.Y.Offset + (mouseDelta.Y * 2)
+            
+            -- Scale proportionally based on X delta.
+            -- Dragging 400 pixels to the right adds +1 to the scale.
+            local newScale = start_scale + (mouseDelta.X / 400)
+            newScale = math.clamp(newScale, 0.4, 2.5)
 
-            newSizeX = math.clamp(newSizeX, MinimumSize.X, MaximumSize.X)
-            newSizeY = math.clamp(newSizeY, MinimumSize.Y, MaximumSize.Y)
-
-            local newFrameWidth = Main.AbsoluteSize.X
-            local newFrameHeight = Main.AbsoluteSize.Y
-
-            TweenService:Create(Main, Animations.Smooth, {Size = UDim2.new(0, newSizeX, 0, newSizeY)}):Play()
-            TweenService:Create(Main, Animations.Smooth, {Position = UDim2.new(start_frame_pos.X.Scale, start_frame_pos.X.Offset - (newFrameWidth - Main.AbsoluteSize.X) / 2,
-                start_frame_pos.Y.Scale, start_frame_pos.Y.Offset - (newFrameHeight - Main.AbsoluteSize.Y) / 2)}):Play()
-
-            LastSize = UDim2.fromOffset(newSizeX, newSizeY)
+            TweenService:Create(scale, Animations.Smooth, {Scale = newScale}):Play()
         end
     end
 
