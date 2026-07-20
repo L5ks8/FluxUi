@@ -46,9 +46,9 @@ function Mainframe:Create()
     local content = Instance.new("Frame")
     content.BorderSizePixel = 0
     content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    content.AnchorPoint = Vector2.new(0.5, 1)
-    content.Size = UDim2.new(1, 0, 1, -35)
-    content.Position = UDim2.new(0.5, 0, 1, 0)
+    content.AnchorPoint = Vector2.new(0.5, 0)
+    content.Size = UDim2.new(1, 0, 1, -65)
+    content.Position = UDim2.new(0.5, 0, 0, 35)
     content.BorderColor3 = Color3.fromRGB(0, 0, 0)
     content.Name = "content"
     content.BackgroundTransparency = 1

@@ -11,10 +11,10 @@ function Topbar:Create(parentPanel)
     topbar.BackgroundTransparency = 0.9
     topbar.BackgroundColor3 = Color3.fromRGB(0,0,0)
     topbar.ZIndex = 2
-    topbar.AnchorPoint = Vector2.new(0.5,0.5)
-    topbar.Size = UDim2.new(1,0,0,35)
+    topbar.AnchorPoint = Vector2.new(0.5, 0)
+    topbar.Size = UDim2.new(1, 0, 0, 35)
     topbar.BorderColor3 = Color3.fromRGB(0,0,0)
-    topbar.Position = UDim2.new(0.5,0,0.03763,0)
+    topbar.Position = UDim2.new(0.5, 0, 0, 0)
     topbar.Parent = parentPanel
 
     local list = Instance.new("UIListLayout")
