@@ -168,10 +168,35 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
     end
 end
 
---//Notification
+--//UserProfile
+function Controller.InitUserProfile(WindowTable)
+    local Players = game:GetService("Players")
+    local LocalPlayer = Players.LocalPlayer
+    if not LocalPlayer then return end
 
-
-
+    local tabsContainer = WindowTable.Tabs
+    if not tabsContainer then return end
+    
+    local userBtn = tabsContainer:FindFirstChild("user", true)
+    if userBtn then
+        local info = userBtn:FindFirstChild("info")
+        if info then
+            local display = info:FindFirstChild("display")
+            local username = info:FindFirstChild("username")
+            
+            if display then display.Text = LocalPlayer.DisplayName end
+            if username then username.Text = "@" .. LocalPlayer.Name end
+        end
+        
+        local profile = userBtn:FindFirstChild("profile")
+        if profile then
+            local thumbnail = profile:FindFirstChild("thumbnail")
+            if thumbnail and thumbnail:IsA("ImageLabel") then
+                thumbnail.Image = "rbxthumb://type=AvatarHeadShot&id=" .. LocalPlayer.UserId .. "&w=420&h=420"
+            end
+        end
+    end
+end
 --//TabHandler
 function Controller.InitTabHandler(WindowTable)
     local tabsContainer = WindowTable.Tabs
