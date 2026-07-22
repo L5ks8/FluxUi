@@ -3,7 +3,6 @@ local function CreateSettings(WindowTable)
     local ScreenGui = WindowTable.Content:FindFirstChild("screen") or WindowTable.Content
 
     -- Unparsed: G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
-    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     local obj_1 = Instance.new("Frame")
     obj_1.Parent = ScreenGui
     obj_1.BorderSizePixel = 0

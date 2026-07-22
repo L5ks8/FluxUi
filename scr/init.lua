@@ -36,7 +36,10 @@ function Library:CreateWindow(Settings)
     WindowTable.Debugbar = Debugbar
     WindowTable.Topbar = Topbar
     WindowTable.Notification = Notification
-    WindowTable.Elements = Elements
+    
+    for k, v in pairs(Elements) do
+        WindowTable.Elements[k] = v
+    end
 
     Topbar:Init(WindowTable)
     Controller.InitTabHandler(WindowTable)
