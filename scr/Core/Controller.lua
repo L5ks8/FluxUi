@@ -17,7 +17,6 @@ function Controller.InitDebugbar(Debug)
         end
     end)
 
-    -- fps
     task.spawn(function()
         while task.wait(1) do
             if Debug:FindFirstChild("fps") then
@@ -26,7 +25,6 @@ function Controller.InitDebugbar(Debug)
         end
     end)
 
-    -- ping
     task.spawn(function()
         while task.wait(1) do
             if Debug:FindFirstChild("ping") and Debug.ping:FindFirstChild("value") then
@@ -35,7 +33,6 @@ function Controller.InitDebugbar(Debug)
         end
     end)
 
-    -- console errors & warnings
     task.spawn(function()
         while task.wait(1) do
             local data = { errors = 0, warnings = 0 }
@@ -58,7 +55,6 @@ function Controller.InitDebugbar(Debug)
         end
     end)
 
-    -- memory
     task.spawn(function()
         while task.wait(1) do
             if Debug:FindFirstChild("memory") and Debug.memory:FindFirstChild("value") then
@@ -82,15 +78,12 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
     local navBtn = mainActions:FindFirstChild("nav")
     local returnBtn = mainActions:FindFirstChild("return")
 
-    -- window state (minimize / restore)
     if fullscreenBtn then
         fullscreenBtn.MouseButton1Click:Connect(function()
             local currentState = Main:GetAttribute("WindowState") or "Normal"
             if currentState == "Minimized" then
-                -- Restore from Minimized to Normal
                 Main:SetAttribute("WindowState", "Normal")
             else
-                -- If Normal or Fullscreen, minimize it
                 Main:SetAttribute("WindowState", "Minimized")
             end
         end)
@@ -105,7 +98,6 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
         local state = Main:GetAttribute("WindowState") or "Normal"
         local oldState = Main:GetAttribute("PreviousWindowState") or "Normal"
         
-        -- Save position/size if we are leaving Normal state
         if oldState == "Normal" then
             lastSize = Main.Size
             lastPos = Main.Position
@@ -116,7 +108,6 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
             local fsIcon = fullscreenBtn.Icons:FindFirstChild("Fullscreen")
             local minIcon = fullscreenBtn.Icons:FindFirstChild("Minimize")
             
-            -- If minimized, show Fullscreen/Restore icon. Otherwise, show Minimize icon
             if fsIcon then fsIcon.Visible = (state == "Minimized") end
             if minIcon then minIcon.Visible = (state ~= "Minimized") end
         end
@@ -150,7 +141,7 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
             if tabsFrame then tabsFrame.Visible = false end
             Main.ClipsDescendants = true
             
-            local minSize = UDim2.new(0, 300, 0, 35) -- Same as Topbar height
+            local minSize = UDim2.new(0, 300, 0, 35)
             
             if TweenService and Animations then
                 TweenService:Create(Main, Animations.Smooth, {
@@ -163,7 +154,6 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
             end
             
         else
-            -- Normal
             if content then content.Visible = true end
             if tabsFrame then tabsFrame.Visible = true end
             Main.ClipsDescendants = false
@@ -180,7 +170,6 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
         end
     end)
 
-    -- close
     if closeBtn then
         closeBtn.MouseButton1Click:Connect(function()
             if TweenService and Animations and Main:IsA("CanvasGroup") then
@@ -192,19 +181,16 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
         end)
     end
 
-    -- navigation
     if navBtn then
         navBtn.MouseButton1Click:Connect(function()
         end)
     end
 
-    -- return 
     if returnBtn then
         returnBtn.MouseButton1Click:Connect(function()
         end)
     end
 
-    -- double click to fullscreen 
     local lastClick = 0
     Topbar.MouseButton1Click:Connect(function()
         local currentTime = time()
@@ -221,7 +207,6 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
         end
     end)
 
-    -- hover
     if TweenService and Animations then
         for _, button in pairs(mainActions:GetChildren()) do
             if button:IsA("ImageButton") or button:IsA("TextButton") then

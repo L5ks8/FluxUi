@@ -897,6 +897,41 @@ function Mainframe:Create()
         Elements = {}
     }
 
+    function WindowTable.Elements:CreateColumns(parent)
+        local Columns = Instance.new("Frame")
+        Columns.BackgroundTransparency = 1
+        Columns.Size = UDim2.new(1, 0, 0, 0)
+        Columns.AutomaticSize = Enum.AutomaticSize.Y
+        Columns.Parent = parent
+        
+        local ColList = Instance.new("UIListLayout")
+        ColList.FillDirection = Enum.FillDirection.Horizontal
+        ColList.Padding = UDim.new(0, 15)
+        ColList.Parent = Columns
+        
+        local Left = Instance.new("Frame")
+        Left.BackgroundTransparency = 1
+        Left.Size = UDim2.new(0.5, -7, 0, 0)
+        Left.AutomaticSize = Enum.AutomaticSize.Y
+        Left.Parent = Columns
+        
+        local LeftList = Instance.new("UIListLayout")
+        LeftList.Padding = UDim.new(0, 10)
+        LeftList.Parent = Left
+        
+        local Right = Instance.new("Frame")
+        Right.BackgroundTransparency = 1
+        Right.Size = UDim2.new(0.5, -8, 0, 0)
+        Right.AutomaticSize = Enum.AutomaticSize.Y
+        Right.Parent = Columns
+        
+        local RightList = Instance.new("UIListLayout")
+        RightList.Padding = UDim.new(0, 10)
+        RightList.Parent = Right
+        
+        return Left, Right
+    end
+
     function WindowTable.Elements:CreateSection(parent, titleText, droppable)
         local TweenService = game:GetService("TweenService")
         local secFrame = Instance.new("Frame")
@@ -1022,8 +1057,30 @@ function Mainframe:Create()
                 end
             end)
         end
+        
+        local SectionObj = { Container = container }
+        
+        function SectionObj:CreateButton(titleText, callback)
+            if not WindowTable.Elements.Button then return end
+            return WindowTable.Elements.Button(container, titleText, callback)
+        end
+        
+        function SectionObj:CreateToggle(titleText, callback)
+            if not WindowTable.Elements.Toggle then return end
+            return WindowTable.Elements.Toggle(container, titleText, callback)
+        end
+        
+        function SectionObj:CreateSlider(titleText, min, max, default, callback)
+            if not WindowTable.Elements.Slider then return end
+            return WindowTable.Elements.Slider(container, titleText, min, max, default, callback)
+        end
+        
+        function SectionObj:CreateDropdown(titleText, options, callback)
+            if not WindowTable.Elements.Dropdown then return end
+            return WindowTable.Elements.Dropdown(container, titleText, options, callback)
+        end
 
-        return container
+        return SectionObj
     end
 
     if _G.FluxUiMaintab then _G.FluxUiMaintab:Create(WindowTable) end

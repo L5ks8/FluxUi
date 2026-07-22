@@ -62,21 +62,7 @@ function Library:CreateWindow(Settings)
         HomeTabController.Init(homeTab)
     end
 
-    function WindowTable:CreateButton(Data)
-        return self.Elements.Button:Create(self, Data)
-    end
 
-    function WindowTable:CreateToggle(Data)
-        return self.Elements.Toggle:Create(self, Data)
-    end
-
-    function WindowTable:CreateSlider(Data)
-        return self.Elements.Slider:Create(self, Data)
-    end
-
-    function WindowTable:CreateDropdown(Data)
-        return self.Elements.Dropdown:Create(self, Data)
-    end
 
     function WindowTable:Notify(Data)
         return self.Notification:Create(self, Data)
