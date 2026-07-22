@@ -82,22 +82,101 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
     local navBtn = mainActions:FindFirstChild("nav")
     local returnBtn = mainActions:FindFirstChild("return")
 
-    -- fullscreen 
+    -- window state (minimize / restore)
     if fullscreenBtn then
         fullscreenBtn.MouseButton1Click:Connect(function()
-            Main:SetAttribute("Fullscreen", not Main:GetAttribute("Fullscreen"))
+            local currentState = Main:GetAttribute("WindowState") or "Normal"
+            if currentState == "Minimized" then
+                -- Restore from Minimized to Normal
+                Main:SetAttribute("WindowState", "Normal")
+            else
+                -- If Normal or Fullscreen, minimize it
+                Main:SetAttribute("WindowState", "Minimized")
+            end
         end)
     end
 
-    Main:GetAttributeChangedSignal("Fullscreen"):Connect(function()
-        local isFullscreen = Main:GetAttribute("Fullscreen")
+    local lastSize = Main.Size
+    local lastPos = Main.Position
+    Main:SetAttribute("WindowState", "Normal")
+    Main:SetAttribute("PreviousWindowState", "Normal")
+
+    Main:GetAttributeChangedSignal("WindowState"):Connect(function()
+        local state = Main:GetAttribute("WindowState") or "Normal"
+        local oldState = Main:GetAttribute("PreviousWindowState") or "Normal"
+        
+        -- Save position/size if we are leaving Normal state
+        if oldState == "Normal" then
+            lastSize = Main.Size
+            lastPos = Main.Position
+        end
+        Main:SetAttribute("PreviousWindowState", state)
         
         if fullscreenBtn and fullscreenBtn:FindFirstChild("Icons") then
             local fsIcon = fullscreenBtn.Icons:FindFirstChild("Fullscreen")
             local minIcon = fullscreenBtn.Icons:FindFirstChild("Minimize")
             
-            if fsIcon then fsIcon.Visible = not isFullscreen end
-            if minIcon then minIcon.Visible = isFullscreen end
+            -- If minimized, show Fullscreen/Restore icon. Otherwise, show Minimize icon
+            if fsIcon then fsIcon.Visible = (state == "Minimized") end
+            if minIcon then minIcon.Visible = (state ~= "Minimized") end
+        end
+
+        local panel = Main:FindFirstChild("panel")
+        local content = panel and panel:FindFirstChild("content")
+        local tabsFrame = panel and panel:FindFirstChild("tabs")
+
+        local Camera = workspace.CurrentCamera
+        local Viewport = Camera.ViewportSize
+        
+        if state == "Fullscreen" then
+            if content then content.Visible = true end
+            if tabsFrame then tabsFrame.Visible = true end
+            Main.ClipsDescendants = true
+
+            local MaximumSize = Vector2.new((Viewport.X-80), (Viewport.Y-80))
+            
+            if TweenService and Animations then
+                TweenService:Create(Main, Animations.Smooth, {
+                    Size = UDim2.new(0, MaximumSize.X, 0, MaximumSize.Y),
+                    Position = UDim2.new(0.5, 0, 0.5, 0)
+                }):Play()
+            else
+                Main.Size = UDim2.new(0, MaximumSize.X, 0, MaximumSize.Y)
+                Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+            end
+            
+        elseif state == "Minimized" then
+            if content then content.Visible = false end
+            if tabsFrame then tabsFrame.Visible = false end
+            Main.ClipsDescendants = true
+            
+            local minSize = UDim2.new(0, 300, 0, 35) -- Same as Topbar height
+            
+            if TweenService and Animations then
+                TweenService:Create(Main, Animations.Smooth, {
+                    Size = minSize,
+                    Position = lastPos
+                }):Play()
+            else
+                Main.Size = minSize
+                Main.Position = lastPos
+            end
+            
+        else
+            -- Normal
+            if content then content.Visible = true end
+            if tabsFrame then tabsFrame.Visible = true end
+            Main.ClipsDescendants = false
+            
+            if TweenService and Animations then
+                TweenService:Create(Main, Animations.Smooth, {
+                    Size = lastSize,
+                    Position = lastPos
+                }):Play()
+            else
+                Main.Size = lastSize
+                Main.Position = lastPos
+            end
         end
     end)
 
@@ -128,11 +207,17 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
     -- double click to fullscreen 
     local lastClick = 0
     Topbar.MouseButton1Click:Connect(function()
-        if time() - lastClick < 0.5 then
-            Main:SetAttribute("Fullscreen", not Main:GetAttribute("Fullscreen"))
+        local currentTime = time()
+        if currentTime - lastClick < 0.3 then
+            local state = Main:GetAttribute("WindowState") or "Normal"
+            if state == "Fullscreen" then
+                Main:SetAttribute("WindowState", "Normal")
+            else
+                Main:SetAttribute("WindowState", "Fullscreen")
+            end
             lastClick = 0
         else
-            lastClick = time()
+            lastClick = currentTime
         end
     end)
 
@@ -318,6 +403,11 @@ function Controller.InitDragAndResize(WindowTable)
 
     local function ResizeUpdate(input)
         if Resizing and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+            local state = Main:GetAttribute("WindowState") or "Normal"
+            if state == "Fullscreen" or state == "Minimized" then
+                Main:SetAttribute("WindowState", "Normal")
+            end
+
             local Viewport = Camera.ViewportSize
             local MaximumSize = Vector2.new((Viewport.X-80), (Viewport.Y-80))
             

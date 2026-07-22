@@ -244,6 +244,7 @@ function Topbar:Create(parentPanel)
     fullscreenIcon.AnchorPoint = Vector2.new(0.5,0.5)
     fullscreenIcon.Image = "rbxassetid://78102729792278"
     fullscreenIcon.Size = UDim2.new(0,16,0,16)
+    fullscreenIcon.Visible = false
     fullscreenIcon.BorderColor3 = Color3.fromRGB(255,255,255)
     fullscreenIcon.BackgroundTransparency = 1
     fullscreenIcon.Position = UDim2.new(0.85795,0,0.6875,0)
@@ -257,7 +258,7 @@ function Topbar:Create(parentPanel)
     minimizeIcon.AnchorPoint = Vector2.new(0.5,0.5)
     minimizeIcon.Image = "rbxassetid://89086957535910"
     minimizeIcon.Size = UDim2.new(0,20,0,20)
-    minimizeIcon.Visible = false
+    minimizeIcon.Visible = true
     minimizeIcon.BorderColor3 = Color3.fromRGB(255,255,255)
     minimizeIcon.BackgroundTransparency = 1
     minimizeIcon.Position = UDim2.new(0.858,0,0.688,0)
