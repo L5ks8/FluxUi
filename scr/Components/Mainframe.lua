@@ -893,8 +893,138 @@ function Mainframe:Create()
         Panel = panel,
         Content = content,
         Tabs = tabs,
-        Controls = controls
+        Controls = controls,
+        Elements = {}
     }
+
+    function WindowTable.Elements:CreateSection(parent, titleText, droppable)
+        local TweenService = game:GetService("TweenService")
+        local secFrame = Instance.new("Frame")
+        secFrame.Name = "Section"
+        secFrame.Size = UDim2.new(1, 0, 0, 32)
+        secFrame.AutomaticSize = Enum.AutomaticSize.Y
+        secFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+        secFrame.ClipsDescendants = false
+        secFrame.Parent = parent
+
+        local secCorner = Instance.new("UICorner")
+        secCorner.CornerRadius = UDim.new(0, 6)
+        secCorner.Parent = secFrame
+        
+        local secStroke = Instance.new("UIStroke")
+        secStroke.Color = Color3.fromRGB(45, 45, 45)
+        secStroke.Thickness = 1
+        secStroke.Transparency = 0.5
+        secStroke.Parent = secFrame
+
+        local sectionText = Instance.new("TextLabel")
+        sectionText.Size = UDim2.new(1, -20, 0, 32)
+        sectionText.Position = UDim2.new(0, 10, 0, 0)
+        sectionText.Text = " " .. titleText
+        sectionText.TextColor3 = Color3.fromRGB(255, 255, 255)
+        sectionText.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+        sectionText.TextSize = 14
+        sectionText.TextXAlignment = Enum.TextXAlignment.Left
+        sectionText.BackgroundTransparency = 1
+        sectionText.Parent = secFrame
+
+        local container = Instance.new("Frame")
+        container.Name = "container"
+        container.Position = UDim2.new(0, 10, 0, 35)
+        container.Size = UDim2.new(1, -20, 0, 0)
+        container.AutomaticSize = Enum.AutomaticSize.Y
+        container.BackgroundTransparency = 1
+        container.ClipsDescendants = false
+        container.Parent = secFrame
+
+        local listLayout = Instance.new("UIListLayout")
+        listLayout.Padding = UDim.new(0, 6)
+        listLayout.SortOrder = Enum.SortOrder.LayoutOrder
+        listLayout.Parent = container
+
+        local padding = Instance.new("UIPadding")
+        padding.PaddingBottom = UDim.new(0, 8)
+        padding.PaddingTop = UDim.new(0, 4)
+        padding.Parent = container
+
+        if droppable then
+            local arrow = Instance.new("ImageLabel")
+            arrow.BackgroundTransparency = 1
+            arrow.AnchorPoint = Vector2.new(1, 0.5)
+            arrow.Position = UDim2.new(1, -10, 0, 16)
+            arrow.Size = UDim2.new(0, 14, 0, 14)
+            arrow.Image = "rbxassetid://10002167683"
+            arrow.ImageColor3 = Color3.fromRGB(150, 150, 150)
+            arrow.Parent = secFrame
+
+            local toggleBtn = Instance.new("TextButton")
+            toggleBtn.Size = UDim2.new(1, 0, 0, 32)
+            toggleBtn.BackgroundTransparency = 1
+            toggleBtn.Text = ""
+            toggleBtn.ZIndex = 5
+            toggleBtn.Parent = secFrame
+
+            local dropped = true
+            local isAnimating = false
+            
+            toggleBtn.MouseButton1Click:Connect(function()
+                if isAnimating then return end
+                dropped = not dropped
+                isAnimating = true
+                
+                if not dropped then
+                    secFrame.ClipsDescendants = true
+                    local fullHeight = secFrame.AbsoluteSize.Y
+                    secFrame.AutomaticSize = Enum.AutomaticSize.None
+                    secFrame.Size = UDim2.new(1, 0, 0, fullHeight)
+                    
+                    local tween = TweenService:Create(secFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+                        Size = UDim2.new(1, 0, 0, 32)
+                    })
+                    tween:Play()
+                    
+                    TweenService:Create(arrow, TweenInfo.new(0.25, Enum.EasingStyle.Quart), {
+                        Rotation = -90
+                    }):Play()
+                    
+                    tween.Completed:Connect(function()
+                        if not dropped then
+                            container.Visible = false
+                        end
+                        isAnimating = false
+                    end)
+                else
+                    container.Visible = true
+                    secFrame.ClipsDescendants = true
+                    
+                    secFrame.AutomaticSize = Enum.AutomaticSize.Y
+                    game:GetService("RunService").RenderStepped:Wait()
+                    local targetHeight = secFrame.AbsoluteSize.Y
+                    secFrame.AutomaticSize = Enum.AutomaticSize.None
+                    secFrame.Size = UDim2.new(1, 0, 0, 32)
+                    
+                    local tween = TweenService:Create(secFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+                        Size = UDim2.new(1, 0, 0, targetHeight)
+                    })
+                    tween:Play()
+                    
+                    TweenService:Create(arrow, TweenInfo.new(0.25, Enum.EasingStyle.Quart), {
+                        Rotation = 0
+                    }):Play()
+                    
+                    tween.Completed:Connect(function()
+                        if dropped then
+                            secFrame.AutomaticSize = Enum.AutomaticSize.Y
+                            secFrame.ClipsDescendants = false
+                        end
+                        isAnimating = false
+                    end)
+                end
+            end)
+        end
+
+        return container
+    end
 
     if _G.FluxUiMaintab then _G.FluxUiMaintab:Create(WindowTable) end
     if _G.FluxUiSettignsTab then _G.FluxUiSettignsTab:Create(WindowTable) end
