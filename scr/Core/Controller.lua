@@ -122,6 +122,10 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
         if state == "Fullscreen" then
             if content then content.Visible = true end
             if tabsFrame then tabsFrame.Visible = true end
+            local debugbar = panel and panel:FindFirstChild("debug")
+            if debugbar then debugbar.Visible = true end
+            local controls = Main:FindFirstChild("controls")
+            if controls then controls.Visible = false end
             Main.ClipsDescendants = true
 
             local MaximumSize = Vector2.new((Viewport.X-80), (Viewport.Y-80))
@@ -139,6 +143,10 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
         elseif state == "Minimized" then
             if content then content.Visible = false end
             if tabsFrame then tabsFrame.Visible = false end
+            local debugbar = panel and panel:FindFirstChild("debug")
+            if debugbar then debugbar.Visible = false end
+            local controls = Main:FindFirstChild("controls")
+            if controls then controls.Visible = false end
             Main.ClipsDescendants = true
             
             local minSize = UDim2.new(0, 300, 0, 35)
@@ -156,6 +164,10 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
         else
             if content then content.Visible = true end
             if tabsFrame then tabsFrame.Visible = true end
+            local debugbar = panel and panel:FindFirstChild("debug")
+            if debugbar then debugbar.Visible = true end
+            local controls = Main:FindFirstChild("controls")
+            if controls then controls.Visible = true end
             Main.ClipsDescendants = false
             
             if TweenService and Animations then
