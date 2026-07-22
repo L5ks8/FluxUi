@@ -219,7 +219,7 @@ local function CreateSettings(WindowTable)
     UI.List2.SortOrder = Enum.SortOrder.LayoutOrder
     UI.List2.Name = [[List]]
 
-    UI.item2 = Instance.new("CanvasGroup")
+    UI.item2 = Instance.new("Frame")
     UI.item2.Parent = UI.List2
     UI.item2.BorderSizePixel = 0
     UI.item2.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
@@ -562,102 +562,7 @@ local function CreateSettings(WindowTable)
     UI.Flex6.Parent = UI.button
     UI.Flex6.Name = [[Flex]]
     UI.Flex6.FlexMode = Enum.UIFlexMode.Fill
-
-    UI.Switch = Instance.new("Frame")
-    UI.Switch.Parent = UI.List3
-    UI.Switch.BorderSizePixel = 0
-    UI.Switch.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    UI.Switch.Size = UDim2.new(1, 0, 0, 50)
-    UI.Switch.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    UI.Switch.Name = [[Switch]]
-    UI.Switch.BackgroundTransparency = 1
-    CollectionService:AddTag(UI.Switch, [[SettingObject]])
-
-    UI.switch = Instance.new("ImageButton")
-    UI.switch.Parent = UI.Switch
-    UI.switch.BorderSizePixel = 0
-    UI.switch.AutoButtonColor = false
-    UI.switch.ImageTransparency = 1
-    UI.switch.BackgroundColor3 = Color3.fromRGB(23, 23, 23)
-    UI.switch.AnchorPoint = Vector2.new(1, 0.5)
-    UI.switch.Size = UDim2.new(0, 45, 0, 27)
-    UI.switch.LayoutOrder = 99
-    UI.switch.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    UI.switch.Name = [[switch]]
-    UI.switch.Position = UDim2.new(1, 0, 0.5, 0)
-    UI.switch:SetAttribute([[Enabled]], true)
-    UI.switch:SetAttribute([[State]], false)
-    CollectionService:AddTag(UI.switch, [[OrbitBooleanSwitch]])
-
-    UI.Corner6 = Instance.new("UICorner")
-    UI.Corner6.Parent = UI.switch
-    UI.Corner6.Name = [[Corner]]
-    UI.Corner6.CornerRadius = UDim.new(1, 0)
-
-    UI.UIPadding = Instance.new("UIPadding")
-    UI.UIPadding.Parent = UI.switch
-    UI.UIPadding.PaddingRight = UDim.new(0, 5)
-    UI.UIPadding.PaddingLeft = UDim.new(0, 5)
-
-    UI.circle = Instance.new("Frame")
-    UI.circle.Parent = UI.switch
-    UI.circle.BorderSizePixel = 0
-    UI.circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    UI.circle.AnchorPoint = Vector2.new(0, 0.5)
-    UI.circle.Size = UDim2.new(0, 19, 0, 19)
-    UI.circle.Position = UDim2.new(0, 0, 0.5, 0)
-    UI.circle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    UI.circle.Name = [[circle]]
-    UI.circle.BackgroundTransparency = 0.95
-
-    UI.Corner7 = Instance.new("UICorner")
-    UI.Corner7.Parent = UI.circle
-    UI.Corner7.Name = [[Corner]]
-    UI.Corner7.CornerRadius = UDim.new(1, 0)
-
-    UI.Padding3 = Instance.new("UIPadding")
-    UI.Padding3.Parent = UI.Switch
-    UI.Padding3.PaddingRight = UDim.new(0, 12)
-    UI.Padding3.Name = [[Padding]]
-    UI.Padding3.PaddingLeft = UDim.new(0, 12)
-
-    UI.holder3 = Instance.new("ImageLabel")
-    UI.holder3.Parent = UI.Switch
-    UI.holder3.BorderSizePixel = 0
-    UI.holder3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    UI.holder3.ImageTransparency = 1
-    UI.holder3.AnchorPoint = Vector2.new(0, 0.5)
-    UI.holder3.Size = UDim2.new(0, 32, 0, 32)
-    UI.holder3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    UI.holder3.BackgroundTransparency = 0.8
-    UI.holder3.LayoutOrder = 1
-    UI.holder3.Name = [[holder]]
-    UI.holder3.Position = UDim2.new(0, 0, 0.5, 0)
-
-    UI.icon3 = Instance.new("ImageLabel")
-    UI.icon3.Parent = UI.holder3
-    UI.icon3.BorderSizePixel = 0
-    UI.icon3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    UI.icon3.ImageTransparency = 0.5
-    UI.icon3.AnchorPoint = Vector2.new(0.5, 0.5)
-    UI.icon3.Image = [[rbxassetid://11293977610]]
-    UI.icon3.Size = UDim2.new(0, 20, 0, 20)
-    UI.icon3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    UI.icon3.BackgroundTransparency = 1
-    UI.icon3.LayoutOrder = 1
-    UI.icon3.Name = [[icon]]
-    UI.icon3.Position = UDim2.new(0.5, 0, 0.5, 0)
-
-    UI.Corner8 = Instance.new("UICorner")
-    UI.Corner8.Parent = UI.holder3
-    UI.Corner8.Name = [[Corner]]
-    UI.Corner8.CornerRadius = UDim.new(0, 6)
-
-    UI.Extra3 = Instance.new("Folder")
-    UI.Extra3.Parent = UI.Switch
-    UI.Extra3.Name = [[Extra]]
-
-    UI.Separator3 = Instance.new("Frame")
+UI.Separator3 = Instance.new("Frame")
     UI.Separator3.Parent = UI.Extra3
     UI.Separator3.BorderSizePixel = 0
     UI.Separator3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1087,9 +992,9 @@ local function CreateSettings(WindowTable)
     UI.Header6.TextColor3 = Color3.fromRGB(176, 176, 176)
     UI.Header6.BackgroundTransparency = 1
     UI.Header6.Size = UDim2.new(1, 0, 0, 0)
-    UI.Header6.Visible = false
+    UI.Header6.Visible = true
     UI.Header6.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    UI.Header6.Text = [[Header]]
+    UI.Header6.Text = "Manage UI"
     UI.Header6.AutomaticSize = Enum.AutomaticSize.Y
     UI.Header6.Name = [[Header]]
 
@@ -1444,7 +1349,7 @@ local function CreateSettings(WindowTable)
     UI.title.AnchorPoint = Vector2.new(0.5, 1)
     UI.title.Size = UDim2.new(1, 0, 0, 0)
     UI.title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    UI.title.Text = [[Advanced Settings]]
+    UI.title.Text = "Miscellanous"
     UI.title.LayoutOrder = 1
     UI.title.AutomaticSize = Enum.AutomaticSize.XY
     UI.title.Name = [[title]]
@@ -1471,7 +1376,7 @@ local function CreateSettings(WindowTable)
     UI.description.Size = UDim2.new(1, 0, 0, 0)
     UI.description.ClipsDescendants = true
     UI.description.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    UI.description.Text = [[Make your experience better with advanced changes]]
+    UI.description.Text = "Additional Settings that don't fit into other categories."
     UI.description.LayoutOrder = 1
     UI.description.AutomaticSize = Enum.AutomaticSize.XY
     UI.description.Name = [[description]]
