@@ -4,6 +4,7 @@ local function CreateSettings(WindowTable)
     local ScreenGui = WindowTable.Content:FindFirstChild("screen") or WindowTable.Content
 
     
+
     UI.settings = Instance.new("Frame")
     UI.settings.Parent = ScreenGui
     UI.settings.BorderSizePixel = 0
@@ -16,10 +17,12 @@ local function CreateSettings(WindowTable)
     UI.settings.Name = [[settings]]
     UI.settings.LayoutOrder = 9
     UI.settings.BackgroundTransparency = 0
+
     UI.uilistlayout = Instance.new("UIListLayout")
     UI.uilistlayout.Parent = UI.settings
     UI.uilistlayout.SortOrder = Enum.SortOrder.LayoutOrder
     UI.uilistlayout.Name = [[List]]
+
     UI.frame2 = Instance.new("Frame")
     UI.frame2.Parent = UI.settings
     UI.frame2.ZIndex = 99
@@ -31,17 +34,20 @@ local function CreateSettings(WindowTable)
     UI.frame2.Name = [[header]]
     UI.frame2.LayoutOrder = -99
     UI.frame2.BackgroundTransparency = 1
+
     UI.uilistlayout2 = Instance.new("UIListLayout")
     UI.uilistlayout2.Parent = UI.frame2
     UI.uilistlayout2.Padding = UDim.new(0, 1)
     UI.uilistlayout2.VerticalAlignment = Enum.VerticalAlignment.Center
     UI.uilistlayout2.SortOrder = Enum.SortOrder.LayoutOrder
     UI.uilistlayout2.Name = [[list]]
+
     UI.uistroke = Instance.new("UIStroke")
     UI.uistroke.Parent = UI.frame2
     UI.uistroke.Transparency = 0.95
     UI.uistroke.Color = Color3.fromRGB(255, 255, 255)
     UI.uistroke.Name = [[stroke]]
+
     UI.textlabel = Instance.new("TextLabel")
     UI.textlabel.Parent = UI.frame2
     UI.textlabel.BorderSizePixel = 0
@@ -59,12 +65,12 @@ local function CreateSettings(WindowTable)
     UI.textlabel.AutomaticSize = Enum.AutomaticSize.XY
     UI.textlabel.Name = [[name]]
     UI.textlabel.Position = UDim2.new(0.5, 0, 0, 0)
-    UI.textlabel:SetAttribute([[Key]], [[orbit.settings.header]])
-    CollectionService:AddTag(UI.textlabel, [[OrbitTranslation]])
+
     UI.uiflexitem = Instance.new("UIFlexItem")
     UI.uiflexitem.Parent = UI.textlabel
     UI.uiflexitem.Name = [[flex]]
     UI.uiflexitem.FlexMode = Enum.UIFlexMode.Fill
+
     UI.textlabel2 = Instance.new("TextLabel")
     UI.textlabel2.Parent = UI.frame2
     UI.textlabel2.BorderSizePixel = 0
@@ -84,8 +90,7 @@ local function CreateSettings(WindowTable)
     UI.textlabel2.AutomaticSize = Enum.AutomaticSize.X
     UI.textlabel2.Name = [[desc]]
     UI.textlabel2.Position = UDim2.new(0.5, 0, 0, 0)
-    UI.textlabel2:SetAttribute([[Key]], [[orbit.settings.description]])
-    CollectionService:AddTag(UI.textlabel2, [[OrbitTranslation]])
+
     UI.uipadding = Instance.new("UIPadding")
     UI.uipadding.Parent = UI.frame2
     UI.uipadding.PaddingTop = UDim.new(0, 16)
@@ -93,6 +98,7 @@ local function CreateSettings(WindowTable)
     UI.uipadding.Name = [[padding]]
     UI.uipadding.PaddingLeft = UDim.new(0, 26)
     UI.uipadding.PaddingBottom = UDim.new(0, 16)
+
     UI.frame3 = Instance.new("Frame")
     UI.frame3.Parent = UI.settings
     UI.frame3.BorderSizePixel = 0
@@ -101,10 +107,12 @@ local function CreateSettings(WindowTable)
     UI.frame3.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.frame3.Name = [[content]]
     UI.frame3.BackgroundTransparency = 1
+
     UI.uiflexitem2 = Instance.new("UIFlexItem")
     UI.uiflexitem2.Parent = UI.frame3
     UI.uiflexitem2.Name = [[Flex]]
     UI.uiflexitem2.FlexMode = Enum.UIFlexMode.Fill
+
     UI.frame4 = Instance.new("Frame")
     UI.frame4.Parent = UI.settings
     UI.frame4.BorderSizePixel = 0
@@ -115,10 +123,12 @@ local function CreateSettings(WindowTable)
     UI.frame4.Name = [[main]]
     UI.frame4.LayoutOrder = 2
     UI.frame4.BackgroundTransparency = 1
+
     UI.uiflexitem3 = Instance.new("UIFlexItem")
     UI.uiflexitem3.Parent = UI.frame4
     UI.uiflexitem3.Name = [[Flex]]
     UI.uiflexitem3.FlexMode = Enum.UIFlexMode.Fill
+
     UI.scrollingframe = Instance.new("ScrollingFrame")
     UI.scrollingframe.Parent = UI.frame4
     UI.scrollingframe.Active = true
@@ -137,6 +147,7 @@ local function CreateSettings(WindowTable)
     UI.scrollingframe.ScrollBarThickness = 0
     UI.scrollingframe.LayoutOrder = 3
     UI.scrollingframe.BackgroundTransparency = 1
+
     UI.frame5 = Instance.new("Frame")
     UI.frame5.Parent = UI.scrollingframe
     UI.frame5.BorderSizePixel = 0
@@ -146,10 +157,12 @@ local function CreateSettings(WindowTable)
     UI.frame5.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.frame5.Name = [[display]]
     UI.frame5.LayoutOrder = 2
+
     UI.uicorner = Instance.new("UICorner")
     UI.uicorner.Parent = UI.frame5
     UI.uicorner.Name = [[corner]]
     UI.uicorner.CornerRadius = UDim.new(0, 16)
+
     UI.scrollingframe2 = Instance.new("ScrollingFrame")
     UI.scrollingframe2.Parent = UI.frame5
     UI.scrollingframe2.Active = true
@@ -169,6 +182,7 @@ local function CreateSettings(WindowTable)
     UI.scrollingframe2.ScrollBarThickness = 4
     UI.scrollingframe2.LayoutOrder = 1
     UI.scrollingframe2.BackgroundTransparency = 1
+
     UI.frame6 = Instance.new("Frame")
     UI.frame6.Parent = UI.scrollingframe2
     UI.frame6.BorderSizePixel = 0
@@ -181,10 +195,12 @@ local function CreateSettings(WindowTable)
     UI.frame6.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.frame6.Name = [[item]]
     UI.frame6.LayoutOrder = 3
+
     UI.uicorner2 = Instance.new("UICorner")
     UI.uicorner2.Parent = UI.frame6
     UI.uicorner2.Name = [[Corner]]
     UI.uicorner2.CornerRadius = UDim.new(0, 14)
+
     UI.frame7 = Instance.new("Frame")
     UI.frame7.Parent = UI.frame6
     UI.frame7.BorderSizePixel = 0
@@ -194,12 +210,13 @@ local function CreateSettings(WindowTable)
     UI.frame7.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.frame7.Name = [[Input]]
     UI.frame7.BackgroundTransparency = 1
-    CollectionService:AddTag(UI.frame7, [[SettingObject]])
+
     UI.uipadding2 = Instance.new("UIPadding")
     UI.uipadding2.Parent = UI.frame7
     UI.uipadding2.PaddingRight = UDim.new(0, 12)
     UI.uipadding2.Name = [[Padding]]
     UI.uipadding2.PaddingLeft = UDim.new(0, 12)
+
     UI.imagelabel = Instance.new("ImageLabel")
     UI.imagelabel.Parent = UI.frame7
     UI.imagelabel.BorderSizePixel = 0
@@ -212,6 +229,7 @@ local function CreateSettings(WindowTable)
     UI.imagelabel.LayoutOrder = 1
     UI.imagelabel.Name = [[holder]]
     UI.imagelabel.Position = UDim2.new(0, 0, 0.5, 0)
+
     UI.imagelabel2 = Instance.new("ImageLabel")
     UI.imagelabel2.Parent = UI.imagelabel
     UI.imagelabel2.BorderSizePixel = 0
@@ -225,13 +243,16 @@ local function CreateSettings(WindowTable)
     UI.imagelabel2.LayoutOrder = 1
     UI.imagelabel2.Name = [[icon]]
     UI.imagelabel2.Position = UDim2.new(0.5, 0, 0.5, 0)
+
     UI.uicorner3 = Instance.new("UICorner")
     UI.uicorner3.Parent = UI.imagelabel
     UI.uicorner3.Name = [[Corner]]
     UI.uicorner3.CornerRadius = UDim.new(0, 6)
+
     UI.folder = Instance.new("Folder")
     UI.folder.Parent = UI.frame7
     UI.folder.Name = [[Extra]]
+
     UI.frame8 = Instance.new("Frame")
     UI.frame8.Parent = UI.folder
     UI.frame8.BorderSizePixel = 0
@@ -242,6 +263,7 @@ local function CreateSettings(WindowTable)
     UI.frame8.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.frame8.Name = [[Separator]]
     UI.frame8.BackgroundTransparency = 0.98
+
     UI.uilistlayout3 = Instance.new("UIListLayout")
     UI.uilistlayout3.Parent = UI.frame7
     UI.uilistlayout3.Padding = UDim.new(0, 10)
@@ -249,6 +271,7 @@ local function CreateSettings(WindowTable)
     UI.uilistlayout3.SortOrder = Enum.SortOrder.LayoutOrder
     UI.uilistlayout3.Name = [[List]]
     UI.uilistlayout3.FillDirection = Enum.FillDirection.Horizontal
+
     UI.frame9 = Instance.new("Frame")
     UI.frame9.Parent = UI.frame7
     UI.frame9.BorderSizePixel = 0
@@ -258,10 +281,12 @@ local function CreateSettings(WindowTable)
     UI.frame9.Name = [[info]]
     UI.frame9.LayoutOrder = 2
     UI.frame9.BackgroundTransparency = 1
+
     UI.uiflexitem4 = Instance.new("UIFlexItem")
     UI.uiflexitem4.Parent = UI.frame9
     UI.uiflexitem4.Name = [[Flex]]
     UI.uiflexitem4.FlexMode = Enum.UIFlexMode.Fill
+
     UI.textlabel3 = Instance.new("TextLabel")
     UI.textlabel3.Parent = UI.frame9
     UI.textlabel3.TextTruncate = Enum.TextTruncate.AtEnd
@@ -277,6 +302,7 @@ local function CreateSettings(WindowTable)
     UI.textlabel3.Text = [[Ui Toggle]]
     UI.textlabel3.AutomaticSize = Enum.AutomaticSize.Y
     UI.textlabel3.Name = [[Header]]
+
     UI.textlabel4 = Instance.new("TextLabel")
     UI.textlabel4.Parent = UI.frame9
     UI.textlabel4.TextTruncate = Enum.TextTruncate.AtEnd
@@ -295,6 +321,7 @@ local function CreateSettings(WindowTable)
     UI.textlabel4.AutomaticSize = Enum.AutomaticSize.Y
     UI.textlabel4.Name = [[Description]]
     UI.textlabel4.Position = UDim2.new(0, 0, 1, 0)
+
     UI.imagebutton = Instance.new("ImageButton")
     UI.imagebutton.Parent = UI.frame7
     UI.imagebutton.Active = false
@@ -306,12 +333,15 @@ local function CreateSettings(WindowTable)
     UI.imagebutton.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.imagebutton.Name = [[reset]]
     UI.imagebutton.Position = UDim2.new(0.82152, 0, 0, 0)
+
     UI.uicorner4 = Instance.new("UICorner")
     UI.uicorner4.Parent = UI.imagebutton
     UI.uicorner4.Name = [[Corner]]
     UI.uicorner4.CornerRadius = UDim.new(1, 0)
+
     UI.uiaspectratioconstraint = Instance.new("UIAspectRatioConstraint")
     UI.uiaspectratioconstraint.Parent = UI.imagebutton
+
     UI.imagelabel3 = Instance.new("ImageLabel")
     UI.imagelabel3.Parent = UI.imagebutton
     UI.imagelabel3.Active = true
@@ -327,6 +357,7 @@ local function CreateSettings(WindowTable)
     UI.imagelabel3.Selectable = true
     UI.imagelabel3.Name = [[button]]
     UI.imagelabel3.Position = UDim2.new(0.5, 0, 0.5, 0)
+
     UI.frame10 = Instance.new("Frame")
     UI.frame10.Parent = UI.frame7
     UI.frame10.BorderSizePixel = 0
@@ -337,6 +368,7 @@ local function CreateSettings(WindowTable)
     UI.frame10.Name = [[key]]
     UI.frame10.LayoutOrder = 4
     UI.frame10.BackgroundTransparency = 1
+
     UI.textbutton = Instance.new("TextButton")
     UI.textbutton.Parent = UI.frame10
     UI.textbutton.BorderSizePixel = 0
@@ -352,19 +384,23 @@ local function CreateSettings(WindowTable)
     UI.textbutton.Text = [[...]]
     UI.textbutton.Name = [[box]]
     UI.textbutton.Position = UDim2.new(0, 0, 0.5, 0)
+
     UI.uicorner5 = Instance.new("UICorner")
     UI.uicorner5.Parent = UI.textbutton
     UI.uicorner5.Name = [[Corner]]
     UI.uicorner5.CornerRadius = UDim.new(0, 18)
+
     UI.uiflexitem5 = Instance.new("UIFlexItem")
     UI.uiflexitem5.Parent = UI.textbutton
     UI.uiflexitem5.Name = [[Flex]]
     UI.uiflexitem5.FlexMode = Enum.UIFlexMode.Fill
+
     UI.uilistlayout4 = Instance.new("UIListLayout")
     UI.uilistlayout4.Parent = UI.frame6
     UI.uilistlayout4.HorizontalAlignment = Enum.HorizontalAlignment.Center
     UI.uilistlayout4.SortOrder = Enum.SortOrder.LayoutOrder
     UI.uilistlayout4.Name = [[List]]
+
     UI.imagebutton2 = Instance.new("ImageButton")
     UI.imagebutton2.Parent = UI.frame6
     UI.imagebutton2.Active = false
@@ -375,12 +411,13 @@ local function CreateSettings(WindowTable)
     UI.imagebutton2.Size = UDim2.new(1, 0, 0, 50)
     UI.imagebutton2.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.imagebutton2.Name = [[Selection]]
-    CollectionService:AddTag(UI.imagebutton2, [[SettingObject]])
+
     UI.uipadding3 = Instance.new("UIPadding")
     UI.uipadding3.Parent = UI.imagebutton2
     UI.uipadding3.PaddingRight = UDim.new(0, 12)
     UI.uipadding3.Name = [[Padding]]
     UI.uipadding3.PaddingLeft = UDim.new(0, 12)
+
     UI.imagelabel4 = Instance.new("ImageLabel")
     UI.imagelabel4.Parent = UI.imagebutton2
     UI.imagelabel4.BorderSizePixel = 0
@@ -393,6 +430,7 @@ local function CreateSettings(WindowTable)
     UI.imagelabel4.LayoutOrder = 1
     UI.imagelabel4.Name = [[holder]]
     UI.imagelabel4.Position = UDim2.new(0, 0, 0.5, 0)
+
     UI.imagelabel5 = Instance.new("ImageLabel")
     UI.imagelabel5.Parent = UI.imagelabel4
     UI.imagelabel5.BorderSizePixel = 0
@@ -406,13 +444,16 @@ local function CreateSettings(WindowTable)
     UI.imagelabel5.LayoutOrder = 1
     UI.imagelabel5.Name = [[icon]]
     UI.imagelabel5.Position = UDim2.new(0.5, 0, 0.5, 0)
+
     UI.uicorner6 = Instance.new("UICorner")
     UI.uicorner6.Parent = UI.imagelabel4
     UI.uicorner6.Name = [[Corner]]
     UI.uicorner6.CornerRadius = UDim.new(0, 6)
+
     UI.folder2 = Instance.new("Folder")
     UI.folder2.Parent = UI.imagebutton2
     UI.folder2.Name = [[Extra]]
+
     UI.frame11 = Instance.new("Frame")
     UI.frame11.Parent = UI.folder2
     UI.frame11.BorderSizePixel = 0
@@ -423,6 +464,7 @@ local function CreateSettings(WindowTable)
     UI.frame11.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.frame11.Name = [[Separator]]
     UI.frame11.BackgroundTransparency = 0.98
+
     UI.uilistlayout5 = Instance.new("UIListLayout")
     UI.uilistlayout5.Parent = UI.imagebutton2
     UI.uilistlayout5.Padding = UDim.new(0, 10)
@@ -430,6 +472,7 @@ local function CreateSettings(WindowTable)
     UI.uilistlayout5.SortOrder = Enum.SortOrder.LayoutOrder
     UI.uilistlayout5.Name = [[List]]
     UI.uilistlayout5.FillDirection = Enum.FillDirection.Horizontal
+
     UI.frame12 = Instance.new("Frame")
     UI.frame12.Parent = UI.imagebutton2
     UI.frame12.BorderSizePixel = 0
@@ -439,10 +482,12 @@ local function CreateSettings(WindowTable)
     UI.frame12.Name = [[info]]
     UI.frame12.LayoutOrder = 2
     UI.frame12.BackgroundTransparency = 1
+
     UI.uiflexitem6 = Instance.new("UIFlexItem")
     UI.uiflexitem6.Parent = UI.frame12
     UI.uiflexitem6.Name = [[Flex]]
     UI.uiflexitem6.FlexMode = Enum.UIFlexMode.Fill
+
     UI.textlabel5 = Instance.new("TextLabel")
     UI.textlabel5.Parent = UI.frame12
     UI.textlabel5.TextTruncate = Enum.TextTruncate.AtEnd
@@ -458,6 +503,7 @@ local function CreateSettings(WindowTable)
     UI.textlabel5.Text = [[Tab Layout]]
     UI.textlabel5.AutomaticSize = Enum.AutomaticSize.Y
     UI.textlabel5.Name = [[Header]]
+
     UI.textlabel6 = Instance.new("TextLabel")
     UI.textlabel6.Parent = UI.frame12
     UI.textlabel6.TextTruncate = Enum.TextTruncate.AtEnd
@@ -476,6 +522,7 @@ local function CreateSettings(WindowTable)
     UI.textlabel6.AutomaticSize = Enum.AutomaticSize.Y
     UI.textlabel6.Name = [[Description]]
     UI.textlabel6.Position = UDim2.new(0, 0, 1, 0)
+
     UI.imagelabel6 = Instance.new("ImageLabel")
     UI.imagelabel6.Parent = UI.imagebutton2
     UI.imagelabel6.BorderSizePixel = 0
@@ -486,9 +533,11 @@ local function CreateSettings(WindowTable)
     UI.imagelabel6.BackgroundTransparency = 1
     UI.imagelabel6.LayoutOrder = 99
     UI.imagelabel6.Name = [[icon]]
+
     UI.uiaspectratioconstraint2 = Instance.new("UIAspectRatioConstraint")
     UI.uiaspectratioconstraint2.Parent = UI.imagelabel6
     UI.uiaspectratioconstraint2.Name = [[aspect]]
+
     UI.textlabel7 = Instance.new("TextLabel")
     UI.textlabel7.Parent = UI.imagebutton2
     UI.textlabel7.BorderSizePixel = 0
@@ -503,10 +552,12 @@ local function CreateSettings(WindowTable)
     UI.textlabel7.AutomaticSize = Enum.AutomaticSize.X
     UI.textlabel7.Name = [[value]]
     UI.textlabel7.Position = UDim2.new(0.62658, 0, 0.3, 0)
+
     UI.uicorner7 = Instance.new("UICorner")
     UI.uicorner7.Parent = UI.textlabel7
     UI.uicorner7.Name = [[Corner]]
     UI.uicorner7.CornerRadius = UDim.new(0, 18)
+
     UI.imagebutton3 = Instance.new("ImageButton")
     UI.imagebutton3.Parent = UI.frame6
     UI.imagebutton3.Active = false
@@ -518,12 +569,13 @@ local function CreateSettings(WindowTable)
     UI.imagebutton3.Size = UDim2.new(1, 0, 0, 50)
     UI.imagebutton3.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.imagebutton3.Name = [[Button]]
-    CollectionService:AddTag(UI.imagebutton3, [[SettingObject]])
+
     UI.uipadding4 = Instance.new("UIPadding")
     UI.uipadding4.Parent = UI.imagebutton3
     UI.uipadding4.PaddingRight = UDim.new(0, 12)
     UI.uipadding4.Name = [[Padding]]
     UI.uipadding4.PaddingLeft = UDim.new(0, 12)
+
     UI.imagelabel7 = Instance.new("ImageLabel")
     UI.imagelabel7.Parent = UI.imagebutton3
     UI.imagelabel7.BorderSizePixel = 0
@@ -536,6 +588,7 @@ local function CreateSettings(WindowTable)
     UI.imagelabel7.LayoutOrder = 1
     UI.imagelabel7.Name = [[holder]]
     UI.imagelabel7.Position = UDim2.new(0, 0, 0.5, 0)
+
     UI.imagelabel8 = Instance.new("ImageLabel")
     UI.imagelabel8.Parent = UI.imagelabel7
     UI.imagelabel8.BorderSizePixel = 0
@@ -549,13 +602,16 @@ local function CreateSettings(WindowTable)
     UI.imagelabel8.LayoutOrder = 1
     UI.imagelabel8.Name = [[icon]]
     UI.imagelabel8.Position = UDim2.new(0.5, 0, 0.5, 0)
+
     UI.uicorner8 = Instance.new("UICorner")
     UI.uicorner8.Parent = UI.imagelabel7
     UI.uicorner8.Name = [[Corner]]
     UI.uicorner8.CornerRadius = UDim.new(0, 6)
+
     UI.folder3 = Instance.new("Folder")
     UI.folder3.Parent = UI.imagebutton3
     UI.folder3.Name = [[Extra]]
+
     UI.frame13 = Instance.new("Frame")
     UI.frame13.Parent = UI.folder3
     UI.frame13.BorderSizePixel = 0
@@ -566,6 +622,7 @@ local function CreateSettings(WindowTable)
     UI.frame13.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.frame13.Name = [[Separator]]
     UI.frame13.BackgroundTransparency = 0.98
+
     UI.uilistlayout6 = Instance.new("UIListLayout")
     UI.uilistlayout6.Parent = UI.imagebutton3
     UI.uilistlayout6.Padding = UDim.new(0, 10)
@@ -573,6 +630,7 @@ local function CreateSettings(WindowTable)
     UI.uilistlayout6.SortOrder = Enum.SortOrder.LayoutOrder
     UI.uilistlayout6.Name = [[List]]
     UI.uilistlayout6.FillDirection = Enum.FillDirection.Horizontal
+
     UI.frame14 = Instance.new("Frame")
     UI.frame14.Parent = UI.imagebutton3
     UI.frame14.BorderSizePixel = 0
@@ -582,10 +640,12 @@ local function CreateSettings(WindowTable)
     UI.frame14.Name = [[info]]
     UI.frame14.LayoutOrder = 2
     UI.frame14.BackgroundTransparency = 1
+
     UI.uiflexitem7 = Instance.new("UIFlexItem")
     UI.uiflexitem7.Parent = UI.frame14
     UI.uiflexitem7.Name = [[Flex]]
     UI.uiflexitem7.FlexMode = Enum.UIFlexMode.Fill
+
     UI.textlabel8 = Instance.new("TextLabel")
     UI.textlabel8.Parent = UI.frame14
     UI.textlabel8.TextTruncate = Enum.TextTruncate.AtEnd
@@ -601,6 +661,7 @@ local function CreateSettings(WindowTable)
     UI.textlabel8.Text = [[Name]]
     UI.textlabel8.AutomaticSize = Enum.AutomaticSize.Y
     UI.textlabel8.Name = [[Header]]
+
     UI.textlabel9 = Instance.new("TextLabel")
     UI.textlabel9.Parent = UI.frame14
     UI.textlabel9.TextTruncate = Enum.TextTruncate.AtEnd
@@ -619,6 +680,7 @@ local function CreateSettings(WindowTable)
     UI.textlabel9.AutomaticSize = Enum.AutomaticSize.Y
     UI.textlabel9.Name = [[Description]]
     UI.textlabel9.Position = UDim2.new(0, 0, 1.39286, 0)
+
     UI.frame15 = Instance.new("Frame")
     UI.frame15.Parent = UI.frame6
     UI.frame15.BorderSizePixel = 0
@@ -628,7 +690,7 @@ local function CreateSettings(WindowTable)
     UI.frame15.Name = [[Switch]]
     UI.frame15.LayoutOrder = 1
     UI.frame15.BackgroundTransparency = 1
-    CollectionService:AddTag(UI.frame15, [[SettingObject]])
+
     UI.imagebutton4 = Instance.new("ImageButton")
     UI.imagebutton4.Parent = UI.frame15
     UI.imagebutton4.BorderSizePixel = 0
@@ -641,17 +703,17 @@ local function CreateSettings(WindowTable)
     UI.imagebutton4.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.imagebutton4.Name = [[switch]]
     UI.imagebutton4.Position = UDim2.new(1, 0, 0.5, 0)
-    UI.imagebutton4:SetAttribute([[Enabled]], true)
-    UI.imagebutton4:SetAttribute([[State]], false)
-    CollectionService:AddTag(UI.imagebutton4, [[OrbitBooleanSwitch]])
+
     UI.uicorner9 = Instance.new("UICorner")
     UI.uicorner9.Parent = UI.imagebutton4
     UI.uicorner9.Name = [[Corner]]
     UI.uicorner9.CornerRadius = UDim.new(1, 0)
+
     UI.uipadding5 = Instance.new("UIPadding")
     UI.uipadding5.Parent = UI.imagebutton4
     UI.uipadding5.PaddingRight = UDim.new(0, 5)
     UI.uipadding5.PaddingLeft = UDim.new(0, 5)
+
     UI.frame16 = Instance.new("Frame")
     UI.frame16.Parent = UI.imagebutton4
     UI.frame16.BorderSizePixel = 0
@@ -662,15 +724,18 @@ local function CreateSettings(WindowTable)
     UI.frame16.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.frame16.Name = [[circle]]
     UI.frame16.BackgroundTransparency = 0.95
+
     UI.uicorner10 = Instance.new("UICorner")
     UI.uicorner10.Parent = UI.frame16
     UI.uicorner10.Name = [[Corner]]
     UI.uicorner10.CornerRadius = UDim.new(1, 0)
+
     UI.uipadding6 = Instance.new("UIPadding")
     UI.uipadding6.Parent = UI.frame15
     UI.uipadding6.PaddingRight = UDim.new(0, 12)
     UI.uipadding6.Name = [[Padding]]
     UI.uipadding6.PaddingLeft = UDim.new(0, 12)
+
     UI.imagelabel9 = Instance.new("ImageLabel")
     UI.imagelabel9.Parent = UI.frame15
     UI.imagelabel9.BorderSizePixel = 0
@@ -683,6 +748,7 @@ local function CreateSettings(WindowTable)
     UI.imagelabel9.LayoutOrder = 1
     UI.imagelabel9.Name = [[holder]]
     UI.imagelabel9.Position = UDim2.new(0, 0, 0.5, 0)
+
     UI.imagelabel10 = Instance.new("ImageLabel")
     UI.imagelabel10.Parent = UI.imagelabel9
     UI.imagelabel10.BorderSizePixel = 0
@@ -696,13 +762,16 @@ local function CreateSettings(WindowTable)
     UI.imagelabel10.LayoutOrder = 1
     UI.imagelabel10.Name = [[icon]]
     UI.imagelabel10.Position = UDim2.new(0.5, 0, 0.5, 0)
+
     UI.uicorner11 = Instance.new("UICorner")
     UI.uicorner11.Parent = UI.imagelabel9
     UI.uicorner11.Name = [[Corner]]
     UI.uicorner11.CornerRadius = UDim.new(0, 6)
+
     UI.folder4 = Instance.new("Folder")
     UI.folder4.Parent = UI.frame15
     UI.folder4.Name = [[Extra]]
+
     UI.frame17 = Instance.new("Frame")
     UI.frame17.Parent = UI.folder4
     UI.frame17.BorderSizePixel = 0
@@ -713,6 +782,7 @@ local function CreateSettings(WindowTable)
     UI.frame17.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.frame17.Name = [[Separator]]
     UI.frame17.BackgroundTransparency = 0.98
+
     UI.uilistlayout7 = Instance.new("UIListLayout")
     UI.uilistlayout7.Parent = UI.frame15
     UI.uilistlayout7.Padding = UDim.new(0, 10)
@@ -720,6 +790,7 @@ local function CreateSettings(WindowTable)
     UI.uilistlayout7.SortOrder = Enum.SortOrder.LayoutOrder
     UI.uilistlayout7.Name = [[List]]
     UI.uilistlayout7.FillDirection = Enum.FillDirection.Horizontal
+
     UI.frame18 = Instance.new("Frame")
     UI.frame18.Parent = UI.frame15
     UI.frame18.BorderSizePixel = 0
@@ -729,10 +800,12 @@ local function CreateSettings(WindowTable)
     UI.frame18.Name = [[info]]
     UI.frame18.LayoutOrder = 2
     UI.frame18.BackgroundTransparency = 1
+
     UI.uiflexitem8 = Instance.new("UIFlexItem")
     UI.uiflexitem8.Parent = UI.frame18
     UI.uiflexitem8.Name = [[Flex]]
     UI.uiflexitem8.FlexMode = Enum.UIFlexMode.Fill
+
     UI.textlabel10 = Instance.new("TextLabel")
     UI.textlabel10.Parent = UI.frame18
     UI.textlabel10.TextTruncate = Enum.TextTruncate.AtEnd
@@ -748,6 +821,7 @@ local function CreateSettings(WindowTable)
     UI.textlabel10.Text = [[Show Debugbar]]
     UI.textlabel10.AutomaticSize = Enum.AutomaticSize.Y
     UI.textlabel10.Name = [[Header]]
+
     UI.textlabel11 = Instance.new("TextLabel")
     UI.textlabel11.Parent = UI.frame18
     UI.textlabel11.TextTruncate = Enum.TextTruncate.AtEnd
@@ -766,6 +840,7 @@ local function CreateSettings(WindowTable)
     UI.textlabel11.AutomaticSize = Enum.AutomaticSize.Y
     UI.textlabel11.Name = [[Description]]
     UI.textlabel11.Position = UDim2.new(0, 0, 1, 0)
+
     UI.frame19 = Instance.new("Frame")
     UI.frame19.Parent = UI.frame6
     UI.frame19.BorderSizePixel = 0
@@ -775,9 +850,10 @@ local function CreateSettings(WindowTable)
     UI.frame19.Name = [[Filler]]
     UI.frame19.LayoutOrder = 1
     UI.frame19.BackgroundTransparency = 1
-    CollectionService:AddTag(UI.frame19, [[SettingObject]])
+
     UI.uipadding7 = Instance.new("UIPadding")
     UI.uipadding7.Parent = UI.frame5
+
     UI.frame20 = Instance.new("Frame")
     UI.frame20.Parent = UI.scrollingframe
     UI.frame20.ZIndex = 12
@@ -788,6 +864,7 @@ local function CreateSettings(WindowTable)
     UI.frame20.Name = [[topbar]]
     UI.frame20.LayoutOrder = 1
     UI.frame20.BackgroundTransparency = 1
+
     UI.imagebutton5 = Instance.new("ImageButton")
     UI.imagebutton5.Parent = UI.frame20
     UI.imagebutton5.BorderSizePixel = 0
@@ -801,7 +878,7 @@ local function CreateSettings(WindowTable)
     UI.imagebutton5.LayoutOrder = 2
     UI.imagebutton5.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.imagebutton5.Name = [[reset]]
-    CollectionService:AddTag(UI.imagebutton5, [[OrbitActionButton]])
+
     UI.imagelabel11 = Instance.new("ImageLabel")
     UI.imagelabel11.Parent = UI.imagebutton5
     UI.imagelabel11.BorderSizePixel = 0
@@ -815,13 +892,16 @@ local function CreateSettings(WindowTable)
     UI.imagelabel11.BackgroundTransparency = 1
     UI.imagelabel11.Name = [[icon]]
     UI.imagelabel11.Position = UDim2.new(0.5, 0, 0.5, 0)
+
     UI.uicorner12 = Instance.new("UICorner")
     UI.uicorner12.Parent = UI.imagebutton5
     UI.uicorner12.Name = [[Corner]]
     UI.uicorner12.CornerRadius = UDim.new(0, 12)
+
     UI.uiscale = Instance.new("UIScale")
     UI.uiscale.Parent = UI.imagebutton5
     UI.uiscale.Name = [[Scale]]
+
     UI.uipadding8 = Instance.new("UIPadding")
     UI.uipadding8.Parent = UI.imagebutton5
     UI.uipadding8.PaddingTop = UDim.new(0, 4)
@@ -829,6 +909,7 @@ local function CreateSettings(WindowTable)
     UI.uipadding8.Name = [[Padding]]
     UI.uipadding8.PaddingLeft = UDim.new(0, 14)
     UI.uipadding8.PaddingBottom = UDim.new(0, 4)
+
     UI.uilistlayout8 = Instance.new("UIListLayout")
     UI.uilistlayout8.Parent = UI.imagebutton5
     UI.uilistlayout8.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -837,6 +918,7 @@ local function CreateSettings(WindowTable)
     UI.uilistlayout8.SortOrder = Enum.SortOrder.LayoutOrder
     UI.uilistlayout8.Name = [[List]]
     UI.uilistlayout8.FillDirection = Enum.FillDirection.Horizontal
+
     UI.textlabel12 = Instance.new("TextLabel")
     UI.textlabel12.Parent = UI.imagebutton5
     UI.textlabel12.BorderSizePixel = 0
@@ -852,10 +934,12 @@ local function CreateSettings(WindowTable)
     UI.textlabel12.LayoutOrder = 1
     UI.textlabel12.AutomaticSize = Enum.AutomaticSize.X
     UI.textlabel12.Name = [[name]]
+
     UI.uiflexitem9 = Instance.new("UIFlexItem")
     UI.uiflexitem9.Parent = UI.imagebutton5
     UI.uiflexitem9.Name = [[Flex]]
     UI.uiflexitem9.FlexMode = Enum.UIFlexMode.Fill
+
     UI.uilistlayout9 = Instance.new("UIListLayout")
     UI.uilistlayout9.Parent = UI.frame20
     UI.uilistlayout9.Padding = UDim.new(0, 10)
@@ -863,12 +947,14 @@ local function CreateSettings(WindowTable)
     UI.uilistlayout9.SortOrder = Enum.SortOrder.LayoutOrder
     UI.uilistlayout9.Name = [[list]]
     UI.uilistlayout9.FillDirection = Enum.FillDirection.Horizontal
+
     UI.uilistlayout10 = Instance.new("UIListLayout")
     UI.uilistlayout10.Parent = UI.scrollingframe
     UI.uilistlayout10.HorizontalAlignment = Enum.HorizontalAlignment.Center
     UI.uilistlayout10.Padding = UDim.new(0, 15)
     UI.uilistlayout10.SortOrder = Enum.SortOrder.LayoutOrder
     UI.uilistlayout10.Name = [[Layout]]
+
     UI.uipadding9 = Instance.new("UIPadding")
     UI.uipadding9.Parent = UI.scrollingframe
     UI.uipadding9.PaddingTop = UDim.new(0, 12)

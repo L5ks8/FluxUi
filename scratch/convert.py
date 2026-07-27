@@ -49,6 +49,7 @@ def convert():
                 var_name = "settings"
                 id_to_var[id_val] = var_name
             
+            lua_code.append("")
             lua_code.append(f"    UI.{var_name} = Instance.new(\"{class_name}\")")
             lua_code.append(f"    UI.{var_name}.Parent = {parent_var}")
             continue
@@ -63,31 +64,20 @@ def convert():
             if id_val in id_to_var:
                 var_name = id_to_var[id_val]
                 if prop == "Name":
-                    # We could rename the var, but it's already created. Let's just set the property.
                     pass
-                
-                # Special cases where the value needs formatting?
                 lua_code.append(f"    UI.{var_name}.{prop} = {val}")
             continue
             
         # Attributes
         match = re.search(r'G2L\["([^"]+)"\]:SetAttribute\((.*)\);', line)
         if match:
-            id_val = match.group(1)
-            args = match.group(2)
-            if id_val in id_to_var:
-                var_name = id_to_var[id_val]
-                lua_code.append(f"    UI.{var_name}:SetAttribute({args})")
+            # We ignore attributes as requested
             continue
             
         # Tags
         match = re.search(r'CollectionService:AddTag\(G2L\["([^"]+)"\], (.*)\);', line)
         if match:
-            id_val = match.group(1)
-            tag = match.group(2)
-            if id_val in id_to_var:
-                var_name = id_to_var[id_val]
-                lua_code.append(f"    CollectionService:AddTag(UI.{var_name}, {tag})")
+            # We ignore tags as requested
             continue
 
     lua_code.append("\n    return UI.settings")
