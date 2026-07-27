@@ -17,9 +17,9 @@ function Notification:Create(WindowTable, Data)
         notificationsFrame.ZIndex = 9999
         notificationsFrame.BorderSizePixel = 0
         notificationsFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        notificationsFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-        notificationsFrame.Size = UDim2.new(1, 0, 1, 0)
-        notificationsFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+        notificationsFrame.AnchorPoint = Vector2.new(1, 0)
+        notificationsFrame.Size = UDim2.new(0, 350, 1, 0)
+        notificationsFrame.Position = UDim2.new(1, 0, 0, 0)
         notificationsFrame.BackgroundTransparency = 1
         notificationsFrame.Parent = screenGui
 
@@ -46,7 +46,7 @@ function Notification:Create(WindowTable, Data)
     notificationBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     notificationBtn.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
     notificationBtn.AutomaticSize = Enum.AutomaticSize.XY
-    notificationBtn.LayoutOrder = -math.floor(tick() * 1000)
+    notificationBtn.LayoutOrder = -math.floor(tick())
     notificationBtn.Parent = notificationsFrame
 
     local notifPadding = Instance.new("UIPadding")
