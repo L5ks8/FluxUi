@@ -844,11 +844,12 @@ function Mainframe:Create(Settings)
             local arrow = Instance.new("ImageLabel")
             arrow.BackgroundTransparency = 1
             arrow.AnchorPoint = Vector2.new(1, 0.5)
-            arrow.Position = UDim2.new(1, -10, 0, 16)
-            arrow.Size = UDim2.new(0, 14, 0, 14)
-            arrow.Image = "rbxassetid://10002167683"
-            arrow.ImageColor3 = Color3.fromRGB(150, 150, 150)
-            arrow.ZIndex = 5
+            arrow.Position = UDim2.new(1, -12, 0, 16)
+            arrow.Size = UDim2.new(0, 16, 0, 16)
+            arrow.Image = "http://www.roblox.com/asset/?id=10002167683"
+            arrow.ImageColor3 = Color3.fromRGB(255, 255, 255)
+            arrow.ImageTransparency = 0.4
+            arrow.ZIndex = 10
             arrow.Parent = secFrame
 
             local toggleBtn = Instance.new("TextButton")
