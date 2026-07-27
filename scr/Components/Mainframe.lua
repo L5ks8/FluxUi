@@ -321,7 +321,7 @@ function Mainframe:Create(Settings)
     anchoredbutton.BorderSizePixel = 0
     anchoredbutton.BackgroundColor3 = Color3.fromRGB(9, 9, 9)
     anchoredbutton.AutomaticSize = Enum.AutomaticSize.Y
-    anchoredbutton.Size = UDim2.new(1, 0, 0.14134, 0)
+    anchoredbutton.Size = UDim2.new(1, 0, 0, 0)
     anchoredbutton.BorderColor3 = Color3.fromRGB(0, 0, 0)
     anchoredbutton.Name = "anchored_button"
     anchoredbutton.LayoutOrder = 1
@@ -344,7 +344,7 @@ function Mainframe:Create(Settings)
     settings.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
     settings.ImageColor3 = Color3.fromRGB(0, 0, 0)
     settings.Image = "rbxassetid://125088425775676"
-    settings.Size = UDim2.new(1.18, -22, 0, 31)
+    settings.Size = UDim2.new(1, 0, 0, 31)
     settings.LayoutOrder = 1
     settings.BorderColor3 = Color3.fromRGB(0, 0, 0)
     settings.Name = "settings"

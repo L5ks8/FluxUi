@@ -65,6 +65,10 @@ function Library:CreateWindow(Settings)
     if homeTab and HomeTabController then
         HomeTabController.Init(homeTab)
     end
+    
+    if SettignsTab then
+        SettignsTab:Create(WindowTable)
+    end
 
 
 
