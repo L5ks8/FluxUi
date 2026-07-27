@@ -760,6 +760,7 @@ function Mainframe:Create(Settings)
 
     function WindowTable.Elements:CreateColumns(parent)
         local Columns = Instance.new("Frame")
+        Columns.Name = "Columns"
         Columns.BackgroundTransparency = 1
         Columns.Size = UDim2.new(1, 0, 0, 0)
         Columns.AutomaticSize = Enum.AutomaticSize.Y
@@ -771,6 +772,7 @@ function Mainframe:Create(Settings)
         ColList.Parent = Columns
         
         local Left = Instance.new("Frame")
+        Left.Name = "Left"
         Left.BackgroundTransparency = 1
         Left.Size = UDim2.new(0.5, -7, 0, 0)
         Left.AutomaticSize = Enum.AutomaticSize.Y
@@ -781,6 +783,7 @@ function Mainframe:Create(Settings)
         LeftList.Parent = Left
         
         local Right = Instance.new("Frame")
+        Right.Name = "Right"
         Right.BackgroundTransparency = 1
         Right.Size = UDim2.new(0.5, -8, 0, 0)
         Right.AutomaticSize = Enum.AutomaticSize.Y
