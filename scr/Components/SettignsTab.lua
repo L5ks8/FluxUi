@@ -1,4 +1,4 @@
-﻿local function CreateSettings(WindowTable)
+local function CreateSettings(WindowTable)
     local UI = {}
     local CollectionService = game:GetService("CollectionService")
     local ScreenGui = WindowTable.Content:FindFirstChild("screen") or WindowTable.Content
@@ -202,4 +202,3 @@ function SettignsTab:Create(WindowTable)
     local settingsFrame = CreateSettings(WindowTable)
 end
 return SettignsTab
-
