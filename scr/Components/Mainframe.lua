@@ -1,6 +1,7 @@
 local Mainframe = {}
 
-function Mainframe:Create()
+function Mainframe:Create(Settings)
+    Settings = Settings or {}
     local ScreenGui = Instance.new("ScreenGui")
     ScreenGui.Name = "FluxUI"
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -39,7 +40,7 @@ function Mainframe:Create()
     end
 
     if _G.FluxUiTopbar then
-        _G.FluxUiTopbar:Create(panel)
+        _G.FluxUiTopbar:Create(panel, Settings)
     end
 
     -- Automatically generated UI from G2L
@@ -857,7 +858,7 @@ function Mainframe:Create()
     resize.AnchorPoint = Vector2.new(1, 1)
     resize.Size = UDim2.new(0, 35, 0, 35)
     resize.Name = "resize"
-    resize.Position = UDim2.new(1, -8, 1, -8)
+    resize.Position = UDim2.new(1, 0, 1, 0)
     resize.Parent = controls
 
     local resize_icon = Instance.new("ImageLabel")

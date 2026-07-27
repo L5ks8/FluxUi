@@ -14,7 +14,7 @@ function Notification:Create(WindowTable, Data)
     if not notificationsFrame then
         notificationsFrame = Instance.new("Frame")
         notificationsFrame.Name = "Notifications"
-        notificationsFrame.ZIndex = 3
+        notificationsFrame.ZIndex = 9999
         notificationsFrame.BorderSizePixel = 0
         notificationsFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         notificationsFrame.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -25,13 +25,15 @@ function Notification:Create(WindowTable, Data)
 
         local layout = Instance.new("UIListLayout")
         layout.Name = "Layout"
-        layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+        layout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+        layout.VerticalAlignment = Enum.VerticalAlignment.Bottom
         layout.SortOrder = Enum.SortOrder.LayoutOrder
         layout.Parent = notificationsFrame
 
         local padding = Instance.new("UIPadding")
         padding.Name = "Padding"
-        padding.PaddingTop = UDim.new(0, 12)
+        padding.PaddingBottom = UDim.new(0, 50)
+        padding.PaddingRight = UDim.new(0, 20)
         padding.Parent = notificationsFrame
     end
 

@@ -2,7 +2,8 @@ local CollectionService = game:GetService("CollectionService")
 
 local Topbar = {}
 
-function Topbar:Create(parentPanel)
+function Topbar:Create(parentPanel, Settings)
+    Settings = Settings or {}
     local topbar = Instance.new("ImageButton")
     topbar.Name = "topbar"
     topbar.BorderSizePixel = 0
@@ -355,7 +356,7 @@ function Topbar:Create(parentPanel)
     logoText.AnchorPoint = Vector2.new(0.5,0.5)
     logoText.Size = UDim2.new(0,187,0,34)
     logoText.BorderColor3 = Color3.fromRGB(0,0,0)
-    logoText.Text = "Example"
+    logoText.Text = Settings.Title or "Example"
     logoText.Position = UDim2.new(1.0506,0,0.49643,0)
     logoText.Parent = logo
 
