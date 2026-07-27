@@ -6,7 +6,7 @@ return function(parent)
     search.AutoButtonColor = false
     search.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
     search.ImageColor3 = Color3.fromRGB(28, 28, 28)
-    search.Size = UDim2.new(1, -20, 0, 35)
+    search.Size = UDim2.new(1, 0, 0, 35)
     search.LayoutOrder = -999
     search.BorderColor3 = Color3.fromRGB(0, 0, 0)
     search.Name = "SearchBar"

@@ -109,6 +109,8 @@ function Library:CreateWindow(Settings)
         local padding = Instance.new("UIPadding")
         padding.PaddingTop = UDim.new(0, 20)
         padding.PaddingBottom = UDim.new(0, 20)
+        padding.PaddingLeft = UDim.new(0, 20)
+        padding.PaddingRight = UDim.new(0, 20)
         padding.Parent = newPage
 
         if HasSearchBar and self.Elements.SearchBar then
