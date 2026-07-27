@@ -128,7 +128,7 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
             if controls then controls.Visible = false end
             Main.ClipsDescendants = true
 
-            local MaximumSize = Vector2.new((Viewport.X-80), (Viewport.Y-80))
+            local MaximumSize = Vector2.new(Viewport.X, Viewport.Y)
             
             if TweenService and Animations then
                 TweenService:Create(Main, Animations.Smooth, {

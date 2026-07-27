@@ -26,13 +26,13 @@ function Notification:Create(WindowTable, Data)
         local layout = Instance.new("UIListLayout")
         layout.Name = "Layout"
         layout.HorizontalAlignment = Enum.HorizontalAlignment.Right
-        layout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+        layout.VerticalAlignment = Enum.VerticalAlignment.Top
         layout.SortOrder = Enum.SortOrder.LayoutOrder
         layout.Parent = notificationsFrame
 
         local padding = Instance.new("UIPadding")
         padding.Name = "Padding"
-        padding.PaddingBottom = UDim.new(0, 50)
+        padding.PaddingTop = UDim.new(0, 40)
         padding.PaddingRight = UDim.new(0, 20)
         padding.Parent = notificationsFrame
     end
