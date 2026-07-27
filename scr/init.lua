@@ -12,7 +12,12 @@ local HomeTabController = loadstring(game:HttpGet(Source .. "Core/HomeTabControl
 local SettingsController = loadstring(game:HttpGet(Source .. "Core/SettingsController.lua" .. CacheBuster))()
 
 local Maintab = loadstring(game:HttpGet(Source .. "Components/Maintab.lua" .. CacheBuster))()
-local SettingsTab = loadstring(game:HttpGet(Source .. "Components/SettingsTab.lua" .. CacheBuster))()
+local SettingsTabContent = game:HttpGet(Source .. "Components/SettingsTab.lua" .. CacheBuster)
+local SettingsTabFunc, SettingsTabErr = loadstring(SettingsTabContent)
+if not SettingsTabFunc then
+    error("\n--- FATAL ERROR LOADING SettingsTab ---\nError: " .. tostring(SettingsTabErr) .. "\nLength: " .. tostring(#SettingsTabContent) .. "\nSnippet: " .. string.sub(SettingsTabContent, 1, 300) .. "\n----------------------------------------")
+end
+local SettingsTab = SettingsTabFunc()
 
 local Elements = {
     Button = loadstring(game:HttpGet(Source .. "Elements/Button.lua" .. CacheBuster))(),
