@@ -71,6 +71,50 @@ function Library:CreateWindow(Settings)
         return self.Notification:Create(self, Data)
     end
 
+    function WindowTable:CreateTab(Name, Icon)
+        local templateBtn = nil
+        for _, v in ipairs(self.Tabs:GetDescendants()) do
+            if v.Name == "home" and v:IsA("ImageButton") then
+                templateBtn = v
+                break
+            end
+        end
+
+        local newBtn = templateBtn:Clone()
+        newBtn.Name = Name
+        if newBtn:FindFirstChild("label") then
+            newBtn.label.Text = Name
+        end
+        if newBtn:FindFirstChild("holder") and newBtn.holder:FindFirstChild("icon") then
+            newBtn.holder.icon.Image = Icon or "rbxassetid://94685968948870"
+        end
+        newBtn.BackgroundTransparency = 1
+        newBtn.Parent = templateBtn.Parent
+
+        local newPage = Instance.new("ScrollingFrame")
+        newPage.Name = Name
+        newPage.Size = UDim2.new(1, 0, 1, 0)
+        newPage.BackgroundTransparency = 1
+        newPage.ScrollBarThickness = 0
+        newPage.AutomaticCanvasSize = Enum.AutomaticSize.Y
+        newPage.Parent = self.Content:FindFirstChild("screen")
+
+        local listLayout = Instance.new("UIListLayout")
+        listLayout.Padding = UDim.new(0, 10)
+        listLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+        listLayout.SortOrder = Enum.SortOrder.LayoutOrder
+        listLayout.Parent = newPage
+
+        local padding = Instance.new("UIPadding")
+        padding.PaddingTop = UDim.new(0, 20)
+        padding.PaddingBottom = UDim.new(0, 20)
+        padding.Parent = newPage
+
+        Controller.InitTabHandler(self)
+
+        return newPage
+    end
+
     return WindowTable
 end
 
