@@ -1,23 +1,24 @@
 local Source = "https://raw.githubusercontent.com/L5ks8/FluxUI/main/scr/"
+local CacheBuster = "?t=" .. tostring(os.time())
 
-_G.FluxUiIcons = loadstring(game:HttpGet(Source .. "Assets/Icons.lua"))()
+_G.FluxUiIcons = loadstring(game:HttpGet(Source .. "Assets/Icons.lua" .. CacheBuster))()
 
-local Mainframe = loadstring(game:HttpGet(Source .. "Components/Mainframe.lua"))()
-local Topbar = loadstring(game:HttpGet(Source .. "Components/Topbar.lua"))()
-local Debugbar = loadstring(game:HttpGet(Source .. "Components/Debugbar.lua"))()
-local Notification = loadstring(game:HttpGet(Source .. "Components/Notification.lua"))()
-local Controller = loadstring(game:HttpGet(Source .. "Core/Controller.lua"))()
-local HomeTabController = loadstring(game:HttpGet(Source .. "Core/HomeTabController.lua"))()
-local SettignsController = loadstring(game:HttpGet(Source .. "Core/SettignsController.lua"))()
+local Mainframe = loadstring(game:HttpGet(Source .. "Components/Mainframe.lua" .. CacheBuster))()
+local Topbar = loadstring(game:HttpGet(Source .. "Components/Topbar.lua" .. CacheBuster))()
+local Debugbar = loadstring(game:HttpGet(Source .. "Components/Debugbar.lua" .. CacheBuster))()
+local Notification = loadstring(game:HttpGet(Source .. "Components/Notification.lua" .. CacheBuster))()
+local Controller = loadstring(game:HttpGet(Source .. "Core/Controller.lua" .. CacheBuster))()
+local HomeTabController = loadstring(game:HttpGet(Source .. "Core/HomeTabController.lua" .. CacheBuster))()
+local SettignsController = loadstring(game:HttpGet(Source .. "Core/SettignsController.lua" .. CacheBuster))()
 
-local Maintab = loadstring(game:HttpGet(Source .. "Components/Maintab.lua"))()
-local SettignsTab = loadstring(game:HttpGet(Source .. "Components/SettignsTab.lua"))()
+local Maintab = loadstring(game:HttpGet(Source .. "Components/Maintab.lua" .. CacheBuster))()
+local SettignsTab = loadstring(game:HttpGet(Source .. "Components/SettignsTab.lua" .. CacheBuster))()
 
 local Elements = {
-    Button = loadstring(game:HttpGet(Source .. "Elements/Button.lua"))(),
-    Toggle = loadstring(game:HttpGet(Source .. "Elements/Toggle.lua"))(),
-    Slider = loadstring(game:HttpGet(Source .. "Elements/Slider.lua"))(),
-    Dropdown = loadstring(game:HttpGet(Source .. "Elements/Dropdown.lua"))(),
+    Button = loadstring(game:HttpGet(Source .. "Elements/Button.lua" .. CacheBuster))(),
+    Toggle = loadstring(game:HttpGet(Source .. "Elements/Toggle.lua" .. CacheBuster))(),
+    Slider = loadstring(game:HttpGet(Source .. "Elements/Slider.lua" .. CacheBuster))(),
+    Dropdown = loadstring(game:HttpGet(Source .. "Elements/Dropdown.lua" .. CacheBuster))(),
     SearchBar = loadstring(game:HttpGet(Source .. "Elements/SearchBar.lua"))(),
 }
 
