@@ -982,6 +982,95 @@ local function CreateSettings(WindowTable)
     UI.uipadding9.PaddingLeft = UDim.new(0, 20)
     UI.uipadding9.PaddingBottom = UDim.new(0, 20)
 
+    local UserInputService = game:GetService("UserInputService")
+    local TweenService = game:GetService("TweenService")
+    
+    -- 1. Unload script
+    UI.imagebutton3.MouseButton1Click:Connect(function()
+        if WindowTable and WindowTable.Instance then
+            WindowTable.Instance:Destroy()
+        end
+    end)
+    
+    -- 2. Ui Toggle
+    local currentKey = Enum.KeyCode.RightControl
+    local listening = false
+    
+    local function updateKeyText()
+        local keyName = currentKey.Name
+        if keyName == "RightControl" then
+            keyName = "Right Ctrl"
+        elseif keyName == "LeftControl" then
+            keyName = "Left Ctrl"
+        end
+        UI.textbutton.Text = keyName
+    end
+    updateKeyText()
+    
+    UI.textbutton.MouseButton1Click:Connect(function()
+        listening = true
+        UI.textbutton.Text = "..."
+    end)
+    
+    UserInputService.InputBegan:Connect(function(input, gameProcessed)
+        if listening and input.UserInputType == Enum.UserInputType.Keyboard then
+            currentKey = input.KeyCode
+            listening = false
+            updateKeyText()
+        elseif not gameProcessed and input.KeyCode == currentKey then
+            if WindowTable and WindowTable.Main then
+                WindowTable.Main.Visible = not WindowTable.Main.Visible
+            end
+        end
+    end)
+    
+    UI.imagebutton.MouseButton1Click:Connect(function()
+        currentKey = Enum.KeyCode.RightControl
+        listening = false
+        updateKeyText()
+    end)
+    
+    -- 3. Show Debugbar
+    local debugbarEnabled = _G.FluxUiDebugbar or false
+    
+    local function updateSwitchVisuals(instantly)
+        local targetPos = debugbarEnabled and UDim2.new(1, -22, 0.5, 0) or UDim2.new(0, 5, 0.5, 0)
+        local targetColor = debugbarEnabled and Color3.fromRGB(0, 170, 255) or Color3.fromRGB(23, 23, 23)
+        if instantly then
+            UI.frame16.Position = targetPos
+            UI.imagebutton4.BackgroundColor3 = targetColor
+        else
+            TweenService:Create(UI.frame16, TweenInfo.new(0.3), {Position = targetPos}):Play()
+            TweenService:Create(UI.imagebutton4, TweenInfo.new(0.3), {BackgroundColor3 = targetColor}):Play()
+        end
+    end
+    updateSwitchVisuals(true)
+    
+    UI.imagebutton4.MouseButton1Click:Connect(function()
+        debugbarEnabled = not debugbarEnabled
+        _G.FluxUiDebugbar = debugbarEnabled
+        updateSwitchVisuals(false)
+        local debugbar = WindowTable.Panel and WindowTable.Panel:FindFirstChild("debug")
+        if debugbar then
+            debugbar.Visible = debugbarEnabled
+        end
+    end)
+    
+    -- 4. Reset Settings
+    UI.imagebutton5.MouseButton1Click:Connect(function()
+        currentKey = Enum.KeyCode.RightControl
+        listening = false
+        updateKeyText()
+        
+        debugbarEnabled = false
+        _G.FluxUiDebugbar = false
+        updateSwitchVisuals(false)
+        local debugbar = WindowTable.Panel and WindowTable.Panel:FindFirstChild("debug")
+        if debugbar then
+            debugbar.Visible = false
+        end
+    end)
+
     return UI.settings
 end
 
