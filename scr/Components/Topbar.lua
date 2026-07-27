@@ -241,7 +241,7 @@ function Topbar:Create(parentPanel, Settings)
     fullscreenIcon.BackgroundColor3 = Color3.fromRGB(255,255,255)
     fullscreenIcon.ImageTransparency = 0.5
     fullscreenIcon.AnchorPoint = Vector2.new(0.5,0.5)
-    fullscreenIcon.Image = "rbxassetid://78102729792278"
+    fullscreenIcon.Image = "rbxassetid://82975295144769"
     fullscreenIcon.Size = UDim2.new(0,16,0,16)
     fullscreenIcon.Visible = false
     fullscreenIcon.BorderColor3 = Color3.fromRGB(255,255,255)
