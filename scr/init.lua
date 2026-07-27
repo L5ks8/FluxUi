@@ -19,7 +19,7 @@ local Elements = {
     Toggle = loadstring(game:HttpGet(Source .. "Elements/Toggle.lua" .. CacheBuster))(),
     Slider = loadstring(game:HttpGet(Source .. "Elements/Slider.lua" .. CacheBuster))(),
     Dropdown = loadstring(game:HttpGet(Source .. "Elements/Dropdown.lua" .. CacheBuster))(),
-    SearchBar = loadstring(game:HttpGet(Source .. "Elements/SearchBar.lua"))(),
+    SearchBar = loadstring(game:HttpGet(Source .. "Elements/SearchBar.lua" .. CacheBuster))(),
 }
 
 _G.FluxUiDebugbar = Debugbar 
