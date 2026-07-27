@@ -7,7 +7,7 @@ local Animations = {
 
 return function(parent, titleText, options, callback)
     local DropdownFrame = Instance.new("Frame")
-    DropdownFrame.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
+    DropdownFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
     DropdownFrame.Size = UDim2.new(1, 0, 0, 36)
     DropdownFrame.ClipsDescendants = true
     DropdownFrame.Parent = parent
@@ -17,7 +17,7 @@ return function(parent, titleText, options, callback)
     UICorner.Parent = DropdownFrame
     
     local UIStroke = Instance.new("UIStroke")
-    UIStroke.Color = Color3.fromRGB(65, 65, 65)
+    UIStroke.Color = Color3.fromRGB(40, 40, 40)
     UIStroke.Thickness = 1
     UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
     UIStroke.Parent = DropdownFrame
@@ -66,14 +66,14 @@ return function(parent, titleText, options, callback)
         local targetHeight = open and (36 + (#options * 32) + 8) or 36
         TweenService:Create(DropdownFrame, Animations.Smooth, {Size = UDim2.new(1, 0, 0, targetHeight)}):Play()
         TweenService:Create(Icon, Animations.Fast, {Rotation = open and 180 or 0}):Play()
-        TweenService:Create(UIStroke, Animations.Fast, {Color = open and Color3.fromRGB(100, 100, 100) or Color3.fromRGB(65, 65, 65)}):Play()
+        TweenService:Create(UIStroke, Animations.Fast, {Color = open and Color3.fromRGB(60, 60, 60) or Color3.fromRGB(40, 40, 40)}):Play()
     end)
     
     local OptBtns = {}
     
     for _, opt in ipairs(options) do
         local OptBtn = Instance.new("TextButton")
-        OptBtn.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+        OptBtn.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
         OptBtn.Size = UDim2.new(1, -16, 0, 28)
         OptBtn.Text = opt
         OptBtn.TextColor3 = Color3.fromRGB(220, 220, 220)
@@ -87,7 +87,7 @@ return function(parent, titleText, options, callback)
         OptCorner.Parent = OptBtn
 
         local OptStroke = Instance.new("UIStroke")
-        OptStroke.Color = Color3.fromRGB(60, 60, 60)
+        OptStroke.Color = Color3.fromRGB(45, 45, 45)
         OptStroke.Thickness = 1
         OptStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
         OptStroke.Parent = OptBtn
@@ -95,13 +95,13 @@ return function(parent, titleText, options, callback)
         table.insert(OptBtns, {Btn = OptBtn, Text = opt})
         
         OptBtn.MouseEnter:Connect(function()
-            TweenService:Create(OptBtn, Animations.Fast, {BackgroundColor3 = Color3.fromRGB(60, 60, 60)}):Play()
-            TweenService:Create(OptStroke, Animations.Fast, {Color = Color3.fromRGB(80, 80, 80)}):Play()
+            TweenService:Create(OptBtn, Animations.Fast, {BackgroundColor3 = Color3.fromRGB(40, 40, 40)}):Play()
+            TweenService:Create(OptStroke, Animations.Fast, {Color = Color3.fromRGB(60, 60, 60)}):Play()
         end)
         
         OptBtn.MouseLeave:Connect(function()
-            TweenService:Create(OptBtn, Animations.Fast, {BackgroundColor3 = Color3.fromRGB(45, 45, 45)}):Play()
-            TweenService:Create(OptStroke, Animations.Fast, {Color = Color3.fromRGB(60, 60, 60)}):Play()
+            TweenService:Create(OptBtn, Animations.Fast, {BackgroundColor3 = Color3.fromRGB(30, 30, 30)}):Play()
+            TweenService:Create(OptStroke, Animations.Fast, {Color = Color3.fromRGB(45, 45, 45)}):Play()
         end)
         
         OptBtn.MouseButton1Click:Connect(function()
@@ -109,7 +109,7 @@ return function(parent, titleText, options, callback)
             open = false
             TweenService:Create(DropdownFrame, Animations.Smooth, {Size = UDim2.new(1, 0, 0, 36)}):Play()
             TweenService:Create(Icon, Animations.Fast, {Rotation = 0}):Play()
-            TweenService:Create(UIStroke, Animations.Fast, {Color = Color3.fromRGB(65, 65, 65)}):Play()
+            TweenService:Create(UIStroke, Animations.Fast, {Color = Color3.fromRGB(40, 40, 40)}):Play()
             if callback then callback(opt) end
         end)
     end

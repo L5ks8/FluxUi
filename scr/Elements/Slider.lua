@@ -7,7 +7,7 @@ local Animations = {
 
 return function(parent, titleText, min, max, default, callback)
     local SliderFrame = Instance.new("Frame")
-    SliderFrame.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
+    SliderFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
     SliderFrame.Size = UDim2.new(1, 0, 0, 50)
     SliderFrame.Parent = parent
     
@@ -16,7 +16,7 @@ return function(parent, titleText, min, max, default, callback)
     UICorner.Parent = SliderFrame
     
     local UIStroke = Instance.new("UIStroke")
-    UIStroke.Color = Color3.fromRGB(65, 65, 65)
+    UIStroke.Color = Color3.fromRGB(40, 40, 40)
     UIStroke.Thickness = 1
     UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
     UIStroke.Parent = SliderFrame
@@ -33,7 +33,7 @@ return function(parent, titleText, min, max, default, callback)
     Title.Parent = SliderFrame
     
     local ValueBg = Instance.new("Frame")
-    ValueBg.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    ValueBg.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
     ValueBg.Size = UDim2.new(0, 40, 0, 20)
     ValueBg.AnchorPoint = Vector2.new(1, 0)
     ValueBg.Position = UDim2.new(1, -12, 0, 6)
@@ -99,13 +99,13 @@ return function(parent, titleText, min, max, default, callback)
     local dragging = false
     
     Btn.MouseEnter:Connect(function()
-        TweenService:Create(UIStroke, Animations.Fast, {Color = Color3.fromRGB(85, 85, 85)}):Play()
+        TweenService:Create(UIStroke, Animations.Fast, {Color = Color3.fromRGB(60, 60, 60)}):Play()
         TweenService:Create(Thumb, Animations.Fast, {Size = UDim2.new(0, 16, 0, 16)}):Play()
     end)
     
     Btn.MouseLeave:Connect(function()
         if not dragging then
-            TweenService:Create(UIStroke, Animations.Fast, {Color = Color3.fromRGB(65, 65, 65)}):Play()
+            TweenService:Create(UIStroke, Animations.Fast, {Color = Color3.fromRGB(40, 40, 40)}):Play()
             TweenService:Create(Thumb, Animations.Fast, {Size = UDim2.new(0, 14, 0, 14)}):Play()
         end
     end)
@@ -130,7 +130,7 @@ return function(parent, titleText, min, max, default, callback)
     UserInputService.InputEnded:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             dragging = false
-            TweenService:Create(UIStroke, Animations.Fast, {Color = Color3.fromRGB(65, 65, 65)}):Play()
+            TweenService:Create(UIStroke, Animations.Fast, {Color = Color3.fromRGB(40, 40, 40)}):Play()
             TweenService:Create(Thumb, Animations.Fast, {Size = UDim2.new(0, 14, 0, 14), BackgroundColor3 = Color3.fromRGB(255, 255, 255)}):Play()
         end
     end)

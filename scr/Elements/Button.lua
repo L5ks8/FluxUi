@@ -6,7 +6,7 @@ local Animations = {
 
 return function(parent, titleText, callback)
     local ButtonFrame = Instance.new("Frame")
-    ButtonFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+    ButtonFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
     ButtonFrame.Size = UDim2.new(1, 0, 0, 36)
     ButtonFrame.Parent = parent
     
@@ -15,7 +15,7 @@ return function(parent, titleText, callback)
     UICorner.Parent = ButtonFrame
     
     local UIStroke = Instance.new("UIStroke")
-    UIStroke.Color = Color3.fromRGB(65, 65, 65)
+    UIStroke.Color = Color3.fromRGB(40, 40, 40)
     UIStroke.Thickness = 1
     UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
     UIStroke.Parent = ButtonFrame
@@ -30,22 +30,22 @@ return function(parent, titleText, callback)
     Btn.Parent = ButtonFrame
     
     Btn.MouseEnter:Connect(function()
-        TweenService:Create(ButtonFrame, Animations.Fast, {BackgroundColor3 = Color3.fromRGB(55, 55, 55)}):Play()
-        TweenService:Create(UIStroke, Animations.Fast, {Color = Color3.fromRGB(85, 85, 85)}):Play()
+        TweenService:Create(ButtonFrame, Animations.Fast, {BackgroundColor3 = Color3.fromRGB(35, 35, 35)}):Play()
+        TweenService:Create(UIStroke, Animations.Fast, {Color = Color3.fromRGB(55, 55, 55)}):Play()
     end)
     
     Btn.MouseLeave:Connect(function()
-        TweenService:Create(ButtonFrame, Animations.Fast, {BackgroundColor3 = Color3.fromRGB(45, 45, 45)}):Play()
-        TweenService:Create(UIStroke, Animations.Fast, {Color = Color3.fromRGB(65, 65, 65)}):Play()
+        TweenService:Create(ButtonFrame, Animations.Fast, {BackgroundColor3 = Color3.fromRGB(25, 25, 25)}):Play()
+        TweenService:Create(UIStroke, Animations.Fast, {Color = Color3.fromRGB(40, 40, 40)}):Play()
     end)
     
     Btn.MouseButton1Down:Connect(function()
-        TweenService:Create(ButtonFrame, Animations.Fast, {BackgroundColor3 = Color3.fromRGB(35, 35, 35)}):Play()
+        TweenService:Create(ButtonFrame, Animations.Fast, {BackgroundColor3 = Color3.fromRGB(15, 15, 15)}):Play()
         TweenService:Create(Btn, Animations.Fast, {TextSize = 13}):Play()
     end)
     
     Btn.MouseButton1Up:Connect(function()
-        TweenService:Create(ButtonFrame, Animations.Fast, {BackgroundColor3 = Color3.fromRGB(55, 55, 55)}):Play()
+        TweenService:Create(ButtonFrame, Animations.Fast, {BackgroundColor3 = Color3.fromRGB(35, 35, 35)}):Play()
         TweenService:Create(Btn, Animations.Fast, {TextSize = 14}):Play()
     end)
     
