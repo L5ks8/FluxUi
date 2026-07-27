@@ -8,6 +8,7 @@ local Debugbar = loadstring(game:HttpGet(Source .. "Components/Debugbar.lua"))()
 local Notification = loadstring(game:HttpGet(Source .. "Components/Notification.lua"))()
 local Controller = loadstring(game:HttpGet(Source .. "Core/Controller.lua"))()
 local HomeTabController = loadstring(game:HttpGet(Source .. "Core/HomeTabController.lua"))()
+local SettignsController = loadstring(game:HttpGet(Source .. "Core/SettignsController.lua"))()
 
 local Maintab = loadstring(game:HttpGet(Source .. "Components/Maintab.lua"))()
 local SettignsTab = loadstring(game:HttpGet(Source .. "Components/SettignsTab.lua"))()
@@ -45,6 +46,7 @@ function Library:CreateWindow(Settings)
     Topbar:Init(WindowTable)
     if SettignsTab then
         SettignsTab:Create(WindowTable)
+        SettignsController.Init(WindowTable)
     end
     
     Controller.InitTabHandler(WindowTable)

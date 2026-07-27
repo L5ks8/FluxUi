@@ -1748,15 +1748,504 @@ local function CreateSettings(WindowTable)
     end)
 
     back.MouseButton1Click:Connect(function()
-        settings.Visible = false
-        UI.selection.Visible = true
-    end)
+    
+    settings.Visible = false
+    local confirmation = Instance.new("ImageLabel")
+    confirmation.ZIndex = 10
+    confirmation.BorderSizePixel = 0
+    confirmation.SliceCenter = Rect.new(300, 300, 300, 300)
+    confirmation.SliceScale = 0.5
+    confirmation.ScaleType = Enum.ScaleType.Slice
+    confirmation.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    confirmation.AutomaticSize = Enum.AutomaticSize.Y
+    confirmation.ImageColor3 = Color3.fromRGB(0, 0, 0)
+    confirmation.AnchorPoint = Vector2.new(0.5, 0.5)
+    confirmation.Image = [[rbxassetid://72548733587158]]
+    confirmation.Size = UDim2.new(0, 450, 0, 0)
+    confirmation.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    confirmation.BackgroundTransparency = 1
+    confirmation.Selectable = true
+    confirmation.Name = [[confirmation]]
+    confirmation.Position = UDim2.new(0.5, 0, 0.5, 0)
+    confirmation:SetAttribute([[CurrentPromptID]], [[]])
+    confirmation.Parent = screengui
 
-    return UI.settings
+    local scale = Instance.new("UIScale")
+    scale.Name = [[scale]]
+    scale.Parent = confirmation
+
+    local padding = Instance.new("UIPadding")
+    padding.PaddingTop = UDim.new(0, 75)
+    padding.PaddingRight = UDim.new(0, 75)
+    padding.Name = [[padding]]
+    padding.PaddingLeft = UDim.new(0, 75)
+    padding.PaddingBottom = UDim.new(0, 75)
+    padding.Parent = confirmation
+
+    local list = Instance.new("UIListLayout")
+    list.SortOrder = Enum.SortOrder.LayoutOrder
+    list.Name = [[list]]
+    list.Parent = confirmation
+
+    local frame = Instance.new("ImageButton")
+    frame.SliceScale = 0.12
+    frame.BorderSizePixel = 0
+    frame.SliceCenter = Rect.new(512, 512, 512, 512)
+    frame.ScaleType = Enum.ScaleType.Slice
+    frame.Modal = true
+    frame.AutoButtonColor = false
+    frame.BackgroundTransparency = 1
+    frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    frame.ImageColor3 = Color3.fromRGB(35, 35, 35)
+    frame.AnchorPoint = Vector2.new(0.5, 0)
+    frame.Image = [[rbxassetid://125088425775676]]
+    frame.AutomaticSize = Enum.AutomaticSize.Y
+    frame.Size = UDim2.new(1, 0, 0, 0)
+    frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    frame.Name = [[frame]]
+    frame.Position = UDim2.new(0.5, 0, 0, 0)
+    frame.Parent = confirmation
+
+    local content = Instance.new("CanvasGroup")
+    content.Active = true
+    content.BorderSizePixel = 0
+    content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    content.Selectable = true
+    content.AutomaticSize = Enum.AutomaticSize.Y
+    content.Size = UDim2.new(1, 0, 0, 0)
+    content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    content.Name = [[content]]
+    content.LayoutOrder = 1
+    content.BackgroundTransparency = 1
+    content.SelectionGroup = true
+    content.Parent = frame
+
+    local header = Instance.new("TextLabel")
+    header.TextWrapped = true
+    header.BorderSizePixel = 0
+    header.TextSize = 18
+    header.TextXAlignment = Enum.TextXAlignment.Left
+    header.TextYAlignment = Enum.TextYAlignment.Top
+    header.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    header.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    header.TextColor3 = Color3.fromRGB(255, 255, 255)
+    header.BackgroundTransparency = 1
+    header.Size = UDim2.new(1, 0, 0, 0)
+    header.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    header.Text = [[Header]]
+    header.AutomaticSize = Enum.AutomaticSize.Y
+    header.Name = [[header]]
+    header.Parent = content
+
+    local label = Instance.new("TextLabel")
+    label.TextWrapped = true
+    label.BorderSizePixel = 0
+    label.TextSize = 15
+    label.TextXAlignment = Enum.TextXAlignment.Left
+    label.TextTransparency = 0.3
+    label.TextYAlignment = Enum.TextYAlignment.Top
+    label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    label.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    label.TextColor3 = Color3.fromRGB(255, 255, 255)
+    label.BackgroundTransparency = 1
+    label.Size = UDim2.new(1, 0, 0, 0)
+    label.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    label.Text = [[Description]]
+    label.AutomaticSize = Enum.AutomaticSize.Y
+    label.Name = [[label]]
+    label.Parent = content
+
+    local list2 = Instance.new("UIListLayout")
+    list2.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    list2.Padding = UDim.new(0, 5)
+    list2.SortOrder = Enum.SortOrder.LayoutOrder
+    list2.Name = [[list]]
+    list2.Parent = content
+
+    local actions = Instance.new("Frame")
+    actions.BorderSizePixel = 0
+    actions.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    actions.Size = UDim2.new(1, 0, 0, 60)
+    actions.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    actions.Name = [[actions]]
+    actions.LayoutOrder = 2
+    actions.BackgroundTransparency = 1
+    actions.Parent = content
+
+    local list3 = Instance.new("UIListLayout")
+    list3.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    list3.HorizontalFlex = Enum.UIFlexAlignment.Fill
+    list3.Padding = UDim.new(0, 10)
+    list3.VerticalAlignment = Enum.VerticalAlignment.Bottom
+    list3.SortOrder = Enum.SortOrder.LayoutOrder
+    list3.Name = [[list]]
+    list3.FillDirection = Enum.FillDirection.Horizontal
+    list3.Parent = actions
+
+    local accept = Instance.new("TextButton")
+    accept.BorderSizePixel = 0
+    accept.TextSize = 15
+    accept.TextColor3 = Color3.fromRGB(255, 255, 255)
+    accept.BackgroundColor3 = Color3.fromRGB(0, 141, 255)
+    accept.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    accept.AnchorPoint = Vector2.new(0, 0.5)
+    accept.AutomaticSize = Enum.AutomaticSize.X
+    accept.Size = UDim2.new(0, 0, 0, 40)
+    accept.LayoutOrder = 2
+    accept.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    accept.Text = [[Confirm]]
+    accept.Name = [[accept]]
+    accept.Position = UDim2.new(0, 0, 0.5, 0)
+    CollectionService:AddTag(accept, [[Exe6PrimaryThemeBackgroundColor3]])
+    accept.Parent = actions
+
+    local padding2 = Instance.new("UIPadding")
+    padding2.PaddingRight = UDim.new(0, 24)
+    padding2.Name = [[padding]]
+    padding2.PaddingLeft = UDim.new(0, 24)
+    padding2.Parent = accept
+
+    local corner = Instance.new("UICorner")
+    corner.Name = [[corner]]
+    corner.CornerRadius = UDim.new(1, 0)
+    corner.Parent = accept
+
+    local stroke = Instance.new("UIStroke")
+    stroke.Color = Color3.fromRGB(255, 255, 255)
+    stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    stroke.Name = [[stroke]]
+    CollectionService:AddTag(stroke, [[Exe6AerialEffect]])
+    stroke.Parent = accept
+
+    local gradient = Instance.new("UIGradient")
+    gradient.Rotation = 62
+    gradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(0.500, 1),NumberSequenceKeypoint.new(1.000, 0)}
+    gradient.Name = [[gradient]]
+    gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(90, 178, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(90, 178, 255))}
+    CollectionService:AddTag(gradient, [[Exe6DynamicSpeculars]])
+    CollectionService:AddTag(gradient, [[Exe6PrimarySpeculars]])
+    gradient.Parent = stroke
+
+    local padding3 = Instance.new("UIPadding")
+    padding3.PaddingRight = UDim.new(0, 1)
+    padding3.Name = [[padding]]
+    padding3.PaddingLeft = UDim.new(0, 1)
+    padding3.PaddingBottom = UDim.new(0, 1)
+    padding3.Parent = actions
+
+    local cancel = Instance.new("TextButton")
+    cancel.BorderSizePixel = 0
+    cancel.TextSize = 15
+    cancel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    cancel.BackgroundColor3 = Color3.fromRGB(187, 0, 0)
+    cancel.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    cancel.AnchorPoint = Vector2.new(0, 0.5)
+    cancel.AutomaticSize = Enum.AutomaticSize.X
+    cancel.Size = UDim2.new(0, 0, 0, 40)
+    cancel.LayoutOrder = 1
+    cancel.BorderColor3 = Color3.fromRGB(27, 27, 27)
+    cancel.Text = [[Cancel]]
+    cancel.Name = [[cancel]]
+    cancel.Position = UDim2.new(0, 0, 0.5, 0)
+    cancel.Parent = actions
+
+    local corner2 = Instance.new("UICorner")
+    corner2.Name = [[corner]]
+    corner2.CornerRadius = UDim.new(1, 0)
+    corner2.Parent = cancel
+
+    local padding4 = Instance.new("UIPadding")
+    padding4.PaddingRight = UDim.new(0, 20)
+    padding4.Name = [[padding]]
+    padding4.PaddingLeft = UDim.new(0, 20)
+    padding4.Parent = cancel
+
+    local padding5 = Instance.new("UIPadding")
+    padding5.PaddingTop = UDim.new(0, 25)
+    padding5.PaddingRight = UDim.new(0, 25)
+    padding5.Name = [[padding]]
+    padding5.PaddingLeft = UDim.new(0, 25)
+    padding5.PaddingBottom = UDim.new(0, 25)
+    padding5.Parent = content
+
+    local Options = Instance.new("Frame")
+    Options.BorderSizePixel = 0
+    Options.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Options.Size = UDim2.new(0, 265, 0, 120)
+    Options.Position = UDim2.new(-0.024, 0, 0.22523, 0)
+    Options.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Options.Name = [[Options]]
+    Options.BackgroundTransparency = 1
+    Options.Parent = content
+
+    local uilistlayout = Instance.new("UIListLayout")
+    uilistlayout.Padding = UDim.new(0, 10)
+    uilistlayout.VerticalAlignment = Enum.VerticalAlignment.Center
+    uilistlayout.SortOrder = Enum.SortOrder.LayoutOrder
+    uilistlayout.Parent = Options
+
+    local left = Instance.new("ImageButton")
+    left.Active = false
+    left.BorderSizePixel = 0
+    left.BackgroundTransparency = 0.85
+    left.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    left.Selectable = false
+    left.Size = UDim2.new(0, 256, 0, 50)
+    left.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    left.Name = [[left]]
+    left.Position = UDim2.new(0, 0, 0.52083, 0)
+    left.Parent = Options
+
+    local textlabel = Instance.new("TextLabel")
+    textlabel.BorderSizePixel = 0
+    textlabel.TextSize = 20
+    textlabel.TextTransparency = 0.2
+    textlabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    textlabel.FontFace = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    textlabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    textlabel.BackgroundTransparency = 1
+    textlabel.Size = UDim2.new(0, 135, 0, 50)
+    textlabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    textlabel.Text = [[Left]]
+    textlabel.LayoutOrder = 1
+    textlabel.Position = UDim2.new(0.4707, 0, 0, 0)
+    textlabel.Parent = left
+
+    local selected = Instance.new("ImageLabel")
+    selected.BorderSizePixel = 0
+    selected.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    selected.Image = [[rbxassetid://101453217391307]]
+    selected.Size = UDim2.new(0, 20, 0, 20)
+    selected.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    selected.BackgroundTransparency = 1
+    selected.Name = [[selected]]
+    selected.Position = UDim2.new(0.19531, 0, 0, 0)
+    selected.Parent = left
+
+    local uicorner = Instance.new("UICorner")
+    uicorner.CornerRadius = UDim.new(1, 0)
+    uicorner.Parent = selected
+
+    local uilistlayout2 = Instance.new("UIListLayout")
+    uilistlayout2.HorizontalAlignment = Enum.HorizontalAlignment.Right
+    uilistlayout2.Padding = UDim.new(0, 60)
+    uilistlayout2.VerticalAlignment = Enum.VerticalAlignment.Center
+    uilistlayout2.SortOrder = Enum.SortOrder.LayoutOrder
+    uilistlayout2.FillDirection = Enum.FillDirection.Horizontal
+    uilistlayout2.Parent = left
+
+    local uicorner2 = Instance.new("UICorner")
+    uicorner2.CornerRadius = UDim.new(1, 0)
+    uicorner2.Parent = left
+
+    local right = Instance.new("ImageButton")
+    right.Active = false
+    right.BorderSizePixel = 0
+    right.BackgroundTransparency = 0.85
+    right.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    right.Selectable = false
+    right.Size = UDim2.new(0, 256, 0, 50)
+    right.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    right.Name = [[right]]
+    right.Position = UDim2.new(0, 0, 0.0625, 0)
+    right.Parent = Options
+
+    local uicorner3 = Instance.new("UICorner")
+    uicorner3.CornerRadius = UDim.new(1, 0)
+    uicorner3.Parent = right
+
+    local uilistlayout3 = Instance.new("UIListLayout")
+    uilistlayout3.HorizontalAlignment = Enum.HorizontalAlignment.Right
+    uilistlayout3.Padding = UDim.new(0, 60)
+    uilistlayout3.VerticalAlignment = Enum.VerticalAlignment.Center
+    uilistlayout3.SortOrder = Enum.SortOrder.LayoutOrder
+    uilistlayout3.FillDirection = Enum.FillDirection.Horizontal
+    uilistlayout3.Parent = right
+
+    local textlabel2 = Instance.new("TextLabel")
+    textlabel2.BorderSizePixel = 0
+    textlabel2.TextSize = 20
+    textlabel2.TextTransparency = 0.2
+    textlabel2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    textlabel2.FontFace = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    textlabel2.TextColor3 = Color3.fromRGB(255, 255, 255)
+    textlabel2.BackgroundTransparency = 1
+    textlabel2.Size = UDim2.new(0, 135, 0, 50)
+    textlabel2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    textlabel2.Text = [[Right]]
+    textlabel2.LayoutOrder = 1
+    textlabel2.Position = UDim2.new(0.4707, 0, 0, 0)
+    textlabel2.Parent = right
+
+    local selected2 = Instance.new("ImageLabel")
+    selected2.BorderSizePixel = 0
+    selected2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    selected2.Image = [[rbxassetid://101453217391307]]
+    selected2.Size = UDim2.new(0, 20, 0, 20)
+    selected2.Visible = false
+    selected2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    selected2.BackgroundTransparency = 1
+    selected2.Name = [[selected]]
+    selected2.Position = UDim2.new(0.19531, 0, 0, 0)
+    selected2.Parent = right
+
+    local uicorner4 = Instance.new("UICorner")
+    uicorner4.CornerRadius = UDim.new(1, 0)
+    uicorner4.Parent = selected2
+
+    local LeafletControls = Instance.new("Frame")
+    LeafletControls.ZIndex = 99999
+    LeafletControls.BorderSizePixel = 0
+    LeafletControls.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    LeafletControls.AnchorPoint = Vector2.new(1, 1)
+    LeafletControls.Size = UDim2.new(1, 0, 1, 0)
+    LeafletControls.Position = UDim2.new(1, 0, 1, 0)
+    LeafletControls.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    LeafletControls.Name = [[LeafletControls]]
+    LeafletControls.BackgroundTransparency = 1
+    LeafletControls.Parent = frame
+
+    local Top = Instance.new("Frame")
+    Top.BorderSizePixel = 0
+    Top.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Top.AnchorPoint = Vector2.new(0.5, 0)
+    Top.Size = UDim2.new(1, 0, 0, 50)
+    Top.Position = UDim2.new(0.5, 0, 0, 0)
+    Top.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Top.Name = [[Top]]
+    Top.BackgroundTransparency = 1
+    Top.Parent = LeafletControls
+
+    local padding6 = Instance.new("UIPadding")
+    padding6.PaddingTop = UDim.new(0, 5)
+    padding6.PaddingRight = UDim.new(0, 5)
+    padding6.Name = [[padding]]
+    padding6.Parent = Top
+
+    local list4 = Instance.new("UIListLayout")
+    list4.HorizontalAlignment = Enum.HorizontalAlignment.Right
+    list4.Padding = UDim.new(0, -5)
+    list4.SortOrder = Enum.SortOrder.LayoutOrder
+    list4.Name = [[list]]
+    list4.FillDirection = Enum.FillDirection.Horizontal
+    list4.Parent = Top
+
+    local Bottom = Instance.new("Frame")
+    Bottom.BorderSizePixel = 0
+    Bottom.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Bottom.AnchorPoint = Vector2.new(1, 1)
+    Bottom.Size = UDim2.new(0, 50, 0, 50)
+    Bottom.Position = UDim2.new(1, 0, 1, 0)
+    Bottom.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Bottom.Name = [[Bottom]]
+    Bottom.BackgroundTransparency = 1
+    Bottom.Parent = LeafletControls
+
+    local list5 = Instance.new("UIListLayout")
+    list5.HorizontalFlex = Enum.UIFlexAlignment.Fill
+    list5.SortOrder = Enum.SortOrder.LayoutOrder
+    list5.Name = [[list]]
+    list5.FillDirection = Enum.FillDirection.Horizontal
+    list5.Parent = Bottom
+
+    local Resize = Instance.new("ImageButton")
+    Resize.BorderSizePixel = 0
+    Resize.AutoButtonColor = false
+    Resize.Visible = false
+    Resize.BackgroundTransparency = 1
+    Resize.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Resize.Size = UDim2.new(1, 0, 1, 0)
+    Resize.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Resize.Name = [[Resize]]
+    CollectionService:AddTag(Resize, [[Exe6ResizeHandle]])
+    Resize.Parent = Bottom
+
+    local icon = Instance.new("ImageLabel")
+    icon.BorderSizePixel = 0
+    icon.SliceCenter = Rect.new(51, 52, 51, 52)
+    icon.SliceScale = 0.5
+    icon.ScaleType = Enum.ScaleType.Slice
+    icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    icon.ImageColor3 = Color3.fromRGB(60, 60, 60)
+    icon.AnchorPoint = Vector2.new(1, 1)
+    icon.Image = [[rbxassetid://86527207319523]]
+    icon.Size = UDim2.new(0, 18, 0, 18)
+    icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    icon.BackgroundTransparency = 1
+    icon.Name = [[icon]]
+    icon.Position = UDim2.new(1, 0, 1, 0)
+    icon.Parent = Resize
+
+    local scale2 = Instance.new("UIScale")
+    scale2.Name = [[scale]]
+    scale2.Parent = icon
+
+    local padding7 = Instance.new("UIPadding")
+    padding7.PaddingRight = UDim.new(0, 8)
+    padding7.Name = [[padding]]
+    padding7.PaddingBottom = UDim.new(0, 8)
+    padding7.Parent = Resize
+
+    local Protection = Instance.new("ImageButton")
+    Protection.BorderSizePixel = 0
+    Protection.AutoButtonColor = false
+    Protection.Visible = false
+    Protection.BackgroundTransparency = 1
+    Protection.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Protection.AnchorPoint = Vector2.new(0.5, 0.5)
+    Protection.Size = UDim2.new(1, 0, 1, 0)
+    Protection.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Protection.Name = [[Protection]]
+    Protection.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Protection.Parent = LeafletControls
+
+    local Space = Instance.new("Frame")
+    Space.BorderSizePixel = 0
+    Space.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Space.Selectable = true
+    Space.AnchorPoint = Vector2.new(0.5, 0.5)
+    Space.Size = UDim2.new(1, 0, 1, 0)
+    Space.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Space.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Space.Name = [[Space]]
+    Space.BackgroundTransparency = 1
+    Space.Parent = LeafletControls
+
+    local Shield = Instance.new("ImageButton")
+    Shield.BorderSizePixel = 0
+    Shield.AutoButtonColor = false
+    Shield.Visible = false
+    Shield.BackgroundTransparency = 1
+    Shield.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Shield.AnchorPoint = Vector2.new(0.5, 0.5)
+    Shield.Size = UDim2.new(1, 0, 1, 0)
+    Shield.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Shield.Name = [[Shield]]
+    Shield.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Shield.Parent = LeafletControls
+
+    confirmation.Visible = false
+    
+    return {
+        MainSettings = UI.settings,
+        AdvancedSettings = settings,
+        SelectionTab = UI.selection,
+        AdvSettingsBtn = UI.item,
+        BackBtn = back,
+        Confirmation = confirmation,
+        TabLayoutBtn = Selection2,
+        LeftBtn = left,
+        RightBtn = right,
+        LeftSelected = selected,
+        RightSelected = selected2,
+        AcceptBtn = accept,
+        CancelBtn = cancel
+    }
+
 end
 
 local SettignsTab = {}
 function SettignsTab:Create(WindowTable)
-    local settingsFrame = CreateSettings(WindowTable)
+    WindowTable.SettingsElements = CreateSettings(WindowTable)
 end
 return SettignsTab
