@@ -5,6 +5,7 @@ function Mainframe:Create(Settings)
     local ScreenGui = Instance.new("ScreenGui")
     ScreenGui.Name = "FluxUI"
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    ScreenGui.IgnoreGuiInset = true
     ScreenGui.Parent = game:GetService("CoreGui")
 
     local main = Instance.new("CanvasGroup")
@@ -139,143 +140,7 @@ function Mainframe:Create(Settings)
     padding4.PaddingLeft = UDim.new(0, 8)
     padding4.Parent = mainFrame4
 
-    local ExampleTab = Instance.new("ImageButton")
-    ExampleTab.SliceScale = 0.01
-    ExampleTab.BorderSizePixel = 0
-    ExampleTab.SliceCenter = Rect.new(512, 512, 512, 512)
-    ExampleTab.ScaleType = Enum.ScaleType.Slice
-    ExampleTab.AutoButtonColor = false
-    ExampleTab.ImageTransparency = 1
-    ExampleTab.BackgroundTransparency = 1
-    ExampleTab.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
-    ExampleTab.ImageColor3 = Color3.fromRGB(0, 0, 0)
-    ExampleTab.Image = "rbxassetid://125088425775676"
-    ExampleTab.Size = UDim2.new(1, 0, 0, 31)
-    ExampleTab.LayoutOrder = 7
-    ExampleTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    ExampleTab.Name = "ExampleTab"
-    ExampleTab.Parent = mainFrame4
 
-    local list9 = Instance.new("UIListLayout")
-    list9.Padding = UDim.new(0, 10)
-    list9.VerticalAlignment = Enum.VerticalAlignment.Center
-    list9.SortOrder = Enum.SortOrder.LayoutOrder
-    list9.Name = "list"
-    list9.FillDirection = Enum.FillDirection.Horizontal
-    list9.Parent = ExampleTab
-
-    local padding5 = Instance.new("UIPadding")
-    padding5.PaddingRight = UDim.new(0, 12)
-    padding5.Name = "padding"
-    padding5.PaddingLeft = UDim.new(0, 12)
-    padding5.Parent = ExampleTab
-
-    local label3 = Instance.new("TextLabel")
-    label3.BorderSizePixel = 0
-    label3.AutoLocalize = false
-    label3.TextSize = 14
-    label3.TextXAlignment = Enum.TextXAlignment.Left
-    label3.TextTransparency = 0.5
-    label3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    label3.FontFace = Font.new([[rbxassetid://12187365364]], Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-    label3.TextColor3 = Color3.fromRGB(255, 255, 255)
-    label3.BackgroundTransparency = 1
-    label3.Size = UDim2.new(0, 0, 0, 22)
-    label3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    label3.Text = "ExampleTab"
-    label3.LayoutOrder = 2
-    label3.Name = "label"
-    label3.Position = UDim2.new(0.16667, 0, 0, 0)
-    label3.Parent = ExampleTab
-
-    local Flex2 = Instance.new("UIFlexItem")
-    Flex2.Name = "Flex"
-    Flex2.FlexMode = Enum.UIFlexMode.Fill
-    Flex2.Parent = label3
-
-    local corner8 = Instance.new("UICorner")
-    corner8.Name = "corner"
-    corner8.CornerRadius = UDim.new(0, 12)
-    corner8.Parent = ExampleTab
-
-    local holder = Instance.new("ImageLabel")
-    holder.BorderSizePixel = 0
-    holder.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    holder.ImageTransparency = 1
-    holder.Size = UDim2.new(0, 20, 0, 20)
-    holder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    holder.BackgroundTransparency = 0.8
-    holder.LayoutOrder = 1
-    holder.Name = "holder"
-    holder.Parent = ExampleTab
-
-    local icon6 = Instance.new("ImageLabel")
-    icon6.BorderSizePixel = 0
-    icon6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    icon6.ImageTransparency = 0.5
-    icon6.AnchorPoint = Vector2.new(0.5, 0.5)
-    icon6.Image = "rbxassetid://94685968948870"
-    icon6.Size = UDim2.new(0, 17, 0, 17)
-    icon6.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    icon6.BackgroundTransparency = 1
-    icon6.LayoutOrder = 1
-    icon6.Name = "icon"
-    icon6.Position = UDim2.new(0.5, 0, 0.5, 0)
-    icon6.Parent = holder
-
-    local Corner = Instance.new("UICorner")
-    Corner.Name = "Corner"
-    Corner.CornerRadius = UDim.new(0, 6)
-    Corner.Parent = holder
-
-    local icons = Instance.new("Frame")
-    icons.BorderSizePixel = 0
-    icons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    icons.Size = UDim2.new(0, 0, 0, 22)
-    icons.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    icons.Name = "icons"
-    icons.LayoutOrder = 9
-    icons.Parent = ExampleTab
-
-    local list10 = Instance.new("UIListLayout")
-    list10.HorizontalAlignment = Enum.HorizontalAlignment.Right
-    list10.Padding = UDim.new(0, 10)
-    list10.VerticalAlignment = Enum.VerticalAlignment.Center
-    list10.SortOrder = Enum.SortOrder.LayoutOrder
-    list10.Name = "list"
-    list10.FillDirection = Enum.FillDirection.Horizontal
-    list10.Parent = icons
-
-    local warning = Instance.new("ImageLabel")
-    warning.BorderSizePixel = 0
-    warning.ScaleType = Enum.ScaleType.Fit
-    warning.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    warning.ImageTransparency = 0.5
-    warning.ImageColor3 = Color3.fromRGB(255, 192, 0)
-    warning.AnchorPoint = Vector2.new(0.5, 0.5)
-    warning.Image = "rbxassetid://85824584748112"
-    warning.Size = UDim2.new(0, 16, 0, 16)
-    warning.Visible = false
-    warning.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    warning.BackgroundTransparency = 1
-    warning.Name = "warning"
-    warning.Position = UDim2.new(0.5, 0, 0.5, 0)
-    warning.Parent = icons
-
-    local loading = Instance.new("ImageLabel")
-    loading.BorderSizePixel = 0
-    loading.ScaleType = Enum.ScaleType.Fit
-    loading.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    loading.ImageTransparency = 0.5
-    loading.AnchorPoint = Vector2.new(0.5, 0.5)
-    loading.Image = "rbxassetid://119058990992889"
-    loading.Size = UDim2.new(0, 16, 0, 16)
-    loading.Visible = false
-    loading.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    loading.BackgroundTransparency = 1
-    loading.Name = "loading"
-    loading.Position = UDim2.new(0.5, 0, 0.5, 0)
-    loading.Parent = icons
 
     local home = Instance.new("ImageButton")
     home.SliceScale = 0.01
@@ -480,11 +345,11 @@ function Mainframe:Create(Settings)
     settings.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
     settings.ImageColor3 = Color3.fromRGB(0, 0, 0)
     settings.Image = "rbxassetid://125088425775676"
-    settings.Size = UDim2.new(1.18703, -22, -0.21764, 48)
+    settings.Size = UDim2.new(1, 0, 0, 31)
     settings.LayoutOrder = 1
     settings.BorderColor3 = Color3.fromRGB(0, 0, 0)
     settings.Name = "settings"
-    settings.Position = UDim2.new(-0.02405, 0, 0, 0)
+    settings.Position = UDim2.new(0, 0, 0, 0)
     settings.Parent = anchoredbutton
 
     local list14 = Instance.new("UIListLayout")

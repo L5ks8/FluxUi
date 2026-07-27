@@ -32,7 +32,7 @@ function Notification:Create(WindowTable, Data)
 
         local padding = Instance.new("UIPadding")
         padding.Name = "Padding"
-        padding.PaddingTop = UDim.new(0, 40)
+        padding.PaddingTop = UDim.new(0, 10)
         padding.PaddingRight = UDim.new(0, 20)
         padding.Parent = notificationsFrame
     end
