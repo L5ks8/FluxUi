@@ -167,7 +167,6 @@ function Mainframe:Create(Settings)
     list11.Parent = home
 
     local padding6 = Instance.new("UIPadding")
-    padding6.PaddingRight = UDim.new(0, 12)
     padding6.Name = "padding"
     padding6.PaddingLeft = UDim.new(0, 12)
     padding6.Parent = home
@@ -361,7 +360,6 @@ function Mainframe:Create(Settings)
     list14.Parent = settings
 
     local padding8 = Instance.new("UIPadding")
-    padding8.PaddingRight = UDim.new(0, 12)
     padding8.Name = "padding"
     padding8.PaddingLeft = UDim.new(0, 12)
     padding8.Parent = settings
@@ -497,7 +495,7 @@ function Mainframe:Create(Settings)
     user.BackgroundTransparency = 0.7
     user.BackgroundColor3 = Color3.fromRGB(9, 9, 9)
     user.AnchorPoint = Vector2.new(0.5, 0.5)
-    user.Size = UDim2.new(1.12337, -22, 0, 48)
+    user.Size = UDim2.new(1, 0, 0, 48)
     user.BorderColor3 = Color3.fromRGB(0, 0, 0)
     user.Name = "user"
     user.Position = UDim2.new(0.5, 0, 0.07229, 0)

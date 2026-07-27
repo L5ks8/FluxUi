@@ -199,11 +199,37 @@ function Controller.InitTopbar(Topbar, WindowTable, TweenService, Animations)
         navBtn.MouseButton1Click:Connect(function()
             if not WindowTable or not WindowTable.Tabs then return end
             isCollapsed = not isCollapsed
-            local targetWidth = isCollapsed and 46 or 178
+            local targetWidth = isCollapsed and 64 or 178
             
             TweenService:Create(WindowTable.Tabs, Animations.Smooth, {
                 Size = UDim2.new(0, targetWidth, 1, 0)
             }):Play()
+            
+            local userBtn = WindowTable.Tabs:FindFirstChild("user")
+            if userBtn then
+                local info = userBtn:FindFirstChild("Frame")
+                if info then
+                    info.Visible = not isCollapsed
+                end
+            end
+            
+            local navFrame = WindowTable.Tabs:FindFirstChild("main")
+            if navFrame then
+                local navScroll = navFrame:FindFirstChild("navigation")
+                if navScroll then
+                    local navMain = navScroll:FindFirstChild("main")
+                    if navMain then
+                        for _, child in ipairs(navMain:GetChildren()) do
+                            if child:IsA("ImageButton") then
+                                local label = child:FindFirstChild("label")
+                                if label then
+                                    label.Visible = not isCollapsed
+                                end
+                            end
+                        end
+                    end
+                end
+            end
         end)
     end
 
