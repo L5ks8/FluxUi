@@ -229,7 +229,7 @@ function Topbar:Create(parentPanel, Settings)
     icons.Name = "Icons"
     icons.BorderSizePixel = 0
     icons.BackgroundColor3 = Color3.fromRGB(255,255,255)
-    icons.Size = UDim2.new(0,16,0,16)
+    icons.Size = UDim2.new(1,0,1,0)
     icons.BorderColor3 = Color3.fromRGB(0,0,0)
     icons.BackgroundTransparency = 1
     icons.Parent = fullscreen
@@ -246,7 +246,7 @@ function Topbar:Create(parentPanel, Settings)
     fullscreenIcon.Visible = false
     fullscreenIcon.BorderColor3 = Color3.fromRGB(255,255,255)
     fullscreenIcon.BackgroundTransparency = 1
-    fullscreenIcon.Position = UDim2.new(0.85795,0,0.6875,0)
+    fullscreenIcon.Position = UDim2.new(0.5,0,0.5,0)
     fullscreenIcon.Parent = icons
 
     local minimizeIcon = Instance.new("ImageLabel")
@@ -256,11 +256,11 @@ function Topbar:Create(parentPanel, Settings)
     minimizeIcon.ImageTransparency = 0.3
     minimizeIcon.AnchorPoint = Vector2.new(0.5,0.5)
     minimizeIcon.Image = "rbxassetid://77048127411791"
-    minimizeIcon.Size = UDim2.new(0,20,0,20)
+    minimizeIcon.Size = UDim2.new(0,16,0,16)
     minimizeIcon.Visible = true
     minimizeIcon.BorderColor3 = Color3.fromRGB(255,255,255)
     minimizeIcon.BackgroundTransparency = 1
-    minimizeIcon.Position = UDim2.new(0.858,0,0.688,0)
+    minimizeIcon.Position = UDim2.new(0.5,0,0.5,0)
     minimizeIcon.Parent = icons
 
     local mainPadding = Instance.new("UIPadding")

@@ -65,8 +65,9 @@ function Controller.InitDebugbar(Debug)
 end
 
 --// Topbar
-function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
-    if not Topbar or not Main then return end
+function Controller.InitTopbar(Topbar, WindowTable, TweenService, Animations)
+    if not Topbar or not WindowTable then return end
+    local Main = WindowTable.Main
 
     local actions = Topbar:FindFirstChild("actions")
     local mainActions = actions and actions:FindFirstChild("main")
@@ -200,6 +201,36 @@ function Controller.InitTopbar(Topbar, Main, TweenService, Animations)
 
     if returnBtn then
         returnBtn.MouseButton1Click:Connect(function()
+            if WindowTable.TabHistory and #WindowTable.TabHistory > 0 then
+                local prevPage = table.remove(WindowTable.TabHistory)
+                if prevPage then
+                    local screen = WindowTable.Content and WindowTable.Content:FindFirstChild("screen")
+                    local pageLayout = screen and screen:FindFirstChild("page")
+                    if pageLayout then
+                        pageLayout:JumpTo(prevPage)
+                    end
+                end
+            end
+        end)
+    end
+    
+    local timeBtn = mainActions:FindFirstChild("time")
+    local timeText = timeBtn and timeBtn:FindFirstChild("text")
+    if timeText then
+        task.spawn(function()
+            while task.wait(1) do
+                local date = os.date("*t")
+                local hour = date.hour
+                local ampm = "AM"
+                if hour >= 12 then
+                    ampm = "PM"
+                    if hour > 12 then hour = hour - 12 end
+                elseif hour == 0 then
+                    hour = 12
+                end
+                local minute = string.format("%02d", date.min)
+                timeText.Text = hour .. ":" .. minute .. " " .. ampm
+            end
         end)
     end
 
@@ -474,24 +505,29 @@ function Controller.InitTabHandler(WindowTable)
     local Animations = { Fast = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out) }
     
     local allTabButtons = {}
+    WindowTable.TabHistory = WindowTable.TabHistory or {}
+    
+    pageLayout:GetPropertyChangedSignal("CurrentPage"):Connect(function()
+        for _, btn in pairs(allTabButtons) do
+            if pageLayout.CurrentPage and btn.Name == pageLayout.CurrentPage.Name then
+                TweenService:Create(btn, Animations.Fast, {BackgroundTransparency = 0}):Play()
+            else
+                TweenService:Create(btn, Animations.Fast, {BackgroundTransparency = 1}):Play()
+            end
+        end
+    end)
     
     for _, descendant in ipairs(tabsContainer:GetDescendants()) do
         if descendant:IsA("ImageButton") or descendant:IsA("TextButton") then
-
             local targetPage = screen:FindFirstChild(descendant.Name)
             if targetPage and descendant.Name ~= "content" and descendant.Name ~= "scroll" then
                 table.insert(allTabButtons, descendant)
                 
                 descendant.MouseButton1Click:Connect(function()
-                    pageLayout:JumpTo(targetPage)
-                    
-                    for _, btn in pairs(allTabButtons) do
-                        if btn == descendant then
-                            TweenService:Create(btn, Animations.Fast, {BackgroundTransparency = 0}):Play()
-                        else
-                            TweenService:Create(btn, Animations.Fast, {BackgroundTransparency = 1}):Play()
-                        end
+                    if pageLayout.CurrentPage and pageLayout.CurrentPage ~= targetPage then
+                        table.insert(WindowTable.TabHistory, pageLayout.CurrentPage)
                     end
+                    pageLayout:JumpTo(targetPage)
                 end)
             end
         end

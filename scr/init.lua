@@ -53,7 +53,7 @@ function Library:CreateWindow(Settings)
     }
 
     if WindowTable.Panel and WindowTable.Panel:FindFirstChild("topbar") then
-        Controller.InitTopbar(WindowTable.Panel.topbar, WindowTable.Main, game:GetService("TweenService"), Animations)
+        Controller.InitTopbar(WindowTable.Panel.topbar, WindowTable, game:GetService("TweenService"), Animations)
     end
 
     if WindowTable.Panel and WindowTable.Panel:FindFirstChild("debug") then
