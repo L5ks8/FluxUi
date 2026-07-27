@@ -807,7 +807,7 @@ function Mainframe:Create(Settings)
         secFrame.Parent = parent
 
         local secCorner = Instance.new("UICorner")
-        secCorner.CornerRadius = UDim.new(0, 6)
+        secCorner.CornerRadius = UDim.new(0, 15)
         secCorner.Parent = secFrame
 
         local sectionText = Instance.new("TextLabel")
