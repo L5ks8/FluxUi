@@ -939,7 +939,7 @@ function Mainframe:Create(Settings)
     end
 
     if _G.FluxUiMaintab then _G.FluxUiMaintab:Create(WindowTable) end
-    if _G.FluxUiSettignsTab then _G.FluxUiSettignsTab:Create(WindowTable) end
+    if _G.FluxUiSettingsTab then _G.FluxUiSettingsTab:Create(WindowTable) end
     return WindowTable
 end
 

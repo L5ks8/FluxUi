@@ -1,6 +1,6 @@
-local SettignsController = {}
+local SettingsController = {}
 
-function SettignsController.Init(WindowTable)
+function SettingsController.Init(WindowTable)
     if not WindowTable.SettingsElements then
         return
     end
@@ -57,4 +57,4 @@ function SettignsController.Init(WindowTable)
     end)
 end
 
-return SettignsController
+return SettingsController

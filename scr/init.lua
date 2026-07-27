@@ -9,10 +9,10 @@ local Debugbar = loadstring(game:HttpGet(Source .. "Components/Debugbar.lua" .. 
 local Notification = loadstring(game:HttpGet(Source .. "Components/Notification.lua" .. CacheBuster))()
 local Controller = loadstring(game:HttpGet(Source .. "Core/Controller.lua" .. CacheBuster))()
 local HomeTabController = loadstring(game:HttpGet(Source .. "Core/HomeTabController.lua" .. CacheBuster))()
-local SettignsController = loadstring(game:HttpGet(Source .. "Core/SettignsController.lua" .. CacheBuster))()
+local SettingsController = loadstring(game:HttpGet(Source .. "Core/SettingsController.lua" .. CacheBuster))()
 
 local Maintab = loadstring(game:HttpGet(Source .. "Components/Maintab.lua" .. CacheBuster))()
-local SettignsTab = loadstring(game:HttpGet(Source .. "Components/SettignsTab.lua" .. CacheBuster))()
+local SettingsTab = loadstring(game:HttpGet(Source .. "Components/SettingsTab.lua" .. CacheBuster))()
 
 local Elements = {
     Button = loadstring(game:HttpGet(Source .. "Elements/Button.lua" .. CacheBuster))(),
@@ -26,7 +26,7 @@ _G.FluxUiDebugbar = Debugbar
 _G.FluxUiTopbar = Topbar
 _G.FluxUiNotification = Notification
 _G.FluxUiMaintab = Maintab
-_G.FluxUiSettignsTab = SettignsTab
+_G.FluxUiSettingsTab = SettingsTab
 
 local Library = {}
 Library.Version = "1.0.0"
@@ -45,9 +45,9 @@ function Library:CreateWindow(Settings)
     end
 
     Topbar:Init(WindowTable)
-    if SettignsTab then
-        SettignsTab:Create(WindowTable)
-        SettignsController.Init(WindowTable)
+    if SettingsTab then
+        SettingsTab:Create(WindowTable)
+        SettingsController.Init(WindowTable)
     end
     
     Controller.InitTabHandler(WindowTable)

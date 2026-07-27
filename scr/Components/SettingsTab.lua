@@ -2238,8 +2238,8 @@ local function CreateSettings(WindowTable)
 
 end
 
-local SettignsTab = {}
-function SettignsTab:Create(WindowTable)
+local SettingsTab = {}
+function SettingsTab:Create(WindowTable)
     WindowTable.SettingsElements = CreateSettings(WindowTable)
 end
-return SettignsTab
+return SettingsTab
