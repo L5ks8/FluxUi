@@ -869,8 +869,8 @@ function Mainframe:Create(Settings)
     resize_icon.ImageColor3 = Color3.fromRGB(91, 91, 91)
     resize_icon.AnchorPoint = Vector2.new(1, 1)
     resize_icon.Image = "rbxassetid://88780680171023"
-    resize_icon.Size = UDim2.new(1, -10, 1, -10)
-    resize_icon.Position = UDim2.new(1, 0, 1, 0)
+    resize_icon.Size = UDim2.new(1, -14, 1, -14)
+    resize_icon.Position = UDim2.new(1, -4, 1, -4)
     resize_icon.BackgroundTransparency = 1
     resize_icon.Name = "icon"
     resize_icon.Parent = resize

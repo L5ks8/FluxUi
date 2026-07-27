@@ -46,6 +46,7 @@ function Notification:Create(WindowTable, Data)
     notificationBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     notificationBtn.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
     notificationBtn.AutomaticSize = Enum.AutomaticSize.XY
+    notificationBtn.LayoutOrder = -math.floor(tick() * 1000)
     notificationBtn.Parent = notificationsFrame
 
     local notifPadding = Instance.new("UIPadding")
