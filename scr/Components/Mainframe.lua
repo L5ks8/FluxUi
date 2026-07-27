@@ -320,12 +320,12 @@ function Mainframe:Create(Settings)
     local anchoredbutton = Instance.new("Frame")
     anchoredbutton.BorderSizePixel = 0
     anchoredbutton.BackgroundColor3 = Color3.fromRGB(9, 9, 9)
-    anchoredbutton.AutomaticSize = Enum.AutomaticSize.Y
-    anchoredbutton.Size = UDim2.new(1, 0, 0, 0)
+    anchoredbutton.AutomaticSize = Enum.AutomaticSize.None
+    anchoredbutton.Size = UDim2.new(1, 0, 0, 48)
     anchoredbutton.BorderColor3 = Color3.fromRGB(0, 0, 0)
     anchoredbutton.Name = "anchored_button"
     anchoredbutton.LayoutOrder = 1
-    anchoredbutton.BackgroundTransparency = 0.7
+    anchoredbutton.BackgroundTransparency = 1
     anchoredbutton.Parent = tabs
 
     local Corner4 = Instance.new("UICorner")
@@ -344,7 +344,7 @@ function Mainframe:Create(Settings)
     settings.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
     settings.ImageColor3 = Color3.fromRGB(0, 0, 0)
     settings.Image = "rbxassetid://125088425775676"
-    settings.Size = UDim2.new(1, 0, 0, 31)
+    settings.Size = UDim2.new(1, 0, 1, 0)
     settings.LayoutOrder = 1
     settings.BorderColor3 = Color3.fromRGB(0, 0, 0)
     settings.Name = "settings"
@@ -471,10 +471,7 @@ function Mainframe:Create(Settings)
     loading3.Position = UDim2.new(0.5, 0, 0.5, 0)
     loading3.Parent = icons3
 
-    local flex6 = Instance.new("UIFlexItem")
-    flex6.Name = "flex"
-    flex6.FlexMode = Enum.UIFlexMode.Fill
-    flex6.Parent = anchoredbutton
+
 
     local padding9 = Instance.new("UIPadding")
     padding9.PaddingRight = UDim.new(0, 6)

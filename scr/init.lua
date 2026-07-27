@@ -43,6 +43,10 @@ function Library:CreateWindow(Settings)
     end
 
     Topbar:Init(WindowTable)
+    if SettignsTab then
+        SettignsTab:Create(WindowTable)
+    end
+    
     Controller.InitTabHandler(WindowTable)
     Controller.InitUserProfile(WindowTable)
     Controller.InitDragAndResize(WindowTable)
@@ -66,9 +70,7 @@ function Library:CreateWindow(Settings)
         HomeTabController.Init(homeTab)
     end
     
-    if SettignsTab then
-        SettignsTab:Create(WindowTable)
-    end
+
 
 
 
