@@ -139,7 +139,6 @@ function Topbar:Create(parentPanel, Settings)
     returnBtn.BorderColor3 = Color3.fromRGB(0,0,0)
     returnBtn.Position = UDim2.new(0.5,0,0.5,0)
     returnBtn:SetAttribute("ID","fullscreen")
-    CollectionService:AddTag(returnBtn,"OrbitTopbarButton")
     returnBtn.Parent = main
 
     local returnCorner = Instance.new("UICorner")
@@ -215,7 +214,6 @@ function Topbar:Create(parentPanel, Settings)
     fullscreen.BorderColor3 = Color3.fromRGB(0,0,0)
     fullscreen.Position = UDim2.new(0.5,0,0.5,0)
     fullscreen:SetAttribute("ID","fullscreen")
-    CollectionService:AddTag(fullscreen,"OrbitTopbarButton")
     fullscreen.Parent = main
 
     local fullscreenScale = Instance.new("UIScale")
@@ -257,7 +255,7 @@ function Topbar:Create(parentPanel, Settings)
     minimizeIcon.BackgroundColor3 = Color3.fromRGB(255,255,255)
     minimizeIcon.ImageTransparency = 0.3
     minimizeIcon.AnchorPoint = Vector2.new(0.5,0.5)
-    minimizeIcon.Image = "rbxassetid://89086957535910"
+    minimizeIcon.Image = "rbxassetid://77048127411791"
     minimizeIcon.Size = UDim2.new(0,20,0,20)
     minimizeIcon.Visible = true
     minimizeIcon.BorderColor3 = Color3.fromRGB(255,255,255)

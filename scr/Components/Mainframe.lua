@@ -840,7 +840,7 @@ function Mainframe:Create(Settings)
         padding.PaddingTop = UDim.new(0, 4)
         padding.Parent = container
 
-        if droppable then
+        if true then
             local arrow = Instance.new("ImageLabel")
             arrow.BackgroundTransparency = 1
             arrow.AnchorPoint = Vector2.new(1, 0.5)

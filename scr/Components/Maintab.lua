@@ -1208,7 +1208,7 @@ function Maintab:Create(WindowTable)
     UI.header6.AnchorPoint = Vector2.new(0.5, 0)
     UI.header6.Size = UDim2.new(1, 0, 0, 16)
     UI.header6.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    UI.header6.Text = "Developer Console"
+    UI.header6.Text = "Console"
     UI.header6.LayoutOrder = 1
     UI.header6.Name = "header"
     UI.header6.Position = UDim2.new(0.5, 0, 0, 0)

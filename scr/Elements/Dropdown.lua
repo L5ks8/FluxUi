@@ -54,12 +54,50 @@ return function(parent, titleText, options, callback)
     List.HorizontalAlignment = Enum.HorizontalAlignment.Center
     List.Parent = OptionsContainer
     
+    local SearchBox = Instance.new("TextBox")
+    SearchBox.Size = UDim2.new(1, -16, 0, 28)
+    SearchBox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    SearchBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+    SearchBox.PlaceholderText = "Search..."
+    SearchBox.Font = Enum.Font.Gotham
+    SearchBox.TextSize = 13
+    SearchBox.LayoutOrder = -1
+    SearchBox.Parent = OptionsContainer
+    
+    local SearchCorner = Instance.new("UICorner")
+    SearchCorner.CornerRadius = UDim.new(0, 4)
+    SearchCorner.Parent = SearchBox
+
     local open = false
+    local visibleCount = #options
+
+    local function setScrolling(enabled)
+        local current = DropdownFrame.Parent
+        while current do
+            if current:IsA("ScrollingFrame") then
+                current.ScrollingEnabled = enabled
+            end
+            current = current.Parent
+        end
+    end
+
+    local function updateDropdownSize()
+        if open then
+            local targetHeight = 36 + 28 + (visibleCount * 32) + 8
+            TweenService:Create(DropdownFrame, Animations.Smooth, {Size = UDim2.new(1, 0, 0, targetHeight)}):Play()
+        else
+            TweenService:Create(DropdownFrame, Animations.Smooth, {Size = UDim2.new(1, 0, 0, 36)}):Play()
+        end
+    end
+
     TopBtn.MouseButton1Click:Connect(function()
         open = not open
-        local targetHeight = open and (36 + (#options * 32) + 8) or 36
-        TweenService:Create(DropdownFrame, Animations.Smooth, {Size = UDim2.new(1, 0, 0, targetHeight)}):Play()
+        setScrolling(not open)
+        updateDropdownSize()
         TweenService:Create(Icon, Animations.Fast, {Rotation = open and 180 or 0}):Play()
+        if open then
+            SearchBox.Text = ""
+        end
     end)
     
     local OptBtns = {}
@@ -92,11 +130,26 @@ return function(parent, titleText, options, callback)
         OptBtn.MouseButton1Click:Connect(function()
             Title.Text = titleText .. " : " .. opt
             open = false
-            TweenService:Create(DropdownFrame, Animations.Smooth, {Size = UDim2.new(1, 0, 0, 36)}):Play()
+            setScrolling(true)
+            updateDropdownSize()
             TweenService:Create(Icon, Animations.Fast, {Rotation = 0}):Play()
             if callback then callback(opt) end
         end)
     end
+    
+    SearchBox:GetPropertyChangedSignal("Text"):Connect(function()
+        local text = string.lower(SearchBox.Text)
+        visibleCount = 0
+        for _, optObj in ipairs(OptBtns) do
+            if string.find(string.lower(optObj.Text), text) or text == "" then
+                optObj.Btn.Visible = true
+                visibleCount = visibleCount + 1
+            else
+                optObj.Btn.Visible = false
+            end
+        end
+        updateDropdownSize()
+    end)
     
     return DropdownFrame
 end
