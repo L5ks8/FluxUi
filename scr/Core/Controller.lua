@@ -230,6 +230,17 @@ function Controller.InitTopbar(Topbar, WindowTable, TweenService, Animations)
                     end
                 end
             end
+            
+            local anchoredBtn = WindowTable.Tabs:FindFirstChild("anchored_button")
+            if anchoredBtn then
+                local settingsBtn = anchoredBtn:FindFirstChild("settings")
+                if settingsBtn then
+                    local sLabel = settingsBtn:FindFirstChild("label")
+                    if sLabel then
+                        sLabel.Visible = not isCollapsed
+                    end
+                end
+            end
         end)
     end
 
