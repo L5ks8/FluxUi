@@ -14,12 +14,6 @@ return function(parent, titleText, callback)
     UICorner.CornerRadius = UDim.new(0, 6)
     UICorner.Parent = ButtonFrame
     
-    local UIStroke = Instance.new("UIStroke")
-    UIStroke.Color = Color3.fromRGB(40, 40, 40)
-    UIStroke.Thickness = 1
-    UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    UIStroke.Parent = ButtonFrame
-
     local Btn = Instance.new("TextButton")
     Btn.BackgroundTransparency = 1
     Btn.Size = UDim2.new(1, 0, 1, 0)
@@ -31,12 +25,10 @@ return function(parent, titleText, callback)
     
     Btn.MouseEnter:Connect(function()
         TweenService:Create(ButtonFrame, Animations.Fast, {BackgroundColor3 = Color3.fromRGB(35, 35, 35)}):Play()
-        TweenService:Create(UIStroke, Animations.Fast, {Color = Color3.fromRGB(55, 55, 55)}):Play()
     end)
     
     Btn.MouseLeave:Connect(function()
         TweenService:Create(ButtonFrame, Animations.Fast, {BackgroundColor3 = Color3.fromRGB(25, 25, 25)}):Play()
-        TweenService:Create(UIStroke, Animations.Fast, {Color = Color3.fromRGB(40, 40, 40)}):Play()
     end)
     
     Btn.MouseButton1Down:Connect(function()

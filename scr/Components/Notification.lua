@@ -4,7 +4,7 @@ local Notification = {}
 
 function Notification:Create(WindowTable, Data)
     local titleText = Data.Title or "Notification"
-    local descText = Data.Description or "Description"
+    local descText = Data.Content or Data.Description or "Description"
     local iconId = Data.Icon or "https://www.roblox.com/headshot-thumbnail/image?userId=3765399271&width=420&height=420&format=png"
     local duration = Data.Duration or 5
 

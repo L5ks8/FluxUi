@@ -809,12 +809,6 @@ function Mainframe:Create(Settings)
         local secCorner = Instance.new("UICorner")
         secCorner.CornerRadius = UDim.new(0, 6)
         secCorner.Parent = secFrame
-        
-        local secStroke = Instance.new("UIStroke")
-        secStroke.Color = Color3.fromRGB(45, 45, 45)
-        secStroke.Thickness = 1
-        secStroke.Transparency = 0.5
-        secStroke.Parent = secFrame
 
         local sectionText = Instance.new("TextLabel")
         sectionText.Size = UDim2.new(1, -20, 0, 32)
