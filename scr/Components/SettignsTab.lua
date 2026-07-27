@@ -205,7 +205,8 @@ local function CreateSettings(WindowTable)
     settings.Name = [[settings]]
     settings.LayoutOrder = 9
     settings.BackgroundTransparency = 1
-    settings.Parent = screengui
+    settings.Parent = UI.settings
+    settings.Visible = false
 
     local List = Instance.new("UIListLayout")
     List.SortOrder = Enum.SortOrder.LayoutOrder
