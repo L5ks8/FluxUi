@@ -325,7 +325,7 @@ function Mainframe:Create(Settings)
     anchoredbutton.BorderColor3 = Color3.fromRGB(0, 0, 0)
     anchoredbutton.Name = "anchored_button"
     anchoredbutton.LayoutOrder = 1
-    anchoredbutton.BackgroundTransparency = 1
+    anchoredbutton.BackgroundTransparency = 0.7
     anchoredbutton.Parent = tabs
 
     local Corner4 = Instance.new("UICorner")
