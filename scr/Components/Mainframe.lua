@@ -68,14 +68,14 @@ function Mainframe:Create(Settings)
 
     local tabs = Instance.new("Frame")
     tabs.BorderSizePixel = 0
-    tabs.BackgroundColor3 = Color3.fromRGB(21, 21, 21)
+    tabs.BackgroundColor3 = Color3.fromRGB(9, 9, 9)
     tabs.ClipsDescendants = true
     tabs.Size = UDim2.new(0, 178, 1, 0)
     tabs.Position = UDim2.new(0, 0, 0, 0)
     tabs.BorderColor3 = Color3.fromRGB(0, 0, 0)
     tabs.Name = "tabs"
     tabs.LayoutOrder = 1
-    tabs.BackgroundTransparency = 1
+    tabs.BackgroundTransparency = 0.7
     tabs.Parent = content
 
     local corner7 = Instance.new("UICorner")
@@ -87,13 +87,12 @@ function Mainframe:Create(Settings)
     mainFrame3.BorderSizePixel = 0
     mainFrame3.BackgroundColor3 = Color3.fromRGB(9, 9, 9)
     mainFrame3.AnchorPoint = Vector2.new(0.5, 0.5)
-    mainFrame3.AutomaticSize = Enum.AutomaticSize.Y
     mainFrame3.Size = UDim2.new(1, 0, 1, 0)
     mainFrame3.Position = UDim2.new(0.5, 0, 0.5, 0)
     mainFrame3.BorderColor3 = Color3.fromRGB(0, 0, 0)
     mainFrame3.Name = "main"
     mainFrame3.LayoutOrder = 1
-    mainFrame3.BackgroundTransparency = 0.7
+    mainFrame3.BackgroundTransparency = 1
     mainFrame3.Parent = tabs
 
     local navigation = Instance.new("ScrollingFrame")

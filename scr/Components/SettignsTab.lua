@@ -282,6 +282,10 @@ local function CreateSettings(WindowTable)
     UI.frame9.LayoutOrder = 2
     UI.frame9.BackgroundTransparency = 1
 
+    local sizeConstraint1 = Instance.new("UISizeConstraint")
+    sizeConstraint1.Parent = UI.frame9
+    sizeConstraint1.MinSize = Vector2.new(0, 0)
+
     UI.uiflexitem4 = Instance.new("UIFlexItem")
     UI.uiflexitem4.Parent = UI.frame9
     UI.uiflexitem4.Name = [[Flex]]
@@ -483,6 +487,10 @@ local function CreateSettings(WindowTable)
     UI.frame12.LayoutOrder = 2
     UI.frame12.BackgroundTransparency = 1
 
+    local sizeConstraint2 = Instance.new("UISizeConstraint")
+    sizeConstraint2.Parent = UI.frame12
+    sizeConstraint2.MinSize = Vector2.new(0, 0)
+
     UI.uiflexitem6 = Instance.new("UIFlexItem")
     UI.uiflexitem6.Parent = UI.frame12
     UI.uiflexitem6.Name = [[Flex]]
@@ -528,7 +536,7 @@ local function CreateSettings(WindowTable)
     UI.imagelabel6.BorderSizePixel = 0
     UI.imagelabel6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     UI.imagelabel6.Image = [[rbxassetid://95898765113869]]
-    UI.imagelabel6.Size = UDim2.new(0.5, 0, 0.5, 0)
+    UI.imagelabel6.Size = UDim2.new(0, 24, 0, 24)
     UI.imagelabel6.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.imagelabel6.BackgroundTransparency = 1
     UI.imagelabel6.LayoutOrder = 99
@@ -640,6 +648,10 @@ local function CreateSettings(WindowTable)
     UI.frame14.Name = [[info]]
     UI.frame14.LayoutOrder = 2
     UI.frame14.BackgroundTransparency = 1
+
+    local sizeConstraint3 = Instance.new("UISizeConstraint")
+    sizeConstraint3.Parent = UI.frame14
+    sizeConstraint3.MinSize = Vector2.new(0, 0)
 
     UI.uiflexitem7 = Instance.new("UIFlexItem")
     UI.uiflexitem7.Parent = UI.frame14
@@ -800,6 +812,10 @@ local function CreateSettings(WindowTable)
     UI.frame18.Name = [[info]]
     UI.frame18.LayoutOrder = 2
     UI.frame18.BackgroundTransparency = 1
+
+    local sizeConstraint4 = Instance.new("UISizeConstraint")
+    sizeConstraint4.Parent = UI.frame18
+    sizeConstraint4.MinSize = Vector2.new(0, 0)
 
     UI.uiflexitem8 = Instance.new("UIFlexItem")
     UI.uiflexitem8.Parent = UI.frame18
