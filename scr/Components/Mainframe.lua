@@ -87,6 +87,7 @@ function Mainframe:Create(Settings)
     mainFrame3.BorderSizePixel = 0
     mainFrame3.BackgroundColor3 = Color3.fromRGB(9, 9, 9)
     mainFrame3.AnchorPoint = Vector2.new(0.5, 0.5)
+    mainFrame3.AutomaticSize = Enum.AutomaticSize.Y
     mainFrame3.Size = UDim2.new(1, 0, 1, 0)
     mainFrame3.Position = UDim2.new(0.5, 0, 0.5, 0)
     mainFrame3.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -324,7 +325,7 @@ function Mainframe:Create(Settings)
     anchoredbutton.BorderColor3 = Color3.fromRGB(0, 0, 0)
     anchoredbutton.Name = "anchored_button"
     anchoredbutton.LayoutOrder = 1
-    anchoredbutton.BackgroundTransparency = 0.7
+    anchoredbutton.BackgroundTransparency = 1
     anchoredbutton.Parent = tabs
 
     local Corner4 = Instance.new("UICorner")
