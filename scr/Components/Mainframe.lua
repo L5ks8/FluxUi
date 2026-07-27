@@ -848,6 +848,7 @@ function Mainframe:Create(Settings)
             arrow.Size = UDim2.new(0, 14, 0, 14)
             arrow.Image = "rbxassetid://10002167683"
             arrow.ImageColor3 = Color3.fromRGB(150, 150, 150)
+            arrow.ZIndex = 5
             arrow.Parent = secFrame
 
             local toggleBtn = Instance.new("TextButton")
