@@ -209,6 +209,7 @@ local function CreateSettings(WindowTable)
     UI.frame7.Position = UDim2.new(0, 0, 0.09717, 0)
     UI.frame7.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.frame7.Name = [[Input]]
+    UI.frame7.LayoutOrder = 0
     UI.frame7.BackgroundTransparency = 1
 
     UI.uipadding2 = Instance.new("UIPadding")
@@ -415,6 +416,7 @@ local function CreateSettings(WindowTable)
     UI.imagebutton2.Size = UDim2.new(1, 0, 0, 50)
     UI.imagebutton2.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.imagebutton2.Name = [[Selection]]
+    UI.imagebutton2.LayoutOrder = 1
 
     UI.uipadding3 = Instance.new("UIPadding")
     UI.uipadding3.Parent = UI.imagebutton2
@@ -577,6 +579,7 @@ local function CreateSettings(WindowTable)
     UI.imagebutton3.Size = UDim2.new(1, 0, 0, 50)
     UI.imagebutton3.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.imagebutton3.Name = [[Button]]
+    UI.imagebutton3.LayoutOrder = 3
 
     UI.uipadding4 = Instance.new("UIPadding")
     UI.uipadding4.Parent = UI.imagebutton3
@@ -670,7 +673,7 @@ local function CreateSettings(WindowTable)
     UI.textlabel8.BackgroundTransparency = 1
     UI.textlabel8.Size = UDim2.new(1, 0, 0, 0)
     UI.textlabel8.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    UI.textlabel8.Text = [[Name]]
+    UI.textlabel8.Text = [[Unload script]]
     UI.textlabel8.AutomaticSize = Enum.AutomaticSize.Y
     UI.textlabel8.Name = [[Header]]
 
@@ -700,7 +703,7 @@ local function CreateSettings(WindowTable)
     UI.frame15.Size = UDim2.new(1, 0, 0, 50)
     UI.frame15.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.frame15.Name = [[Switch]]
-    UI.frame15.LayoutOrder = 1
+    UI.frame15.LayoutOrder = 2
     UI.frame15.BackgroundTransparency = 1
 
     UI.imagebutton4 = Instance.new("ImageButton")
