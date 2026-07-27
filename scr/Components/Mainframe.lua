@@ -345,7 +345,7 @@ function Mainframe:Create(Settings)
     settings.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
     settings.ImageColor3 = Color3.fromRGB(0, 0, 0)
     settings.Image = "rbxassetid://125088425775676"
-    settings.Size = UDim2.new(1, 0, 0, 31)
+    settings.Size = UDim2.new(1.18, -22, 0, 31)
     settings.LayoutOrder = 1
     settings.BorderColor3 = Color3.fromRGB(0, 0, 0)
     settings.Name = "settings"
