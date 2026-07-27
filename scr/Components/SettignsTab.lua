@@ -1742,14 +1742,8 @@ local function CreateSettings(WindowTable)
     uilistlayout5.Parent = main
 
     settings.Visible = false
-    UI.item.MouseButton1Click:Connect(function()
-        UI.selection.Visible = false
-        settings.Visible = true
-    end)
-
-    back.MouseButton1Click:Connect(function()
-    
     settings.Visible = false
+
     local confirmation = Instance.new("ImageLabel")
     confirmation.ZIndex = 10
     confirmation.BorderSizePixel = 0
