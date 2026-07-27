@@ -298,7 +298,6 @@ function Controller.InitDragAndResize(WindowTable)
     }
 
     --// Drag
-    local Hovering = false
     local Holding = false
     local DragConnection = nil
     local InitialX, InitialY, UIInitialPos = nil, nil, nil
@@ -316,45 +315,39 @@ function Controller.InitDragAndResize(WindowTable)
     end
 
     local dragBtn = Controls:FindFirstChild("drag")
-    if dragBtn then
-        dragBtn.MouseEnter:Connect(function()
-            Hovering = true
-            TweenService:Create(dragBtn, Animations.Fast, { Size = UDim2.fromOffset(75, 35) }):Play()
-            if dragBtn:FindFirstChild("bar") then
-                TweenService:Create(dragBtn.bar, Animations.Fast, { BackgroundTransparency = 0 }):Play()
-            end
-        end)
-
-        dragBtn.MouseLeave:Connect(function()
-            Hovering = false
-            TweenService:Create(dragBtn, Animations.Fast, { Size = UDim2.fromOffset(70, 35) }):Play()
-            if dragBtn:FindFirstChild("bar") then
-                TweenService:Create(dragBtn.bar, Animations.Fast, { BackgroundTransparency = 0.5 }):Play()
-            end
-        end)
+    if dragBtn and dragBtn:FindFirstChild("bar") and dragBtn.bar:FindFirstChild("stroke") then
+        dragBtn.bar.stroke.Thickness = 0
+        dragBtn.bar.stroke.Enabled = false
     end
 
     UserInputService.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            Holding = Hovering
+            local mx, my = Mouse.X, Mouse.Y
+            local px, py = Main.AbsolutePosition.X, Main.AbsolutePosition.Y
+            local sx, sy = Main.AbsoluteSize.X, Main.AbsoluteSize.Y
+            
+            if mx >= px and mx <= px + sx and my >= py and my <= py + sy then
+                local state = Main:GetAttribute("WindowState") or "Normal"
+                
+                if state == "Minimized" then
+                    Holding = true
+                elseif state == "Normal" then
+                    if my <= py + 35 then
+                        Holding = true
+                    else
+                        Holding = false
+                    end
+                else
+                    Holding = false
+                end
+            else
+                Holding = false
+            end
+            
             if Holding then
-                InitialX, InitialY = Mouse.X, Mouse.Y
+                InitialX, InitialY = mx, my
                 UIInitialPos = Main.Position
                 DragConnection = Mouse.Move:Connect(Drag)
-            end
-        end
-    end)
-
-    task.spawn(function()
-        while task.wait() do
-            if dragBtn and dragBtn:FindFirstChild("bar") and dragBtn.bar:FindFirstChild("stroke") then
-                if Holding == true then
-                    dragBtn.bar.stroke.Thickness = 1
-                    dragBtn.bar.stroke.Enabled = true
-                else
-                    dragBtn.bar.stroke.Thickness = 0
-                    dragBtn.bar.stroke.Enabled = false
-                end
             end
         end
     end)
