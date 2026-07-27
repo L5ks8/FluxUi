@@ -3,11 +3,11 @@ local function CreateSettings(WindowTable)
     local CollectionService = game:GetService("CollectionService")
     local ScreenGui = WindowTable.Content:FindFirstChild("screen") or WindowTable.Content
 
-    
+    UI.ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     UI.settings = Instance.new("Frame")
     UI.settings.Parent = ScreenGui
     UI.settings.BorderSizePixel = 0
-    UI.settings.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    UI.settings.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     UI.settings.AnchorPoint = Vector2.new(0.5, 0.5)
     UI.settings.ClipsDescendants = true
     UI.settings.Size = UDim2.new(1, 0, 1, 0)
@@ -15,7 +15,7 @@ local function CreateSettings(WindowTable)
     UI.settings.BorderColor3 = Color3.fromRGB(0, 0, 0)
     UI.settings.Name = [[settings]]
     UI.settings.LayoutOrder = 9
-    UI.settings.BackgroundTransparency = 0
+    UI.settings.BackgroundTransparency = 1
     UI.uilistlayout = Instance.new("UIListLayout")
     UI.uilistlayout.Parent = UI.settings
     UI.uilistlayout.SortOrder = Enum.SortOrder.LayoutOrder
